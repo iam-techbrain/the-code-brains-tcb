@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  turbopack: {},
   // Disable webpack filesystem cache in development mode to prevent 404 chunk mismatches after hot edits
   webpack: (config, { dev }) => {
     if (dev) {
