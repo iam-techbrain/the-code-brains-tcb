@@ -55,24 +55,24 @@ type PersonalExpense = {
 };
 
 const INITIAL_INVENTORY: StoreItem[] = [
-  { id: "1", name: "Fortune Sunflower Oil 1L", sku: "OIL-001", stock: 35, price: 165, cost: 140, gst: 5 },
-  { id: "2", name: "India Gate Basmati Rice 5kg", sku: "RICE-502", stock: 8, price: 620, cost: 530, gst: 5 },
-  { id: "3", name: "Tata Salt 1kg", sku: "SALT-01", stock: 110, price: 28, cost: 22, gst: 0 },
-  { id: "4", name: "Amul Butter 500g", sku: "DAIRY-04", stock: 4, price: 275, cost: 240, gst: 0 },
-  { id: "5", name: "Aashirvaad Atta 10kg", sku: "FLOUR-10", stock: 18, price: 440, cost: 380, gst: 5 },
+  { id: "1", name: "Ergonomic Wireless Mouse", sku: "PERIPHERAL-101", stock: 35, price: 49, cost: 30, gst: 8 },
+  { id: "2", name: "Mechanical RGB Keyboard", sku: "KEYBOARD-502", stock: 8, price: 129, cost: 85, gst: 8 },
+  { id: "3", name: "USB-C Docking Station (10-in-1)", sku: "CABLE-01", stock: 110, price: 85, cost: 50, gst: 8 },
+  { id: "4", name: "UltraWide 4K Monitor Stand", sku: "DISPLAY-04", stock: 4, price: 199, cost: 130, gst: 8 },
+  { id: "5", name: "Noise Cancelling Headset", sku: "AUDIO-10", stock: 18, price: 159, cost: 95, gst: 8 },
 ];
 
 const INITIAL_UDHAR: CustomerUdhar[] = [
-  { id: "u1", name: "Sharma Retail", phone: "9876543210", balance: 1850, dueDate: "Today" },
-  { id: "u2", name: "Verma Traders", phone: "9812345678", balance: 3400, dueDate: "2 days ago" },
-  { id: "u3", name: "Gupta Kirana", phone: "9988776655", balance: 920, dueDate: "In 3 days" },
+  { id: "u1", name: "Acme Corporation", phone: "+1 (555) 234-5678", balance: 1850, dueDate: "Today" },
+  { id: "u2", name: "Apex Digital LLC", phone: "+1 (555) 876-5432", balance: 3400, dueDate: "2 days ago" },
+  { id: "u3", name: "Nexus Global Inc.", phone: "+1 (555) 456-7890", balance: 920, dueDate: "In 3 days" },
 ];
 
 const INITIAL_PERSONAL_EXPENSES: PersonalExpense[] = [
-  { id: "e1", title: "House Rent", category: "Rent", amount: 12000, date: "2026-08-01" },
-  { id: "e2", title: "Electricity & Wi-Fi Bill", category: "Utilities", amount: 2450, date: "2026-08-05" },
-  { id: "e3", title: "Weekly Household Veggies", category: "Groceries", amount: 1800, date: "2026-08-10" },
-  { id: "e4", title: "Monthly Medical Supplies", category: "Medical", amount: 1250, date: "2026-08-12" },
+  { id: "e1", title: "Office Lease", category: "Rent", amount: 2400, date: "2026-08-01" },
+  { id: "e2", title: "Cloud Infrastructure & Wi-Fi", category: "Utilities", amount: 450, date: "2026-08-05" },
+  { id: "e3", title: "Office Supplies & Refreshments", category: "Groceries", amount: 320, date: "2026-08-10" },
+  { id: "e4", title: "Health & Corporate Insurance", category: "Medical", amount: 550, date: "2026-08-12" },
 ];
 
 export default function StoreDashboard() {
@@ -101,7 +101,7 @@ export default function StoreDashboard() {
   const [whatsappSentId, setWhatsappSentId] = useState<string | null>(null);
 
   // Personal Expense State
-  const [monthlySalary, setMonthlySalary] = useState(65000);
+  const [monthlySalary, setMonthlySalary] = useState(12500);
   const [personalExpenses, setPersonalExpenses] = useState<PersonalExpense[]>(INITIAL_PERSONAL_EXPENSES);
   const [expenseTitle, setExpenseTitle] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
@@ -176,27 +176,29 @@ export default function StoreDashboard() {
             </div>
 
             {/* DUAL MODE TOGGLE BUTTONS */}
-            <div className="inline-flex rounded-xl border border-zinc-200 bg-zinc-100 p-1.5 shadow-inner">
+            <div className="flex flex-col sm:flex-row w-full sm:w-auto gap-1.5 rounded-2xl border border-emerald-200 bg-emerald-50/50 p-1.5 shadow-xs">
               <button
+                type="button"
                 onClick={() => setAppMode("business")}
-                className={`flex items-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-all sm:text-sm ${
+                className={`flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all sm:text-sm ${
                   appMode === "business"
-                    ? "bg-emerald-600 text-white shadow-md"
-                    : "text-zinc-600 hover:text-zinc-900"
+                    ? "bg-emerald-600 text-white shadow-xs border border-emerald-600"
+                    : "bg-white text-zinc-700 font-medium hover:border-emerald-500 hover:text-emerald-600 border border-zinc-200"
                 }`}
               >
-                <Store className="h-4 w-4 text-emerald-400" />
+                <Store className={`h-4 w-4 ${appMode === "business" ? "text-white" : "text-emerald-600"}`} />
                 <span>Store Business Mode</span>
               </button>
               <button
+                type="button"
                 onClick={() => setAppMode("personal")}
-                className={`flex items-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-all sm:text-sm ${
+                className={`flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all sm:text-sm ${
                   appMode === "personal"
-                    ? "bg-emerald-600 text-white shadow-md"
-                    : "text-zinc-600 hover:text-zinc-900"
+                    ? "bg-emerald-600 text-white shadow-xs border border-emerald-600"
+                    : "bg-white text-zinc-700 font-medium hover:border-emerald-500 hover:text-emerald-600 border border-zinc-200"
                 }`}
               >
-                <User className="h-4 w-4" />
+                <User className={`h-4 w-4 ${appMode === "personal" ? "text-white" : "text-emerald-600"}`} />
                 <span>Personal Expense Mode</span>
               </button>
             </div>
@@ -217,7 +219,7 @@ export default function StoreDashboard() {
                 <span className="text-[11px] text-emerald-600 font-semibold">{inventory.length} items in catalog</span>
               </div>
               <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
-                <span className="text-xs font-medium text-zinc-500">Customer Udhar Due</span>
+                <span className="text-xs font-medium text-zinc-500">Customer Credit Due</span>
                 <div className="mt-1 text-xl font-extrabold text-amber-600">₹{totalUdharBalance.toLocaleString()}</div>
                 <span className="text-[11px] text-zinc-400">{udharList.length} customer ledgers</span>
               </div>
@@ -229,44 +231,47 @@ export default function StoreDashboard() {
               <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
                 <span className="text-xs font-medium text-zinc-500">Gross Margin Profit</span>
                 <div className="mt-1 text-xl font-extrabold text-zinc-900">₹4,280</div>
-                <span className="text-[11px] text-zinc-400">GST compliant</span>
+                <span className="text-[11px] text-zinc-400">Automated Tax Compliant</span>
               </div>
             </div>
 
             {/* Business Sub-Navigation Tabs */}
-            <div className="flex border-b border-zinc-200 bg-white px-4 rounded-xl">
+            <div className="flex overflow-x-auto no-scrollbar border-b border-zinc-200 bg-white px-2 sm:px-4 rounded-xl">
               <button
+                type="button"
                 onClick={() => setBizTab("pos")}
-                className={`flex items-center gap-2 border-b-2 py-3 px-4 text-xs font-bold transition-all sm:text-sm ${
+                className={`flex items-center gap-2 border-b-2 py-3 px-3 sm:px-4 text-xs font-bold transition-all sm:text-sm shrink-0 whitespace-nowrap ${
                   bizTab === "pos"
                     ? "border-emerald-600 text-emerald-600"
                     : "border-transparent text-zinc-500 hover:text-zinc-900"
                 }`}
               >
-                <Receipt className="h-4 w-4" />
+                <Receipt className="h-4 w-4 shrink-0" />
                 1-Click POS Billing
               </button>
               <button
+                type="button"
                 onClick={() => setBizTab("inventory")}
-                className={`flex items-center gap-2 border-b-2 py-3 px-4 text-xs font-bold transition-all sm:text-sm ${
+                className={`flex items-center gap-2 border-b-2 py-3 px-3 sm:px-4 text-xs font-bold transition-all sm:text-sm shrink-0 whitespace-nowrap ${
                   bizTab === "inventory"
                     ? "border-emerald-600 text-emerald-600"
                     : "border-transparent text-zinc-500 hover:text-zinc-900"
                 }`}
               >
-                <Package className="h-4 w-4" />
-                Inventory Stock List
+                <Package className="h-4 w-4 shrink-0" />
+                Inventory Stock Master
               </button>
               <button
+                type="button"
                 onClick={() => setBizTab("udhar")}
-                className={`flex items-center gap-2 border-b-2 py-3 px-4 text-xs font-bold transition-all sm:text-sm ${
+                className={`flex items-center gap-2 border-b-2 py-3 px-3 sm:px-4 text-xs font-bold transition-all sm:text-sm shrink-0 whitespace-nowrap ${
                   bizTab === "udhar"
                     ? "border-emerald-600 text-emerald-600"
                     : "border-transparent text-zinc-500 hover:text-zinc-900"
                 }`}
               >
-                <Users className="h-4 w-4" />
-                Udhar Khata Book
+                <Users className="h-4 w-4 shrink-0" />
+                Customer Credit Ledger
               </button>
             </div>
 
@@ -331,7 +336,7 @@ export default function StoreDashboard() {
                         <span className="text-[11px] text-zinc-400">Bill #INV-2026-904</span>
                       </div>
                       <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-200">
-                        GST Ready
+                        Automated Tax Ready
                       </span>
                     </div>
 
@@ -354,7 +359,7 @@ export default function StoreDashboard() {
                       <span>₹{posSubtotal}</span>
                     </div>
                     <div className="mt-1 flex justify-between text-xs text-zinc-500">
-                      <span>GST Tax (Estimated):</span>
+                      <span>Tax (Estimated):</span>
                       <span>₹{posGst.toFixed(2)}</span>
                     </div>
                     <div className="mt-3 flex justify-between text-base font-extrabold text-zinc-900">
@@ -372,7 +377,7 @@ export default function StoreDashboard() {
                           onClick={() => setPosSuccess(true)}
                           className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3 text-xs font-bold text-white shadow-md transition-all hover:bg-emerald-500"
                         >
-                          <Printer className="h-4 w-4" /> Print GST Bill
+                          <Printer className="h-4 w-4" /> Print Tax Invoice
                         </button>
                         <button
                           onClick={() => setPosSuccess(true)}
@@ -409,7 +414,7 @@ export default function StoreDashboard() {
                         <input
                           type="text"
                           required
-                          placeholder="e.g. Fortune Mustard Oil"
+                          placeholder="e.g. Ergonomic Keyboard"
                           value={newItemName}
                           onChange={(e) => setNewItemName(e.target.value)}
                           className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-xs text-zinc-900 focus:outline-none"
@@ -420,7 +425,7 @@ export default function StoreDashboard() {
                         <input
                           type="number"
                           required
-                          placeholder="180"
+                          placeholder="1800"
                           value={newItemPrice}
                           onChange={(e) => setNewItemPrice(e.target.value)}
                           className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-xs text-zinc-900 focus:outline-none"
@@ -445,32 +450,33 @@ export default function StoreDashboard() {
                 )}
 
                 {/* Inventory Table */}
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs">
+                <div className="overflow-x-auto no-scrollbar">
+                  <table className="w-full min-w-[550px] text-left text-xs">
                     <thead>
                       <tr className="border-b border-zinc-200 text-zinc-500 font-bold">
-                        <th className="pb-3">Product Item</th>
-                        <th className="pb-3">SKU</th>
-                        <th className="pb-3">Stock Available</th>
-                        <th className="pb-3">Unit Price</th>
-                        <th className="pb-3">GST Rate</th>
-                        <th className="pb-3 text-right">Action</th>
+                        <th className="pb-3 whitespace-nowrap">Product Item</th>
+                        <th className="pb-3 whitespace-nowrap">SKU</th>
+                        <th className="pb-3 whitespace-nowrap">Stock Available</th>
+                        <th className="pb-3 whitespace-nowrap">Unit Price</th>
+                        <th className="pb-3 whitespace-nowrap">Tax Rate</th>
+                        <th className="pb-3 text-right whitespace-nowrap">Action</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-zinc-100">
                       {inventory.map((item) => (
                         <tr key={item.id} className="hover:bg-zinc-50">
-                          <td className="py-3 font-semibold text-zinc-900">{item.name}</td>
-                          <td className="py-3 font-mono text-zinc-500">{item.sku}</td>
-                          <td className="py-3">
+                          <td className="py-3 font-semibold text-zinc-900 whitespace-nowrap">{item.name}</td>
+                          <td className="py-3 font-mono text-zinc-500 whitespace-nowrap">{item.sku}</td>
+                          <td className="py-3 whitespace-nowrap">
                             <span className={`font-bold ${item.stock < 10 ? "text-amber-600" : "text-zinc-800"}`}>
                               {item.stock} units
                             </span>
                           </td>
-                          <td className="py-3 font-bold text-emerald-600">₹{item.price}</td>
-                          <td className="py-3 text-zinc-500">{item.gst}%</td>
-                          <td className="py-3 text-right">
+                          <td className="py-3 font-bold text-emerald-600 whitespace-nowrap">₹{item.price}</td>
+                          <td className="py-3 text-zinc-500 whitespace-nowrap">{item.gst}%</td>
+                          <td className="py-3 text-right whitespace-nowrap">
                             <button
+                              type="button"
                               onClick={() => setInventory((prev) => prev.filter((i) => i.id !== item.id))}
                               className="text-zinc-400 hover:text-red-500"
                             >
@@ -485,27 +491,27 @@ export default function StoreDashboard() {
               </div>
             )}
 
-            {/* TAB: UDHAR KHATA */}
+            {/* TAB: CREDIT LEDGER */}
             {bizTab === "udhar" && (
-              <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-                <div className="mb-6 flex items-center justify-between">
+              <div className="rounded-2xl border border-zinc-200 bg-white p-4 sm:p-6 shadow-sm">
+                <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <h3 className="text-lg font-bold text-zinc-900">Customer Udhar &amp; Credit Ledger</h3>
-                    <p className="text-xs text-zinc-500">Automated WhatsApp payment reminder alerts</p>
+                    <h3 className="text-lg font-bold text-zinc-900">Customer Credit &amp; Receivables Ledger</h3>
+                    <p className="text-xs text-zinc-500">Automated WhatsApp &amp; Email payment reminders</p>
                   </div>
-                  <span className="rounded-lg bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-800 border border-amber-200">
+                  <span className="self-start sm:self-auto rounded-lg bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-800 border border-amber-200">
                     Total Due: ₹{totalUdharBalance.toLocaleString()}
                   </span>
                 </div>
 
                 <div className="space-y-3">
                   {udharList.map((u) => (
-                    <div key={u.id} className="flex items-center justify-between rounded-xl border border-zinc-200 bg-zinc-50/50 p-4">
+                    <div key={u.id} className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-zinc-200 bg-zinc-50/50 p-4">
                       <div>
                         <h4 className="text-sm font-bold text-zinc-900">{u.name}</h4>
                         <div className="mt-0.5 text-xs text-zinc-500">Phone: {u.phone} • Due: {u.dueDate}</div>
                       </div>
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center justify-between sm:justify-end gap-4">
                         <span className="text-base font-extrabold text-amber-600">₹{u.balance}</span>
                         {whatsappSentId === u.id ? (
                           <span className="rounded-lg bg-emerald-100 px-3 py-1.5 text-xs font-bold text-emerald-800 flex items-center gap-1">
@@ -513,6 +519,7 @@ export default function StoreDashboard() {
                           </span>
                         ) : (
                           <button
+                            type="button"
                             onClick={() => setWhatsappSentId(u.id)}
                             className="flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white transition-all hover:bg-emerald-500"
                           >
@@ -537,7 +544,7 @@ export default function StoreDashboard() {
             {/* Personal Finance Summary Cards */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
-                <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Monthly Income / Salary</span>
+                <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Monthly Income / Allocation</span>
                 <div className="mt-2 text-2xl font-extrabold text-zinc-900">₹{monthlySalary.toLocaleString()}</div>
                 <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center gap-1">
                   <ArrowUpRight className="h-3.5 w-3.5" /> Direct Deposit
@@ -548,7 +555,7 @@ export default function StoreDashboard() {
                 <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Total Personal Spend</span>
                 <div className="mt-2 text-2xl font-extrabold text-amber-600">₹{totalPersonalSpend.toLocaleString()}</div>
                 <div className="mt-1 text-xs text-amber-600 font-semibold flex items-center gap-1">
-                  <ArrowDownRight className="h-3.5 w-3.5" /> Household Expenses
+                  <ArrowDownRight className="h-3.5 w-3.5" /> Operational Expenses
                 </div>
               </div>
 
@@ -567,7 +574,7 @@ export default function StoreDashboard() {
               {/* Add Expense Form */}
               <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm lg:col-span-5">
                 <h3 className="text-base font-bold text-zinc-900">Log New Personal Expense</h3>
-                <p className="mt-1 text-xs text-zinc-500">Track home expenses, rent, bills, groceries, etc.</p>
+                <p className="mt-1 text-xs text-zinc-500">Track office expenses, rent, bills, supplies, etc.</p>
 
                 <form onSubmit={handleAddPersonalExpense} className="mt-5 space-y-4">
                   <div>
@@ -575,7 +582,7 @@ export default function StoreDashboard() {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Milk & Veggies Bill"
+                      placeholder="e.g. Server Hosting & Cloud"
                       value={expenseTitle}
                       onChange={(e) => setExpenseTitle(e.target.value)}
                       className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-xs text-zinc-900 focus:outline-none focus:border-emerald-500"
@@ -589,11 +596,11 @@ export default function StoreDashboard() {
                       onChange={(e) => setExpenseCat(e.target.value as any)}
                       className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-xs text-zinc-900 focus:outline-none focus:border-emerald-500"
                     >
-                      <option value="Groceries">Groceries & Food</option>
-                      <option value="Rent">House Rent / EMI</option>
-                      <option value="Utilities">Utilities & WiFi</option>
-                      <option value="Medical">Medical & Health</option>
-                      <option value="Entertainment">Entertainment & Travel</option>
+                      <option value="Groceries">Office Supplies & Snacks</option>
+                      <option value="Rent">Office Lease / Rent</option>
+                      <option value="Utilities">Utilities & High-Speed WiFi</option>
+                      <option value="Medical">Employee Health Insurance</option>
+                      <option value="Entertainment">Team Dinners & Travel</option>
                     </select>
                   </div>
 
@@ -602,7 +609,7 @@ export default function StoreDashboard() {
                     <input
                       type="number"
                       required
-                      placeholder="1500"
+                      placeholder="15000"
                       value={expenseAmount}
                       onChange={(e) => setExpenseAmount(e.target.value)}
                       className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-xs text-zinc-900 focus:outline-none focus:border-emerald-500"
@@ -613,7 +620,7 @@ export default function StoreDashboard() {
                     type="submit"
                     className="w-full rounded-xl bg-emerald-600 py-3 text-xs font-bold text-white shadow-md transition-all hover:bg-emerald-500"
                   >
-                    + Add Personal Expense
+                    + Add Expense Entry
                   </button>
                 </form>
               </div>
@@ -621,7 +628,7 @@ export default function StoreDashboard() {
               {/* Expense History List */}
               <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm lg:col-span-7">
                 <div className="mb-4 flex items-center justify-between border-b border-zinc-200 pb-3">
-                  <h3 className="text-base font-bold text-zinc-900">Recent Household Expenses</h3>
+                  <h3 className="text-base font-bold text-zinc-900">Recent Operational Expenses</h3>
                   <span className="text-xs text-zinc-400">{personalExpenses.length} entries</span>
                 </div>
 

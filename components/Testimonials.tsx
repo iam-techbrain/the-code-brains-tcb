@@ -19,59 +19,59 @@ type Review = {
 const REVIEWS: Review[] = [
   {
     id: "r1",
-    name: "Rajesh Kumar",
-    role: "Proprietor",
-    storeName: "Rajesh Super Store",
-    location: "Jaipur, Rajasthan",
-    category: "Kirana",
-    rating: 5,
-    quote:
-      "Earlier I maintained 3 separate physical registers — one for credit ledger, one for daily sales, and one for stock. TCB Store consolidated everything onto my mobile app. With automated WhatsApp payment reminders, I recovered ₹1.2 Lakh in pending customer credit within 15 days!",
-    impactMetric: "Recovered ₹1.2L Credit",
-    avatarBg: "bg-emerald-100 text-emerald-800",
-    avatarText: "RK",
-  },
-  {
-    id: "r2",
-    name: "Vikram Shah",
-    role: "Owner",
-    storeName: "Shah Electronics & Mobile",
-    location: "Ahmedabad, Gujarat",
+    name: "Marcus Vance",
+    role: "Managing Director",
+    storeName: "Vance Tech Hardware",
+    location: "Austin, Texas",
     category: "Electronics",
     rating: 5,
     quote:
-      "Barcode scanning is super fast! Customers come in and a GST bill is generated & sent via WhatsApp in 10 seconds. Thermal printing support keeps counter lines short during peak hours.",
-    impactMetric: "4x Faster Counter Billing",
+      "Earlier I maintained 3 separate software applications — one for customer credit, one for daily sales, and one for stock. TCB consolidated everything into a single platform. With automated payment reminders, we recovered ₹12 Lakh in overdue credit in just 15 days!",
+    impactMetric: "Recovered ₹12L Credit",
+    avatarBg: "bg-emerald-100 text-emerald-800",
+    avatarText: "MV",
+  },
+  {
+    id: "r2",
+    name: "Elena Rostova",
+    role: "VP Operations",
+    storeName: "Apex Digital Solutions",
+    location: "Chicago, Illinois",
+    category: "Electronics",
+    rating: 5,
+    quote:
+      "Barcode scanning is lightning fast! Customers check out and an automated tax invoice is generated & sent via WhatsApp/Email in under 10 seconds. Thermal receipt printing keeps counter lines short.",
+    impactMetric: "4x Faster Billing Speed",
     avatarBg: "bg-blue-100 text-blue-800",
-    avatarText: "VS",
+    avatarText: "ER",
   },
   {
     id: "r3",
-    name: "Sunita Verma",
-    role: "Managing Director",
-    storeName: "Modern Fashion Collection",
-    location: "Indore, Madhya Pradesh",
-    category: "Garments",
-    rating: 5,
-    quote:
-      "Low stock alerts have saved me thousands in lost revenue. Previously, stock would run out without me noticing. Now I receive instant notifications to reorder items before they sell out.",
-    impactMetric: "Zero Out-of-Stock Sales Lost",
-    avatarBg: "bg-purple-100 text-purple-800",
-    avatarText: "SV",
-  },
-  {
-    id: "r4",
-    name: "Amitabh Choudhury",
-    role: "Founder",
-    storeName: "Choudhury Hardware & Paints",
-    location: "Kolkata, West Bengal",
+    name: "Sarah Jenkins",
+    role: "Founder & CEO",
+    storeName: "Modern Supply Co.",
+    location: "Seattle, Washington",
     category: "Hardware",
     rating: 5,
     quote:
-      "Simple, clear, and GST compliant. My accountant gets monthly sales data exported in Excel with just 1 click. Highly recommended for any retailer!",
-    impactMetric: "1-Click Accountant Excel Export",
+      "Low stock alerts have saved us tens of thousands in lost revenue. Previously, catalog items would go out of stock without warning. Now we get instant automated reorder notifications.",
+    impactMetric: "Zero Out-of-Stock Sales Lost",
+    avatarBg: "bg-purple-100 text-purple-800",
+    avatarText: "SJ",
+  },
+  {
+    id: "r4",
+    name: "David Chen",
+    role: "Operations Lead",
+    storeName: "Nexus Global Logistics",
+    location: "San Francisco, California",
+    category: "Hardware",
+    rating: 5,
+    quote:
+      "Simple, robust, and tax compliant. Our finance team gets monthly financial reports exported in Excel/PDF with just 1 click. Highly recommended for any scaling business!",
+    impactMetric: "1-Click Financial Excel Export",
     avatarBg: "bg-amber-100 text-amber-800",
-    avatarText: "AC",
+    avatarText: "DC",
   },
 ];
 
@@ -83,13 +83,13 @@ export default function Testimonials() {
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50/80 px-3.5 py-1 text-xs font-semibold text-emerald-700 shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-emerald-600" />
-            Loved By 5,000+ Retail &amp; Education Business Owners
+            Loved By 5,000+ Enterprise Business Owners
           </div>
           <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
-            Real stories from real business owners
+            Real stories from real enterprise leaders
           </h2>
           <p className="mt-4 text-base leading-relaxed text-zinc-500 sm:text-lg">
-            See how retail store owners and coaching institutes transformed their operations, billing, and cash flows with TCB.
+            See how commerce leaders and educational academies transformed their operations, billing, and cash flows with TCB.
           </p>
         </div>
 
@@ -97,19 +97,19 @@ export default function Testimonials() {
         <div className="mt-12 grid grid-cols-2 gap-4 rounded-2xl border border-zinc-200 bg-zinc-50/70 p-6 sm:grid-cols-4 sm:px-8 sm:py-6">
           <div className="text-center">
             <div className="text-2xl font-extrabold text-zinc-900 sm:text-3xl">5,000+</div>
-            <div className="mt-1 text-xs font-medium text-zinc-500">Active Stores &amp; Institutes</div>
+            <div className="mt-1 text-xs font-medium text-zinc-500">Global Enterprises &amp; Academies</div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-extrabold text-emerald-600 sm:text-3xl">4.9 / 5</div>
-            <div className="mt-1 text-xs font-medium text-zinc-500">Customer Rating</div>
+            <div className="mt-1 text-xs font-medium text-zinc-500">Customer Satisfaction</div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-extrabold text-zinc-900 sm:text-3xl">₹50 Cr+</div>
-            <div className="mt-1 text-xs font-medium text-zinc-500">Invoices Processed</div>
+            <div className="mt-1 text-xs font-medium text-zinc-500">Transactions Processed</div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-extrabold text-emerald-600 sm:text-3xl">99.4%</div>
-            <div className="mt-1 text-xs font-medium text-zinc-500">Dues Recovery Rate</div>
+            <div className="mt-1 text-xs font-medium text-zinc-500">Receivables Collection Rate</div>
           </div>
         </div>
 

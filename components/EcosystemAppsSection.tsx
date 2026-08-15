@@ -17,6 +17,7 @@ import {
   Smartphone,
   ChevronRight,
   BadgeCheck,
+  Layers,
 } from "lucide-react";
 
 export default function EcosystemAppsSection() {
@@ -149,7 +150,7 @@ export default function EcosystemAppsSection() {
             <div className="mt-8">
               <Link
                 href="/store"
-                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/20"
+                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-emerald-600 py-3.5 text-xs font-bold text-white shadow-sm transition-all duration-200 hover:bg-emerald-500 border border-emerald-600"
               >
                 <span>Launch TCB Store Workspace</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -258,7 +259,7 @@ export default function EcosystemAppsSection() {
             <div className="mt-8">
               <Link
                 href="/school"
-                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/25"
+                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-emerald-600 py-3.5 text-xs font-bold text-white shadow-sm transition-all duration-200 hover:bg-emerald-500 border border-emerald-600"
               >
                 <span>Launch TCB School Workspace</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -266,6 +267,63 @@ export default function EcosystemAppsSection() {
             </div>
           </div>
 
+        </div>
+
+        {/* ========================================================== */}
+        {/* FUTURE EXPANSION ROADMAP — 8+ MODULAR SAAS APPS */}
+        {/* ========================================================== */}
+        <div className="mt-16 rounded-3xl border border-emerald-200/80 bg-emerald-50/40 p-6 sm:p-10">
+          <div className="flex flex-col gap-2 text-center sm:text-left sm:flex-row sm:items-center sm:justify-between border-b border-emerald-200/80 pb-6 mb-8">
+            <div>
+              <div className="inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-800 uppercase tracking-wider">
+                <Layers className="h-4 w-4 text-emerald-600" />
+                <span>Micro-SaaS Platform Roadmap</span>
+              </div>
+              <h3 className="mt-1 text-2xl font-black text-zinc-900 sm:text-3xl">
+                Built for 8+ Specialized SaaS Modules
+              </h3>
+              <p className="text-xs text-zinc-600 mt-1">
+                One scalable codebase architecture supporting unlimited industry verticals.
+              </p>
+            </div>
+            <span className="self-center sm:self-auto rounded-full bg-emerald-700 px-4 py-1.5 text-xs font-bold text-white shadow-xs">
+              Upcoming Vertical Modules
+            </span>
+          </div>
+
+          <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+            <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-2xs transition-all hover:border-emerald-300">
+              <div className="flex items-center gap-2 font-bold text-xs text-zinc-900">
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">🏥</span>
+                <span>TCB Health</span>
+              </div>
+              <p className="mt-1.5 text-[11px] text-zinc-500">Clinic EMR &amp; Pharmacy POS</p>
+            </div>
+
+            <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-2xs transition-all hover:border-emerald-300">
+              <div className="flex items-center gap-2 font-bold text-xs text-zinc-900">
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">🏋️</span>
+                <span>TCB Fitness</span>
+              </div>
+              <p className="mt-1.5 text-[11px] text-zinc-500">Gym Biometrics &amp; Member Dues</p>
+            </div>
+
+            <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-2xs transition-all hover:border-emerald-300">
+              <div className="flex items-center gap-2 font-bold text-xs text-zinc-900">
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">🏨</span>
+                <span>TCB Stay</span>
+              </div>
+              <p className="mt-1.5 text-[11px] text-zinc-500">Hotel Desk &amp; Room Booking</p>
+            </div>
+
+            <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-2xs transition-all hover:border-emerald-300">
+              <div className="flex items-center gap-2 font-bold text-xs text-zinc-900">
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">🍽️</span>
+                <span>TCB Dine</span>
+              </div>
+              <p className="mt-1.5 text-[11px] text-zinc-500">Restaurant QR &amp; Kitchen KOT</p>
+            </div>
+          </div>
         </div>
 
       </div>

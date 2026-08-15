@@ -3,9 +3,9 @@ import { TrendingUp, MoreHorizontal, ArrowUpRight, Circle } from "lucide-react";
 const CHART_BARS = [38, 52, 44, 68, 58, 74, 61, 85, 70, 92, 80, 100];
 
 const INVOICES = [
-  { name: "Riya Textiles", amount: "₹24,500", status: "Paid" },
-  { name: "Kumar Traders", amount: "₹8,200", status: "Pending" },
-  { name: "Anand & Sons", amount: "₹41,000", status: "Paid" },
+  { name: "Acme Enterprise", amount: "$24,500", status: "Paid" },
+  { name: "Vortex Dynamics", amount: "$8,200", status: "Pending" },
+  { name: "Apex Global Inc.", amount: "$41,000", status: "Paid" },
 ];
 
 /**
@@ -31,7 +31,7 @@ export default function DashboardMockup() {
             <span className="h-2.5 w-2.5 rounded-full bg-zinc-300" />
           </div>
           <span className="text-xs font-medium text-zinc-400">
-            tcbstore.app/dashboard
+            tcb.cloud/dashboard
           </span>
           <MoreHorizontal className="h-4 w-4 text-zinc-300" />
         </div>
@@ -44,8 +44,8 @@ export default function DashboardMockup() {
                 <p className="text-xs font-medium text-zinc-400">
                   This month&apos;s revenue
                 </p>
-                <p className="mt-1 font-mono text-2xl font-semibold tracking-tight text-zinc-900">
-                  ₹4,82,300
+                <p className="font-mono text-2xl font-semibold tracking-tight text-zinc-900">
+                  $482,300
                 </p>
               </div>
               <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-600">

@@ -131,10 +131,10 @@ export default function Features() {
             Core Benefits &amp; Ecosystem Capabilities
           </div>
           <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
-            Everything you need to run TCB Store &amp; TCB School
+            Architected for Performance &amp; Seamless Multi-SaaS Scale
           </h2>
           <p className="mt-4 text-base leading-relaxed text-zinc-500 sm:text-lg">
-            Powerful features built specifically for small retail shopkeepers, personal budgeting, and coaching institute owners.
+            Enterprise-grade capabilities engineered specifically for retail commerce, institutes, clinics, and modern business workflows.
           </p>
         </div>
 
