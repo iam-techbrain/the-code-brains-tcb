@@ -36,21 +36,21 @@ const INITIAL_STUDENTS: Student[] = [
   {
     id: "st-101",
     rollNo: "101",
-    name: "Aarav Sharma",
-    classBatch: "Class 10-A (Science)",
-    parentName: "Sanjay Sharma",
-    parentPhone: "9876543210",
+    name: "Ethan Brooks",
+    classBatch: "Class 10-A (Computer Science)",
+    parentName: "Robert Brooks",
+    parentPhone: "+1 (555) 234-5678",
     feeStatus: "Pending",
-    pendingFee: 3500,
+    pendingFee: 350,
     attendanceToday: "Present",
   },
   {
     id: "st-102",
     rollNo: "102",
-    name: "Ananya Verma",
-    classBatch: "Class 10-A (Science)",
-    parentName: "Rakesh Verma",
-    parentPhone: "9812345678",
+    name: "Sophia Miller",
+    classBatch: "Class 10-A (Computer Science)",
+    parentName: "David Miller",
+    parentPhone: "+1 (555) 876-5432",
     feeStatus: "Paid",
     pendingFee: 0,
     attendanceToday: "Present",
@@ -58,32 +58,32 @@ const INITIAL_STUDENTS: Student[] = [
   {
     id: "st-103",
     rollNo: "103",
-    name: "Rohan Gupta",
-    classBatch: "Class 10-B (Maths)",
-    parentName: "Vikas Gupta",
-    parentPhone: "9988776655",
+    name: "Liam Davis",
+    classBatch: "Class 10-B (Data Science)",
+    parentName: "Michael Davis",
+    parentPhone: "+1 (555) 456-7890",
     feeStatus: "Partial",
-    pendingFee: 1500,
+    pendingFee: 150,
     attendanceToday: "Absent",
   },
   {
     id: "st-104",
     rollNo: "104",
-    name: "Priya Patel",
-    classBatch: "Class 12 (Commerce)",
-    parentName: "Kiran Patel",
-    parentPhone: "9765432109",
+    name: "Olivia Taylor",
+    classBatch: "Class 12 (Business Administration)",
+    parentName: "James Taylor",
+    parentPhone: "+1 (555) 654-3210",
     feeStatus: "Pending",
-    pendingFee: 4200,
+    pendingFee: 420,
     attendanceToday: "Present",
   },
   {
     id: "st-105",
     rollNo: "105",
-    name: "Karan Singh",
-    classBatch: "Class 12 (Commerce)",
-    parentName: "Manjit Singh",
-    parentPhone: "9543210987",
+    name: "Noah Wilson",
+    classBatch: "Class 12 (Business Administration)",
+    parentName: "William Wilson",
+    parentPhone: "+1 (555) 987-6543",
     feeStatus: "Paid",
     pendingFee: 0,
     attendanceToday: "Late",
@@ -211,43 +211,46 @@ export default function SchoolDashboard() {
           <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
             <span className="text-xs font-medium text-zinc-500">Total Pending Dues</span>
             <div className="mt-1 text-2xl font-extrabold text-red-600">₹{totalPendingDues.toLocaleString()}</div>
-            <span className="text-[11px] text-zinc-400">WhatsApp fee reminder ready</span>
+            <span className="text-[11px] text-zinc-400">Automated fee reminder ready</span>
           </div>
         </div>
 
         {/* Sub-Navigation Tabs */}
-        <div className="mt-6 flex border-b border-zinc-200 bg-white px-4 rounded-xl shadow-xs">
+        <div className="mt-6 flex overflow-x-auto no-scrollbar border-b border-zinc-200 bg-white px-2 sm:px-4 rounded-xl shadow-xs">
           <button
+            type="button"
             onClick={() => setActiveTab("directory")}
-            className={`flex items-center gap-2 border-b-2 py-3.5 px-4 text-xs font-bold transition-all sm:text-sm ${
+            className={`flex items-center gap-2 border-b-2 py-3.5 px-3 sm:px-4 text-xs font-bold transition-all sm:text-sm shrink-0 whitespace-nowrap ${
               activeTab === "directory"
                 ? "border-emerald-600 text-emerald-600"
                 : "border-transparent text-zinc-500 hover:text-zinc-900"
             }`}
           >
-            <Users className="h-4 w-4" />
+            <Users className="h-4 w-4 shrink-0" />
             Student Directory
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab("attendance")}
-            className={`flex items-center gap-2 border-b-2 py-3.5 px-4 text-xs font-bold transition-all sm:text-sm ${
+            className={`flex items-center gap-2 border-b-2 py-3.5 px-3 sm:px-4 text-xs font-bold transition-all sm:text-sm shrink-0 whitespace-nowrap ${
               activeTab === "attendance"
                 ? "border-emerald-600 text-emerald-600"
                 : "border-transparent text-zinc-500 hover:text-zinc-900"
             }`}
           >
-            <CheckSquare className="h-4 w-4" />
+            <CheckSquare className="h-4 w-4 shrink-0" />
             Daily Attendance Register
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab("fees")}
-            className={`flex items-center gap-2 border-b-2 py-3.5 px-4 text-xs font-bold transition-all sm:text-sm ${
+            className={`flex items-center gap-2 border-b-2 py-3.5 px-3 sm:px-4 text-xs font-bold transition-all sm:text-sm shrink-0 whitespace-nowrap ${
               activeTab === "fees"
                 ? "border-emerald-600 text-emerald-600"
                 : "border-transparent text-zinc-500 hover:text-zinc-900"
             }`}
           >
-            <CreditCard className="h-4 w-4" />
+            <CreditCard className="h-4 w-4 shrink-0" />
             Fee &amp; Dues Tracker
           </button>
         </div>
@@ -283,29 +286,29 @@ export default function SchoolDashboard() {
         {/* TAB 1: STUDENT DIRECTORY */}
         {/* ========================================================= */}
         {activeTab === "directory" && (
-          <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs">
+          <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4 sm:p-6 shadow-sm">
+            <div className="overflow-x-auto no-scrollbar">
+              <table className="w-full min-w-[650px] text-left text-xs">
                 <thead>
                   <tr className="border-b border-zinc-200 text-zinc-500 font-bold">
-                    <th className="pb-3">Roll No</th>
-                    <th className="pb-3">Student Name</th>
-                    <th className="pb-3">Batch / Class</th>
-                    <th className="pb-3">Parent / Guardian</th>
-                    <th className="pb-3">Parent Phone</th>
-                    <th className="pb-3">Fee Status</th>
-                    <th className="pb-3 text-right">Today's Attendance</th>
+                    <th className="pb-3 whitespace-nowrap">Roll No</th>
+                    <th className="pb-3 whitespace-nowrap">Student Name</th>
+                    <th className="pb-3 whitespace-nowrap">Batch / Class</th>
+                    <th className="pb-3 whitespace-nowrap">Parent / Guardian</th>
+                    <th className="pb-3 whitespace-nowrap">Parent Phone</th>
+                    <th className="pb-3 whitespace-nowrap">Fee Status</th>
+                    <th className="pb-3 text-right whitespace-nowrap">Today's Attendance</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-zinc-100">
                   {filteredStudents.map((st) => (
                     <tr key={st.id} className="hover:bg-zinc-50">
-                      <td className="py-3 font-mono font-bold text-zinc-600">#{st.rollNo}</td>
-                      <td className="py-3 font-bold text-zinc-900">{st.name}</td>
-                      <td className="py-3 text-zinc-600">{st.classBatch}</td>
-                      <td className="py-3 text-zinc-700">{st.parentName}</td>
-                      <td className="py-3 font-mono text-zinc-500">{st.parentPhone}</td>
-                      <td className="py-3">
+                      <td className="py-3 font-mono font-bold text-zinc-600 whitespace-nowrap">#{st.rollNo}</td>
+                      <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">{st.name}</td>
+                      <td className="py-3 text-zinc-600 whitespace-nowrap">{st.classBatch}</td>
+                      <td className="py-3 text-zinc-700 whitespace-nowrap">{st.parentName}</td>
+                      <td className="py-3 font-mono text-zinc-500 whitespace-nowrap">{st.parentPhone}</td>
+                      <td className="py-3 whitespace-nowrap">
                         {st.feeStatus === "Paid" ? (
                           <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-[10px] font-bold text-emerald-800">
                             Paid Fully
@@ -316,7 +319,7 @@ export default function SchoolDashboard() {
                           </span>
                         )}
                       </td>
-                      <td className="py-3 text-right">
+                      <td className="py-3 text-right whitespace-nowrap">
                         <span className={`font-bold ${st.attendanceToday === "Present" ? "text-emerald-600" : "text-amber-600"}`}>
                           {st.attendanceToday}
                         </span>
@@ -333,8 +336,8 @@ export default function SchoolDashboard() {
         {/* TAB 2: DAILY ATTENDANCE REGISTER */}
         {/* ========================================================= */}
         {activeTab === "attendance" && (
-          <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-            <div className="mb-4 flex items-center justify-between">
+          <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4 sm:p-6 shadow-sm">
+            <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h3 className="text-base font-bold text-zinc-900">Mark Daily Attendance</h3>
                 <p className="text-xs text-zinc-500">Tap status to toggle Present, Absent, or Late</p>
@@ -356,33 +359,36 @@ export default function SchoolDashboard() {
                   </div>
 
                   {/* Attendance Toggle Buttons */}
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
                     <button
+                      type="button"
                       onClick={() => markAttendance(st.id, "Present")}
                       className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
                         st.attendanceToday === "Present"
-                          ? "bg-emerald-600 text-white shadow-sm"
-                          : "bg-white text-zinc-600 hover:bg-zinc-200 border border-zinc-200"
+                          ? "bg-emerald-600 text-white shadow-xs border border-emerald-600"
+                          : "bg-white text-zinc-600 font-medium hover:border-emerald-500 hover:text-emerald-600 border border-zinc-200"
                       }`}
                     >
                       <CheckCircle className="h-3.5 w-3.5" /> Present
                     </button>
                     <button
+                      type="button"
                       onClick={() => markAttendance(st.id, "Absent")}
                       className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
                         st.attendanceToday === "Absent"
-                          ? "bg-red-600 text-white shadow-sm"
-                          : "bg-white text-zinc-600 hover:bg-zinc-200 border border-zinc-200"
+                          ? "bg-red-600 text-white shadow-xs border border-red-600"
+                          : "bg-white text-zinc-600 font-medium hover:border-red-500 hover:text-red-600 border border-zinc-200"
                       }`}
                     >
                       <XCircle className="h-3.5 w-3.5" /> Absent
                     </button>
                     <button
+                      type="button"
                       onClick={() => markAttendance(st.id, "Late")}
                       className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
                         st.attendanceToday === "Late"
-                          ? "bg-amber-500 text-white shadow-sm"
-                          : "bg-white text-zinc-600 hover:bg-zinc-200 border border-zinc-200"
+                          ? "bg-amber-500 text-white shadow-xs border border-amber-500"
+                          : "bg-white text-zinc-600 font-medium hover:border-amber-500 hover:text-amber-600 border border-zinc-200"
                       }`}
                     >
                       <Clock className="h-3.5 w-3.5" /> Late
@@ -398,13 +404,13 @@ export default function SchoolDashboard() {
         {/* TAB 3: FEE & DUES TRACKER */}
         {/* ========================================================= */}
         {activeTab === "fees" && (
-          <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-            <div className="mb-6 flex items-center justify-between">
+          <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4 sm:p-6 shadow-sm">
+            <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h3 className="text-lg font-bold text-zinc-900">Fee Ledger &amp; WhatsApp Parent Alerts</h3>
                 <p className="text-xs text-zinc-500">Send 1-click fee due notifications directly to guardian's WhatsApp</p>
               </div>
-              <span className="rounded-lg bg-red-50 px-3 py-1.5 text-xs font-bold text-red-700 border border-red-200">
+              <span className="self-start sm:self-auto rounded-lg bg-red-50 px-3 py-1.5 text-xs font-bold text-red-700 border border-red-200">
                 Total Uncollected: ₹{totalPendingDues.toLocaleString()}
               </span>
             </div>
@@ -417,7 +423,7 @@ export default function SchoolDashboard() {
                     <div className="text-xs text-zinc-500">Guardian: {st.parentName} ({st.parentPhone})</div>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center justify-between sm:justify-end gap-3">
                     {st.pendingFee > 0 ? (
                       <span className="text-sm font-extrabold text-red-600">
                         Due: ₹{st.pendingFee}
@@ -431,6 +437,7 @@ export default function SchoolDashboard() {
                     {st.pendingFee > 0 && (
                       <div className="flex items-center gap-2">
                         <button
+                          type="button"
                           onClick={() => markFeePaid(st.id)}
                           className="rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-xs font-bold text-zinc-700 hover:bg-zinc-100"
                         >
@@ -442,6 +449,7 @@ export default function SchoolDashboard() {
                           </span>
                         ) : (
                           <button
+                            type="button"
                             onClick={() => setWhatsappSentId(st.id)}
                             className="flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-emerald-500"
                           >

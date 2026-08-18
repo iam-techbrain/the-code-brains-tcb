@@ -25,13 +25,13 @@ const FAQS: FAQItem[] = [
   {
     question: "How do automated WhatsApp payment reminders work?",
     answer:
-      "When a customer invoice is due or has unpaid Udhar balance, TCB Store generates a friendly WhatsApp message containing a direct UPI payment link. Your customer opens the link and pays via PhonePe, GPay, or Paytm instantly.",
+      "When a customer invoice is due or has unpaid customer credit balance, TCB Store generates a friendly WhatsApp message containing a direct payment link. Your customer opens the link and pays via card, netbanking, or UPI instantly.",
     category: "WhatsApp & Collections",
   },
   {
     question: "Can I import my existing product inventory from Excel or Tally?",
     answer:
-      "Absolutely. You can import your entire inventory catalog in 1 click using any standard Excel (.xlsx) or CSV spreadsheet. We also provide pre-loaded catalog templates for Kirana, Apparel, and Electronics stores.",
+      "Absolutely. You can import your entire inventory catalog in 1 click using any standard Excel (.xlsx) or CSV spreadsheet. We also provide pre-loaded catalog templates for Retail, Apparel, and Electronics stores.",
     category: "Inventory Setup",
   },
   {

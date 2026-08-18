@@ -25,6 +25,8 @@ export const metadata: Metadata = {
   },
 };
 
+import VoiceAssistant from "@/components/VoiceAssistant";
+
 export default function RootLayout({
   children,
 }: {
@@ -32,7 +34,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {children}
+        <VoiceAssistant />
+      </body>
     </html>
   );
 }

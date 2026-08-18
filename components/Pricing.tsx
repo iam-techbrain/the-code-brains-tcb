@@ -25,13 +25,13 @@ const STORE_PLANS: PricingPlan[] = [
     priceText: "₹0",
     priceVal: 0,
     period: "for 7 days",
-    description: "Full access to TCB Store POS & Inventory features for 7 days.",
+    description: "Full access to TCB Commerce POS & Inventory features for 7 days.",
     features: [
       "Products Limit: Unlimited",
       "Invoicing / Billing: Unlimited",
       "Personal Expense Mode: Included",
       "Barcode Scanning: Included",
-      "WhatsApp Reminders: Included",
+      "WhatsApp & Email Alerts: Included",
       "Staff Accounts: 1 User",
       "Data Backup: Cloud Sync",
     ],
@@ -51,7 +51,7 @@ const STORE_PLANS: PricingPlan[] = [
       "Invoicing / Billing: Unlimited",
       "Personal Expense Mode: Included",
       "Barcode Scanning: Included",
-      "WhatsApp Reminders: Included",
+      "WhatsApp & Email Alerts: Included",
       "Staff Accounts: 1 User",
       "Data Backup: Cloud Sync",
     ],
@@ -70,7 +70,7 @@ const STORE_PLANS: PricingPlan[] = [
       "Invoicing / Billing: Unlimited",
       "Personal Expense Mode: Included",
       "Barcode Scanning: Included",
-      "WhatsApp Reminders: Included",
+      "WhatsApp & Email Alerts: Included",
       "Staff Accounts: Up to 3 Users",
       "Data Backup: Priority Cloud Sync",
     ],
@@ -99,7 +99,7 @@ const SCHOOL_PLANS: PricingPlan[] = [
     ctaHref: "/school",
   },
   {
-    name: "Growth Coaching Plan",
+    name: "Growth Academy Plan",
     badge: "Most Popular",
     priceText: "₹499",
     priceVal: 499,
@@ -109,7 +109,7 @@ const SCHOOL_PLANS: PricingPlan[] = [
     features: [
       "Students Limit: Up to 150 Students",
       "Fee & Attendance Tracking: Included",
-      "Parent Notifications: Automated WhatsApp",
+      "Parent Notifications: Automated WhatsApp & Email",
       "Staff / Teacher Logins: Up to 2 Teachers",
       "Report Generation: Standard PDF Reports",
     ],
@@ -117,7 +117,7 @@ const SCHOOL_PLANS: PricingPlan[] = [
     ctaHref: "/school",
   },
   {
-    name: "Enterprise School Plan",
+    name: "Enterprise Academy Plan",
     badge: "Full Power",
     priceText: "₹999",
     priceVal: 999,
@@ -163,25 +163,26 @@ export default function Pricing() {
               <RefreshCw className="h-4 w-4 text-emerald-600" />
               Cancel Anytime (No Lock-in)
             </span>
-            <span className="text-slate-300">|</span>
-            <span className="flex items-center gap-1.5 text-slate-700">
-              <ShieldCheck className="h-4 w-4 text-emerald-600" />
+            <span className="text-zinc-300">|</span>
+            <span className="flex items-center gap-1.5 text-zinc-700">
+              <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
               No Hidden Charges
             </span>
-            <span className="text-slate-300">|</span>
-            <span className="flex items-center gap-1.5 text-slate-700">
-              <Lock className="h-4 w-4 text-emerald-600" />
-              256-bit Encrypted Cloud
+            <span className="text-zinc-300">|</span>
+            <span className="flex items-center gap-1.5 text-zinc-700">
+              <Lock className="h-3.5 w-3.5 text-emerald-600" />
+              Safe &amp; Secure Cloud
             </span>
           </div>
         </div>
 
-        {/* UNIFIED APP TOGGLE SELECTOR */}
+        {/* UNIFIED EMERALD APP TOGGLE SELECTOR — ZERO BLACK BUTTONS */}
         <div className="mt-10 flex justify-center">
-          <div className="inline-flex rounded-2xl border border-emerald-200 bg-emerald-50/60 p-1.5 shadow-sm">
+          <div className="inline-flex rounded-2xl border border-emerald-200 bg-emerald-50/50 p-1.5 shadow-xs">
             <button
+              type="button"
               onClick={() => setSelectedApp("store")}
-              className={`flex items-center gap-2 rounded-xl px-6 py-3 text-xs font-bold transition-all sm:text-sm ${
+              className={`flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-xs font-bold transition-all sm:text-sm ${
                 selectedApp === "store"
                   ? "bg-[#059669] text-white shadow-md shadow-emerald-600/25 scale-105"
                   : "bg-white text-slate-700 hover:bg-emerald-100/50"
@@ -192,8 +193,9 @@ export default function Pricing() {
             </button>
 
             <button
+              type="button"
               onClick={() => setSelectedApp("school")}
-              className={`flex items-center gap-2 rounded-xl px-6 py-3 text-xs font-bold transition-all sm:text-sm ${
+              className={`flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-xs font-bold transition-all sm:text-sm ${
                 selectedApp === "school"
                   ? "bg-[#059669] text-white shadow-md shadow-emerald-600/25 scale-105"
                   : "bg-white text-slate-700 hover:bg-emerald-100/50"
@@ -210,7 +212,7 @@ export default function Pricing() {
           {activePlans.map((plan) => (
             <div
               key={plan.name}
-              className={`group relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 ${
+              className={`group relative flex flex-col justify-between rounded-3xl border p-8 shadow-[0_4px_25px_-5px_rgba(0,0,0,0.05)] transition-all duration-300 ${
                 plan.highlighted
                   ? "nuvertos-card-selected lg:-translate-y-2"
                   : "nuvertos-card shadow-sm"
@@ -268,10 +270,10 @@ export default function Pricing() {
               <div className="mt-8">
                 <Link
                   href={plan.ctaHref}
-                  className={`flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-xs font-bold transition-all shadow-md ${
+                  className={`flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-xs font-bold transition-all shadow-2xs ${
                     plan.highlighted
-                      ? "bg-[#059669] text-white hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-600/30"
-                      : "bg-slate-900 text-white hover:bg-slate-800 hover:shadow-md"
+                      ? "bg-emerald-600 text-white hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-600/20"
+                      : "bg-emerald-700 text-white hover:bg-emerald-600 hover:shadow-md"
                   }`}
                 >
                   <span>{plan.ctaText}</span>
@@ -288,7 +290,7 @@ export default function Pricing() {
         </div>
 
         {/* DETAILED FEATURE COMPARISON TABLE */}
-        <div className="mt-20 rounded-3xl border border-emerald-200/80 bg-emerald-50/30 p-6 sm:p-8 shadow-xs">
+        <div className="mt-20 rounded-3xl border border-emerald-200/80 bg-emerald-50/30 p-4 sm:p-8 shadow-xs">
           <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-200 pb-4">
             <div>
               <h3 className="text-lg font-bold text-zinc-900">
@@ -301,128 +303,128 @@ export default function Pricing() {
             </span>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto no-scrollbar">
             {selectedApp === "store" ? (
               /* STORE TABLE */
-              <table className="w-full text-left text-xs">
+              <table className="w-full min-w-[650px] text-left text-xs">
                 <thead>
                   <tr className="border-b border-zinc-200 text-zinc-500 font-bold">
-                    <th className="pb-3 pt-1">Feature</th>
-                    <th className="pb-3 pt-1">7 Days Free Trial</th>
-                    <th className="pb-3 pt-1 text-emerald-700">Pro Plan (Best Seller)</th>
-                    <th className="pb-3 pt-1">Business Plan</th>
+                    <th className="pb-3 pt-1 whitespace-nowrap">Feature</th>
+                    <th className="pb-3 pt-1 whitespace-nowrap">7 Days Free Trial</th>
+                    <th className="pb-3 pt-1 text-emerald-700 whitespace-nowrap">Pro Plan (Best Seller)</th>
+                    <th className="pb-3 pt-1 whitespace-nowrap">Business Plan</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-zinc-200/80">
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Monthly Price</td>
-                    <td className="py-3 text-zinc-600 font-semibold">₹0 (For 7 days)</td>
-                    <td className="py-3 font-extrabold text-emerald-600">₹299 / month</td>
-                    <td className="py-3 font-bold text-zinc-900">₹599 / month</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Monthly Price</td>
+                    <td className="py-3 text-zinc-600 font-semibold whitespace-nowrap">₹0 (For 7 days)</td>
+                    <td className="py-3 font-extrabold text-emerald-600 whitespace-nowrap">₹299 / month</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">₹599 / month</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Products Limit</td>
-                    <td className="py-3 text-zinc-700 font-semibold">Unlimited</td>
-                    <td className="py-3 text-zinc-700 font-semibold">Unlimited</td>
-                    <td className="py-3 text-zinc-700 font-semibold">Unlimited</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Products Limit</td>
+                    <td className="py-3 text-zinc-700 font-semibold whitespace-nowrap">Unlimited</td>
+                    <td className="py-3 text-zinc-700 font-semibold whitespace-nowrap">Unlimited</td>
+                    <td className="py-3 text-zinc-700 font-semibold whitespace-nowrap">Unlimited</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Invoicing / Billing</td>
-                    <td className="py-3 text-zinc-700 font-semibold">Unlimited</td>
-                    <td className="py-3 text-zinc-700 font-semibold">Unlimited</td>
-                    <td className="py-3 text-zinc-700 font-semibold">Unlimited</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Invoicing / Billing</td>
+                    <td className="py-3 text-zinc-700 font-semibold whitespace-nowrap">Unlimited</td>
+                    <td className="py-3 text-zinc-700 font-semibold whitespace-nowrap">Unlimited</td>
+                    <td className="py-3 text-zinc-700 font-semibold whitespace-nowrap">Unlimited</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Personal Expense Mode</td>
-                    <td className="py-3 text-emerald-600 font-bold">✓ Included</td>
-                    <td className="py-3 text-emerald-600 font-bold">✓ Included</td>
-                    <td className="py-3 text-emerald-600 font-bold">✓ Included</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Personal Expense Mode</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Barcode Scanning</td>
-                    <td className="py-3 text-emerald-600 font-bold">✓ Included</td>
-                    <td className="py-3 text-emerald-600 font-bold">✓ Included</td>
-                    <td className="py-3 text-emerald-600 font-bold">✓ Included</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Barcode Scanning</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">WhatsApp Reminders</td>
-                    <td className="py-3 text-emerald-600 font-bold">✓ Included</td>
-                    <td className="py-3 text-emerald-600 font-bold">✓ Included</td>
-                    <td className="py-3 text-emerald-600 font-bold">✓ Included</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">WhatsApp Reminders</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Staff Accounts</td>
-                    <td className="py-3 text-zinc-600">1 User</td>
-                    <td className="py-3 text-zinc-600 font-semibold">1 User</td>
-                    <td className="py-3 font-extrabold text-emerald-700">Up to 3 Users</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Staff Accounts</td>
+                    <td className="py-3 text-zinc-600 whitespace-nowrap">1 User</td>
+                    <td className="py-3 text-zinc-600 font-semibold whitespace-nowrap">1 User</td>
+                    <td className="py-3 font-extrabold text-emerald-700 whitespace-nowrap">Up to 3 Users</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Data Backup</td>
-                    <td className="py-3 text-zinc-600">Cloud Sync</td>
-                    <td className="py-3 text-zinc-600 font-semibold">Cloud Sync</td>
-                    <td className="py-3 font-extrabold text-emerald-700">Priority Cloud Sync</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Data Backup</td>
+                    <td className="py-3 text-zinc-600 whitespace-nowrap">Cloud Sync</td>
+                    <td className="py-3 text-zinc-600 font-semibold whitespace-nowrap">Cloud Sync</td>
+                    <td className="py-3 font-extrabold text-emerald-700 whitespace-nowrap">Priority Cloud Sync</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Cancellation Policy</td>
-                    <td className="py-3 text-emerald-600 font-bold">Cancel Anytime</td>
-                    <td className="py-3 text-emerald-600 font-bold">Cancel Anytime</td>
-                    <td className="py-3 text-emerald-600 font-bold">Cancel Anytime</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Cancellation Policy</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">Cancel Anytime</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">Cancel Anytime</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">Cancel Anytime</td>
                   </tr>
                 </tbody>
               </table>
             ) : (
               /* SCHOOL TABLE */
-              <table className="w-full text-left text-xs">
+              <table className="w-full min-w-[650px] text-left text-xs">
                 <thead>
                   <tr className="border-b border-zinc-200 text-zinc-500 font-bold">
-                    <th className="pb-3 pt-1">Feature</th>
-                    <th className="pb-3 pt-1">7 Days Free Trial</th>
-                    <th className="pb-3 pt-1 text-emerald-700">Growth Coaching Plan</th>
-                    <th className="pb-3 pt-1">Enterprise School Plan</th>
+                    <th className="pb-3 pt-1 whitespace-nowrap">Feature</th>
+                    <th className="pb-3 pt-1 whitespace-nowrap">7 Days Free Trial</th>
+                    <th className="pb-3 pt-1 text-emerald-700 whitespace-nowrap">Growth Coaching Plan</th>
+                    <th className="pb-3 pt-1 whitespace-nowrap">Enterprise School Plan</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-zinc-200/80">
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Monthly Price</td>
-                    <td className="py-3 text-zinc-600 font-semibold">₹0 (For 7 days)</td>
-                    <td className="py-3 font-extrabold text-emerald-600">₹499 / month</td>
-                    <td className="py-3 font-bold text-zinc-900">₹999 / month</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Monthly Price</td>
+                    <td className="py-3 text-zinc-600 font-semibold whitespace-nowrap">₹0 (For 7 days)</td>
+                    <td className="py-3 font-extrabold text-emerald-600 whitespace-nowrap">₹499 / month</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">₹999 / month</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Students Limit</td>
-                    <td className="py-3 text-zinc-700 font-semibold">Unlimited</td>
-                    <td className="py-3 text-amber-700 font-bold">Up to 150 Students</td>
-                    <td className="py-3 text-emerald-600 font-extrabold">Unlimited Students</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Students Limit</td>
+                    <td className="py-3 text-zinc-700 font-semibold whitespace-nowrap">Unlimited</td>
+                    <td className="py-3 text-amber-700 font-bold whitespace-nowrap">Up to 150 Students</td>
+                    <td className="py-3 text-emerald-600 font-extrabold whitespace-nowrap">Unlimited Students</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Fee &amp; Attendance Tracking</td>
-                    <td className="py-3 text-emerald-600 font-bold">✓ Included</td>
-                    <td className="py-3 text-emerald-600 font-bold">✓ Included</td>
-                    <td className="py-3 text-emerald-600 font-bold">✓ Included</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Fee &amp; Attendance Tracking</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Parent Notifications</td>
-                    <td className="py-3 text-zinc-600">Included</td>
-                    <td className="py-3 text-emerald-700 font-bold">Automated WhatsApp</td>
-                    <td className="py-3 text-emerald-700 font-extrabold">Automated WhatsApp + SMS</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Parent Notifications</td>
+                    <td className="py-3 text-zinc-600 whitespace-nowrap">Included</td>
+                    <td className="py-3 text-emerald-700 font-bold whitespace-nowrap">Automated WhatsApp</td>
+                    <td className="py-3 text-emerald-700 font-extrabold whitespace-nowrap">Automated WhatsApp + SMS</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Staff / Teacher Logins</td>
-                    <td className="py-3 text-zinc-600">Included</td>
-                    <td className="py-3 text-zinc-700 font-semibold">Up to 2 Teachers</td>
-                    <td className="py-3 text-emerald-600 font-extrabold">Unlimited Teachers</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Staff / Teacher Logins</td>
+                    <td className="py-3 text-zinc-600 whitespace-nowrap">Included</td>
+                    <td className="py-3 text-zinc-700 font-semibold whitespace-nowrap">Up to 2 Teachers</td>
+                    <td className="py-3 text-emerald-600 font-extrabold whitespace-nowrap">Unlimited Teachers</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Report Generation</td>
-                    <td className="py-3 text-zinc-600">Included</td>
-                    <td className="py-3 text-zinc-700 font-semibold">Standard PDF Reports</td>
-                    <td className="py-3 text-emerald-600 font-extrabold">Advanced Excel/PDF Reports</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Report Generation</td>
+                    <td className="py-3 text-zinc-600 whitespace-nowrap">Included</td>
+                    <td className="py-3 text-zinc-700 font-semibold whitespace-nowrap">Standard PDF Reports</td>
+                    <td className="py-3 text-emerald-600 font-extrabold whitespace-nowrap">Advanced Excel/PDF Reports</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-bold text-zinc-900">Cancellation Policy</td>
-                    <td className="py-3 text-emerald-600 font-bold">Cancel Anytime</td>
-                    <td className="py-3 text-emerald-600 font-bold">Cancel Anytime</td>
-                    <td className="py-3 text-emerald-600 font-bold">Cancel Anytime</td>
+                    <td className="py-3 font-bold text-zinc-900 whitespace-nowrap">Cancellation Policy</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">Cancel Anytime</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">Cancel Anytime</td>
+                    <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">Cancel Anytime</td>
                   </tr>
                 </tbody>
               </table>

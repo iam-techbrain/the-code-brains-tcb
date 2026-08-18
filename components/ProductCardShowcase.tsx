@@ -37,56 +37,56 @@ export type ProductCardItem = {
 const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
   {
     id: "p-1",
-    name: "Fortune Sunflower Oil (1L)",
-    category: "Grocery",
-    price: 165,
-    costPrice: 140,
+    name: "Ergonomic Wireless Mouse",
+    category: "Peripherals",
+    price: 49,
+    costPrice: 30,
     stock: 42,
     minStock: 10,
-    sku: "OIL-1001",
-    gstRate: 5,
+    sku: "PERIPHERAL-101",
+    gstRate: 8,
     badge: "Best Seller",
     iconBg: "bg-amber-50 text-amber-700 border-amber-200",
     accentBorder: "border-amber-200 hover:border-amber-400",
   },
   {
     id: "p-2",
-    name: "India Gate Basmati Rice (5kg)",
-    category: "Grocery",
-    price: 620,
-    costPrice: 530,
+    name: "Mechanical RGB Keyboard",
+    category: "Peripherals",
+    price: 129,
+    costPrice: 85,
     stock: 7,
     minStock: 12,
-    sku: "RICE-502",
-    gstRate: 5,
+    sku: "KEYBOARD-502",
+    gstRate: 8,
     badge: "Low Stock Alert",
     iconBg: "bg-emerald-50 text-emerald-700 border-emerald-200",
     accentBorder: "border-emerald-200 hover:border-emerald-400",
   },
   {
     id: "p-3",
-    name: "Amul Pasteurized Butter (500g)",
-    category: "Dairy",
-    price: 275,
-    costPrice: 240,
+    name: "USB-C Docking Station (10-in-1)",
+    category: "Accessories",
+    price: 85,
+    costPrice: 50,
     stock: 4,
     minStock: 8,
-    sku: "DAIRY-004",
-    gstRate: 0,
+    sku: "CABLE-004",
+    gstRate: 8,
     badge: "Reorder Soon",
     iconBg: "bg-blue-50 text-blue-700 border-blue-200",
     accentBorder: "border-blue-200 hover:border-blue-400",
   },
   {
     id: "p-4",
-    name: "Tata Vaccum Salt (1kg)",
-    category: "Grocery",
-    price: 28,
-    costPrice: 22,
+    name: "UltraWide 4K Monitor Stand",
+    category: "Displays",
+    price: 199,
+    costPrice: 130,
     stock: 120,
     minStock: 20,
-    sku: "SALT-101",
-    gstRate: 0,
+    sku: "DISPLAY-101",
+    gstRate: 8,
     badge: "High Turnover",
     iconBg: "bg-zinc-100 text-zinc-800 border-zinc-200",
     accentBorder: "border-zinc-200 hover:border-emerald-400",
@@ -95,12 +95,12 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     id: "p-5",
     name: "Wireless Barcode Scanner (USB)",
     category: "Electronics",
-    price: 1850,
-    costPrice: 1400,
+    price: 149,
+    costPrice: 95,
     stock: 15,
     minStock: 5,
     sku: "DEV-BAR-99",
-    gstRate: 18,
+    gstRate: 8,
     badge: "POS Hardware",
     iconBg: "bg-purple-50 text-purple-700 border-purple-200",
     accentBorder: "border-purple-200 hover:border-purple-400",
@@ -224,8 +224,9 @@ export default function ProductCardShowcase() {
 
             {/* Action Button: Add to List */}
             <button
+              type="button"
               onClick={handleAddFromDropdown}
-              className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#059669] to-emerald-700 px-7 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20"
+              className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 px-7 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/20"
             >
               <Plus className="h-4 w-4" />
               <span>Add Product to Card List</span>
@@ -239,14 +240,15 @@ export default function ProductCardShowcase() {
               <span className="text-xs font-bold text-zinc-700">Filter Cards:</span>
             </div>
             <div className="flex flex-wrap gap-2">
-              {["All", "Grocery", "Dairy", "Electronics", "Education"].map((cat) => (
+              {["All", "Peripherals", "Displays", "Electronics", "Accessories"].map((cat) => (
                 <button
                   key={cat}
+                  type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all ${
+                  className={`rounded-full px-4 py-1.5 text-xs transition-all ${
                     selectedCategory === cat
-                      ? "bg-emerald-600 text-white shadow-xs"
-                      : "bg-white text-zinc-600 hover:bg-zinc-200/60 border border-zinc-200"
+                      ? "bg-emerald-600 text-white font-bold shadow-xs border border-emerald-600"
+                      : "bg-white text-zinc-600 font-medium hover:border-emerald-500 hover:text-emerald-600 border border-zinc-200"
                   }`}
                 >
                   {cat}
@@ -326,7 +328,7 @@ export default function ProductCardShowcase() {
                           <div className="mt-1 flex items-center gap-2 font-mono text-[11px] text-zinc-400">
                             <span>SKU: {card.sku}</span>
                             <span>•</span>
-                            <span>GST: {card.gstRate}%</span>
+                            <span>Tax: {card.gstRate}%</span>
                           </div>
                         </div>
                       </div>

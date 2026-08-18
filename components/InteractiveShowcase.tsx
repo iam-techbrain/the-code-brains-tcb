@@ -24,19 +24,19 @@ type CartItem = {
 };
 
 const SAMPLE_PRODUCTS = [
-  { id: "p1", name: "Fortune Sunflower Oil (1L)", price: 165, gst: 5 },
-  { id: "p2", name: "India Gate Basmati Rice (5kg)", price: 620, gst: 5 },
-  { id: "p3", name: "Amul Butter (500g)", price: 275, gst: 0 },
-  { id: "p4", name: "Tata Salt (1kg)", price: 28, gst: 0 },
-  { id: "p5", name: "Aashirvaad Atta (10kg)", price: 440, gst: 5 },
+  { id: "p1", name: "Ergonomic Wireless Mouse", price: 49, gst: 8 },
+  { id: "p2", name: "Mechanical RGB Keyboard", price: 129, gst: 8 },
+  { id: "p3", name: "UltraWide 4K Monitor Stand", price: 89, gst: 8 },
+  { id: "p4", name: "Thunderbolt 4 Hub (10-in-1)", price: 145, gst: 8 },
+  { id: "p5", name: "Noise Cancelling Headset", price: 199, gst: 8 },
 ];
 
 const INITIAL_STOCK = [
-  { id: "s1", name: "Fortune Sunflower Oil (1L)", sku: "OIL-1001", stock: 45, minStock: 10, category: "Grocery" },
-  { id: "s2", name: "India Gate Basmati Rice (5kg)", sku: "RICE-502", stock: 8, minStock: 15, category: "Grains" },
-  { id: "s3", name: "Amul Butter (500g)", sku: "DAIRY-04", stock: 3, minStock: 10, category: "Dairy" },
-  { id: "s4", name: "Tata Salt (1kg)", sku: "SALT-12", stock: 120, minStock: 25, category: "Grocery" },
-  { id: "s5", name: "Aashirvaad Atta (10kg)", sku: "FLOUR-90", stock: 18, minStock: 20, category: "Grains" },
+  { id: "s1", name: "Ergonomic Wireless Mouse", sku: "PERIPHERAL-101", stock: 45, minStock: 10, category: "Hardware" },
+  { id: "s2", name: "Mechanical RGB Keyboard", sku: "KEYBOARD-502", stock: 8, minStock: 15, category: "Hardware" },
+  { id: "s3", name: "UltraWide 4K Monitor Stand", sku: "ACCESSORY-04", stock: 3, minStock: 10, category: "Displays" },
+  { id: "s4", name: "Thunderbolt 4 Hub (10-in-1)", sku: "CABLE-12", stock: 120, minStock: 25, category: "Accessories" },
+  { id: "s5", name: "Noise Cancelling Headset", sku: "AUDIO-90", stock: 18, minStock: 20, category: "Audio" },
 ];
 
 export default function InteractiveShowcase() {
@@ -44,10 +44,10 @@ export default function InteractiveShowcase() {
 
   // POS Demo state
   const [cart, setCart] = useState<CartItem[]>([
-    { id: "p1", name: "Fortune Sunflower Oil (1L)", price: 165, qty: 2, gst: 5 },
-    { id: "p2", name: "India Gate Basmati Rice (5kg)", price: 620, qty: 1, gst: 5 },
+    { id: "p1", name: "Ergonomic Wireless Mouse", price: 49, qty: 2, gst: 8 },
+    { id: "p2", name: "Mechanical RGB Keyboard", price: 129, qty: 1, gst: 8 },
   ]);
-  const [customerName, setCustomerName] = useState("Sharma Retail");
+  const [customerName, setCustomerName] = useState("Acme Enterprise");
   const [billSent, setBillSent] = useState(false);
 
   // Stock Demo state
@@ -107,47 +107,50 @@ export default function InteractiveShowcase() {
             Live Interactive Demo
           </div>
           <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
-            Test drive TCB Store right in your browser
+            Test Drive Our Micro-SaaS Applications Live
           </h2>
           <p className="mt-4 text-base leading-relaxed text-zinc-500 sm:text-lg">
-            Click on the tabs below to try out our 1-click POS Billing, Stock Tracker, and WhatsApp Payment Reminder simulator.
+            Experience instant billing workflows, inventory automation, and customer alerts in real-time.
           </p>
         </div>
 
         {/* Navigation Tabs */}
-        <div className="mt-12 flex justify-center">
-          <div className="inline-flex rounded-xl border border-zinc-200 bg-zinc-50 p-1.5 shadow-xs">
+        <div className="mt-12 flex justify-center overflow-x-auto no-scrollbar px-2 pb-2">
+          <div className="flex flex-nowrap shrink-0 rounded-2xl border border-zinc-200 bg-zinc-50 p-1.5 shadow-xs">
             <button
+              type="button"
               onClick={() => setActiveTab("pos")}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-all sm:text-sm ${
+              className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all sm:text-sm whitespace-nowrap ${
                 activeTab === "pos"
                   ? "bg-emerald-600 text-white shadow-sm"
                   : "text-zinc-600 hover:text-zinc-900"
               }`}
             >
-              <Receipt className="h-4 w-4" />
+              <Receipt className="h-4 w-4 shrink-0" />
               1-Click GST POS
             </button>
             <button
+              type="button"
               onClick={() => setActiveTab("stock")}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-all sm:text-sm ${
+              className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all sm:text-sm whitespace-nowrap ${
                 activeTab === "stock"
                   ? "bg-emerald-600 text-white shadow-sm"
                   : "text-zinc-600 hover:text-zinc-900"
               }`}
             >
-              <Package className="h-4 w-4" />
+              <Package className="h-4 w-4 shrink-0" />
               Inventory Tracker
             </button>
             <button
+              type="button"
               onClick={() => setActiveTab("whatsapp")}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-all sm:text-sm ${
+              className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all sm:text-sm whitespace-nowrap ${
                 activeTab === "whatsapp"
                   ? "bg-emerald-600 text-white shadow-sm"
                   : "text-zinc-600 hover:text-zinc-900"
               }`}
             >
-              <MessageSquare className="h-4 w-4" />
+              <MessageSquare className="h-4 w-4 shrink-0" />
               WhatsApp Reminders
             </button>
           </div>
@@ -162,12 +165,12 @@ export default function InteractiveShowcase() {
                 <h3 className="text-lg font-bold text-zinc-900">Store Counter Checkout</h3>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-medium text-zinc-500">Customer Name:</span>
+                <span className="text-xs font-medium text-zinc-500 shrink-0">Customer Name:</span>
                 <input
                   type="text"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-xs font-medium text-zinc-900 focus:border-emerald-500 focus:outline-none shadow-xs"
+                  className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-xs font-medium text-zinc-900 focus:border-emerald-500 focus:outline-none shadow-xs"
                 />
               </div>
             </div>
@@ -182,8 +185,9 @@ export default function InteractiveShowcase() {
                   {SAMPLE_PRODUCTS.map((prod) => (
                     <button
                       key={prod.id}
+                      type="button"
                       onClick={() => addToCart(prod)}
-                      className="group flex items-center justify-between rounded-xl border border-zinc-200 bg-white p-3.5 text-left transition-all hover:border-emerald-500 hover:shadow-md"
+                      className="group flex items-center justify-between rounded-xl border border-zinc-200 bg-white p-3.5 text-left transition-all hover:border-emerald-500 hover:shadow-md active:scale-98"
                     >
                       <div>
                         <div className="text-xs font-bold text-zinc-900 group-hover:text-emerald-700">
@@ -193,9 +197,9 @@ export default function InteractiveShowcase() {
                           GST: {prod.gst}%
                         </div>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 shrink-0">
                         <span className="text-sm font-extrabold text-emerald-600">
-                          ₹{prod.price}
+                          ${prod.price}
                         </span>
                         <span className="flex h-6 w-6 items-center justify-center rounded-md bg-emerald-100 text-emerald-800 transition-transform group-hover:scale-110">
                           <Plus className="h-3.5 w-3.5" />
@@ -211,10 +215,10 @@ export default function InteractiveShowcase() {
                 <div>
                   <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
                     <span className="text-xs font-bold uppercase tracking-wider text-zinc-800">
-                      Live GST Invoice
+                      Live Cloud Invoice
                     </span>
-                    <span className="rounded bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
-                      GSTIN: 07AAAAA0000A1Z5
+                    <span className="rounded bg-zinc-100 px-2 py-0.5 text-[10px] font-bold text-zinc-700 border border-zinc-200">
+                      TAX ID: US-9840219
                     </span>
                   </div>
 
@@ -230,14 +234,15 @@ export default function InteractiveShowcase() {
                           key={item.id}
                           className="flex items-center justify-between rounded-lg bg-zinc-50 p-2.5 text-xs border border-zinc-100"
                         >
-                          <div className="flex-1 font-semibold text-zinc-800">
+                          <div className="flex-1 font-semibold text-zinc-800 pr-2 truncate">
                             {item.name}
                           </div>
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-3 shrink-0">
                             <div className="flex items-center gap-1.5 rounded border border-zinc-300 bg-white px-1.5 py-0.5 text-zinc-700">
                               <button
+                                type="button"
                                 onClick={() => updateQty(item.id, -1)}
-                                className="hover:text-black font-bold"
+                                className="hover:text-black font-bold px-1"
                               >
                                 -
                               </button>
@@ -245,14 +250,15 @@ export default function InteractiveShowcase() {
                                 {item.qty}
                               </span>
                               <button
+                                type="button"
                                 onClick={() => updateQty(item.id, 1)}
-                                className="hover:text-black font-bold"
+                                className="hover:text-black font-bold px-1"
                               >
                                 +
                               </button>
                             </div>
                             <span className="w-12 text-right font-extrabold text-zinc-900">
-                              ₹{item.price * item.qty}
+                              ${item.price * item.qty}
                             </span>
                           </div>
                         </div>
@@ -265,25 +271,26 @@ export default function InteractiveShowcase() {
                 <div className="mt-6 border-t border-zinc-100 pt-4">
                   <div className="flex justify-between text-xs text-zinc-500">
                     <span>Subtotal:</span>
-                    <span>₹{subtotal}</span>
+                    <span>${subtotal}</span>
                   </div>
                   <div className="mt-1 flex justify-between text-xs text-zinc-500">
-                    <span>GST (Total):</span>
-                    <span>₹{totalGst.toFixed(2)}</span>
+                    <span>Tax (8%):</span>
+                    <span>${totalGst.toFixed(2)}</span>
                   </div>
                   <div className="mt-3 flex justify-between text-base font-extrabold text-zinc-900">
                     <span>Grand Total:</span>
-                    <span className="text-emerald-600">₹{grandTotal}</span>
+                    <span className="text-emerald-600">${grandTotal}</span>
                   </div>
 
                   {billSent ? (
                     <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-emerald-100 p-3 text-xs font-bold text-emerald-800 border border-emerald-200">
                       <Check className="h-4 w-4" />
-                      GST Bill Created &amp; Sent to WhatsApp!
+                      Digital Invoice Generated &amp; Dispatched!
                     </div>
                   ) : (
                     <div className="mt-4 flex gap-2">
                       <button
+                        type="button"
                         onClick={() => setBillSent(true)}
                         disabled={cart.length === 0}
                         className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-2.5 text-xs font-bold text-white transition-all hover:bg-emerald-600 disabled:opacity-50"
@@ -292,6 +299,7 @@ export default function InteractiveShowcase() {
                         Generate &amp; Print Bill
                       </button>
                       <button
+                        type="button"
                         onClick={() => setBillSent(true)}
                         disabled={cart.length === 0}
                         className="flex items-center justify-center rounded-xl border border-zinc-300 bg-white px-3 text-xs font-bold text-emerald-700 transition-all hover:bg-zinc-100"
@@ -316,7 +324,7 @@ export default function InteractiveShowcase() {
               </div>
 
               {/* Filters */}
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <div className="relative">
                   <Search className="absolute left-3 top-2.5 h-3.5 w-3.5 text-zinc-400" />
                   <input
@@ -324,21 +332,23 @@ export default function InteractiveShowcase() {
                     placeholder="Search stock item..."
                     value={stockSearch}
                     onChange={(e) => setStockSearch(e.target.value)}
-                    className="rounded-lg border border-zinc-300 bg-white pl-8 pr-3 py-1.5 text-xs text-zinc-900 focus:border-emerald-500 focus:outline-none"
+                    className="w-full sm:w-auto rounded-lg border border-zinc-300 bg-white pl-8 pr-3 py-1.5 text-xs text-zinc-900 focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
                 <div className="flex rounded-lg border border-zinc-200 bg-white p-0.5 text-xs">
                   <button
+                    type="button"
                     onClick={() => setStockFilter("all")}
-                    className={`rounded px-2.5 py-1 ${
+                    className={`flex-1 sm:flex-initial rounded px-3 py-1 ${
                       stockFilter === "all" ? "bg-emerald-600 text-white font-bold" : "text-zinc-500"
                     }`}
                   >
                     All
                   </button>
                   <button
+                    type="button"
                     onClick={() => setStockFilter("low")}
-                    className={`rounded px-2.5 py-1 ${
+                    className={`flex-1 sm:flex-initial rounded px-3 py-1 ${
                       stockFilter === "low" ? "bg-amber-100 text-amber-800 font-bold" : "text-zinc-500"
                     }`}
                   >
@@ -349,16 +359,16 @@ export default function InteractiveShowcase() {
             </div>
 
             {/* Stock Items Table */}
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs">
+            <div className="overflow-x-auto no-scrollbar">
+              <table className="w-full min-w-[600px] text-left text-xs">
                 <thead>
                   <tr className="border-b border-zinc-200 text-zinc-500 font-bold">
-                    <th className="pb-3 pt-1">Product Name</th>
-                    <th className="pb-3 pt-1">SKU</th>
-                    <th className="pb-3 pt-1">Category</th>
-                    <th className="pb-3 pt-1">Current Stock</th>
-                    <th className="pb-3 pt-1">Status</th>
-                    <th className="pb-3 pt-1 text-right">Quick Action</th>
+                    <th className="pb-3 pt-1 whitespace-nowrap">Product Name</th>
+                    <th className="pb-3 pt-1 whitespace-nowrap">SKU</th>
+                    <th className="pb-3 pt-1 whitespace-nowrap">Category</th>
+                    <th className="pb-3 pt-1 whitespace-nowrap">Current Stock</th>
+                    <th className="pb-3 pt-1 whitespace-nowrap">Status</th>
+                    <th className="pb-3 pt-1 text-right whitespace-nowrap">Quick Action</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-zinc-200/60">
@@ -373,11 +383,11 @@ export default function InteractiveShowcase() {
                       const isLow = item.stock <= item.minStock;
                       return (
                         <tr key={item.id} className="hover:bg-white">
-                          <td className="py-3.5 font-bold text-zinc-900">{item.name}</td>
-                          <td className="py-3.5 font-mono text-zinc-500">{item.sku}</td>
-                          <td className="py-3.5 text-zinc-600">{item.category}</td>
-                          <td className="py-3.5 font-extrabold text-zinc-900">{item.stock} units</td>
-                          <td className="py-3.5">
+                          <td className="py-3.5 font-bold text-zinc-900 whitespace-nowrap">{item.name}</td>
+                          <td className="py-3.5 font-mono text-zinc-500 whitespace-nowrap">{item.sku}</td>
+                          <td className="py-3.5 text-zinc-600 whitespace-nowrap">{item.category}</td>
+                          <td className="py-3.5 font-extrabold text-zinc-900 whitespace-nowrap">{item.stock} units</td>
+                          <td className="py-3.5 whitespace-nowrap">
                             {isLow ? (
                               <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-800">
                                 <AlertTriangle className="h-3 w-3" /> Low Stock
@@ -388,8 +398,9 @@ export default function InteractiveShowcase() {
                               </span>
                             )}
                           </td>
-                          <td className="py-3.5 text-right">
+                          <td className="py-3.5 text-right whitespace-nowrap">
                             <button
+                              type="button"
                               onClick={() => reorderStock(item.id)}
                               className="rounded-lg border border-zinc-300 bg-white px-3 py-1 text-xs font-bold text-emerald-700 transition-colors hover:bg-emerald-600 hover:text-white"
                             >
@@ -431,17 +442,17 @@ export default function InteractiveShowcase() {
                   {/* Automated Message Bubble */}
                   <div className="max-w-[85%] self-start rounded-2xl rounded-tl-none bg-white p-4 text-xs leading-relaxed text-zinc-800 shadow-sm border border-zinc-200">
                     <p className="font-bold text-emerald-700">
-                      Namaste Sharma Retail! 🙏
+                      Hello Acme Corporation! 👋
                     </p>
                     <p className="mt-2">
                       Your invoice <span className="font-mono font-bold text-zinc-900">#INV-2026-89</span> of <span className="font-extrabold text-zinc-900">₹1,850</span> for recent purchase is due today.
                     </p>
                     <p className="mt-2 text-zinc-500">
-                      Click below to make 1-click payment directly via GPay, PhonePe, or Paytm:
+                      Click below to make 1-click payment directly via card or instant bank transfer:
                     </p>
 
                     <div className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-center">
-                      <span className="text-[10px] font-bold uppercase text-emerald-800">UPI Instant Payment Link</span>
+                      <span className="text-[10px] font-bold uppercase text-emerald-800">Secure Instant Payment Link</span>
                       {reminderSent ? (
                         <div className="mt-2 flex items-center justify-center gap-1.5 font-extrabold text-emerald-700">
                           <CheckCircle className="h-4 w-4" />
@@ -452,7 +463,7 @@ export default function InteractiveShowcase() {
                           onClick={() => setReminderSent(true)}
                           className="mt-2 w-full rounded-lg bg-emerald-600 py-2 text-xs font-bold text-white transition-all hover:bg-emerald-500 shadow-xs"
                         >
-                          Pay ₹1,850 via UPI
+                          Pay ₹1,850 via Secure Gateway
                         </button>
                       )}
                     </div>
@@ -460,7 +471,7 @@ export default function InteractiveShowcase() {
 
                   {reminderSent && (
                     <div className="max-w-[75%] self-end rounded-2xl rounded-tr-none bg-emerald-100 p-3 text-xs font-semibold text-emerald-900 border border-emerald-300">
-                      ✓ Paid ₹1,850 via PhonePe. Thank you!
+                      ✓ Paid ₹1,850 via Instant Payment. Thank you!
                     </div>
                   )}
                 </div>

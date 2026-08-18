@@ -130,11 +130,11 @@ export default function Features() {
             <Sparkles className="h-4 w-4 text-emerald-600" />
             Core Capabilities &amp; System Modules
           </div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Everything you need to run <span className="nuvertos-gradient-text">TCB Store &amp; TCB School</span>
+          <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
+            Everything you need to run TCB Store &amp; TCB School
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-            Purpose-built tools for retail shopkeepers, inventory managers, personal budgeting, and coaching institute administrators.
+          <p className="mt-4 text-base leading-relaxed text-zinc-500 sm:text-lg">
+            Powerful features built specifically for small retail shopkeepers, personal budgeting, and coaching institute owners.
           </p>
         </div>
 
