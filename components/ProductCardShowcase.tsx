@@ -225,7 +225,7 @@ export default function ProductCardShowcase() {
             {/* Action Button: Add to List */}
             <button
               onClick={handleAddFromDropdown}
-              className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 px-7 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/20"
+              className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#059669] to-emerald-700 px-7 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20"
             >
               <Plus className="h-4 w-4" />
               <span>Add Product to Card List</span>

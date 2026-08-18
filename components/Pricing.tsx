@@ -141,50 +141,50 @@ export default function Pricing() {
   const activePlans = selectedApp === "store" ? STORE_PLANS : SCHOOL_PLANS;
 
   return (
-    <section id="pricing" className="relative border-t border-zinc-200/60 bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <section id="pricing" className="relative border-t border-slate-200/60 bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
       <div className="mx-auto max-w-7xl">
         
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-xs font-bold text-emerald-800 shadow-xs">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-50 px-4 py-1.5 text-xs font-bold text-emerald-800 shadow-xs">
             <Sparkles className="h-4 w-4 text-emerald-600 animate-pulse" />
-            TCB Subscription Plans &amp; Pricing
+            TCB Subscription Plans &amp; Transparent Pricing
           </div>
-          <h2 className="text-3xl font-black tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
-            Flexible Subscription Plans for TCB Apps
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+            Flexible Plans for <span className="nuvertos-gradient-text">TCB Store &amp; TCB School</span>
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-zinc-600 sm:text-lg">
-            Choose a monthly subscription plan tailored for TCB Store or TCB School. Start with a 7-day free trial.
+          <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            Choose a monthly subscription plan tailored for your store or institute. Start with a 7-day free trial.
           </p>
 
           {/* Guarantee Pill */}
-          <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/50 px-4 py-2 text-xs font-bold text-zinc-800 shadow-2xs">
-            <span className="flex items-center gap-1.5 text-emerald-700 font-extrabold">
-              <RefreshCw className="h-3.5 w-3.5 text-emerald-600" />
+          <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/50 px-5 py-2.5 text-xs font-bold text-slate-800 shadow-xs">
+            <span className="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+              <RefreshCw className="h-4 w-4 text-emerald-600" />
               Cancel Anytime (No Lock-in)
             </span>
-            <span className="text-zinc-300">|</span>
-            <span className="flex items-center gap-1.5 text-zinc-700">
-              <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
+            <span className="text-slate-300">|</span>
+            <span className="flex items-center gap-1.5 text-slate-700">
+              <ShieldCheck className="h-4 w-4 text-emerald-600" />
               No Hidden Charges
             </span>
-            <span className="text-zinc-300">|</span>
-            <span className="flex items-center gap-1.5 text-zinc-700">
-              <Lock className="h-3.5 w-3.5 text-emerald-600" />
-              Safe &amp; Secure Cloud
+            <span className="text-slate-300">|</span>
+            <span className="flex items-center gap-1.5 text-slate-700">
+              <Lock className="h-4 w-4 text-emerald-600" />
+              256-bit Encrypted Cloud
             </span>
           </div>
         </div>
 
-        {/* UNIFIED EMERALD APP TOGGLE SELECTOR — ZERO BLACK BUTTONS */}
+        {/* UNIFIED APP TOGGLE SELECTOR */}
         <div className="mt-10 flex justify-center">
-          <div className="inline-flex rounded-2xl border border-emerald-200 bg-emerald-50/50 p-1.5 shadow-xs">
+          <div className="inline-flex rounded-2xl border border-emerald-200 bg-emerald-50/60 p-1.5 shadow-sm">
             <button
               onClick={() => setSelectedApp("store")}
               className={`flex items-center gap-2 rounded-xl px-6 py-3 text-xs font-bold transition-all sm:text-sm ${
                 selectedApp === "store"
-                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20"
-                  : "bg-white text-zinc-700 hover:bg-emerald-100/60"
+                  ? "bg-[#059669] text-white shadow-md shadow-emerald-600/25 scale-105"
+                  : "bg-white text-slate-700 hover:bg-emerald-100/50"
               }`}
             >
               <Store className={`h-4.5 w-4.5 ${selectedApp === "store" ? "text-white" : "text-emerald-600"}`} />
@@ -195,8 +195,8 @@ export default function Pricing() {
               onClick={() => setSelectedApp("school")}
               className={`flex items-center gap-2 rounded-xl px-6 py-3 text-xs font-bold transition-all sm:text-sm ${
                 selectedApp === "school"
-                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20"
-                  : "bg-white text-zinc-700 hover:bg-emerald-100/60"
+                  ? "bg-[#059669] text-white shadow-md shadow-emerald-600/25 scale-105"
+                  : "bg-white text-slate-700 hover:bg-emerald-100/50"
               }`}
             >
               <GraduationCap className={`h-4.5 w-4.5 ${selectedApp === "school" ? "text-white" : "text-emerald-600"}`} />
@@ -205,36 +205,31 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* PRICING CARDS GRID — UNIFIED EMERALD THEME FOR ALL CARDS */}
+        {/* PRICING CARDS GRID */}
         <div className="mt-12 grid gap-8 lg:grid-cols-3 lg:items-stretch">
           {activePlans.map((plan) => (
             <div
               key={plan.name}
-              className={`group relative flex flex-col justify-between rounded-3xl border p-8 shadow-[0_4px_25px_-5px_rgba(0,0,0,0.05)] transition-all duration-300 ${
+              className={`group relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 ${
                 plan.highlighted
-                  ? "border-emerald-500 bg-gradient-to-b from-emerald-50/40 via-white to-white shadow-[0_20px_40px_-10px_rgba(16,185,129,0.22)] lg:-translate-y-2"
-                  : "border-zinc-200/90 bg-white hover:border-emerald-300 hover:shadow-xl"
+                  ? "nuvertos-card-selected lg:-translate-y-2"
+                  : "nuvertos-card shadow-sm"
               }`}
             >
-              {/* Top Shimmer Bar for Highlighted Card */}
-              {plan.highlighted && (
-                <div className="absolute inset-x-0 top-0 h-1.5 rounded-t-3xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-teal-500" />
-              )}
-
               <div>
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <h3 className="text-xl font-extrabold text-zinc-900">{plan.name}</h3>
-                    <span className="mt-1 inline-block text-[11px] font-semibold text-emerald-600">
+                    <h3 className="text-xl font-extrabold text-slate-900">{plan.name}</h3>
+                    <span className="mt-1 inline-block text-[11px] font-bold text-emerald-700">
                       Subscription Plan
                     </span>
                   </div>
 
                   {plan.badge && (
                     <span
-                      className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-black shadow-2xs ${
+                      className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-extrabold shadow-2xs ${
                         plan.highlighted
-                          ? "bg-emerald-600 text-white"
+                          ? "bg-emerald-700 text-white"
                           : "bg-emerald-50 text-emerald-800 border border-emerald-200"
                       }`}
                     >
@@ -244,16 +239,16 @@ export default function Pricing() {
                   )}
                 </div>
                 
-                <p className="mt-3 text-xs leading-relaxed text-zinc-500">
+                <p className="mt-3 text-xs leading-relaxed text-slate-500">
                   {plan.description}
                 </p>
 
                 {/* Price Display */}
-                <div className="mt-6 flex items-baseline gap-1.5 border-b border-zinc-100 pb-5">
-                  <span className="font-extrabold text-4xl tracking-tight text-zinc-900">
+                <div className="mt-6 flex items-baseline gap-1.5 border-b border-slate-200/80 pb-5">
+                  <span className="font-extrabold text-4xl tracking-tight text-slate-900">
                     {plan.priceText}
                   </span>
-                  <span className="text-xs font-bold text-zinc-500">
+                  <span className="text-xs font-bold text-slate-500">
                     {plan.period}
                   </span>
                 </div>
@@ -261,7 +256,7 @@ export default function Pricing() {
                 {/* Features Checklist */}
                 <ul className="mt-6 space-y-3">
                   {plan.features.map((feat) => (
-                    <li key={feat} className="flex items-start gap-2.5 text-xs font-medium text-zinc-700">
+                    <li key={feat} className="flex items-start gap-2.5 text-xs font-semibold text-slate-700">
                       <Check className="h-4 w-4 shrink-0 text-emerald-600 font-bold" />
                       <span>{feat}</span>
                     </li>
@@ -269,14 +264,14 @@ export default function Pricing() {
                 </ul>
               </div>
 
-              {/* UNIFIED EMERALD BUTTONS FOR ALL CARDS — NO BLACK */}
+              {/* BUTTONS */}
               <div className="mt-8">
                 <Link
                   href={plan.ctaHref}
                   className={`flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-xs font-bold transition-all shadow-md ${
                     plan.highlighted
-                      ? "bg-emerald-600 text-white hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-600/20"
-                      : "bg-emerald-700 text-white hover:bg-emerald-600 hover:shadow-md"
+                      ? "bg-[#059669] text-white hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-600/30"
+                      : "bg-slate-900 text-white hover:bg-slate-800 hover:shadow-md"
                   }`}
                 >
                   <span>{plan.ctaText}</span>

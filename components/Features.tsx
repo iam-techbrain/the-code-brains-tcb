@@ -122,19 +122,19 @@ export default function Features() {
         );
 
   return (
-    <section id="features" className="relative border-t border-zinc-100 bg-zinc-50/60 px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <section id="features" className="relative border-t border-slate-200/60 bg-slate-50/50 px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3.5 py-1 text-xs font-semibold text-emerald-700 shadow-xs">
-            <Sparkles className="h-3.5 w-3.5 text-emerald-600" />
-            Core Benefits &amp; Ecosystem Capabilities
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-50 px-4 py-1.5 text-xs font-bold text-emerald-800 shadow-xs">
+            <Sparkles className="h-4 w-4 text-emerald-600" />
+            Core Capabilities &amp; System Modules
           </div>
-          <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
-            Everything you need to run TCB Store &amp; TCB School
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+            Everything you need to run <span className="nuvertos-gradient-text">TCB Store &amp; TCB School</span>
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-zinc-500 sm:text-lg">
-            Powerful features built specifically for small retail shopkeepers, personal budgeting, and coaching institute owners.
+          <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            Purpose-built tools for retail shopkeepers, inventory managers, personal budgeting, and coaching institute administrators.
           </p>
         </div>
 
@@ -144,10 +144,10 @@ export default function Features() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all ${
+              className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
                 activeCategory === cat
-                  ? "bg-emerald-600 text-white shadow-xs"
-                  : "bg-white text-zinc-600 hover:bg-zinc-200/70 border border-zinc-200"
+                  ? "bg-[#059669] text-white shadow-md shadow-emerald-600/20 scale-105"
+                  : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
               }`}
             >
               {cat}
@@ -162,35 +162,38 @@ export default function Features() {
             return (
               <div
                 key={index}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-950/5"
+                className="nuvertos-card group relative flex flex-col justify-between overflow-hidden rounded-2xl p-6 shadow-sm"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-100 text-emerald-800 font-bold">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 font-bold border border-emerald-200/50">
                       <Icon className="h-5 w-5" />
                     </span>
                     <span
-                      className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
+                      className={`rounded-full px-3 py-1 text-[10px] font-extrabold ${
                         benefit.appBadge === "TCB School"
-                          ? "bg-amber-100 text-amber-800"
-                          : "bg-emerald-100 text-emerald-800"
+                          ? "bg-emerald-100/60 text-emerald-900 border border-emerald-300/60"
+                          : "bg-emerald-100/80 text-emerald-900 border border-emerald-200"
                       }`}
                     >
                       {benefit.appBadge}
                     </span>
                   </div>
 
-                  <h3 className="mt-5 text-base font-bold text-zinc-900 group-hover:text-emerald-700">
+                  <h3 className="mt-5 text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
                     {benefit.title}
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-zinc-500">
+                  <p className="mt-2 text-xs leading-relaxed text-slate-500">
                     {benefit.description}
                   </p>
                 </div>
 
-                <div className="mt-6 border-t border-zinc-100 pt-4">
-                  <div className="text-lg font-extrabold text-zinc-900">{benefit.stat}</div>
-                  <div className="text-[11px] font-medium text-zinc-400">{benefit.statLabel}</div>
+                <div className="mt-6 border-t border-slate-100 pt-4 flex items-center justify-between">
+                  <div>
+                    <div className="text-lg font-extrabold text-slate-900">{benefit.stat}</div>
+                    <div className="text-[11px] font-medium text-slate-400">{benefit.statLabel}</div>
+                  </div>
+                  <span className="h-2 w-2 rounded-full bg-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>
             );
@@ -200,3 +203,5 @@ export default function Features() {
     </section>
   );
 }
+
+

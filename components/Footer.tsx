@@ -1,17 +1,32 @@
-import { Zap, Twitter, Linkedin, Github, Instagram } from "lucide-react";
+import { ShieldCheck, Cloud, Award, Lock, Twitter, Linkedin, Github, Instagram } from "lucide-react";
 
 const FOOTER_COLUMNS = [
   {
-    heading: "Product",
-    links: ["Features", "Pricing", "Integrations", "Changelog"],
+    heading: "Micro-SaaS Apps",
+    links: [
+      { name: "TCB Store (POS & Inventory)", href: "/store" },
+      { name: "TCB School (Coaching Suite)", href: "/school" },
+      { name: "Personal Expense Tracker", href: "/store" },
+      { name: "WhatsApp Invoicing", href: "#features" },
+    ],
   },
   {
     heading: "Company",
-    links: ["About", "Blog", "Careers", "Contact"],
+    links: [
+      { name: "About NuvertOS & TCB", href: "#" },
+      { name: "Partner Program", href: "#" },
+      { name: "Careers", href: "#" },
+      { name: "Contact Support", href: "#" },
+    ],
   },
   {
-    heading: "Legal",
-    links: ["Privacy Policy", "Terms of Service", "Security", "Refunds"],
+    heading: "Security & Legal",
+    links: [
+      { name: "ABDM & M1/M2 Compliance", href: "#" },
+      { name: "Privacy Policy", href: "#" },
+      { name: "Terms of Service", href: "#" },
+      { name: "Data Security Policy", href: "#" },
+    ],
   },
 ];
 
@@ -24,8 +39,8 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-zinc-100 bg-zinc-50/50 px-4 pt-16 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <footer className="border-t border-slate-800 bg-[#0a1120] text-slate-300 px-4 pt-16 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand column */}
           <div className="lg:col-span-2">
@@ -33,24 +48,40 @@ export default function Footer() {
               <img
                 src="/tcb-logo.png"
                 alt="TCB Logo"
-                style={{ height: "32px", width: "auto" }}
-                className="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+                style={{ height: "34px", width: "auto" }}
+                className="h-8.5 w-auto object-contain brightness-125 transition-transform duration-200 group-hover:scale-105"
               />
-              <span className="mt-0.5 text-[11px] font-bold tracking-tight text-emerald-600">
+              <span className="mt-1 text-[11px] font-bold tracking-wider uppercase text-emerald-400">
                 Micro-SaaS Ecosystem
               </span>
             </a>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-500">
-              Inventory, invoicing, and payment reminders in one dashboard —
-              built by The Code Brains for small business owners.
+            <p className="mt-4 max-w-xs text-xs leading-relaxed text-slate-400">
+              Unified cloud platform powering retail stores with barcode POS billing (<strong className="text-white">TCB Store</strong>) and coaching institutes with automated fee alerts (<strong className="text-white">TCB School</strong>).
             </p>
+
+            {/* Security Pill Badges */}
+            <div className="mt-5 flex flex-wrap gap-2 text-[10px] font-bold text-slate-300">
+              <span className="flex items-center gap-1 rounded-lg border border-emerald-500/30 bg-emerald-950/60 px-2.5 py-1 text-emerald-300">
+                <ShieldCheck className="h-3 w-3 text-emerald-400" />
+                ABDM Compliant
+              </span>
+              <span className="flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-900/80 px-2.5 py-1 text-slate-300">
+                <Award className="h-3 w-3 text-emerald-400" />
+                ISO 27001 Certified
+              </span>
+              <span className="flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-900/80 px-2.5 py-1 text-slate-300">
+                <Cloud className="h-3 w-3 text-emerald-400" />
+                AWS 99.95% Uptime
+              </span>
+            </div>
+
             <div className="mt-6 flex items-center gap-2">
               {SOCIALS.map(({ icon: Icon, label }) => (
                 <a
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-md border border-zinc-200 bg-white text-zinc-500 transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-200 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50"
+                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/90 text-slate-400 transition-all duration-200 hover:border-emerald-500 hover:text-emerald-400 hover:scale-105"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -61,15 +92,15 @@ export default function Footer() {
           {/* Link columns */}
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.heading}>
-              <h4 className="text-sm font-semibold text-zinc-900">{col.heading}</h4>
-              <ul className="mt-4 flex flex-col gap-3">
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-white">{col.heading}</h4>
+              <ul className="mt-4 flex flex-col gap-2.5">
                 {col.links.map((link) => (
-                  <li key={link}>
+                  <li key={link.name}>
                     <a
-                      href="#"
-                      className="text-sm text-zinc-500 transition-colors hover:text-emerald-600"
+                      href={link.href}
+                      className="text-xs text-slate-400 transition-colors hover:text-emerald-400"
                     >
-                      {link}
+                      {link.name}
                     </a>
                   </li>
                 ))}
@@ -79,13 +110,22 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-zinc-200 py-6 sm:flex-row">
-          <p className="text-xs text-zinc-400">
-            © {new Date().getFullYear()} The Code Brains. All rights reserved.
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-800/80 py-6 sm:flex-row">
+          <p className="text-xs text-slate-500">
+            © {new Date().getFullYear()} The Code Brains (TCB) Platform. All rights reserved.
           </p>
-          <p className="text-xs text-zinc-400">Made for small businesses, everywhere.</p>
+          <div className="flex items-center gap-4 text-xs text-slate-400">
+            <span className="flex items-center gap-1">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              All Systems Operational
+            </span>
+            <span>•</span>
+            <span>Made in India 🇮🇳</span>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
+
+

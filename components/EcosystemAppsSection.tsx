@@ -54,13 +54,13 @@ export default function EcosystemAppsSection() {
           <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-7 sm:p-9 shadow-[0_4px_30px_-5px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:border-emerald-400 hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,0.18)]">
             
             {/* Top Gradient Shimmer Bar */}
-            <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-emerald-400 via-emerald-500 to-teal-500" />
+            <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600" />
 
             <div>
               {/* Header Row: Icon Avatar + Badges */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 text-white shadow-md shadow-emerald-500/20 transition-transform duration-300 group-hover:scale-105">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#059669] to-emerald-800 text-white shadow-md shadow-emerald-500/20 transition-transform duration-300 group-hover:scale-105">
                     <Store className="h-7 w-7" />
                   </div>
                   <div>
@@ -149,7 +149,7 @@ export default function EcosystemAppsSection() {
             <div className="mt-8">
               <Link
                 href="/store"
-                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/20"
+                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#059669] to-emerald-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20"
               >
                 <span>Launch TCB Store Workspace</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -163,13 +163,13 @@ export default function EcosystemAppsSection() {
           <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-7 sm:p-9 shadow-[0_4px_30px_-5px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:border-emerald-400 hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,0.18)]">
             
             {/* Top Gradient Shimmer Bar */}
-            <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-teal-500 via-emerald-500 to-emerald-400" />
+            <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400" />
 
             <div>
               {/* Header Row: Icon Avatar + Badges */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-800 text-white shadow-md shadow-emerald-600/20 transition-transform duration-300 group-hover:scale-105">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-800 text-white shadow-md shadow-emerald-600/20 transition-transform duration-300 group-hover:scale-105">
                     <GraduationCap className="h-7 w-7" />
                   </div>
                   <div>
@@ -258,7 +258,7 @@ export default function EcosystemAppsSection() {
             <div className="mt-8">
               <Link
                 href="/school"
-                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/25"
+                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#059669] to-emerald-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25"
               >
                 <span>Launch TCB School Workspace</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -272,3 +272,4 @@ export default function EcosystemAppsSection() {
     </section>
   );
 }
+
