@@ -150,7 +150,7 @@ export default function EcosystemAppsSection() {
             <div className="mt-8">
               <Link
                 href="/store"
-                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/20"
+                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#059669] to-emerald-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20"
               >
                 <span>Launch TCB Store Workspace</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -259,7 +259,7 @@ export default function EcosystemAppsSection() {
             <div className="mt-8">
               <Link
                 href="/school"
-                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/25"
+                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#059669] to-emerald-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25"
               >
                 <span>Launch TCB School Workspace</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
