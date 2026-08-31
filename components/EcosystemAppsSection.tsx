@@ -50,78 +50,78 @@ export default function EcosystemAppsSection() {
         <div className="mt-16 grid gap-8 lg:grid-cols-2">
           
           {/* ========================================================== */}
-          {/* CARD 1: TCB STORE (RETAIL POS & MONEY MANAGER) */}
+          {/* CARD 1: TCB INVENTORY (STOCKS & POS MANAGEMENT — COMING SOON) */}
           {/* ========================================================== */}
-          <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-7 sm:p-9 shadow-[0_4px_30px_-5px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:border-emerald-400 hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,0.18)]">
+          <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-7 sm:p-9 shadow-[0_4px_30px_-5px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:border-slate-400 hover:shadow-xl">
             
             {/* Top Gradient Shimmer Bar */}
-            <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600" />
+            <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-slate-400 via-slate-500 to-emerald-500" />
 
             <div>
               {/* Header Row: Icon Avatar + Badges */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#059669] to-emerald-800 text-white shadow-md shadow-emerald-500/20 transition-transform duration-300 group-hover:scale-105">
-                    <Store className="h-7 w-7" />
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-800 to-slate-950 text-white shadow-md transition-transform duration-300 group-hover:scale-105">
+                    <Store className="h-7 w-7 text-emerald-400" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-black tracking-tight text-zinc-900 group-hover:text-emerald-700">
-                      TCB Store
+                      TCB Inventory
                     </h3>
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600">
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500">
                       <BadgeCheck className="h-3.5 w-3.5" />
-                      Dual-Mode SaaS Platform
+                      Retail &amp; Stock Automation
                     </div>
                   </div>
                 </div>
 
-                <span className="rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-[11px] font-bold text-emerald-700 shadow-2xs">
-                  Retail &amp; Personal
+                <span className="rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-[11px] font-bold text-amber-800 shadow-2xs">
+                  Coming Soon
                 </span>
               </div>
 
               {/* Card Description */}
               <p className="mt-5 text-xs leading-relaxed text-zinc-600 sm:text-sm">
-                Complete retail solution featuring barcode scanning, 1-click GST invoice generation, customer credit ledger, and a built-in personal money manager.
+                Advanced retail &amp; warehouse inventory solution featuring real-time barcode tracking, 1-click GST invoice generation, customer credit ledger, and AI stock reordering.
               </p>
 
               {/* Micro Dashboard UI Mockup inside Card */}
-              <div className="mt-6 rounded-2xl border border-zinc-200/80 bg-gradient-to-br from-zinc-50 to-emerald-50/30 p-4 shadow-inner">
+              <div className="mt-6 rounded-2xl border border-zinc-200/80 bg-gradient-to-br from-zinc-50 to-slate-100 p-4 shadow-inner">
                 <div className="flex items-center justify-between border-b border-zinc-200/80 pb-2.5">
                   <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
-                    <span className="text-[11px] font-bold text-zinc-800">Live Store Counter #01</span>
+                    <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
+                    <span className="text-[11px] font-bold text-zinc-800">Inventory Module Engine</span>
                   </div>
-                  <span className="rounded bg-emerald-100 px-2 py-0.5 text-[10px] font-extrabold text-emerald-800">
-                    ₹18,450 Sales Today
+                  <span className="rounded bg-amber-100 px-2 py-0.5 text-[10px] font-extrabold text-amber-900">
+                    In Development
                   </span>
                 </div>
 
                 <div className="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
                   <div className="rounded-xl border border-zinc-200 bg-white p-2.5 shadow-2xs">
-                    <span className="text-[10px] text-zinc-400 font-medium block">POS Billing</span>
-                    <span className="font-extrabold text-emerald-600 text-xs">0.2s Speed</span>
+                    <span className="text-[10px] text-zinc-400 font-medium block">Stock Scanner</span>
+                    <span className="font-extrabold text-slate-800 text-xs">Barcode Master</span>
                   </div>
                   <div className="rounded-xl border border-zinc-200 bg-white p-2.5 shadow-2xs">
                     <span className="text-[10px] text-zinc-400 font-medium block">Credit Ledger</span>
-                    <span className="font-extrabold text-amber-600 text-xs">WhatsApp Alert</span>
+                    <span className="font-extrabold text-amber-600 text-xs">Auto WhatsApp</span>
                   </div>
                   <div className="rounded-xl border border-zinc-200 bg-white p-2.5 shadow-2xs">
-                    <span className="text-[10px] text-zinc-400 font-medium block">Personal Spend</span>
-                    <span className="font-extrabold text-zinc-900 text-xs">Money Manager</span>
+                    <span className="text-[10px] text-zinc-400 font-medium block">Reorder Alert</span>
+                    <span className="font-extrabold text-emerald-600 text-xs">AI Forecast</span>
                   </div>
                 </div>
               </div>
 
               {/* Mode Switcher Badges */}
               <div className="mt-6 flex flex-wrap gap-2">
-                <span className="inline-flex items-center gap-1 rounded-lg bg-emerald-700 px-3 py-1 text-xs font-bold text-white shadow-2xs">
+                <span className="inline-flex items-center gap-1 rounded-lg bg-slate-900 px-3 py-1 text-xs font-bold text-white shadow-2xs">
                   <Receipt className="h-3.5 w-3.5 text-emerald-400" />
-                  Mode A: Store POS &amp; Billing
+                  Mode A: Store Stock &amp; POS
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-lg bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-900">
-                  <TrendingUp className="h-3.5 w-3.5 text-emerald-700" />
-                  Mode B: Personal Expense Tracker
+                <span className="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-3 py-1 text-xs font-bold text-slate-800">
+                  <TrendingUp className="h-3.5 w-3.5 text-slate-700" />
+                  Mode B: Multi-Warehouse Ledger
                 </span>
               </div>
 
@@ -129,7 +129,7 @@ export default function EcosystemAppsSection() {
               <div className="mt-6 grid gap-2 sm:grid-cols-2 border-t border-zinc-100 pt-5">
                 <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
-                  <span>Barcode stock master</span>
+                  <span>Barcode inventory master</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
@@ -141,25 +141,25 @@ export default function EcosystemAppsSection() {
                 </div>
                 <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
-                  <span>Household savings calculator</span>
+                  <span>Supplier purchase order ledger</span>
                 </div>
               </div>
             </div>
 
             {/* Launch Action Button */}
             <div className="mt-8">
-              <Link
-                href="/store"
-                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#059669] to-emerald-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20"
+              <a
+                href="#coming-soon"
+                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-900 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:bg-slate-800"
               >
-                <span>Launch TCB Store Workspace</span>
+                <span>TCB Inventory — Coming Soon</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-              </Link>
+              </a>
             </div>
           </div>
 
           {/* ========================================================== */}
-          {/* CARD 2: TCB SCHOOL (COACHING & FEE TRACKER) */}
+          {/* CARD 2: TCB SCHOOL (COACHING & FEE TRACKER - LIVE) */}
           {/* ========================================================== */}
           <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-7 sm:p-9 shadow-[0_4px_30px_-5px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:border-emerald-400 hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,0.18)]">
             
@@ -184,8 +184,8 @@ export default function EcosystemAppsSection() {
                   </div>
                 </div>
 
-                <span className="rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-[11px] font-bold text-emerald-700 shadow-2xs">
-                  Coaching &amp; Tuition
+                <span className="rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-[11px] font-extrabold text-emerald-700 shadow-2xs">
+                  Live SaaS Workspace
                 </span>
               </div>
 
@@ -257,13 +257,15 @@ export default function EcosystemAppsSection() {
 
             {/* Launch Action Button */}
             <div className="mt-8">
-              <Link
-                href="/school"
+              <a
+                href="https://techschool.thecodebrains.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#059669] to-emerald-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25"
               >
                 <span>Launch TCB School Workspace</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-              </Link>
+              </a>
             </div>
           </div>
 

@@ -74,8 +74,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "CABLE-004",
     gstRate: 8,
     badge: "Reorder Soon",
-    iconBg: "bg-blue-50 text-blue-700 border-blue-200",
-    accentBorder: "border-blue-200 hover:border-blue-400",
+    iconBg: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    accentBorder: "border-emerald-200 hover:border-emerald-400",
   },
   {
     id: "p-4",

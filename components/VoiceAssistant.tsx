@@ -174,9 +174,9 @@ export default function VoiceAssistant() {
               <div className="flex items-center gap-1">
                 <span className="h-6 w-1 rounded-full bg-emerald-600 animate-pulse" />
                 <span className="h-10 w-1 rounded-full bg-emerald-500 animate-bounce" />
-                <span className="h-4 w-1 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="h-4 w-1 rounded-full bg-teal-400 animate-pulse" />
                 <span className="h-8 w-1 rounded-full bg-emerald-600 animate-bounce" />
-                <span className="h-5 w-1 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="h-5 w-1 rounded-full bg-teal-500 animate-pulse" />
               </div>
             ) : (
               <div className="text-xs font-semibold text-zinc-500 flex items-center gap-1.5">

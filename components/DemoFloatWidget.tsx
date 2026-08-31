@@ -61,7 +61,7 @@ export default function DemoFloatWidget() {
                   </span>
                   <div>
                     <h3 className="text-base font-extrabold text-slate-900">Get 1-on-1 Product Demo</h3>
-                    <p className="text-xs text-slate-500">TCB Store &amp; TCB School Ecosystem</p>
+                    <p className="text-xs text-slate-500">TCB School &amp; TCB Ecosystem</p>
                   </div>
                 </div>
 
@@ -97,8 +97,8 @@ export default function DemoFloatWidget() {
                       onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
                       className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-xs focus:border-[#059669] focus:outline-none focus:ring-2 focus:ring-emerald-500/20 bg-white"
                     >
-                      <option value="Store">TCB Store (Retail Inventory &amp; POS)</option>
-                      <option value="School">TCB School (Coaching &amp; Fee Tracker)</option>
+                      <option value="School">TCB School (Coaching &amp; Fee Tracker - Live)</option>
+                      <option value="Inventory">TCB Inventory (Stock POS - Soon)</option>
                       <option value="Both">Complete Enterprise Suite (Both)</option>
                     </select>
                   </div>

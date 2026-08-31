@@ -4,16 +4,16 @@ const FOOTER_COLUMNS = [
   {
     heading: "Micro-SaaS Apps",
     links: [
-      { name: "TCB Store (POS & Inventory)", href: "/store" },
-      { name: "TCB School (Coaching Suite)", href: "/school" },
-      { name: "Personal Expense Tracker", href: "/store" },
-      { name: "WhatsApp Invoicing", href: "#features" },
+      { name: "TCB School Workspace (Live)", href: "https://techschool.thecodebrains.com" },
+      { name: "TCB Inventory System (Soon)", href: "#coming-soon" },
+      { name: "WhatsApp Reminders Engine", href: "#features" },
+      { name: "Low-Cost Multi-Tenant Cloud", href: "#school-feature" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { name: "About NuvertOS & TCB", href: "#" },
+      { name: "About TCB Ecosystem", href: "#" },
       { name: "Partner Program", href: "#" },
       { name: "Careers", href: "#" },
       { name: "Contact Support", href: "#" },
@@ -22,7 +22,7 @@ const FOOTER_COLUMNS = [
   {
     heading: "Security & Legal",
     links: [
-      { name: "ABDM & M1/M2 Compliance", href: "#" },
+      { name: "Multi-Tenant Data Privacy", href: "#" },
       { name: "Privacy Policy", href: "#" },
       { name: "Terms of Service", href: "#" },
       { name: "Data Security Policy", href: "#" },
@@ -56,7 +56,7 @@ export default function Footer() {
               </span>
             </a>
             <p className="mt-4 max-w-xs text-xs leading-relaxed text-slate-400">
-              Unified cloud platform powering retail stores with barcode POS billing (<strong className="text-white">TCB Store</strong>) and coaching institutes with automated fee alerts (<strong className="text-white">TCB School</strong>).
+              Unified cloud platform powering coaching institutes with automated fee alerts (<strong className="text-white">TCB School at techschool.thecodebrains.com</strong>) and upcoming inventory tracking (<strong className="text-white">TCB Inventory Soon</strong>).
             </p>
 
             {/* Security Pill Badges */}

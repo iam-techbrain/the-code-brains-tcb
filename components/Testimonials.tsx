@@ -42,7 +42,7 @@ const REVIEWS: Review[] = [
     quote:
       "Barcode scanning is lightning fast! Customers check out and an automated tax invoice is generated & sent via WhatsApp/Email in under 10 seconds. Thermal receipt printing keeps counter lines short.",
     impactMetric: "4x Faster Billing Speed",
-    avatarBg: "bg-blue-100 text-blue-800",
+    avatarBg: "bg-emerald-100 text-emerald-800",
     avatarText: "ER",
   },
   {
