@@ -1,56 +1,63 @@
 import EcosystemHeader from "@/components/EcosystemHeader";
 import Hero from "@/components/Hero";
 import TechStackShowcase from "@/components/TechStackShowcase";
-import SchoolManagementFeature from "@/components/SchoolManagementFeature";
+import AIAgentsListSection from "@/components/AIAgentsListSection";
 import TrustBadgesTicker from "@/components/TrustBadgesTicker";
 import Features from "@/components/Features";
-import ProductCardShowcase from "@/components/ProductCardShowcase";
 import HowItWorks from "@/components/HowItWorks";
-import InteractiveShowcase from "@/components/InteractiveShowcase";
 import EcosystemAppsSection from "@/components/EcosystemAppsSection";
 import ComingSoonSection from "@/components/ComingSoonSection";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
 import DemoFloatWidget from "@/components/DemoFloatWidget";
 
 export const metadata = {
-  title: "TCB — AI Agents, Workflows & School SaaS Ecosystem",
+  title: "TCB — Custom AI Agents, Workflow Automation & Multi-SaaS Studio",
   description:
-    "Custom AI Agent Automations, TCB School (Coaching & Tuition Management at techschool.thecodebrains.com), and TCB Inventory System. Built with Python, n8n, Make.com, OpenAI & RAG.",
+    "We build custom autonomous AI agents, n8n & Make workflow automation pipelines, and specialized cloud SaaS applications. Powered by Python, LangChain, OpenAI, RAG & AWS.",
 };
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased selection:bg-[#059669] selection:text-white">
-      <CustomCursor />
       <EcosystemHeader />
+      
+      {/* 1. Hero: AI Agent & Automation Engine */}
       <Hero />
       
-      {/* 1. Tech Stack & Tools Showcase Section */}
+      {/* 2. Tech Stack & AI Engineering Tools */}
       <TechStackShowcase />
 
-      {/* 2. Core Service: School & Coaching Management System (Live Feature) */}
-      <SchoolManagementFeature />
+      {/* 3. 10 Production-Grade AI Agents & Automation Catalog */}
+      <AIAgentsListSection />
 
+      {/* 4. Enterprise Client Trust Badges */}
       <TrustBadgesTicker />
+
+      {/* 5. Core AI Automation Capabilities */}
       <Features />
-      <ProductCardShowcase />
+
+      {/* 6. AI Transformation Process (4 Steps) */}
       <HowItWorks />
-      <InteractiveShowcase />
+
+      {/* 7. Vertical SaaS Apps Showcase (Links to /school, /store, etc.) */}
       <EcosystemAppsSection />
 
-      {/* 3. Coming Soon Section (Advanced Automation & Storage Suite) */}
+      {/* 8. Upcoming SaaS Modules Roadmap */}
       <ComingSoonSection />
 
+      {/* 9. Social Proof & Testimonials */}
       <Testimonials />
+
+      {/* 10. AI Studio & Custom Automation Packages */}
       <Pricing />
+
+      {/* 11. FAQ */}
       <FAQ />
+
       <Footer />
-      <WhatsAppFloat />
       <DemoFloatWidget />
     </main>
   );

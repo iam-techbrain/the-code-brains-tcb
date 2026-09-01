@@ -56,7 +56,7 @@ const REVIEWS: Review[] = [
     quote:
       "Low stock alerts have saved us tens of thousands in lost revenue. Previously, catalog items would go out of stock without warning. Now we get instant automated reorder notifications.",
     impactMetric: "Zero Out-of-Stock Sales Lost",
-    avatarBg: "bg-purple-100 text-purple-800",
+    avatarBg: "bg-emerald-100 text-emerald-800",
     avatarText: "SJ",
   },
   {
@@ -70,7 +70,7 @@ const REVIEWS: Review[] = [
     quote:
       "Simple, robust, and tax compliant. Our finance team gets monthly financial reports exported in Excel/PDF with just 1 click. Highly recommended for any scaling business!",
     impactMetric: "1-Click Financial Excel Export",
-    avatarBg: "bg-amber-100 text-amber-800",
+    avatarBg: "bg-emerald-100 text-emerald-800",
     avatarText: "DC",
   },
 ];

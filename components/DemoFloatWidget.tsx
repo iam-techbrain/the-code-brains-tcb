@@ -24,10 +24,10 @@ export default function DemoFloatWidget() {
       <div className="demo-float">
         <button
           onClick={() => setIsOpen(true)}
-          className="animate-pulse-subtle flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-900/90 px-4 py-2.5 text-xs font-bold text-white shadow-xl backdrop-blur-md transition-all hover:bg-emerald-800 hover:scale-105"
+          className="animate-pulse-subtle flex items-center gap-2 rounded-full border border-emerald-400 bg-emerald-600 px-4 py-2.5 text-xs font-extrabold text-white shadow-lg shadow-emerald-600/30 backdrop-blur-md transition-all hover:bg-emerald-700 hover:scale-105"
         >
-          <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-ping" />
-          <Sparkles className="h-4 w-4 text-emerald-300" />
+          <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-200 animate-ping" />
+          <Sparkles className="h-4 w-4 text-white" />
           <span>Book Instant Demo</span>
         </button>
       </div>
@@ -105,7 +105,7 @@ export default function DemoFloatWidget() {
 
                   <button
                     type="submit"
-                    className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-[#059669] py-3 text-xs font-bold text-white shadow-md transition-all hover:bg-emerald-700 hover:shadow-lg"
+                    className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3 text-xs font-bold text-white shadow-md transition-all hover:bg-emerald-700 hover:shadow-lg active:scale-95"
                   >
                     <span>Schedule Free Walkthrough</span>
                     <ArrowRight className="h-4 w-4" />

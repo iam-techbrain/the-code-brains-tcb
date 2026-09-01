@@ -42,9 +42,9 @@ const UPCOMING_TOOLS: UpcomingTool[] = [
     description:
       "Send instant class schedules, attendance alerts, exam results, and institute broadcast announcements automatically via WhatsApp API.",
     icon: MessageSquare,
-    glowColor: "group-hover:shadow-[0_0_35px_-5px_rgba(34,197,94,0.4)]",
+    glowColor: "group-hover:shadow-[0_0_35px_-5px_rgba(16,185,129,0.3)]",
     accentBorder: "group-hover:border-emerald-400",
-    badgeColor: "border-emerald-500/40 bg-emerald-950/80 text-emerald-400",
+    badgeColor: "border-emerald-200 bg-emerald-50 text-emerald-800",
     features: [
       "Instant WhatsApp notifications for attendance & absent alerts",
       "Broadcast batch announcements & holiday notices with 1 click",
@@ -61,9 +61,9 @@ const UPCOMING_TOOLS: UpcomingTool[] = [
     description:
       "Auto-trigger smart payment links, due date countdowns, and scheduled WhatsApp alerts for uncollected tuition fees.",
     icon: BellRing,
-    glowColor: "group-hover:shadow-[0_0_35px_-5px_rgba(245,158,11,0.4)]",
-    accentBorder: "group-hover:border-amber-400",
-    badgeColor: "border-amber-500/40 bg-amber-950/80 text-amber-400",
+    glowColor: "group-hover:shadow-[0_0_35px_-5px_rgba(16,185,129,0.3)]",
+    accentBorder: "group-hover:border-emerald-400",
+    badgeColor: "border-emerald-200 bg-emerald-50 text-emerald-800",
     features: [
       "Auto-trigger payment reminder links 3 days before due date",
       "Embedded Razorpay / PhonePe / Paytm UPI payment links",
@@ -80,9 +80,9 @@ const UPCOMING_TOOLS: UpcomingTool[] = [
     description:
       "Encrypted cloud repository for study materials, lecture notes, video recordings, student certificates, and institute archives.",
     icon: FolderLock,
-    glowColor: "group-hover:shadow-[0_0_35px_-5px_rgba(16,185,129,0.4)]",
+    glowColor: "group-hover:shadow-[0_0_35px_-5px_rgba(16,185,129,0.3)]",
     accentBorder: "group-hover:border-emerald-400",
-    badgeColor: "border-emerald-500/40 bg-emerald-950/80 text-emerald-400",
+    badgeColor: "border-emerald-200 bg-emerald-50 text-emerald-800",
     features: [
       "Organized folder vault per batch, subject, and student roll number",
       "Granular access control: Share study PDFs with specific student groups",
@@ -99,9 +99,9 @@ const UPCOMING_TOOLS: UpcomingTool[] = [
     description:
       "Synthesize store sales, fee collections, operational expenses, and tax ledgers into automated GST & P&L financial statements.",
     icon: FileCheck,
-    glowColor: "group-hover:shadow-[0_0_35px_-5px_rgba(168,85,247,0.4)]",
-    accentBorder: "group-hover:border-purple-400",
-    badgeColor: "border-purple-500/40 bg-purple-950/80 text-purple-400",
+    glowColor: "group-hover:shadow-[0_0_35px_-5px_rgba(16,185,129,0.3)]",
+    accentBorder: "group-hover:border-emerald-400",
+    badgeColor: "border-emerald-200 bg-emerald-50 text-emerald-800",
     features: [
       "1-Click automated GST B2B & B2C tax ledger generation",
       "Daily profit/loss reconciliation across store & institute modules",
@@ -277,52 +277,52 @@ export default function ComingSoonSection() {
 
       {/* Interactive Waitlist Modal */}
       {selectedToolModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-emerald-500/50 bg-slate-900 p-6 sm:p-8 text-white shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
+          <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-emerald-200 bg-white p-6 sm:p-8 text-slate-900 shadow-2xl">
             <button
               onClick={() => setSelectedToolModal(null)}
-              className="absolute right-4 top-4 rounded-full border border-slate-700 bg-slate-800 p-2 text-slate-400 hover:text-white"
+              className="absolute right-4 top-4 rounded-full border border-slate-200 bg-slate-100 p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-200"
             >
               <X className="h-4 w-4" />
             </button>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-950 border border-emerald-500/40 text-emerald-400">
-                <Sparkles className="h-6 w-6" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600">
+                <Sparkles className="h-6 w-6 text-emerald-600" />
               </div>
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-700">
                   Early Access Beta
                 </span>
-                <h3 className="text-lg font-black text-white">{selectedToolModal.title}</h3>
+                <h3 className="text-lg font-black text-slate-900">{selectedToolModal.title}</h3>
               </div>
             </div>
 
-            <p className="mt-4 text-xs leading-relaxed text-slate-300">
+            <p className="mt-4 text-xs leading-relaxed text-slate-600">
               Get priority access to <strong>{selectedToolModal.title}</strong> before public launch ({selectedToolModal.expectedLaunch}).
             </p>
 
             {submitted ? (
-              <div className="mt-6 rounded-2xl bg-emerald-950/80 border border-emerald-500/50 p-4 text-center">
-                <BadgeCheck className="mx-auto h-8 w-8 text-emerald-400" />
-                <div className="mt-2 text-xs font-bold text-emerald-300">Access Reserved!</div>
+              <div className="mt-6 rounded-2xl bg-emerald-50 border border-emerald-200 p-4 text-center">
+                <BadgeCheck className="mx-auto h-8 w-8 text-emerald-600" />
+                <div className="mt-2 text-xs font-bold text-emerald-800">Access Reserved!</div>
               </div>
             ) : (
               <form onSubmit={handleWaitlistSubmit} className="mt-6 space-y-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-400 mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Your Business or Institute Name
                   </label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Apex Coaching Institute"
-                    className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:border-emerald-400 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-400 mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Email Address
                   </label>
                   <input
@@ -331,13 +331,13 @@ export default function ComingSoonSection() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@company.com"
-                    className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:border-emerald-400 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-500 py-3 text-xs font-extrabold text-slate-950 shadow-md hover:bg-emerald-400 transition-all"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3 text-xs font-extrabold text-white shadow-md hover:bg-emerald-700 transition-all"
                 >
                   <span>Confirm Early Beta Registration</span>
                   <ArrowRight className="h-4 w-4" />

@@ -7,7 +7,7 @@ export default function WhatsAppFloat() {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = "919711201611"; // NuvertOS / TCB support hotline number format
+    const phoneNumber = "911234567890"; // NuvertOS / TCB support hotline number format
     const message = encodeURIComponent(
       "Hi TCB Team! I am interested in TCB Store & School Micro-SaaS Platform. Please share more details."
     );

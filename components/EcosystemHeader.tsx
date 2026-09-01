@@ -10,52 +10,49 @@ import {
   Menu,
   X,
   Sparkles,
-  ArrowRight,
   Stethoscope,
   Dumbbell,
   Hotel,
   Utensils,
-  Grid,
-  Zap,
-  ArrowUpRight,
   Globe,
-  Mic,
-  ExternalLink,
 } from "lucide-react";
 
-// SCALABLE GLOBAL SAAS PRODUCTS DATA
+// SCALABLE GLOBAL SAAS PRODUCTS DATA FOR DROPDOWN HUB
 const ECOSYSTEM_APPS = [
   {
     id: "school",
     name: "TCB School (Academy Hub)",
     category: "Education & Coaching Institute",
     description: "Student roster, daily attendance & automated tuition alerts.",
-    href: "https://techschool.thecodebrains.com",
+    price: "₹499/mo",
+    href: "/school",
     icon: GraduationCap,
     status: "Live",
     active: true,
-    external: true,
+    external: false,
   },
   {
     id: "inventory",
     name: "TCB Inventory System",
     category: "Retail & Stock Management",
     description: "Barcode stock master, automated invoices & credit ledger.",
-    href: "#coming-soon",
+    price: "₹299/mo",
+    href: "/store",
     icon: Boxes,
     status: "Soon",
-    active: false,
+    active: true,
     external: false,
   },
   {
     id: "health",
     name: "TCB Health Cloud",
-    category: "Healthcare & EHR",
+    category: "Healthcare & EHR Platform",
     description: "Doctor consultations, patient EHR & pharmacy billing.",
-    href: "#coming-soon",
+    price: "₹699/mo",
+    href: "/health",
     icon: Stethoscope,
     status: "Soon",
-    active: false,
+    active: true,
     external: false,
   },
   {
@@ -63,21 +60,23 @@ const ECOSYSTEM_APPS = [
     name: "TCB Fitness Suite",
     category: "Gym & Club Platform",
     description: "Biometric access, trainer scheduling & automated dues.",
-    href: "#coming-soon",
+    price: "₹399/mo",
+    href: "/fitness",
     icon: Dumbbell,
     status: "Soon",
-    active: false,
+    active: true,
     external: false,
   },
   {
     id: "hotel",
     name: "TCB Stay & Desk",
-    category: "Hospitality & Desk",
+    category: "Hospitality & Front Desk",
     description: "Reservation engine, guest front desk & room service.",
-    href: "#coming-soon",
+    price: "₹899/mo",
+    href: "/hotel",
     icon: Hotel,
     status: "Soon",
-    active: false,
+    active: true,
     external: false,
   },
   {
@@ -85,46 +84,82 @@ const ECOSYSTEM_APPS = [
     name: "TCB Dine POS",
     category: "Restaurant & KOT",
     description: "Table QR ordering, kitchen display sync & delivery POS.",
-    href: "#coming-soon",
+    price: "₹499/mo",
+    href: "/dine",
     icon: Utensils,
     status: "Soon",
-    active: false,
+    active: true,
     external: false,
   },
 ];
 
 export default function EcosystemHeader() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
-  const [launchDropdownOpen, setLaunchDropdownOpen] = useState(false);
+  const [rightProductsOpen, setRightProductsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const productsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const [activeSection, setActiveSection] = useState("");
+  const rightProductsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const navLinks = [
-    { label: "AI Tech Stack", href: "#tech-stack" },
-    { label: "TCB School (Live)", href: "#school-feature" },
-    { label: "Features", href: "#features" },
-    { label: "Demo Showcase", href: "#showcase" },
-    { label: "Coming Soon", href: "#coming-soon" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "AI Studio", href: "/", sectionId: "" },
+    { label: "10 AI Agents Catalog", href: "/#ai-agents-catalog", sectionId: "ai-agents-catalog" },
+    { label: "AI Capabilities", href: "/#features", sectionId: "features" },
+    { label: "SaaS Portfolio", href: "/#ecosystem-apps", sectionId: "ecosystem-apps" },
+    { label: "Pricing", href: "/#pricing", sectionId: "pricing" },
   ];
 
-  const handleMouseEnterProducts = () => {
-    if (productsTimeoutRef.current) clearTimeout(productsTimeoutRef.current);
-    setProductsOpen(true);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 8);
+
+      if (pathname === "/") {
+        const sections = ["ai-agents-catalog", "features", "ecosystem-apps", "pricing"];
+        let foundSec = "";
+
+        for (const secId of sections) {
+          const el = document.getElementById(secId);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 220 && rect.bottom >= 220) {
+              foundSec = secId;
+              break;
+            }
+          }
+        }
+
+        if (foundSec) {
+          setActiveSection(foundSec);
+        } else if (window.scrollY < 300) {
+          setActiveSection("");
+        }
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
+
+  const handleMouseEnterRightProducts = () => {
+    if (rightProductsTimeoutRef.current) clearTimeout(rightProductsTimeoutRef.current);
+    setRightProductsOpen(true);
   };
 
-  const handleMouseLeaveProducts = () => {
-    productsTimeoutRef.current = setTimeout(() => {
-      setProductsOpen(false);
+  const handleMouseLeaveRightProducts = () => {
+    rightProductsTimeoutRef.current = setTimeout(() => {
+      setRightProductsOpen(false);
     }, 150);
+  };
+
+  const isNavActive = (link: typeof navLinks[0]) => {
+    if (pathname === "/") {
+      if (link.sectionId === "") {
+        return activeSection === "";
+      }
+      return activeSection === link.sectionId;
+    }
+    return pathname === link.href;
   };
 
   return (
@@ -137,7 +172,7 @@ export default function EcosystemHeader() {
     >
       {/* Sleek Professional White Navbar */}
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 text-slate-900">
-        
+
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
           <img
@@ -147,215 +182,131 @@ export default function EcosystemHeader() {
             className="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
           />
           <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-bold text-emerald-800 border border-emerald-200">
-            <Globe className="h-3 w-3 text-emerald-600" /> Cloud Ecosystem
+            <Globe className="h-3 w-3 text-emerald-600" /> Multi-SaaS Platform
           </span>
         </Link>
 
-        {/* Center Desktop Navigation */}
-        <div className="hidden items-center gap-1 md:flex">
-          
-          {/* PRODUCTS DROPDOWN */}
-          <div
-            className="relative"
-            onMouseEnter={handleMouseEnterProducts}
-            onMouseLeave={handleMouseLeaveProducts}
-          >
-            <button
-              type="button"
-              onClick={() => setProductsOpen((v) => !v)}
-              className={`flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-xs font-bold transition-colors ${
-                productsOpen
-                  ? "bg-emerald-50 text-emerald-800"
-                  : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-              }`}
-            >
-              <Grid className="h-3.5 w-3.5 text-emerald-600" />
-              <span>Products</span>
-              <ChevronDown className={`h-3.5 w-3.5 text-slate-500 transition-transform ${productsOpen ? "rotate-180 text-emerald-700" : ""}`} />
-            </button>
-
-            {/* Products Grid Dropdown Menu */}
-            {productsOpen && (
-              <div className="absolute left-0 top-full mt-1 w-[480px] rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl backdrop-blur-xl">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 mb-3">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
-                    TCB Micro-SaaS Product Suite
-                  </span>
-                  <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-bold text-emerald-800 border border-emerald-200">
-                    1 Live Platform
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2">
-                  {ECOSYSTEM_APPS.map((app) => {
-                    const IconComp = app.icon;
-                    return (
-                      <a
-                        key={app.id}
-                        href={app.href}
-                        target={app.external ? "_blank" : "_self"}
-                        rel={app.external ? "noopener noreferrer" : ""}
-                        onClick={() => setProductsOpen(false)}
-                        className={`group flex items-start gap-3 rounded-xl p-2.5 transition-all ${
-                          app.active
-                            ? "hover:bg-emerald-50/80 border border-emerald-200 bg-emerald-50/40"
-                            : "hover:bg-slate-50 opacity-70 border border-transparent"
-                        }`}
-                      >
-                        <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl font-bold transition-transform group-hover:scale-105 ${
-                          app.active
-                            ? "bg-emerald-600 text-white shadow-xs"
-                            : "bg-slate-100 text-slate-500"
-                        }`}>
-                          <IconComp className="h-4.5 w-4.5" />
-                        </span>
-                        <div className="min-w-0">
-                          <div className="flex items-center gap-1.5">
-                            <span className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
-                              {app.name}
-                            </span>
-                            {app.status === "Live" ? (
-                              <span className="rounded bg-emerald-100 px-1.5 py-0.2 text-[9px] font-extrabold text-emerald-800 border border-emerald-200 shrink-0">
-                                LIVE
-                              </span>
-                            ) : (
-                              <span className="rounded bg-slate-100 px-1.5 py-0.2 text-[9px] font-semibold text-slate-500 border border-slate-200 shrink-0">
-                                SOON
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-[10px] text-slate-500 line-clamp-1">
-                            {app.category}
-                          </div>
-                        </div>
-                      </a>
-                    );
-                  })}
-                </div>
-
-                <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-3">
-                  <span className="text-[11px] text-slate-500 font-medium">
-                    Enterprise SaaS Codebase Architecture
-                  </span>
-                  <a
-                    href="https://techschool.thecodebrains.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setProductsOpen(false)}
-                    className="flex items-center gap-1 text-xs font-bold text-emerald-600 hover:text-emerald-700"
-                  >
-                    <span>Open TCB School</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Standard Navigation Links */}
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="rounded-lg px-3 py-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        {/* Right Header CTA */}
-        <div className="hidden items-center gap-3 md:flex">
-          <a
-            href="https://techschool.thecodebrains.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 px-4 py-2 text-xs font-bold text-white shadow-md shadow-emerald-600/20 transition-all hover:scale-105 hover:shadow-emerald-600/30 active:scale-95"
-          >
-            <Zap className="h-4 w-4 text-white" />
-            <span>Launch TCB School</span>
-            <ExternalLink className="h-3.5 w-3.5 opacity-80 group-hover:translate-x-0.5 transition-transform" />
-          </a>
-        </div>
-
-        {/* Mobile Toggle */}
-        <button
-          type="button"
-          aria-label="Toggle navigation menu"
-          onClick={() => setIsOpen((v) => !v)}
-          className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-800 bg-slate-900 text-white shadow-2xs hover:bg-slate-800 active:scale-95 md:hidden"
-        >
-          {isOpen ? <X className="h-5 w-5 text-white" /> : <Menu className="h-5 w-5 text-white" />}
-        </button>
-      </nav>
-
-      {/* Mobile Menu Dropdown */}
-      {isOpen && (
-        <div className="max-h-[80vh] overflow-y-auto border-b border-slate-800 bg-slate-950 p-4 shadow-xl md:hidden text-white">
-          <div className="flex flex-col gap-3">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-              Ecosystem Product Suite
-            </span>
-
-            <div className="grid gap-2">
-              {ECOSYSTEM_APPS.map((app) => {
-                const IconComp = app.icon;
-                return (
-                  <a
-                    key={app.id}
-                    href={app.href}
-                    target={app.external ? "_blank" : "_self"}
-                    rel={app.external ? "noopener noreferrer" : ""}
-                    onClick={() => setIsOpen(false)}
-                    className={`flex items-center justify-between rounded-xl p-3 text-xs font-bold border transition-colors ${
-                      app.active
-                        ? "bg-emerald-950 border-emerald-500/50 text-white"
-                        : "bg-slate-900/60 border-slate-800 text-slate-400"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <IconComp className={`h-4 w-4 ${app.active ? "text-emerald-400" : "text-slate-500"}`} />
-                      <div>
-                        <div>{app.name}</div>
-                        <div className="text-[10px] font-normal opacity-80">{app.category}</div>
-                      </div>
-                    </div>
-                    {app.active ? (
-                      <span className="rounded bg-emerald-500 px-2 py-0.5 text-[9px] font-extrabold text-slate-950">
-                        LIVE
-                      </span>
-                    ) : (
-                      <span className="text-[10px] font-medium text-slate-500">Soon</span>
-                    )}
-                  </a>
-                );
-              })}
-            </div>
-
-            <span className="mt-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-              Navigation
-            </span>
-            {navLinks.map((link) => (
-              <a
+        {/* Center Desktop Navigation with Dynamic Active Highlighting */}
+        <div className="hidden items-center gap-1.5 md:flex">
+          {navLinks.map((link) => {
+            const active = isNavActive(link);
+            return (
+              <Link
                 key={link.label}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-xs font-semibold text-slate-300 hover:bg-slate-900 hover:text-white transition-colors"
+                className={`rounded-xl px-3.5 py-2 text-xs transition-all duration-200 ${
+                  active
+                    ? "bg-emerald-600 text-white font-black shadow-md shadow-emerald-600/25 scale-105"
+                    : "font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-800"
+                }`}
               >
                 {link.label}
-              </a>
-            ))}
+              </Link>
+            );
+          })}
+        </div>
 
-            <a
-              href="https://techschool.thecodebrains.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsOpen(false)}
-              className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-emerald-500 py-3 text-xs font-extrabold text-slate-950 shadow-md"
-            >
-              <Zap className="h-4 w-4" />
-              <span>Launch TCB School Workspace</span>
-            </a>
+        {/* Right Header CTA - All SaaS Projects Hub Switcher */}
+        <div
+          className="relative hidden items-center gap-3 md:flex"
+          onMouseEnter={handleMouseEnterRightProducts}
+          onMouseLeave={handleMouseLeaveRightProducts}
+        >
+          <button
+            type="button"
+            onClick={() => setRightProductsOpen(!rightProductsOpen)}
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2 text-xs font-extrabold text-white shadow-md shadow-emerald-600/20 hover:from-emerald-700 hover:to-teal-700 active:scale-95 transition-all"
+          >
+            <Sparkles className="h-4 w-4 text-white" />
+            <span>Browse All Apps</span>
+            <ChevronDown
+              className={`h-3.5 w-3.5 text-white transition-transform duration-200 ${
+                rightProductsOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+
+          {/* SaaS Products Dropdown Hub */}
+          {rightProductsOpen && (
+            <div className="absolute right-0 top-full mt-2 w-80 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl backdrop-blur-2xl z-50">
+              <div className="mb-2 border-b border-slate-100 pb-2 px-1 flex items-center justify-between">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500">
+                  TCB SaaS Verticals Hub
+                </span>
+                <span className="text-[10px] font-bold text-emerald-700">6 Products</span>
+              </div>
+
+              <div className="flex flex-col gap-1 max-h-[360px] overflow-y-auto pr-1">
+                {ECOSYSTEM_APPS.map((app) => {
+                  const IconComp = app.icon;
+                  const isAppActive = pathname === app.href;
+                  return (
+                    <Link
+                      key={app.id}
+                      href={app.href}
+                      onClick={() => setRightProductsOpen(false)}
+                      className={`group flex items-start gap-3 rounded-xl p-2.5 transition-all ${
+                        isAppActive
+                          ? "bg-emerald-50 border border-emerald-200"
+                          : "hover:bg-slate-50"
+                      }`}
+                    >
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-800 font-bold transition-transform group-hover:scale-110">
+                        <IconComp className="h-4.5 w-4.5" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
+                            {app.name}
+                          </span>
+                          <span className="text-[10px] font-black text-emerald-700 shrink-0">
+                            {app.price}
+                          </span>
+                        </div>
+                        <p className="text-[10px] text-slate-500 truncate mt-0.5">
+                          {app.description}
+                        </p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 md:hidden"
+        >
+          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+
+      </nav>
+
+      {/* Mobile Navigation Drawer */}
+      {isOpen && (
+        <div className="border-t border-slate-200 bg-white px-4 pb-6 pt-4 md:hidden">
+          <div className="flex flex-col gap-2">
+            {navLinks.map((link) => {
+              const active = isNavActive(link);
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`rounded-xl px-4 py-2.5 text-xs font-bold transition-all ${
+                    active
+                      ? "bg-emerald-600 text-white"
+                      : "text-slate-700 hover:bg-slate-100"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
         </div>
       )}

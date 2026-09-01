@@ -1,335 +1,173 @@
+"use client";
+
 import Link from "next/link";
 import {
-  Store,
   GraduationCap,
-  ArrowRight,
-  CheckCircle2,
+  Boxes,
+  Stethoscope,
+  Dumbbell,
+  Hotel,
+  Utensils,
   Sparkles,
-  Zap,
-  ShieldCheck,
-  TrendingUp,
-  Receipt,
-  Users,
-  MessageSquare,
-  BarChart3,
-  Clock,
-  UserCheck,
-  Smartphone,
+  ArrowRight,
   ChevronRight,
-  BadgeCheck,
   Layers,
 } from "lucide-react";
 
+type SaaSProductCard = {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  badge: string;
+  badgeStyle: string;
+  href: string;
+  icon: any;
+  iconBg: string;
+};
+
+const SAAS_PRODUCTS: SaaSProductCard[] = [
+  {
+    id: "school",
+    name: "TCB School SaaS",
+    category: "Education & Coaching ERP",
+    description: "Student rosters, daily attendance, WhatsApp parent alerts & fee ledgers.",
+    badge: "Live SaaS",
+    badgeStyle: "bg-emerald-50 text-emerald-800 border-emerald-300",
+    href: "/school",
+    icon: GraduationCap,
+    iconBg: "bg-emerald-600 text-white",
+  },
+  {
+    id: "store",
+    name: "TCB Store SaaS",
+    category: "Retail Inventory & POS",
+    description: "Barcode stock master, GST invoicing, supplier ledgers & credit Udhar Khata.",
+    badge: "Beta Workspace",
+    badgeStyle: "bg-teal-50 text-teal-800 border-teal-300",
+    href: "/store",
+    icon: Boxes,
+    iconBg: "bg-teal-600 text-white",
+  },
+  {
+    id: "health",
+    name: "TCB Health Cloud",
+    category: "Healthcare & Clinic EHR",
+    description: "Doctor OPD scheduler, patient medical records & pharmacy POS.",
+    badge: "Coming Soon",
+    badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
+    href: "/health",
+    icon: Stethoscope,
+    iconBg: "bg-slate-800 text-emerald-400",
+  },
+  {
+    id: "fitness",
+    name: "TCB Fitness Suite",
+    category: "Gym & Club Platform",
+    description: "Biometric access control, trainer scheduling & automated monthly dues.",
+    badge: "Coming Soon",
+    badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
+    href: "/fitness",
+    icon: Dumbbell,
+    iconBg: "bg-slate-800 text-teal-400",
+  },
+  {
+    id: "hotel",
+    name: "TCB Stay & Desk",
+    category: "Hospitality & Hotel Desk",
+    description: "Room reservation engine, guest check-in/out & housekeeping billing.",
+    badge: "Coming Soon",
+    badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
+    href: "/hotel",
+    icon: Hotel,
+    iconBg: "bg-slate-800 text-amber-400",
+  },
+  {
+    id: "dine",
+    name: "TCB Dine POS",
+    category: "Restaurant & Kitchen KOT",
+    description: "Contactless QR table menu ordering & kitchen display sync.",
+    badge: "Coming Soon",
+    badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
+    href: "/dine",
+    icon: Utensils,
+    iconBg: "bg-slate-800 text-indigo-400",
+  },
+];
+
 export default function EcosystemAppsSection() {
   return (
-    <section id="ecosystem-apps" className="relative border-t border-zinc-200/60 bg-gradient-to-b from-zinc-50/80 via-white to-zinc-50/50 px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <section id="ecosystem-apps" className="relative border-t border-slate-200/60 bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
       
-      {/* Background Decorative Radial Accents */}
+      {/* Radial Background Accent */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-12 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-emerald-500/5 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-12 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-emerald-500/5 blur-3xl"
       />
 
       <div className="mx-auto max-w-7xl">
         
-        {/* Section Header */}
+        {/* Compact Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-300/80 bg-emerald-50/90 px-4 py-1.5 text-xs font-bold text-emerald-800 shadow-xs">
-            <Sparkles className="h-4 w-4 text-emerald-600 animate-pulse" />
-            TCB Micro-SaaS Product Ecosystem
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-1 text-xs font-bold text-emerald-800 shadow-xs">
+            <Layers className="h-3.5 w-3.5 text-emerald-600" />
+            TCB Micro-SaaS Product Portfolio
           </div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
-            Sleek, Purpose-Built Apps for Your Business &amp; Institute
+          <h2 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            Specialized SaaS Solutions <span className="nuvertos-gradient-text">Engineered by Our Studio</span>
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-zinc-600 sm:text-lg">
-            Choose between our high-performance retail store suite or our modular coaching school platform.
+          <p className="mt-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
+            We build custom AI agents &amp; automations tailored to your specific business requirements. Explore pre-engineered vertical frameworks:
           </p>
         </div>
 
-        {/* Gorgeous Dual App Showcase Cards */}
-        <div className="mt-16 grid gap-8 lg:grid-cols-2">
-          
-          {/* ========================================================== */}
-          {/* CARD 1: TCB INVENTORY (STOCKS & POS MANAGEMENT — COMING SOON) */}
-          {/* ========================================================== */}
-          <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-7 sm:p-9 shadow-[0_4px_30px_-5px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:border-slate-400 hover:shadow-xl">
-            
-            {/* Top Gradient Shimmer Bar */}
-            <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-slate-400 via-slate-500 to-emerald-500" />
-
-            <div>
-              {/* Header Row: Icon Avatar + Badges */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-800 to-slate-950 text-white shadow-md transition-transform duration-300 group-hover:scale-105">
-                    <Store className="h-7 w-7 text-emerald-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-black tracking-tight text-zinc-900 group-hover:text-emerald-700">
-                      TCB Inventory
-                    </h3>
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500">
-                      <BadgeCheck className="h-3.5 w-3.5" />
-                      Retail &amp; Stock Automation
-                    </div>
-                  </div>
-                </div>
-
-                <span className="rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-[11px] font-bold text-amber-800 shadow-2xs">
-                  Coming Soon
-                </span>
-              </div>
-
-              {/* Card Description */}
-              <p className="mt-5 text-xs leading-relaxed text-zinc-600 sm:text-sm">
-                Advanced retail &amp; warehouse inventory solution featuring real-time barcode tracking, 1-click GST invoice generation, customer credit ledger, and AI stock reordering.
-              </p>
-
-              {/* Micro Dashboard UI Mockup inside Card */}
-              <div className="mt-6 rounded-2xl border border-zinc-200/80 bg-gradient-to-br from-zinc-50 to-slate-100 p-4 shadow-inner">
-                <div className="flex items-center justify-between border-b border-zinc-200/80 pb-2.5">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
-                    <span className="text-[11px] font-bold text-zinc-800">Inventory Module Engine</span>
-                  </div>
-                  <span className="rounded bg-amber-100 px-2 py-0.5 text-[10px] font-extrabold text-amber-900">
-                    In Development
-                  </span>
-                </div>
-
-                <div className="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
-                  <div className="rounded-xl border border-zinc-200 bg-white p-2.5 shadow-2xs">
-                    <span className="text-[10px] text-zinc-400 font-medium block">Stock Scanner</span>
-                    <span className="font-extrabold text-slate-800 text-xs">Barcode Master</span>
-                  </div>
-                  <div className="rounded-xl border border-zinc-200 bg-white p-2.5 shadow-2xs">
-                    <span className="text-[10px] text-zinc-400 font-medium block">Credit Ledger</span>
-                    <span className="font-extrabold text-amber-600 text-xs">Auto WhatsApp</span>
-                  </div>
-                  <div className="rounded-xl border border-zinc-200 bg-white p-2.5 shadow-2xs">
-                    <span className="text-[10px] text-zinc-400 font-medium block">Reorder Alert</span>
-                    <span className="font-extrabold text-emerald-600 text-xs">AI Forecast</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Mode Switcher Badges */}
-              <div className="mt-6 flex flex-wrap gap-2">
-                <span className="inline-flex items-center gap-1 rounded-lg bg-slate-900 px-3 py-1 text-xs font-bold text-white shadow-2xs">
-                  <Receipt className="h-3.5 w-3.5 text-emerald-400" />
-                  Mode A: Store Stock &amp; POS
-                </span>
-                <span className="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-3 py-1 text-xs font-bold text-slate-800">
-                  <TrendingUp className="h-3.5 w-3.5 text-slate-700" />
-                  Mode B: Multi-Warehouse Ledger
-                </span>
-              </div>
-
-              {/* Checklist */}
-              <div className="mt-6 grid gap-2 sm:grid-cols-2 border-t border-zinc-100 pt-5">
-                <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
-                  <span>Barcode inventory master</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
-                  <span>GST printer receipt format</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
-                  <span>WhatsApp payment reminders</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
-                  <span>Supplier purchase order ledger</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Launch Action Button */}
-            <div className="mt-8">
-              <a
-                href="#coming-soon"
-                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-900 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:bg-slate-800"
+        {/* Unified Compact Product Cards Grid */}
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {SAAS_PRODUCTS.map((prod) => {
+            const IconComp = prod.icon;
+            return (
+              <Link
+                key={prod.id}
+                href={prod.href}
+                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-emerald-400 hover:shadow-md"
               >
-                <span>TCB Inventory — Coming Soon</span>
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-              </a>
-            </div>
-          </div>
-
-          {/* ========================================================== */}
-          {/* CARD 2: TCB SCHOOL (COACHING & FEE TRACKER - LIVE) */}
-          {/* ========================================================== */}
-          <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-7 sm:p-9 shadow-[0_4px_30px_-5px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:border-emerald-400 hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,0.18)]">
-            
-            {/* Top Gradient Shimmer Bar */}
-            <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400" />
-
-            <div>
-              {/* Header Row: Icon Avatar + Badges */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-800 text-white shadow-md shadow-emerald-600/20 transition-transform duration-300 group-hover:scale-105">
-                    <GraduationCap className="h-7 w-7" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-black tracking-tight text-zinc-900 group-hover:text-emerald-700">
-                      TCB School
-                    </h3>
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600">
-                      <BadgeCheck className="h-3.5 w-3.5" />
-                      Education Institute Suite
+                <div>
+                  {/* Top Row: Icon + Badge */}
+                  <div className="flex items-center justify-between gap-2">
+                    <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${prod.iconBg} shadow-xs transition-transform group-hover:scale-105`}>
+                      <IconComp className="h-5 w-5" />
                     </div>
+
+                    <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-extrabold border ${prod.badgeStyle}`}>
+                      {prod.badge}
+                    </span>
                   </div>
-                </div>
 
-                <span className="rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-[11px] font-extrabold text-emerald-700 shadow-2xs">
-                  Live SaaS Workspace
-                </span>
-              </div>
-
-              {/* Card Description */}
-              <p className="mt-5 text-xs leading-relaxed text-zinc-600 sm:text-sm">
-                Built specifically for coaching institutes, tuition centers, and schools to maintain student directories, mark daily attendance registers, and trigger WhatsApp parent fee alerts.
-              </p>
-
-              {/* Micro Dashboard UI Mockup inside Card */}
-              <div className="mt-6 rounded-2xl border border-zinc-200/80 bg-gradient-to-br from-zinc-50 to-emerald-50/30 p-4 shadow-inner">
-                <div className="flex items-center justify-between border-b border-zinc-200/80 pb-2.5">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
-                    <span className="text-[11px] font-bold text-zinc-800">Institute Roll Call Active</span>
-                  </div>
-                  <span className="rounded bg-emerald-100 px-2 py-0.5 text-[10px] font-extrabold text-emerald-800">
-                    94% Attendance Today
+                  {/* Title & Category */}
+                  <h3 className="mt-3 text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                    {prod.name}
+                  </h3>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                    {prod.category}
                   </span>
+
+                  {/* Short Description */}
+                  <p className="mt-1.5 text-xs text-slate-600 leading-snug">
+                    {prod.description}
+                  </p>
                 </div>
 
-                <div className="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
-                  <div className="rounded-xl border border-zinc-200 bg-white p-2.5 shadow-2xs">
-                    <span className="text-[10px] text-zinc-400 font-medium block">Directory</span>
-                    <span className="font-extrabold text-zinc-900 text-xs">Enrolled Batches</span>
-                  </div>
-                  <div className="rounded-xl border border-zinc-200 bg-white p-2.5 shadow-2xs">
-                    <span className="text-[10px] text-zinc-400 font-medium block">Attendance</span>
-                    <span className="font-extrabold text-emerald-600 text-xs">1-Click Marker</span>
-                  </div>
-                  <div className="rounded-xl border border-zinc-200 bg-white p-2.5 shadow-2xs">
-                    <span className="text-[10px] text-zinc-400 font-medium block">Fee Alerts</span>
-                    <span className="font-extrabold text-red-600 text-xs">Parent WhatsApp</span>
-                  </div>
+                {/* Footer Link */}
+                <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 text-xs font-bold text-emerald-700 group-hover:text-emerald-800">
+                  <span>View Details</span>
+                  <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
-              </div>
-
-              {/* Mode Switcher Badges */}
-              <div className="mt-6 flex flex-wrap gap-2">
-                <span className="inline-flex items-center gap-1 rounded-lg bg-emerald-700 px-3 py-1 text-xs font-bold text-white shadow-2xs">
-                  <Users className="h-3.5 w-3.5 text-emerald-400" />
-                  Student Directory
-                </span>
-                <span className="inline-flex items-center gap-1 rounded-lg bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-900">
-                  <Clock className="h-3.5 w-3.5 text-emerald-700" />
-                  Attendance Register
-                </span>
-              </div>
-
-              {/* Checklist */}
-              <div className="mt-6 grid gap-2 sm:grid-cols-2 border-t border-zinc-100 pt-5">
-                <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
-                  <span>Student &amp; Batch roll numbers</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
-                  <span>1-Click Present/Absent toggle</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
-                  <span>Guardian WhatsApp fee reminders</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-zinc-700">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
-                  <span>New student enrolment modal</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Launch Action Button */}
-            <div className="mt-8">
-              <a
-                href="https://techschool.thecodebrains.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#059669] to-emerald-700 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25"
-              >
-                <span>Launch TCB School Workspace</span>
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        {/* ========================================================== */}
-        {/* FUTURE EXPANSION ROADMAP — 8+ MODULAR SAAS APPS */}
-        {/* ========================================================== */}
-        <div className="mt-16 rounded-3xl border border-emerald-200/80 bg-emerald-50/40 p-6 sm:p-10">
-          <div className="flex flex-col gap-2 text-center sm:text-left sm:flex-row sm:items-center sm:justify-between border-b border-emerald-200/80 pb-6 mb-8">
-            <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-800 uppercase tracking-wider">
-                <Layers className="h-4 w-4 text-emerald-600" />
-                <span>Micro-SaaS Platform Roadmap</span>
-              </div>
-              <h3 className="mt-1 text-2xl font-black text-zinc-900 sm:text-3xl">
-                Built for 8+ Specialized SaaS Modules
-              </h3>
-              <p className="text-xs text-zinc-600 mt-1">
-                One scalable codebase architecture supporting unlimited industry verticals.
-              </p>
-            </div>
-            <span className="self-center sm:self-auto rounded-full bg-emerald-700 px-4 py-1.5 text-xs font-bold text-white shadow-xs">
-              Upcoming Vertical Modules
-            </span>
-          </div>
-
-          <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-            <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-2xs transition-all hover:border-emerald-300">
-              <div className="flex items-center gap-2 font-bold text-xs text-zinc-900">
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">🏥</span>
-                <span>TCB Health</span>
-              </div>
-              <p className="mt-1.5 text-[11px] text-zinc-500">Clinic EMR &amp; Pharmacy POS</p>
-            </div>
-
-            <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-2xs transition-all hover:border-emerald-300">
-              <div className="flex items-center gap-2 font-bold text-xs text-zinc-900">
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">🏋️</span>
-                <span>TCB Fitness</span>
-              </div>
-              <p className="mt-1.5 text-[11px] text-zinc-500">Gym Biometrics &amp; Member Dues</p>
-            </div>
-
-            <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-2xs transition-all hover:border-emerald-300">
-              <div className="flex items-center gap-2 font-bold text-xs text-zinc-900">
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">🏨</span>
-                <span>TCB Stay</span>
-              </div>
-              <p className="mt-1.5 text-[11px] text-zinc-500">Hotel Desk &amp; Room Booking</p>
-            </div>
-
-            <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-2xs transition-all hover:border-emerald-300">
-              <div className="flex items-center gap-2 font-bold text-xs text-zinc-900">
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">🍽️</span>
-                <span>TCB Dine</span>
-              </div>
-              <p className="mt-1.5 text-[11px] text-zinc-500">Restaurant QR &amp; Kitchen KOT</p>
-            </div>
-          </div>
+              </Link>
+            );
+          })}
         </div>
 
       </div>
     </section>
   );
 }
-

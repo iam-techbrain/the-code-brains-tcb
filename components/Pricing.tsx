@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Sparkles, Store, GraduationCap, ArrowRight, ShieldCheck, Zap, RefreshCw, Lock } from "lucide-react";
-import Link from "next/link";
+import { Check, Sparkles, ArrowRight, ShieldCheck, Zap, RefreshCw, Lock, Bot, Workflow, Cpu } from "lucide-react";
 
 type PricingPlan = {
   name: string;
@@ -17,7 +16,7 @@ type PricingPlan = {
   ctaHref: string;
 };
 
-// 1. TCB INVENTORY PLANS DATA (COMING SOON)
+// 1. TCB INVENTORY PLANS DATA (ONLY FOR /store PAGE)
 const STORE_PLANS: PricingPlan[] = [
   {
     name: "Starter Inventory Tier",
@@ -73,7 +72,7 @@ const STORE_PLANS: PricingPlan[] = [
   },
 ];
 
-// 2. TCB SCHOOL PLANS DATA (LIVE)
+// 2. TCB SCHOOL PLANS DATA (ONLY FOR /school PAGE)
 const SCHOOL_PLANS: PricingPlan[] = [
   {
     name: "Starter Coaching Tier",
@@ -129,10 +128,76 @@ const SCHOOL_PLANS: PricingPlan[] = [
   },
 ];
 
-export default function Pricing() {
-  const [selectedApp, setSelectedApp] = useState<"store" | "school">("store");
+// 3. TCB AI AGENCY & AUTOMATION PLANS DATA (MAIN HOME PAGE DEFAULT)
+const AGENCY_PLANS: PricingPlan[] = [
+  {
+    name: "AI Workflow Automation",
+    badge: "Fast Delivery",
+    priceText: "₹9,999",
+    priceVal: 9999,
+    period: "/ project",
+    description: "Automate repetitive manual business workflows using n8n, Make & webhooks.",
+    features: [
+      "Up to 3 Multi-Step Automated Workflows",
+      "WhatsApp & Email API Triggers",
+      "CRM & Google Sheets Real-Time Sync",
+      "Error Alerts & Logging Pipeline",
+      "14-Day Free Maintenance & Support",
+    ],
+    ctaText: "Get Workflow Automation",
+    ctaHref: "#contact",
+  },
+  {
+    name: "Autonomous AI Agent",
+    badge: "Most Popular",
+    priceText: "₹14,999",
+    priceVal: 14999,
+    period: "/ project",
+    description: "Custom AI voice caller or RAG chatbot trained on your company data.",
+    highlighted: true,
+    features: [
+      "Custom RAG Vector DB (Pinecone / Qdrant)",
+      "24/7 AI Voice Caller or WhatsApp Chatbot",
+      "OpenAI GPT-4o / Claude 3.5 Fine-Tuning",
+      "24/7 Instant Lead Booking & Qualification",
+      "AWS 99.95% Deployment & 30-Day Support",
+    ],
+    ctaText: "Deploy AI Agent",
+    ctaHref: "#contact",
+  },
+  {
+    name: "Enterprise Multi-SaaS Cloud",
+    badge: "Full Custom Studio",
+    priceText: "₹59,999",
+    priceVal: 59999,
+    period: "/ project",
+    description: "Complete custom micro-SaaS application built from scratch for your industry.",
+    features: [
+      "Multi-Tenant SaaS Architecture",
+      "Custom React / Next.js + Tailwind UI",
+      "Supabase / PostgreSQL Database Vault",
+      "Full Source Code & IP Ownership",
+      "Dedicated Lead Engineer & SLA",
+    ],
+    ctaText: "Build Custom SaaS",
+    ctaHref: "#contact",
+  },
+];
 
-  const activePlans = selectedApp === "store" ? STORE_PLANS : SCHOOL_PLANS;
+interface PricingProps {
+  defaultApp?: "store" | "school" | "agency";
+  hideToggle?: boolean;
+}
+
+export default function Pricing({ defaultApp = "agency", hideToggle = true }: PricingProps) {
+  const [selectedApp] = useState<"store" | "school" | "agency">(defaultApp);
+
+  const activePlans =
+    selectedApp === "agency"
+      ? AGENCY_PLANS
+      : selectedApp === "store"
+      ? STORE_PLANS
+      : SCHOOL_PLANS;
 
   return (
     <section id="pricing" className="relative border-t border-slate-200/60 bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
@@ -140,64 +205,43 @@ export default function Pricing() {
         
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-50 px-4 py-1.5 text-xs font-bold text-emerald-800 shadow-xs">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-1.5 text-xs font-bold text-emerald-800 shadow-xs">
             <Sparkles className="h-4 w-4 text-emerald-600 animate-pulse" />
-            TCB Subscription Plans &amp; Transparent Pricing
+            Transparent Pricing &amp; Custom Project Packages
           </div>
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Flexible Plans for <span className="nuvertos-gradient-text">TCB Inventory &amp; TCB School</span>
+            {selectedApp === "agency" ? (
+              <span>Transparent Packages for <span className="nuvertos-gradient-text">AI Agents &amp; Automations</span></span>
+            ) : selectedApp === "school" ? (
+              <span>Transparent Pricing for <span className="nuvertos-gradient-text">TCB School SaaS</span></span>
+            ) : (
+              <span>Transparent Pricing for <span className="nuvertos-gradient-text">TCB Store &amp; Inventory SaaS</span></span>
+            )}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-            Choose a subscription plan for TCB School (Live Workspace) or preview upcoming TCB Inventory tiers.
+            {selectedApp === "agency"
+              ? "Simple, fixed-rate pricing for custom AI agents, n8n workflow automations, and multi-tenant SaaS development."
+              : selectedApp === "school"
+              ? "Simple, affordable plans for coaching centers and educational institutes. No setup fees."
+              : "Flexible subscription plans for retail stock management, POS billing & Udhar Khata."}
           </p>
 
           {/* Guarantee Pill */}
           <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/50 px-5 py-2.5 text-xs font-bold text-slate-800 shadow-xs">
             <span className="flex items-center gap-1.5 text-emerald-800 font-extrabold">
               <RefreshCw className="h-4 w-4 text-emerald-600" />
-              Cancel Anytime (No Lock-in)
+              100% Fixed Rates (No Hidden Costs)
             </span>
             <span className="text-zinc-300">|</span>
             <span className="flex items-center gap-1.5 text-zinc-700">
               <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
-              No Hidden Charges
+              Source Code Ownership
             </span>
             <span className="text-zinc-300">|</span>
             <span className="flex items-center gap-1.5 text-zinc-700">
               <Lock className="h-3.5 w-3.5 text-emerald-600" />
-              Safe &amp; Secure Cloud
+              Safe &amp; Encrypted AI Cloud
             </span>
-          </div>
-        </div>
-
-        {/* UNIFIED LIGHT EMERALD APP TOGGLE SELECTOR */}
-        <div className="mt-10 flex justify-center">
-          <div className="inline-flex rounded-2xl border border-emerald-200 bg-emerald-50/50 p-1.5 shadow-xs">
-            <button
-              type="button"
-              onClick={() => setSelectedApp("school")}
-              className={`flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-xs font-bold transition-all sm:text-sm ${
-                selectedApp === "school"
-                  ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/20 scale-105"
-                  : "bg-white text-slate-700 hover:bg-emerald-100/50"
-              }`}
-            >
-              <GraduationCap className={`h-4.5 w-4.5 ${selectedApp === "school" ? "text-white" : "text-emerald-600"}`} />
-              <span>TCB School Plans (Live)</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setSelectedApp("store")}
-              className={`flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-xs font-bold transition-all sm:text-sm ${
-                selectedApp === "store"
-                  ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/20 scale-105"
-                  : "bg-white text-slate-700 hover:bg-emerald-100/50"
-              }`}
-            >
-              <Store className={`h-4.5 w-4.5 ${selectedApp === "store" ? "text-white" : "text-emerald-600"}`} />
-              <span>TCB Inventory Plans (Soon)</span>
-            </button>
           </div>
         </div>
 
@@ -206,53 +250,36 @@ export default function Pricing() {
           {activePlans.map((plan) => (
             <div
               key={plan.name}
-              className={`group relative flex flex-col justify-between rounded-3xl border p-8 shadow-[0_4px_25px_-5px_rgba(0,0,0,0.05)] transition-all duration-300 ${
+              className={`relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 ${
                 plan.highlighted
-                  ? "nuvertos-card-selected lg:-translate-y-2 border-emerald-300"
-                  : "nuvertos-card shadow-sm"
+                  ? "border-2 border-emerald-500 bg-emerald-50/30 shadow-xl shadow-emerald-600/10 scale-102"
+                  : "border border-slate-200 bg-white shadow-xs hover:border-emerald-300 hover:shadow-md"
               }`}
             >
+              {plan.badge && (
+                <span
+                  className={`absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-extrabold shadow-xs ${
+                    plan.highlighted
+                      ? "bg-emerald-600 text-white"
+                      : "bg-slate-900 text-white"
+                  }`}
+                >
+                  {plan.badge}
+                </span>
+              )}
+
               <div>
-                <div className="flex items-start justify-between gap-2">
-                  <div>
-                    <h3 className="text-xl font-extrabold text-slate-900">{plan.name}</h3>
-                    <span className="mt-1 inline-block text-[11px] font-bold text-emerald-700">
-                      Subscription Plan
-                    </span>
-                  </div>
+                <h3 className="text-xl font-bold text-slate-900">{plan.name}</h3>
+                <p className="mt-2 text-xs text-slate-600 min-h-[36px]">{plan.description}</p>
 
-                  {plan.badge && (
-                    <span
-                      className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-extrabold shadow-2xs ${
-                        plan.highlighted
-                          ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white"
-                          : "bg-emerald-50 text-emerald-800 border border-emerald-200"
-                      }`}
-                    >
-                      {plan.highlighted && <Sparkles className="h-3 w-3 text-white" />}
-                      {plan.badge}
-                    </span>
-                  )}
-                </div>
-                
-                <p className="mt-3 text-xs leading-relaxed text-slate-500">
-                  {plan.description}
-                </p>
-
-                {/* Price Display */}
-                <div className="mt-6 flex items-baseline gap-1.5 border-b border-slate-200/80 pb-5">
-                  <span className="font-extrabold text-4xl tracking-tight text-slate-900">
-                    {plan.priceText}
-                  </span>
-                  <span className="text-xs font-bold text-slate-500">
-                    {plan.period}
-                  </span>
+                <div className="mt-6 flex items-baseline gap-1">
+                  <span className="text-4xl font-black tracking-tight text-slate-900">{plan.priceText}</span>
+                  <span className="text-xs font-semibold text-slate-500">{plan.period}</span>
                 </div>
 
-                {/* Features Checklist */}
-                <ul className="mt-6 space-y-3">
+                <ul className="mt-8 space-y-3">
                   {plan.features.map((feat) => (
-                    <li key={feat} className="flex items-start gap-2.5 text-xs font-semibold text-slate-700">
+                    <li key={feat} className="flex items-center gap-2.5 text-xs text-slate-700">
                       <Check className="h-4 w-4 shrink-0 text-emerald-600 font-bold" />
                       <span>{feat}</span>
                     </li>
@@ -260,160 +287,21 @@ export default function Pricing() {
                 </ul>
               </div>
 
-              {/* BUTTONS */}
-              <div className="mt-8">
-                <Link
+              <div className="mt-8 pt-6 border-t border-slate-100">
+                <a
                   href={plan.ctaHref}
-                  className={`flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-xs font-bold transition-all shadow-2xs ${
+                  className={`flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-xs font-extrabold transition-all active:scale-95 ${
                     plan.highlighted
-                      ? "bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white shadow-md shadow-emerald-600/20 hover:scale-105"
-                      : "bg-emerald-700 text-white hover:bg-emerald-600 hover:shadow-md"
+                      ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-md shadow-emerald-600/20"
+                      : "bg-slate-900 text-white hover:bg-slate-800"
                   }`}
                 >
                   <span>{plan.ctaText}</span>
                   <ArrowRight className="h-4 w-4" />
-                </Link>
-
-                <div className="mt-3 text-center text-[11px] font-semibold text-emerald-700 flex items-center justify-center gap-1">
-                  <RefreshCw className="h-3 w-3 text-emerald-600" />
-                  Cancel anytime · No long-term lock-in
-                </div>
+                </a>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* DETAILED FEATURE COMPARISON TABLE */}
-        <div className="mt-20 rounded-3xl border border-emerald-200/80 bg-emerald-50/30 p-4 sm:p-8 shadow-xs">
-          <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-200 pb-4">
-            <div>
-              <h3 className="text-lg font-bold text-zinc-900">
-                Detailed Plan Feature Matrix — {selectedApp === "store" ? "TCB Store" : "TCB School"}
-              </h3>
-              <p className="text-xs text-zinc-500">Subscription plans feature breakdown and limit comparison</p>
-            </div>
-            <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
-              Cancel Anytime · Instant Activation
-            </span>
-          </div>
-
-          <div className="overflow-x-auto no-scrollbar">
-            <table className="w-full text-left text-xs">
-              <thead>
-                <tr className="border-b border-zinc-200 text-zinc-500 font-extrabold uppercase tracking-wider">
-                  <th className="pb-3 pt-1">Feature / Capability</th>
-                  <th className="pb-3 pt-1">Starter Tier</th>
-                  <th className="pb-3 pt-1 text-emerald-700 whitespace-nowrap">Pro Plan (Best Seller)</th>
-                  <th className="pb-3 pt-1">Enterprise Tier</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-zinc-200/60 font-medium text-zinc-700">
-                  {selectedApp === "store" ? (
-                    <>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Monthly Price</td>
-                        <td className="py-3 text-zinc-600">₹99 / month</td>
-                        <td className="py-3 font-extrabold text-emerald-600 whitespace-nowrap">₹299 / month</td>
-                        <td className="py-3 text-zinc-600">₹799 / month</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Monthly Sales Invoices</td>
-                        <td className="py-3">Up to 300 Invoices</td>
-                        <td className="py-3 font-bold text-zinc-900">Up to 2,000 Invoices</td>
-                        <td className="py-3 font-extrabold text-emerald-700">Unlimited Invoices</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Barcode Scanning POS</td>
-                        <td className="py-3 text-zinc-400">Basic USB Only</td>
-                        <td className="py-3 font-bold text-zinc-900">Full Camera &amp; USB Scanner</td>
-                        <td className="py-3 font-bold text-zinc-900">Multi-Counter POS Engine</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">WhatsApp PDF Receipts</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Inventory Low Stock Alerts</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">GST Tax &amp; HSN Reports</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Staff &amp; Cashier Accounts</td>
-                        <td className="py-3 text-zinc-600">1 Owner Account</td>
-                        <td className="py-3 font-extrabold text-emerald-700 whitespace-nowrap">Up to 3 Users</td>
-                        <td className="py-3 font-bold text-zinc-900">Unlimited Staff Accounts</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Multi-Device Sync</td>
-                        <td className="py-3 text-zinc-600">Single Device</td>
-                        <td className="py-3 font-extrabold text-emerald-700 whitespace-nowrap">Priority Cloud Sync</td>
-                        <td className="py-3 font-bold text-zinc-900">Real-Time Cloud Mesh</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Subscription Commitment</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">Cancel Anytime</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">Cancel Anytime</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">Cancel Anytime</td>
-                      </tr>
-                    </>
-                  ) : (
-                    <>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Monthly Subscription</td>
-                        <td className="py-3 text-zinc-600">₹199 / month</td>
-                        <td className="py-3 font-extrabold text-emerald-600 whitespace-nowrap">₹499 / month</td>
-                        <td className="py-3 text-zinc-600">₹1,299 / month</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Active Enrolled Students</td>
-                        <td className="py-3">Up to 100 Students</td>
-                        <td className="py-3 text-emerald-600 font-extrabold whitespace-nowrap">Unlimited Students</td>
-                        <td className="py-3 font-extrabold text-emerald-700">Unlimited Multi-Branch</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Daily Attendance Marking</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">✓ Included</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">WhatsApp Absent / Fee Alerts</td>
-                        <td className="py-3 text-zinc-600">Manual Links</td>
-                        <td className="py-3 text-emerald-700 font-bold whitespace-nowrap">Automated WhatsApp</td>
-                        <td className="py-3 text-emerald-700 font-extrabold whitespace-nowrap">Automated WhatsApp + SMS</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Teacher &amp; Staff Accounts</td>
-                        <td className="py-3 text-zinc-600">Up to 3 Teachers</td>
-                        <td className="py-3 text-emerald-600 font-extrabold whitespace-nowrap">Unlimited Teachers</td>
-                        <td className="py-3 font-bold text-zinc-900">Unlimited Staff Accounts</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Exam Gradebook &amp; Report Cards</td>
-                        <td className="py-3 text-zinc-600">Basic PDF Cards</td>
-                        <td className="py-3 text-emerald-600 font-extrabold whitespace-nowrap">Advanced Excel/PDF Reports</td>
-                        <td className="py-3 font-bold text-zinc-900">Custom Report Designer</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-semibold text-zinc-900">Subscription Commitment</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">Cancel Anytime</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">Cancel Anytime</td>
-                        <td className="py-3 text-emerald-600 font-bold whitespace-nowrap">Cancel Anytime</td>
-                      </tr>
-                    </>
-                  )}
-                </tbody>
-              </table>
-          </div>
         </div>
 
       </div>

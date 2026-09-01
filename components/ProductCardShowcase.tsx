@@ -46,8 +46,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "PERIPHERAL-101",
     gstRate: 8,
     badge: "Best Seller",
-    iconBg: "bg-amber-50 text-amber-700 border-amber-200",
-    accentBorder: "border-amber-200 hover:border-amber-400",
+    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    accentBorder: "border-emerald-200 hover:border-emerald-400",
   },
   {
     id: "p-2",
@@ -60,7 +60,7 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "KEYBOARD-502",
     gstRate: 8,
     badge: "Low Stock Alert",
-    iconBg: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
     accentBorder: "border-emerald-200 hover:border-emerald-400",
   },
   {
@@ -74,7 +74,7 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "CABLE-004",
     gstRate: 8,
     badge: "Reorder Soon",
-    iconBg: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
     accentBorder: "border-emerald-200 hover:border-emerald-400",
   },
   {
@@ -88,8 +88,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "DISPLAY-101",
     gstRate: 8,
     badge: "High Turnover",
-    iconBg: "bg-zinc-100 text-zinc-800 border-zinc-200",
-    accentBorder: "border-zinc-200 hover:border-emerald-400",
+    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    accentBorder: "border-emerald-200 hover:border-emerald-400",
   },
   {
     id: "p-5",
@@ -102,8 +102,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "DEV-BAR-99",
     gstRate: 8,
     badge: "POS Hardware",
-    iconBg: "bg-purple-50 text-purple-700 border-purple-200",
-    accentBorder: "border-purple-200 hover:border-purple-400",
+    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    accentBorder: "border-emerald-200 hover:border-emerald-400",
   },
   {
     id: "p-6",
@@ -116,8 +116,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "EDU-BND-10",
     gstRate: 0,
     badge: "TCB School Kit",
-    iconBg: "bg-rose-50 text-rose-700 border-rose-200",
-    accentBorder: "border-rose-200 hover:border-rose-400",
+    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    accentBorder: "border-emerald-200 hover:border-emerald-400",
   },
   {
     id: "p-7",
@@ -130,8 +130,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "PAP-80MM",
     gstRate: 12,
     badge: "Bulk Stock",
-    iconBg: "bg-cyan-50 text-cyan-700 border-cyan-200",
-    accentBorder: "border-cyan-200 hover:border-cyan-400",
+    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    accentBorder: "border-emerald-200 hover:border-emerald-400",
   },
 ];
 

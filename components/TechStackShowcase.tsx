@@ -47,7 +47,7 @@ const TECH_TOOLS: ToolItem[] = [
       "Ultra-fast API execution with FastAPI & Next.js",
     ],
     gradient: "from-emerald-500/20 via-teal-500/20 to-emerald-600/20",
-    borderColor: "group-hover:border-emerald-400/80",
+    borderColor: "group-hover:border-emerald-400",
     shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
     badge: "Core Engine",
     codeSnippet: `// Custom Async AI Tool Execution Engine
@@ -76,9 +76,9 @@ export async function executeAgentTask(prompt: string) {
       "Make.com complex branching & router logic",
       "Automatic error catching & webhook retries",
     ],
-    gradient: "from-amber-500/20 via-rose-500/20 to-emerald-500/20",
-    borderColor: "group-hover:border-rose-400/80",
-    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(244,63,94,0.3)]",
+    gradient: "from-emerald-500/20 via-teal-500/20 to-emerald-600/20",
+    borderColor: "group-hover:border-emerald-400",
+    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
     badge: "Visual Automation",
     codeSnippet: `// n8n Workflow Webhook Receiver Node
 {
@@ -102,8 +102,8 @@ export async function executeAgentTask(prompt: string) {
       "High-speed semantic vector embeddings (OpenAI text-embedding-3)",
       "Context-aware memory with hybrid vector search",
     ],
-    gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
-    borderColor: "group-hover:border-emerald-400/80",
+    gradient: "from-emerald-500/20 via-teal-500/20 to-emerald-600/20",
+    borderColor: "group-hover:border-emerald-400",
     shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
     badge: "GenAI & Knowledge",
     codeSnippet: `// Vector Search & RAG Context Retrieval
@@ -129,9 +129,9 @@ export async function queryRAGPipeline(userQuery: string) {
       "Event-driven queue processing with Redis & BullMQ",
       "High throughput Node.js microservice architecture",
     ],
-    gradient: "from-purple-500/20 via-indigo-500/20 to-emerald-500/20",
-    borderColor: "group-hover:border-purple-400/80",
-    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(168,85,247,0.3)]",
+    gradient: "from-emerald-500/20 via-teal-500/20 to-emerald-600/20",
+    borderColor: "group-hover:border-emerald-400",
+    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
     badge: "Integration Layer",
     codeSnippet: `// Secure Webhook Listener & Event Producer
 import express from 'express';
@@ -224,9 +224,9 @@ export default function TechStackShowcase() {
                   <div className="flex items-center justify-between">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-100 bg-emerald-50 text-emerald-700 shadow-xs group-hover:scale-110 transition-transform">
                       {tool.iconType === "code" && <Code2 className="h-6 w-6 text-emerald-600" />}
-                      {tool.iconType === "workflow" && <Workflow className="h-6 w-6 text-teal-600" />}
+                      {tool.iconType === "workflow" && <Workflow className="h-6 w-6 text-emerald-600" />}
                       {tool.iconType === "ai" && <Sparkles className="h-6 w-6 text-emerald-600" />}
-                      {tool.iconType === "api" && <Server className="h-6 w-6 text-cyan-600" />}
+                      {tool.iconType === "api" && <Globe className="h-6 w-6 text-emerald-600" />}
                     </div>
 
                     <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-extrabold text-emerald-800">

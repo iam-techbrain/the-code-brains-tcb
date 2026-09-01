@@ -349,7 +349,7 @@ export default function SchoolManagementFeature() {
                   href="https://techschool.thecodebrains.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-[#059669] px-6 py-3.5 text-xs font-extrabold text-white shadow-md transition-all hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-600/25"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-600 px-6 py-3.5 text-xs font-extrabold text-white shadow-md transition-all hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-600/25 active:scale-95"
                 >
                   <GraduationCap className="h-4 w-4" />
                   <span>Launch TCB School Workspace</span>
@@ -441,17 +441,17 @@ export default function SchoolManagementFeature() {
         </div>
 
         {/* Budget Comparison Banner */}
-        <div className="mt-16 rounded-3xl border border-emerald-300/80 bg-gradient-to-r from-emerald-900 via-emerald-950 to-slate-900 p-8 text-white shadow-xl relative overflow-hidden">
+        <div className="mt-16 rounded-3xl border border-emerald-200 bg-white p-8 text-slate-900 shadow-md relative overflow-hidden">
           <div className="grid gap-6 md:grid-cols-12 items-center">
             <div className="md:col-span-8 space-y-2">
-              <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 border border-emerald-400/40 px-3 py-1 text-xs font-bold text-emerald-300">
-                <BadgePercent className="h-4 w-4 text-emerald-400" />
+              <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 border border-emerald-300 px-3 py-1 text-xs font-bold text-emerald-800">
+                <BadgePercent className="h-4 w-4 text-emerald-600" />
                 <span>Why Choose TCB School Multi-Tenant SaaS?</span>
               </div>
-              <h3 className="text-2xl font-extrabold text-white">
+              <h3 className="text-2xl font-extrabold text-slate-900">
                 Save Up to 80% Compared to Traditional Software ERPs
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 Legacy school management systems charge astronomical setup fees (₹50,000+) and require local servers. TCB School runs instantly on the cloud with simple, budget-friendly subscription plans for tuition classes &amp; coaching institutes.
               </p>
             </div>
@@ -461,7 +461,7 @@ export default function SchoolManagementFeature() {
                 href="https://techschool.thecodebrains.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-500 px-7 py-4 text-xs font-extrabold text-slate-950 shadow-lg shadow-emerald-500/30 transition-all hover:bg-emerald-400 hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-600 px-7 py-4 text-xs font-extrabold text-white shadow-md transition-all hover:bg-emerald-700 hover:scale-105"
               >
                 <span>Launch TCB School Workspace</span>
                 <ArrowRight className="h-4 w-4" />
