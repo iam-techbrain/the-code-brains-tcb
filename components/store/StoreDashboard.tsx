@@ -161,7 +161,7 @@ export default function StoreDashboard() {
         <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
                 <Sparkles className="h-3.5 w-3.5" />
                 TCB Store — Dual-Mode Micro-SaaS
               </div>
@@ -176,17 +176,17 @@ export default function StoreDashboard() {
             </div>
 
             {/* DUAL MODE TOGGLE BUTTONS */}
-            <div className="flex flex-col sm:flex-row w-full sm:w-auto gap-1.5 rounded-2xl border border-emerald-200 bg-emerald-50/50 p-1.5 shadow-xs">
+            <div className="flex flex-col sm:flex-row w-full sm:w-auto gap-1.5 rounded-2xl border border-brand-200 bg-brand-50/50 p-1.5 shadow-xs">
               <button
                 type="button"
                 onClick={() => setAppMode("business")}
                 className={`flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all sm:text-sm ${
                   appMode === "business"
-                    ? "bg-emerald-600 text-white shadow-xs border border-emerald-600"
-                    : "bg-white text-zinc-700 font-medium hover:border-emerald-500 hover:text-emerald-600 border border-zinc-200"
+                    ? "bg-brand-500 text-white shadow-xs border border-brand-500"
+                    : "bg-white text-zinc-700 font-medium hover:border-brand-500 hover:text-brand-500 border border-zinc-200"
                 }`}
               >
-                <Store className={`h-4 w-4 ${appMode === "business" ? "text-white" : "text-emerald-600"}`} />
+                <Store className={`h-4 w-4 ${appMode === "business" ? "text-white" : "text-brand-500"}`} />
                 <span>Store Business Mode</span>
               </button>
               <button
@@ -194,11 +194,11 @@ export default function StoreDashboard() {
                 onClick={() => setAppMode("personal")}
                 className={`flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all sm:text-sm ${
                   appMode === "personal"
-                    ? "bg-emerald-600 text-white shadow-xs border border-emerald-600"
-                    : "bg-white text-zinc-700 font-medium hover:border-emerald-500 hover:text-emerald-600 border border-zinc-200"
+                    ? "bg-brand-500 text-white shadow-xs border border-brand-500"
+                    : "bg-white text-zinc-700 font-medium hover:border-brand-500 hover:text-brand-500 border border-zinc-200"
                 }`}
               >
-                <User className={`h-4 w-4 ${appMode === "personal" ? "text-white" : "text-emerald-600"}`} />
+                <User className={`h-4 w-4 ${appMode === "personal" ? "text-white" : "text-brand-500"}`} />
                 <span>Personal Expense Mode</span>
               </button>
             </div>
@@ -216,7 +216,7 @@ export default function StoreDashboard() {
               <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
                 <span className="text-xs font-medium text-zinc-500">Total Stock Value</span>
                 <div className="mt-1 text-xl font-extrabold text-zinc-900">₹{totalStoreValue.toLocaleString()}</div>
-                <span className="text-[11px] text-emerald-600 font-semibold">{inventory.length} items in catalog</span>
+                <span className="text-[11px] text-brand-500 font-semibold">{inventory.length} items in catalog</span>
               </div>
               <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
                 <span className="text-xs font-medium text-zinc-500">Customer Credit Due</span>
@@ -225,8 +225,8 @@ export default function StoreDashboard() {
               </div>
               <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
                 <span className="text-xs font-medium text-zinc-500">Today's POS Sales</span>
-                <div className="mt-1 text-xl font-extrabold text-emerald-600">₹18,450</div>
-                <span className="text-[11px] text-emerald-600 font-semibold">+14% vs yesterday</span>
+                <div className="mt-1 text-xl font-extrabold text-brand-500">₹18,450</div>
+                <span className="text-[11px] text-brand-500 font-semibold">+14% vs yesterday</span>
               </div>
               <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
                 <span className="text-xs font-medium text-zinc-500">Gross Margin Profit</span>
@@ -242,7 +242,7 @@ export default function StoreDashboard() {
                 onClick={() => setBizTab("pos")}
                 className={`flex items-center gap-2 border-b-2 py-3 px-3 sm:px-4 text-xs font-bold transition-all sm:text-sm shrink-0 whitespace-nowrap ${
                   bizTab === "pos"
-                    ? "border-emerald-600 text-emerald-600"
+                    ? "border-brand-500 text-brand-500"
                     : "border-transparent text-zinc-500 hover:text-zinc-900"
                 }`}
               >
@@ -254,7 +254,7 @@ export default function StoreDashboard() {
                 onClick={() => setBizTab("inventory")}
                 className={`flex items-center gap-2 border-b-2 py-3 px-3 sm:px-4 text-xs font-bold transition-all sm:text-sm shrink-0 whitespace-nowrap ${
                   bizTab === "inventory"
-                    ? "border-emerald-600 text-emerald-600"
+                    ? "border-brand-500 text-brand-500"
                     : "border-transparent text-zinc-500 hover:text-zinc-900"
                 }`}
               >
@@ -266,7 +266,7 @@ export default function StoreDashboard() {
                 onClick={() => setBizTab("udhar")}
                 className={`flex items-center gap-2 border-b-2 py-3 px-3 sm:px-4 text-xs font-bold transition-all sm:text-sm shrink-0 whitespace-nowrap ${
                   bizTab === "udhar"
-                    ? "border-emerald-600 text-emerald-600"
+                    ? "border-brand-500 text-brand-500"
                     : "border-transparent text-zinc-500 hover:text-zinc-900"
                 }`}
               >
@@ -283,7 +283,7 @@ export default function StoreDashboard() {
                   <div className="mb-4 flex items-center justify-between">
                     <h3 className="text-base font-bold text-zinc-900">Select Items to Add to Bill</h3>
                     <span className="flex items-center gap-1 rounded bg-zinc-100 px-2 py-1 text-xs text-zinc-600">
-                      <Barcode className="h-3.5 w-3.5 text-emerald-600" />
+                      <Barcode className="h-3.5 w-3.5 text-brand-500" />
                       Barcode Lookup Active
                     </span>
                   </div>
@@ -304,10 +304,10 @@ export default function StoreDashboard() {
                           });
                           setPosSuccess(false);
                         }}
-                        className="group flex flex-col justify-between rounded-xl border border-zinc-200 bg-zinc-50/60 p-3.5 text-left transition-all hover:border-emerald-400 hover:bg-white shadow-xs"
+                        className="group flex flex-col justify-between rounded-xl border border-zinc-200 bg-zinc-50/60 p-3.5 text-left transition-all hover:border-brand-400 hover:bg-white shadow-xs"
                       >
                         <div>
-                          <span className="text-xs font-semibold text-zinc-900 group-hover:text-emerald-700">
+                          <span className="text-xs font-semibold text-zinc-900 group-hover:text-brand-700">
                             {item.name}
                           </span>
                           <div className="mt-1 flex items-center gap-2 text-[11px] text-zinc-500">
@@ -317,8 +317,8 @@ export default function StoreDashboard() {
                           </div>
                         </div>
                         <div className="mt-3 flex items-center justify-between border-t border-zinc-100 pt-2">
-                          <span className="text-sm font-extrabold text-emerald-600">₹{item.price}</span>
-                          <span className="rounded-md bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800 group-hover:bg-emerald-600 group-hover:text-white">
+                          <span className="text-sm font-extrabold text-brand-500">₹{item.price}</span>
+                          <span className="rounded-md bg-brand-100 px-2 py-0.5 text-[10px] font-bold text-brand-800 group-hover:bg-brand-500 group-hover:text-white">
                             + Add to Bill
                           </span>
                         </div>
@@ -335,7 +335,7 @@ export default function StoreDashboard() {
                         <h4 className="text-sm font-bold text-zinc-900">Current Order Invoice</h4>
                         <span className="text-[11px] text-zinc-400">Bill #INV-2026-904</span>
                       </div>
-                      <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-200">
+                      <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-bold text-brand-700 border border-brand-200">
                         Automated Tax Ready
                       </span>
                     </div>
@@ -364,24 +364,24 @@ export default function StoreDashboard() {
                     </div>
                     <div className="mt-3 flex justify-between text-base font-extrabold text-zinc-900">
                       <span>Total Pay:</span>
-                      <span className="text-emerald-600">₹{posTotal}</span>
+                      <span className="text-brand-500">₹{posTotal}</span>
                     </div>
 
                     {posSuccess ? (
-                      <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-emerald-100 p-3 text-xs font-bold text-emerald-800">
+                      <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-brand-100 p-3 text-xs font-bold text-brand-800">
                         <CheckCircle className="h-4 w-4" /> Receipt Printed &amp; Saved!
                       </div>
                     ) : (
                       <div className="mt-4 flex gap-2">
                         <button
                           onClick={() => setPosSuccess(true)}
-                          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3 text-xs font-bold text-white shadow-md transition-all hover:bg-emerald-500"
+                          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand-500 py-3 text-xs font-bold text-white shadow-md transition-all hover:bg-brand-500"
                         >
                           <Printer className="h-4 w-4" /> Print Tax Invoice
                         </button>
                         <button
                           onClick={() => setPosSuccess(true)}
-                          className="flex items-center justify-center rounded-xl border border-emerald-300 bg-emerald-50 px-4 text-xs font-bold text-emerald-700 transition-all hover:bg-emerald-100"
+                          className="flex items-center justify-center rounded-xl border border-brand-300 bg-brand-50 px-4 text-xs font-bold text-brand-700 transition-all hover:bg-brand-100"
                         >
                           <Send className="h-4 w-4" />
                         </button>
@@ -399,7 +399,7 @@ export default function StoreDashboard() {
                   <h3 className="text-lg font-bold text-zinc-900">Store Stock Master</h3>
                   <button
                     onClick={() => setShowAddStock((v) => !v)}
-                    className="flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white transition-all hover:bg-emerald-500"
+                    className="flex items-center gap-1.5 rounded-lg bg-brand-500 px-3.5 py-2 text-xs font-bold text-white transition-all hover:bg-brand-500"
                   >
                     <Plus className="h-4 w-4" /> Add Product Item
                   </button>
@@ -407,7 +407,7 @@ export default function StoreDashboard() {
 
                 {/* Add Stock Form */}
                 {showAddStock && (
-                  <form onSubmit={handleAddStock} className="mb-6 rounded-xl border border-emerald-200 bg-emerald-50/50 p-4">
+                  <form onSubmit={handleAddStock} className="mb-6 rounded-xl border border-brand-200 bg-brand-50/50 p-4">
                     <div className="grid gap-3 sm:grid-cols-3">
                       <div>
                         <label className="text-xs font-bold text-zinc-700">Product Name</label>
@@ -443,7 +443,7 @@ export default function StoreDashboard() {
                         />
                       </div>
                     </div>
-                    <button type="submit" className="mt-3 rounded-xl bg-emerald-600 px-4 py-2 text-xs font-bold text-white shadow-xs transition-all hover:bg-emerald-500">
+                    <button type="submit" className="mt-3 rounded-xl bg-brand-500 px-4 py-2 text-xs font-bold text-white shadow-xs transition-all hover:bg-brand-500">
                       Save Product to Catalog
                     </button>
                   </form>
@@ -472,7 +472,7 @@ export default function StoreDashboard() {
                               {item.stock} units
                             </span>
                           </td>
-                          <td className="py-3 font-bold text-emerald-600 whitespace-nowrap">₹{item.price}</td>
+                          <td className="py-3 font-bold text-brand-500 whitespace-nowrap">₹{item.price}</td>
                           <td className="py-3 text-zinc-500 whitespace-nowrap">{item.gst}%</td>
                           <td className="py-3 text-right whitespace-nowrap">
                             <button
@@ -514,14 +514,14 @@ export default function StoreDashboard() {
                       <div className="flex items-center justify-between sm:justify-end gap-4">
                         <span className="text-base font-extrabold text-amber-600">₹{u.balance}</span>
                         {whatsappSentId === u.id ? (
-                          <span className="rounded-lg bg-emerald-100 px-3 py-1.5 text-xs font-bold text-emerald-800 flex items-center gap-1">
+                          <span className="rounded-lg bg-brand-100 px-3 py-1.5 text-xs font-bold text-brand-800 flex items-center gap-1">
                             <CheckCircle className="h-3.5 w-3.5" /> WhatsApp Sent!
                           </span>
                         ) : (
                           <button
                             type="button"
                             onClick={() => setWhatsappSentId(u.id)}
-                            className="flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white transition-all hover:bg-emerald-500"
+                            className="flex items-center gap-1.5 rounded-lg bg-brand-500 px-3 py-1.5 text-xs font-bold text-white transition-all hover:bg-brand-500"
                           >
                             <Send className="h-3.5 w-3.5" /> Remind on WhatsApp
                           </button>
@@ -546,7 +546,7 @@ export default function StoreDashboard() {
               <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
                 <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Monthly Income / Allocation</span>
                 <div className="mt-2 text-2xl font-extrabold text-zinc-900">₹{monthlySalary.toLocaleString()}</div>
-                <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center gap-1">
+                <div className="mt-1 text-xs text-brand-500 font-semibold flex items-center gap-1">
                   <ArrowUpRight className="h-3.5 w-3.5" /> Direct Deposit
                 </div>
               </div>
@@ -559,9 +559,9 @@ export default function StoreDashboard() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-zinc-200 bg-emerald-950 p-5 text-white shadow-md">
-                <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Net Monthly Savings</span>
-                <div className="mt-2 text-2xl font-extrabold text-emerald-400">₹{netSavings.toLocaleString()}</div>
+              <div className="rounded-2xl border border-zinc-200 bg-brand-950 p-5 text-white shadow-md">
+                <span className="text-xs font-bold text-brand-400 uppercase tracking-wider">Net Monthly Savings</span>
+                <div className="mt-2 text-2xl font-extrabold text-brand-400">₹{netSavings.toLocaleString()}</div>
                 <div className="mt-1 text-xs text-zinc-300 font-medium">
                   {((netSavings / monthlySalary) * 100).toFixed(1)}% savings rate achieved
                 </div>
@@ -585,7 +585,7 @@ export default function StoreDashboard() {
                       placeholder="e.g. Server Hosting & Cloud"
                       value={expenseTitle}
                       onChange={(e) => setExpenseTitle(e.target.value)}
-                      className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-xs text-zinc-900 focus:outline-none focus:border-emerald-500"
+                      className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-xs text-zinc-900 focus:outline-none focus:border-brand-500"
                     />
                   </div>
 
@@ -594,7 +594,7 @@ export default function StoreDashboard() {
                     <select
                       value={expenseCat}
                       onChange={(e) => setExpenseCat(e.target.value as any)}
-                      className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-xs text-zinc-900 focus:outline-none focus:border-emerald-500"
+                      className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-xs text-zinc-900 focus:outline-none focus:border-brand-500"
                     >
                       <option value="Groceries">Office Supplies & Snacks</option>
                       <option value="Rent">Office Lease / Rent</option>
@@ -612,13 +612,13 @@ export default function StoreDashboard() {
                       placeholder="15000"
                       value={expenseAmount}
                       onChange={(e) => setExpenseAmount(e.target.value)}
-                      className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-xs text-zinc-900 focus:outline-none focus:border-emerald-500"
+                      className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-xs text-zinc-900 focus:outline-none focus:border-brand-500"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full rounded-xl bg-emerald-600 py-3 text-xs font-bold text-white shadow-md transition-all hover:bg-emerald-500"
+                    className="w-full rounded-xl bg-brand-500 py-3 text-xs font-bold text-white shadow-md transition-all hover:bg-brand-500"
                   >
                     + Add Expense Entry
                   </button>
@@ -636,7 +636,7 @@ export default function StoreDashboard() {
                   {personalExpenses.map((exp) => (
                     <div key={exp.id} className="flex items-center justify-between rounded-xl border border-zinc-100 bg-zinc-50/70 p-3.5">
                       <div className="flex items-center gap-3">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-100 text-emerald-800 font-bold text-xs">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-100 text-brand-800 font-bold text-xs">
                           {exp.category[0]}
                         </div>
                         <div>

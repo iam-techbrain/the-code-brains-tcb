@@ -142,16 +142,16 @@ export default function VoiceAssistant() {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       {/* Voice Assistant Panel Window when open */}
       {isOpen && (
-        <div className="w-80 sm:w-96 overflow-hidden rounded-3xl border border-emerald-200 bg-white/95 p-5 shadow-2xl backdrop-blur-xl animate-in slide-in-from-bottom-5 duration-200">
+        <div className="w-80 sm:w-96 overflow-hidden rounded-3xl border border-brand-200 bg-white/95 p-5 shadow-2xl backdrop-blur-xl animate-in slide-in-from-bottom-5 duration-200">
           <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-sm">
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-500 text-white shadow-sm">
                 <Sparkles className="h-4 w-4" />
               </div>
               <div>
                 <h4 className="text-xs font-extrabold text-zinc-900">TCB Voice AI Command Center</h4>
-                <div className="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-600">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
+                <div className="flex items-center gap-1.5 text-[10px] font-semibold text-brand-500">
+                  <span className="h-2 w-2 rounded-full bg-brand-500 animate-ping" />
                   Real-time Voice Recognition
                 </div>
               </div>
@@ -169,14 +169,14 @@ export default function VoiceAssistant() {
           </div>
 
           {/* Live Waveform Indicator */}
-          <div className="my-4 flex items-center justify-center gap-1.5 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-4">
+          <div className="my-4 flex items-center justify-center gap-1.5 rounded-2xl border border-brand-100 bg-brand-50/60 p-4">
             {isListening ? (
               <div className="flex items-center gap-1">
-                <span className="h-6 w-1 rounded-full bg-emerald-600 animate-pulse" />
-                <span className="h-10 w-1 rounded-full bg-emerald-500 animate-bounce" />
-                <span className="h-4 w-1 rounded-full bg-teal-400 animate-pulse" />
-                <span className="h-8 w-1 rounded-full bg-emerald-600 animate-bounce" />
-                <span className="h-5 w-1 rounded-full bg-teal-500 animate-pulse" />
+                <span className="h-6 w-1 rounded-full bg-brand-500 animate-pulse" />
+                <span className="h-10 w-1 rounded-full bg-brand-500 animate-bounce" />
+                <span className="h-4 w-1 rounded-full bg-brand-400 animate-pulse" />
+                <span className="h-8 w-1 rounded-full bg-brand-500 animate-bounce" />
+                <span className="h-5 w-1 rounded-full bg-brand-500 animate-pulse" />
               </div>
             ) : (
               <div className="text-xs font-semibold text-zinc-500 flex items-center gap-1.5">
@@ -214,7 +214,7 @@ export default function VoiceAssistant() {
                     const cleanCmd = cmd.replace('🗣️ "', '').replace('"', '').toLowerCase();
                     processCommand(cleanCmd);
                   }}
-                  className="rounded-lg border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-700 hover:border-emerald-500 hover:text-emerald-600 transition-all shadow-2xs"
+                  className="rounded-lg border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-700 hover:border-brand-500 hover:text-brand-500 transition-all shadow-2xs"
                 >
                   {cmd}
                 </button>
@@ -231,14 +231,14 @@ export default function VoiceAssistant() {
         aria-label="TCB Voice AI Assistant"
         className={`group relative flex h-14 w-14 items-center justify-center rounded-full border shadow-xl transition-all duration-300 ${
           isListening
-            ? "border-emerald-400 bg-emerald-600 text-white shadow-emerald-500/40 ring-4 ring-emerald-500/20 scale-110"
-            : "border-emerald-600 bg-emerald-600 text-white hover:bg-emerald-500 hover:scale-105"
+            ? "border-brand-400 bg-brand-500 text-white shadow-brand-500/40 ring-4 ring-brand-500/20 scale-110"
+            : "border-brand-500 bg-brand-500 text-white hover:bg-brand-500 hover:scale-105"
         }`}
       >
         {isListening ? (
           <div className="relative">
             <Mic className="h-6 w-6 animate-pulse" />
-            <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-emerald-300 animate-ping" />
+            <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-brand-300 animate-ping" />
           </div>
         ) : (
           <Mic className="h-6 w-6" />

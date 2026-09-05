@@ -165,7 +165,7 @@ export default function SchoolDashboard() {
         <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
                 <Sparkles className="h-3.5 w-3.5" />
                 TCB School — Education &amp; Fee Management
               </div>
@@ -179,7 +179,7 @@ export default function SchoolDashboard() {
 
             <button
               onClick={() => setShowAddModal(true)}
-              className="flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-xs font-bold text-white shadow-md transition-all hover:bg-emerald-500"
+              className="flex items-center gap-1.5 rounded-xl bg-brand-500 px-4 py-2.5 text-xs font-bold text-white shadow-md transition-all hover:bg-brand-500"
             >
               <Plus className="h-4 w-4" /> Add New Student
             </button>
@@ -191,12 +191,12 @@ export default function SchoolDashboard() {
           <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
             <span className="text-xs font-medium text-zinc-500">Total Enrolled</span>
             <div className="mt-1 text-2xl font-extrabold text-zinc-900">{totalStudents} Students</div>
-            <span className="text-[11px] text-emerald-600 font-semibold">Active Batches</span>
+            <span className="text-[11px] text-brand-500 font-semibold">Active Batches</span>
           </div>
 
           <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
             <span className="text-xs font-medium text-zinc-500">Present Today</span>
-            <div className="mt-1 text-2xl font-extrabold text-emerald-600">{presentTodayCount} Students</div>
+            <div className="mt-1 text-2xl font-extrabold text-brand-500">{presentTodayCount} Students</div>
             <span className="text-[11px] text-zinc-400">
               {((presentTodayCount / totalStudents) * 100).toFixed(0)}% attendance rate
             </span>
@@ -222,7 +222,7 @@ export default function SchoolDashboard() {
             onClick={() => setActiveTab("directory")}
             className={`flex items-center gap-2 border-b-2 py-3.5 px-3 sm:px-4 text-xs font-bold transition-all sm:text-sm shrink-0 whitespace-nowrap ${
               activeTab === "directory"
-                ? "border-emerald-600 text-emerald-600"
+                ? "border-brand-500 text-brand-500"
                 : "border-transparent text-zinc-500 hover:text-zinc-900"
             }`}
           >
@@ -234,7 +234,7 @@ export default function SchoolDashboard() {
             onClick={() => setActiveTab("attendance")}
             className={`flex items-center gap-2 border-b-2 py-3.5 px-3 sm:px-4 text-xs font-bold transition-all sm:text-sm shrink-0 whitespace-nowrap ${
               activeTab === "attendance"
-                ? "border-emerald-600 text-emerald-600"
+                ? "border-brand-500 text-brand-500"
                 : "border-transparent text-zinc-500 hover:text-zinc-900"
             }`}
           >
@@ -246,7 +246,7 @@ export default function SchoolDashboard() {
             onClick={() => setActiveTab("fees")}
             className={`flex items-center gap-2 border-b-2 py-3.5 px-3 sm:px-4 text-xs font-bold transition-all sm:text-sm shrink-0 whitespace-nowrap ${
               activeTab === "fees"
-                ? "border-emerald-600 text-emerald-600"
+                ? "border-brand-500 text-brand-500"
                 : "border-transparent text-zinc-500 hover:text-zinc-900"
             }`}
           >
@@ -310,7 +310,7 @@ export default function SchoolDashboard() {
                       <td className="py-3 font-mono text-zinc-500 whitespace-nowrap">{st.parentPhone}</td>
                       <td className="py-3 whitespace-nowrap">
                         {st.feeStatus === "Paid" ? (
-                          <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-[10px] font-bold text-emerald-800">
+                          <span className="rounded-full bg-brand-100 px-2.5 py-0.5 text-[10px] font-bold text-brand-800">
                             Paid Fully
                           </span>
                         ) : (
@@ -320,7 +320,7 @@ export default function SchoolDashboard() {
                         )}
                       </td>
                       <td className="py-3 text-right whitespace-nowrap">
-                        <span className={`font-bold ${st.attendanceToday === "Present" ? "text-emerald-600" : "text-amber-600"}`}>
+                        <span className={`font-bold ${st.attendanceToday === "Present" ? "text-brand-500" : "text-amber-600"}`}>
                           {st.attendanceToday}
                         </span>
                       </td>
@@ -342,7 +342,7 @@ export default function SchoolDashboard() {
                 <h3 className="text-base font-bold text-zinc-900">Mark Daily Attendance</h3>
                 <p className="text-xs text-zinc-500">Tap status to toggle Present, Absent, or Late</p>
               </div>
-              <span className="text-xs font-semibold text-emerald-600">Date: {new Date().toISOString().split("T")[0]}</span>
+              <span className="text-xs font-semibold text-brand-500">Date: {new Date().toISOString().split("T")[0]}</span>
             </div>
 
             <div className="space-y-3">
@@ -365,8 +365,8 @@ export default function SchoolDashboard() {
                       onClick={() => markAttendance(st.id, "Present")}
                       className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
                         st.attendanceToday === "Present"
-                          ? "bg-emerald-600 text-white shadow-xs border border-emerald-600"
-                          : "bg-white text-zinc-600 font-medium hover:border-emerald-500 hover:text-emerald-600 border border-zinc-200"
+                          ? "bg-brand-500 text-white shadow-xs border border-brand-500"
+                          : "bg-white text-zinc-600 font-medium hover:border-brand-500 hover:text-brand-500 border border-zinc-200"
                       }`}
                     >
                       <CheckCircle className="h-3.5 w-3.5" /> Present
@@ -429,7 +429,7 @@ export default function SchoolDashboard() {
                         Due: ₹{st.pendingFee}
                       </span>
                     ) : (
-                      <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
+                      <span className="rounded-full bg-brand-100 px-3 py-1 text-xs font-bold text-brand-800">
                         ✓ All Fees Paid
                       </span>
                     )}
@@ -444,14 +444,14 @@ export default function SchoolDashboard() {
                           Mark Paid
                         </button>
                         {whatsappSentId === st.id ? (
-                          <span className="rounded-lg bg-emerald-100 px-3 py-1.5 text-xs font-bold text-emerald-800">
+                          <span className="rounded-lg bg-brand-100 px-3 py-1.5 text-xs font-bold text-brand-800">
                             Alert Sent!
                           </span>
                         ) : (
                           <button
                             type="button"
                             onClick={() => setWhatsappSentId(st.id)}
-                            className="flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-emerald-500"
+                            className="flex items-center gap-1.5 rounded-lg bg-brand-500 px-3 py-1.5 text-xs font-bold text-white hover:bg-brand-500"
                           >
                             <Send className="h-3.5 w-3.5" /> WhatsApp Alert
                           </button>
@@ -543,7 +543,7 @@ export default function SchoolDashboard() {
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 rounded-xl bg-emerald-600 py-2.5 text-xs font-bold text-white shadow-md hover:bg-emerald-500"
+                    className="flex-1 rounded-xl bg-brand-500 py-2.5 text-xs font-bold text-white shadow-md hover:bg-brand-500"
                   >
                     Save Student
                   </button>
