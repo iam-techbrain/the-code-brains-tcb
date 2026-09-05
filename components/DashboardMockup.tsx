@@ -10,16 +10,16 @@ const INVOICES = [
 
 /**
  * The signature visual of the page: a glass dashboard preview with a
- * soft emerald glow, a mini revenue chart, and a live invoice feed.
+ * soft brand-blue glow, a mini revenue chart, and a live invoice feed.
  * Purely decorative/static — no real data or interactivity.
  */
 export default function DashboardMockup() {
   return (
-    <div className="relative mx-auto w-full max-w-xl">
+    <div className="relative mx-auto w-full max-w-5xl">
       {/* Ambient glow behind the card */}
       <div
         aria-hidden
-        className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-tr from-emerald-400/30 via-emerald-300/10 to-transparent blur-2xl"
+        className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-tr from-brand-400/30 via-brand-200/15 to-transparent blur-2xl"
       />
 
       <div className="overflow-hidden rounded-2xl border border-zinc-200/80 bg-white/70 shadow-[0_1px_1px_rgba(0,0,0,0.04),0_20px_60px_-20px_rgba(16,185,129,0.25),0_0_0_1px_rgba(0,0,0,0.02)] backdrop-blur-xl">
@@ -48,7 +48,7 @@ export default function DashboardMockup() {
                   $482,300
                 </p>
               </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-600">
+              <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-1 text-xs font-semibold text-brand-500">
                 <TrendingUp className="h-3.5 w-3.5" />
                 18.2%
               </span>
@@ -61,7 +61,7 @@ export default function DashboardMockup() {
                   key={i}
                   className={`flex-1 rounded-t-sm transition-all duration-500 ${
                     i === CHART_BARS.length - 1
-                      ? "bg-gradient-to-t from-emerald-600 to-emerald-400"
+                      ? "bg-gradient-to-t from-brand-600 to-brand-400"
                       : "bg-zinc-100"
                   }`}
                   style={{ height: `${h}%` }}
@@ -91,7 +91,7 @@ export default function DashboardMockup() {
                       <Circle
                         className={`h-1.5 w-1.5 ${
                           inv.status === "Paid"
-                            ? "fill-emerald-500 text-emerald-500"
+                            ? "fill-brand-500 text-brand-500"
                             : "fill-amber-400 text-amber-400"
                         }`}
                       />

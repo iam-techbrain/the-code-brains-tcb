@@ -15,37 +15,37 @@ export const metadata = {
 
 export default function SchoolPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900 antialiased">
+    <main className="min-h-screen bg-brand-50 text-brand-900 antialiased">
       <EcosystemHeader />
       
       {/* TCB SCHOOL HERO SECTION (CLEAN WHITE BACKGROUND) */}
-      <section className="relative overflow-hidden bg-white px-4 pb-16 pt-12 text-slate-900 sm:px-6 sm:pb-20 sm:pt-16 lg:px-8">
+      <section className="relative overflow-hidden bg-brand-50 px-4 pb-16 pt-12 text-brand-900 sm:px-6 sm:pb-20 sm:pt-16 lg:px-8">
         
         {/* Glow Spheres */}
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-emerald-100/50 blur-[120px]"
+          className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-brand-100/50 blur-[120px]"
         />
 
         <div className="mx-auto max-w-5xl text-center relative z-10">
           
           {/* Eyebrow Pill Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-1.5 text-xs font-extrabold text-emerald-950 shadow-xs">
-            <GraduationCap className="h-4 w-4 text-emerald-600" />
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-brand-50 px-4 py-1.5 text-xs font-extrabold text-brand-950 shadow-xs">
+            <GraduationCap className="h-4 w-4 text-brand-500" />
             <span>🎓 TCB SCHOOL — COACHING INSTITUTE MANAGEMENT PLATFORM</span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-tight">
+          <h1 className="text-4xl font-black tracking-tight text-brand-900 sm:text-5xl md:text-6xl leading-tight">
             Automate Attendance, Fees &amp; Parent Alerts{" "}
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 bg-clip-text text-transparent block mt-2">
+            <span className="block mt-2 text-brand-800">
               For Coaching Institutes &amp; Academies
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
-            Maintain student rosters, mark 1-click daily attendance registers, track unpaid tuition dues, and dispatch instant parent WhatsApp alerts — starting at <span className="text-emerald-700 font-extrabold">₹499/month</span> with zero setup overhead.
+            Maintain student rosters, mark 1-click daily attendance registers, track unpaid tuition dues, and dispatch instant parent WhatsApp alerts — starting at <span className="text-brand-700 font-extrabold">₹499/month</span> with zero setup overhead.
           </p>
 
           {/* Action CTAs */}
@@ -54,7 +54,7 @@ export default function SchoolPage() {
               href="https://techschool.thecodebrains.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 px-8 py-4 text-xs font-extrabold text-white shadow-lg shadow-emerald-600/20 transition-all duration-200 hover:scale-105 active:scale-95 sm:w-auto"
+              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-lg bg-brand-500 px-8 py-4 text-xs font-extrabold text-white shadow-md shadow-brand-500/20 transition-all duration-200 hover:bg-brand-600 hover:scale-[1.02] active:scale-95 sm:w-auto"
             >
               <GraduationCap className="h-5 w-5 text-white" />
               <span>Launch Live TCB School Workspace</span>
@@ -63,7 +63,7 @@ export default function SchoolPage() {
 
             <a
               href="#school-dashboard"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-emerald-300 bg-emerald-50 px-7 py-4 text-xs font-bold text-emerald-950 hover:bg-emerald-100 sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-brand-500 bg-white px-7 py-4 text-xs font-bold text-brand-500 hover:bg-brand-50 sm:w-auto"
             >
               <span>Explore Student Register ▾</span>
             </a>
@@ -71,24 +71,24 @@ export default function SchoolPage() {
 
           {/* 3 Core Pillar Feature Cards inside Hero */}
           <div className="mt-12 grid grid-cols-1 gap-4 text-left sm:grid-cols-3">
-            <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-emerald-300 hover:shadow-md">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 font-bold mb-3 border border-emerald-200">
+            <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-brand-300 hover:shadow-md">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 font-bold mb-3 border border-brand-200">
                 <Users className="h-5 w-5" />
               </div>
               <h3 className="text-sm font-bold text-slate-900">Student Directory &amp; Batches</h3>
               <p className="mt-1 text-xs text-slate-600">Store student profiles, roll numbers, guardian contacts &amp; batches.</p>
             </div>
 
-            <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-emerald-300 hover:shadow-md">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-100 text-teal-700 font-bold mb-3 border border-teal-200">
+            <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-brand-300 hover:shadow-md">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 font-bold mb-3 border border-brand-200">
                 <CheckCircle2 className="h-5 w-5" />
               </div>
               <h3 className="text-sm font-bold text-slate-900">1-Click Daily Attendance</h3>
               <p className="mt-1 text-xs text-slate-600">Mark Present/Absent instantly and trigger automated WhatsApp alerts.</p>
             </div>
 
-            <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-emerald-300 hover:shadow-md">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 font-bold mb-3 border border-emerald-200">
+            <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-brand-300 hover:shadow-md">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 font-bold mb-3 border border-brand-200">
                 <Send className="h-5 w-5" />
               </div>
               <h3 className="text-sm font-bold text-slate-900">WhatsApp Fee Recovery</h3>

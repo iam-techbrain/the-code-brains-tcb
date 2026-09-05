@@ -46,8 +46,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "PERIPHERAL-101",
     gstRate: 8,
     badge: "Best Seller",
-    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
-    accentBorder: "border-emerald-200 hover:border-emerald-400",
+    iconBg: "bg-brand-50 text-brand-800 border-brand-200",
+    accentBorder: "border-brand-200 hover:border-brand-400",
   },
   {
     id: "p-2",
@@ -60,8 +60,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "KEYBOARD-502",
     gstRate: 8,
     badge: "Low Stock Alert",
-    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
-    accentBorder: "border-emerald-200 hover:border-emerald-400",
+    iconBg: "bg-brand-50 text-brand-800 border-brand-200",
+    accentBorder: "border-brand-200 hover:border-brand-400",
   },
   {
     id: "p-3",
@@ -74,8 +74,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "CABLE-004",
     gstRate: 8,
     badge: "Reorder Soon",
-    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
-    accentBorder: "border-emerald-200 hover:border-emerald-400",
+    iconBg: "bg-brand-50 text-brand-800 border-brand-200",
+    accentBorder: "border-brand-200 hover:border-brand-400",
   },
   {
     id: "p-4",
@@ -88,8 +88,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "DISPLAY-101",
     gstRate: 8,
     badge: "High Turnover",
-    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
-    accentBorder: "border-emerald-200 hover:border-emerald-400",
+    iconBg: "bg-brand-50 text-brand-800 border-brand-200",
+    accentBorder: "border-brand-200 hover:border-brand-400",
   },
   {
     id: "p-5",
@@ -102,8 +102,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "DEV-BAR-99",
     gstRate: 8,
     badge: "POS Hardware",
-    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
-    accentBorder: "border-emerald-200 hover:border-emerald-400",
+    iconBg: "bg-brand-50 text-brand-800 border-brand-200",
+    accentBorder: "border-brand-200 hover:border-brand-400",
   },
   {
     id: "p-6",
@@ -116,8 +116,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "EDU-BND-10",
     gstRate: 0,
     badge: "TCB School Kit",
-    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
-    accentBorder: "border-emerald-200 hover:border-emerald-400",
+    iconBg: "bg-brand-50 text-brand-800 border-brand-200",
+    accentBorder: "border-brand-200 hover:border-brand-400",
   },
   {
     id: "p-7",
@@ -130,8 +130,8 @@ const MASTER_PRODUCT_DROPDOWN: ProductCardItem[] = [
     sku: "PAP-80MM",
     gstRate: 12,
     badge: "Bulk Stock",
-    iconBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
-    accentBorder: "border-emerald-200 hover:border-emerald-400",
+    iconBg: "bg-brand-50 text-brand-800 border-brand-200",
+    accentBorder: "border-brand-200 hover:border-brand-400",
   },
 ];
 
@@ -182,8 +182,8 @@ export default function ProductCardShowcase() {
         
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-xs font-bold text-emerald-800 shadow-xs">
-            <Sparkles className="h-4 w-4 text-emerald-600 animate-pulse" />
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-xs font-bold text-brand-800 shadow-xs">
+            <Sparkles className="h-4 w-4 text-brand-500 animate-pulse" />
             Interactive Product Catalog &amp; Card Manager
           </div>
           <h2 className="text-3xl font-black tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
@@ -203,14 +203,14 @@ export default function ProductCardShowcase() {
             {/* Dropdown Selector */}
             <div className="flex-1">
               <label className="mb-2 flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-zinc-700">
-                <Layers className="h-4 w-4 text-emerald-600" />
+                <Layers className="h-4 w-4 text-brand-500" />
                 Select Product Item from Menu:
               </label>
               <div className="relative">
                 <select
                   value={selectedDropdownId}
                   onChange={(e) => setSelectedDropdownId(e.target.value)}
-                  className="w-full appearance-none rounded-2xl border border-zinc-300 bg-white px-4 py-3.5 pr-10 text-xs font-bold text-zinc-900 shadow-xs focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                  className="w-full appearance-none rounded-2xl border border-zinc-300 bg-white px-4 py-3.5 pr-10 text-xs font-bold text-zinc-900 shadow-xs focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
                 >
                   {MASTER_PRODUCT_DROPDOWN.map((prod) => (
                     <option key={prod.id} value={prod.id}>
@@ -226,7 +226,7 @@ export default function ProductCardShowcase() {
             <button
               type="button"
               onClick={handleAddFromDropdown}
-              className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#059669] to-emerald-700 px-7 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:from-emerald-500 hover:to-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20"
+              className="flex items-center justify-center gap-2 rounded-lg bg-brand-500 px-7 py-3.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/20"
             >
               <Plus className="h-4 w-4" />
               <span>Add Product to Card List</span>
@@ -247,8 +247,8 @@ export default function ProductCardShowcase() {
                   onClick={() => setSelectedCategory(cat)}
                   className={`rounded-full px-4 py-1.5 text-xs transition-all ${
                     selectedCategory === cat
-                      ? "bg-emerald-600 text-white font-bold shadow-xs border border-emerald-600"
-                      : "bg-white text-zinc-600 font-medium hover:border-emerald-500 hover:text-emerald-600 border border-zinc-200"
+                      ? "bg-brand-500 text-white font-bold shadow-xs border border-brand-500"
+                      : "bg-white text-zinc-600 font-medium hover:border-brand-500 hover:text-brand-500 border border-zinc-200"
                   }`}
                 >
                   {cat}
@@ -259,8 +259,8 @@ export default function ProductCardShowcase() {
 
           {/* Toast Notification Banner */}
           {notificationMsg && (
-            <div className="mt-4 flex items-center gap-2.5 rounded-2xl bg-emerald-100 p-3.5 text-xs font-bold text-emerald-800 border border-emerald-300 shadow-2xs">
-              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-700" />
+            <div className="mt-4 flex items-center gap-2.5 rounded-2xl bg-brand-100 p-3.5 text-xs font-bold text-brand-800 border border-brand-300 shadow-2xs">
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-brand-700" />
               <span>{notificationMsg}</span>
             </div>
           )}
@@ -274,7 +274,7 @@ export default function ProductCardShowcase() {
             <span className="text-xs font-extrabold uppercase tracking-wider text-zinc-400">
               Active Product Cards ({filteredCards.length})
             </span>
-            <span className="text-xs text-emerald-600 font-semibold">
+            <span className="text-xs text-brand-500 font-semibold">
               ✨ Dynamic Live Cards
             </span>
           </div>
@@ -308,8 +308,8 @@ export default function ProductCardShowcase() {
                             <AlertTriangle className="h-3 w-3 text-amber-700" /> Low Stock ({card.stock})
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-0.5 text-[10px] font-extrabold text-emerald-900 border border-emerald-200">
-                            <CheckCircle2 className="h-3 w-3 text-emerald-700" /> Stock: {card.stock} units
+                          <span className="inline-flex items-center gap-1 rounded-full bg-brand-100 px-2.5 py-0.5 text-[10px] font-extrabold text-brand-900 border border-brand-200">
+                            <CheckCircle2 className="h-3 w-3 text-brand-700" /> Stock: {card.stock} units
                           </span>
                         )}
                       </div>
@@ -322,7 +322,7 @@ export default function ProductCardShowcase() {
                           <Package className="h-6 w-6" />
                         </div>
                         <div>
-                          <h3 className="text-base font-extrabold tracking-tight text-zinc-900 group-hover:text-emerald-700">
+                          <h3 className="text-base font-extrabold tracking-tight text-zinc-900 group-hover:text-brand-700">
                             {card.name}
                           </h3>
                           <div className="mt-1 flex items-center gap-2 font-mono text-[11px] text-zinc-400">
@@ -337,7 +337,7 @@ export default function ProductCardShowcase() {
                       <div className="mt-5 grid grid-cols-2 gap-2 rounded-2xl bg-zinc-50/80 p-3 text-xs border border-zinc-100">
                         <div>
                           <span className="text-[10px] font-medium text-zinc-400 block">Retail Price</span>
-                          <span className="font-black text-emerald-600 text-base">₹{card.price}</span>
+                          <span className="font-black text-brand-500 text-base">₹{card.price}</span>
                         </div>
                         <div>
                           <span className="text-[10px] font-medium text-zinc-400 block">Gross Profit</span>
@@ -353,9 +353,9 @@ export default function ProductCardShowcase() {
                           setNotificationMsg(`Added "${card.name}" to 1-click POS receipt!`);
                           setTimeout(() => setNotificationMsg(null), 3000);
                         }}
-                        className="flex items-center gap-1.5 rounded-xl bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white transition-all hover:bg-emerald-500 shadow-2xs"
+                        className="flex items-center gap-1.5 rounded-xl bg-brand-500 px-3.5 py-2 text-xs font-bold text-white transition-all hover:bg-brand-500 shadow-2xs"
                       >
-                        <ShoppingCart className="h-3.5 w-3.5 text-emerald-400" />
+                        <ShoppingCart className="h-3.5 w-3.5 text-brand-400" />
                         POS Bill Add
                       </button>
 

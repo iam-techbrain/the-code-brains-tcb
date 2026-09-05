@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import VoiceAssistant from "@/components/VoiceAssistant";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -15,9 +22,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TCB — Industry-Specific Micro-SaaS Ecosystem",
+  title: "TCB — Custom AI Agents, Workflow Automation & Multi-SaaS Studio",
   description:
-    "One simple dashboard for inventory, invoices, student attendance & fee alerts. Purpose-built for Kirana, Retail Stores & Coaching Schools.",
+    "We design, build, and deploy autonomous AI agents, n8n & Make automation pipelines, and specialized AI-driven SaaS solutions.",
   icons: {
     icon: "/tcb-logo.png",
     shortcut: "/tcb-logo.png",
@@ -25,16 +32,14 @@ export const metadata: Metadata = {
   },
 };
 
-import VoiceAssistant from "@/components/VoiceAssistant";
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="font-sans">
+    <html lang="en" className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}>
+      <body className="font-sans antialiased">
         {children}
         <VoiceAssistant />
       </body>

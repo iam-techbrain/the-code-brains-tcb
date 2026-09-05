@@ -68,11 +68,11 @@ export default function HowItWorks() {
       <div className="mx-auto max-w-7xl">
         {/* Section Title */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50/80 px-3.5 py-1 text-xs font-semibold text-emerald-700 shadow-sm">
-            <Sparkles className="h-3.5 w-3.5 text-emerald-600" />
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50/80 px-3.5 py-1 text-xs font-semibold text-brand-700 shadow-sm">
+            <Sparkles className="h-3.5 w-3.5 text-brand-500" />
             Simple 3-Step Process
           </div>
-          <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
             How TCB Store works in your daily routine
           </h2>
           <p className="mt-4 text-base leading-relaxed text-zinc-500 sm:text-lg">
@@ -85,7 +85,7 @@ export default function HowItWorks() {
           {/* Connector Line (Desktop Only) */}
           <div
             aria-hidden
-            className="pointer-events-none absolute left-1/6 right-1/6 top-24 hidden h-0.5 border-t-2 border-dashed border-emerald-200 lg:block"
+            className="pointer-events-none absolute left-1/6 right-1/6 top-24 hidden h-0.5 border-t-2 border-dashed border-brand-200 lg:block"
           />
 
           {STEPS.map((step, idx) => {
@@ -93,21 +93,21 @@ export default function HowItWorks() {
             return (
               <div
                 key={step.number}
-                className="group relative flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-950/5"
+                className="group relative flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-900/5"
               >
                 <div>
                   {/* Top Header: Step Badge + Number */}
                   <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-200 bg-emerald-50/80 px-2.5 py-1 text-xs font-semibold text-emerald-700">
+                    <span className="inline-flex items-center gap-1.5 rounded-md border border-brand-200 bg-brand-50/80 px-2.5 py-1 text-xs font-semibold text-brand-700">
                       {step.badgeText}
                     </span>
-                    <span className="font-mono text-3xl font-extrabold text-zinc-200 transition-colors group-hover:text-emerald-500">
+                    <span className="font-mono text-3xl font-extrabold text-zinc-200 transition-colors group-hover:text-brand-500">
                       {step.number}
                     </span>
                   </div>
 
                   {/* Icon Circle */}
-                  <div className="mt-6 flex h-14 w-14 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-800 transition-colors duration-200 group-hover:border-emerald-300 group-hover:bg-emerald-500 group-hover:text-white">
+                  <div className="mt-6 flex h-14 w-14 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-800 transition-colors duration-200 group-hover:border-brand-300 group-hover:bg-brand-500 group-hover:text-white">
                     <Icon className="h-7 w-7" />
                   </div>
 
@@ -115,7 +115,7 @@ export default function HowItWorks() {
                   <h3 className="mt-6 text-xl font-semibold tracking-tight text-zinc-900">
                     {step.title}
                   </h3>
-                  <span className="text-xs font-medium text-emerald-600">
+                  <span className="text-xs font-medium text-brand-500">
                     {step.subtitle}
                   </span>
 
@@ -128,7 +128,7 @@ export default function HowItWorks() {
                   <ul className="mt-6 flex flex-col gap-2.5 border-t border-zinc-100 pt-5">
                     {step.highlights.map((item) => (
                       <li key={item} className="flex items-start gap-2.5 text-xs text-zinc-700">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -136,7 +136,7 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Card Action Link */}
-                <div className="mt-8 flex items-center gap-1 text-xs font-semibold text-zinc-900 group-hover:text-emerald-600">
+                <div className="mt-8 flex items-center gap-1 text-xs font-semibold text-zinc-900 group-hover:text-brand-500">
                   <span>Learn more about Step {idx + 1}</span>
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                 </div>
@@ -149,7 +149,7 @@ export default function HowItWorks() {
         <div className="mt-14 text-center">
           <a
             href="#pricing"
-            className="inline-flex items-center gap-2 rounded-2xl bg-emerald-600 px-7 py-3.5 text-xs font-bold text-white shadow-md transition-all hover:bg-emerald-500 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+            className="inline-flex items-center gap-2 rounded-2xl bg-brand-500 px-7 py-3.5 text-xs font-bold text-white shadow-md transition-all hover:bg-brand-500 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           >
             Get Started Free (No Credit Card)
             <ArrowRight className="h-4 w-4" />

@@ -24,11 +24,11 @@ export default function InteractiveShowcase() {
       <div className="relative mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-1.5 text-xs font-bold text-emerald-800 shadow-xs">
-            <Sparkles className="h-3.5 w-3.5 text-emerald-600" />
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-brand-50 px-4 py-1.5 text-xs font-bold text-brand-800 shadow-xs">
+            <Sparkles className="h-3.5 w-3.5 text-brand-500" />
             <span>Platform Feature Tour</span>
           </div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             See How TCB Cloud SaaS Powers Your Operations
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
@@ -44,7 +44,7 @@ export default function InteractiveShowcase() {
               onClick={() => setActiveTab("school")}
               className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-extrabold transition-all sm:text-sm whitespace-nowrap ${
                 activeTab === "school"
-                  ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/20"
+                  ? "bg-gradient-to-r from-brand-500 to-brand-700 text-white shadow-md shadow-brand-500/20"
                   : "text-slate-700 hover:text-slate-900 hover:bg-white"
               }`}
             >
@@ -56,7 +56,7 @@ export default function InteractiveShowcase() {
               onClick={() => setActiveTab("whatsapp")}
               className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-extrabold transition-all sm:text-sm whitespace-nowrap ${
                 activeTab === "whatsapp"
-                  ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/20"
+                  ? "bg-gradient-to-r from-brand-500 to-brand-700 text-white shadow-md shadow-brand-500/20"
                   : "text-slate-700 hover:text-slate-900 hover:bg-white"
               }`}
             >
@@ -68,7 +68,7 @@ export default function InteractiveShowcase() {
               onClick={() => setActiveTab("ai")}
               className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-extrabold transition-all sm:text-sm whitespace-nowrap ${
                 activeTab === "ai"
-                  ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/20"
+                  ? "bg-gradient-to-r from-brand-500 to-brand-700 text-white shadow-md shadow-brand-500/20"
                   : "text-slate-700 hover:text-slate-900 hover:bg-white"
               }`}
             >
@@ -83,7 +83,7 @@ export default function InteractiveShowcase() {
           <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50/80 p-6 sm:p-10 shadow-xs">
             <div className="grid gap-8 lg:grid-cols-12 items-center">
               <div className="lg:col-span-6 space-y-4">
-                <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-extrabold text-emerald-800 border border-emerald-200">
+                <span className="rounded-full bg-brand-100 px-3 py-1 text-xs font-extrabold text-brand-800 border border-brand-200">
                   LIVE WORKSPACE AT TECHSCHOOL.THECODEBRAINS.COM
                 </span>
                 <h3 className="text-2xl font-black text-slate-900 sm:text-3xl">
@@ -95,15 +95,15 @@ export default function InteractiveShowcase() {
 
                 <div className="space-y-2.5 pt-2">
                   <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
+                    <CheckCircle2 className="h-4 w-4 text-brand-500 shrink-0" />
                     <span>Instant student enrolment with Guardian WhatsApp number</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
+                    <CheckCircle2 className="h-4 w-4 text-brand-500 shrink-0" />
                     <span>1-Click attendance marking with automated parent alert</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
+                    <CheckCircle2 className="h-4 w-4 text-brand-500 shrink-0" />
                     <span>Automated UPI payment links sent to parents via WhatsApp</span>
                   </div>
                 </div>
@@ -113,7 +113,7 @@ export default function InteractiveShowcase() {
                     href="https://techschool.thecodebrains.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 px-7 py-3.5 text-xs font-extrabold text-white transition-all hover:scale-105 shadow-md shadow-emerald-600/20"
+                    className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-brand-500 via-brand-600 to-brand-800 px-7 py-3.5 text-xs font-extrabold text-white transition-all hover:scale-105 shadow-md shadow-brand-500/20"
                   >
                     <Zap className="h-4 w-4" />
                     <span>Open TCB School Workspace</span>
@@ -126,10 +126,10 @@ export default function InteractiveShowcase() {
               <div className="lg:col-span-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
                   <div className="flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-brand-500 animate-pulse" />
                     <span className="text-xs font-bold text-slate-900">Class 12 Batch — Today&apos;s Roll Call</span>
                   </div>
-                  <span className="text-[10px] font-extrabold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-200">
+                  <span className="text-[10px] font-extrabold text-brand-800 bg-brand-100 px-2 py-0.5 rounded border border-brand-200">
                     96% Present
                   </span>
                 </div>
@@ -140,7 +140,7 @@ export default function InteractiveShowcase() {
                       <div className="font-bold text-slate-900">Aarav Sharma (Roll #101)</div>
                       <div className="text-[10px] text-slate-500">Parent: +91 98765 43210</div>
                     </div>
-                    <span className="rounded bg-emerald-100 px-2 py-1 text-[10px] font-extrabold text-emerald-800 border border-emerald-200">
+                    <span className="rounded bg-brand-100 px-2 py-1 text-[10px] font-extrabold text-brand-800 border border-brand-200">
                       Present (WhatsApp Alert Sent)
                     </span>
                   </div>
@@ -150,7 +150,7 @@ export default function InteractiveShowcase() {
                       <div className="font-bold text-slate-900">Priya Verma (Roll #102)</div>
                       <div className="text-[10px] text-slate-500">Parent: +91 98123 45678</div>
                     </div>
-                    <span className="rounded bg-emerald-100 px-2 py-1 text-[10px] font-extrabold text-emerald-800 border border-emerald-200">
+                    <span className="rounded bg-brand-100 px-2 py-1 text-[10px] font-extrabold text-brand-800 border border-brand-200">
                       Present (Fee Receipt Paid)
                     </span>
                   </div>
@@ -175,13 +175,13 @@ export default function InteractiveShowcase() {
           <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50/80 p-6 sm:p-10 shadow-xs">
             <div className="mx-auto max-w-xl">
               <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
-                <div className="flex items-center gap-3 border-b border-emerald-700 bg-gradient-to-r from-emerald-600 to-teal-600 p-4 text-white">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white font-black text-emerald-700 border border-emerald-200">
+                <div className="flex items-center gap-3 border-b border-brand-700 bg-gradient-to-r from-brand-500 to-brand-700 p-4 text-white">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white font-black text-brand-700 border border-brand-200">
                     TCB
                   </div>
                   <div>
                     <div className="text-sm font-extrabold text-white">TCB WhatsApp Automation Engine</div>
-                    <div className="text-[11px] text-emerald-100">Verified Business Cloud API</div>
+                    <div className="text-[11px] text-brand-100">Verified Business Cloud API</div>
                   </div>
                 </div>
 
@@ -191,7 +191,7 @@ export default function InteractiveShowcase() {
                   </div>
 
                   <div className="max-w-[90%] self-start rounded-2xl rounded-tl-none bg-white p-4 text-xs leading-relaxed text-slate-700 border border-slate-200 shadow-xs">
-                    <p className="font-bold text-emerald-700">
+                    <p className="font-bold text-brand-700">
                       Dear Guardian, 👋
                     </p>
                     <p className="mt-2 text-slate-700">
@@ -201,11 +201,11 @@ export default function InteractiveShowcase() {
                       Pay instantly with 1-click UPI to receive official PDF receipt:
                     </p>
 
-                    <div className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-center">
-                      <span className="text-[10px] font-extrabold uppercase text-emerald-800 block mb-1">
+                    <div className="mt-3 rounded-xl border border-brand-200 bg-brand-50 p-3 text-center">
+                      <span className="text-[10px] font-extrabold uppercase text-brand-800 block mb-1">
                         1-Click UPI Payment Link Active
                       </span>
-                      <div className="w-full rounded-lg bg-emerald-600 py-2 text-xs font-black text-white shadow-xs">
+                      <div className="w-full rounded-lg bg-brand-500 py-2 text-xs font-black text-white shadow-xs">
                         Pay ₹4,500 via UPI
                       </div>
                     </div>
@@ -221,21 +221,21 @@ export default function InteractiveShowcase() {
           <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50/80 p-6 sm:p-10 shadow-xs">
             <div className="grid gap-6 sm:grid-cols-3">
               <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-2 shadow-xs">
-                <Bot className="h-6 w-6 text-emerald-600" />
+                <Bot className="h-6 w-6 text-brand-500" />
                 <h4 className="text-sm font-extrabold text-slate-900">RAG Query Agent</h4>
                 <p className="text-xs text-slate-600">
                   Instant answer engine for student doubts &amp; syllabus notes based on custom course vector store.
                 </p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-2 shadow-xs">
-                <BarChart3 className="h-6 w-6 text-emerald-600" />
+                <BarChart3 className="h-6 w-6 text-brand-500" />
                 <h4 className="text-sm font-extrabold text-slate-900">Fee Recovery Bot</h4>
                 <p className="text-xs text-slate-600">
                   Schedules polite, automated reminder sequences over WhatsApp without manual follow-up staff.
                 </p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-2 shadow-xs">
-                <ShieldCheck className="h-6 w-6 text-emerald-600" />
+                <ShieldCheck className="h-6 w-6 text-brand-500" />
                 <h4 className="text-sm font-extrabold text-slate-900">Tenant Cloud Privacy</h4>
                 <p className="text-xs text-slate-600">
                   Row-level security and schema isolation so your institute data never leaks to third parties.

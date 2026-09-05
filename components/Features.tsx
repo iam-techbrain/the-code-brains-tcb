@@ -103,11 +103,11 @@ export default function Features() {
         
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-1.5 text-xs font-bold text-emerald-800 shadow-xs">
-            <Cpu className="h-4 w-4 text-emerald-600 animate-pulse" />
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-brand-50 px-4 py-1.5 text-xs font-bold text-brand-800 shadow-xs">
+            <Cpu className="h-4 w-4 text-brand-500 animate-pulse" />
             AI AGENT ENGINEERING &amp; WORKFLOW ENGINE
           </div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Autonomous AI Capabilities Built for <span className="nuvertos-gradient-text">Modern Business Scale</span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
@@ -123,8 +123,8 @@ export default function Features() {
               onClick={() => setActiveCategory(cat)}
               className={`rounded-xl px-5 py-2 text-xs font-bold transition-all ${
                 activeCategory === cat
-                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20 scale-105"
-                  : "bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-800"
+                  ? "bg-brand-500 text-white shadow-md shadow-brand-500/20 scale-105"
+                  : "bg-slate-100 text-slate-700 hover:bg-brand-50 hover:text-brand-800"
               }`}
             >
               {cat}
@@ -139,11 +139,11 @@ export default function Features() {
             return (
               <div
                 key={capability.title}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-emerald-400 hover:shadow-xl"
+                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-xl"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-200/80 transition-transform group-hover:scale-105">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 border border-brand-200/80 transition-transform group-hover:scale-105">
                       <IconComponent className="h-6 w-6" />
                     </div>
                     <span className="rounded-full bg-slate-100 px-3 py-1 text-[10px] font-bold text-slate-600 border border-slate-200">
@@ -151,7 +151,7 @@ export default function Features() {
                     </span>
                   </div>
 
-                  <h3 className="mt-5 text-xl font-bold tracking-tight text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  <h3 className="mt-5 text-xl font-bold tracking-tight text-slate-900 group-hover:text-brand-700 transition-colors">
                     {capability.title}
                   </h3>
                   <p className="mt-2 text-xs leading-relaxed text-slate-600">
@@ -161,10 +161,10 @@ export default function Features() {
 
                 <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4">
                   <div>
-                    <div className="text-xl font-black text-emerald-700">{capability.stat}</div>
+                    <div className="text-xl font-black text-brand-700">{capability.stat}</div>
                     <div className="text-[10px] font-semibold text-slate-500">{capability.statLabel}</div>
                   </div>
-                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
                     <CheckCircle2 className="h-4 w-4" />
                   </span>
                 </div>

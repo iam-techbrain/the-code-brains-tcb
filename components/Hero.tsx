@@ -1,202 +1,151 @@
 "use client";
 
-import Link from "next/link";
-import { 
-  ArrowRight, 
-  Boxes, 
-  GraduationCap, 
-  Sparkles, 
-  ShieldCheck, 
-  CheckCircle2, 
-  Zap, 
-  Bot, 
-  Workflow, 
-  Activity, 
-  Gauge, 
-  Clock, 
-  Building2,
-  ChevronRight
+import {
+  ArrowRight,
+  Boxes,
+  ShieldCheck,
+  CheckCircle2,
+  Bot,
+  Workflow,
+  ChevronRight,
 } from "lucide-react";
 import DashboardMockup from "@/components/DashboardMockup";
+import AgentReportPanel from "@/components/AgentReportPanel";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white px-4 pb-16 pt-12 text-slate-900 sm:px-6 sm:pb-24 sm:pt-16 lg:px-8">
-      {/* Ambient Glowing Background Accents */}
+    <section className="relative overflow-hidden px-4 pb-16 pt-8 text-slate-900 sm:px-6 sm:pb-24 sm:pt-10 lg:px-8">
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-emerald-100/60 via-teal-100/40 to-cyan-100/30 blur-[130px]"
+        className="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-brand-400/30 blur-3xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute left-10 top-1/4 -z-10 h-[300px] w-[300px] rounded-full bg-emerald-200/30 blur-[100px]"
+        className="pointer-events-none absolute -right-16 top-24 h-96 w-96 rounded-full bg-violet-300/40 blur-3xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute right-10 top-1/3 -z-10 h-[350px] w-[350px] rounded-full bg-teal-200/30 blur-[110px]"
+        className="pointer-events-none absolute bottom-10 left-1/3 h-64 w-64 rounded-full bg-cyan-200/50 blur-3xl"
       />
 
-      {/* Modern Engineering Dot Grid */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(#059669_0.7px,transparent_0.7px)] [background-size:28px_28px] opacity-15"
-      />
-
-      <div className="mx-auto max-w-7xl relative z-10">
-        
-        {/* Main Hero Container */}
-        <div className="mx-auto max-w-4xl text-center">
-          
-          {/* Eyebrow Pill Badge */}
-          <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-emerald-300 bg-emerald-50/90 px-4 py-1.5 text-xs font-extrabold text-emerald-900 shadow-xs backdrop-blur-md transition-all hover:scale-105">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-600" />
-            </span>
-            <Sparkles className="h-4 w-4 text-emerald-600" />
-            <span>🚀 Next-Gen AI Automation &amp; Multi-SaaS Engineering Studio</span>
-          </div>
-
-          {/* Main Headline */}
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15]">
-            Scale Faster, Work Less:{" "}
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 bg-clip-text text-transparent block mt-2">
-              Custom AI Agents &amp; Automated Workflows
-            </span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
-            We design, build, and deploy autonomous AI agents, advanced n8n &amp; Make automation pipelines, and specialized AI-driven SaaS solutions. Eliminate manual overhead and scale your business with intelligent autonomous systems.
-          </p>
-
-          {/* Core Feature Pillars Badges */}
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 max-w-3xl mx-auto text-xs font-bold">
-            <div className="flex items-center justify-center gap-2 rounded-2xl border border-emerald-200/80 bg-white/90 px-3.5 py-3 text-slate-800 shadow-xs hover:border-emerald-400 hover:bg-emerald-50/50 transition-all hover:-translate-y-0.5">
-              <Bot className="h-4 w-4 text-emerald-600 shrink-0" />
-              <span>Autonomous AI Agents</span>
-            </div>
-            <div className="flex items-center justify-center gap-2 rounded-2xl border border-emerald-200/80 bg-white/90 px-3.5 py-3 text-slate-800 shadow-xs hover:border-emerald-400 hover:bg-emerald-50/50 transition-all hover:-translate-y-0.5">
-              <Workflow className="h-4 w-4 text-teal-600 shrink-0" />
-              <span>n8n &amp; Make Workflows</span>
-            </div>
-            <div className="flex items-center justify-center gap-2 rounded-2xl border border-emerald-200/80 bg-white/90 px-3.5 py-3 text-slate-800 shadow-xs hover:border-emerald-400 hover:bg-emerald-50/50 transition-all hover:-translate-y-0.5">
-              <Boxes className="h-4 w-4 text-emerald-600 shrink-0" />
-              <span>Custom RAG &amp; LLMs</span>
-            </div>
-            <div className="flex items-center justify-center gap-2 rounded-2xl border border-emerald-200/80 bg-white/90 px-3.5 py-3 text-slate-800 shadow-xs hover:border-emerald-400 hover:bg-emerald-50/50 transition-all hover:-translate-y-0.5">
-              <ShieldCheck className="h-4 w-4 text-teal-600 shrink-0" />
-              <span>Voice AI &amp; Telephony</span>
-            </div>
-          </div>
-
-          {/* Dual CTAs */}
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            {/* Primary CTA */}
-            <a
-              href="#contact"
-              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 px-8 py-4 text-xs font-extrabold text-white shadow-xl shadow-emerald-600/25 transition-all duration-200 hover:scale-105 active:scale-95 sm:w-auto"
-            >
-              <Sparkles className="h-5 w-5 text-white" />
-              <span>Get Custom AI Solution</span>
-              <ArrowRight className="h-4 w-4 text-white transition-transform duration-200 group-hover:translate-x-1" />
-            </a>
-
-            {/* Secondary CTA */}
-            <a
-              href="#ai-agents-catalog"
-              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl border border-emerald-300 bg-emerald-50/90 px-7 py-4 text-xs font-extrabold text-emerald-950 shadow-sm transition-all duration-200 hover:bg-emerald-100 active:scale-95 sm:w-auto"
-            >
-              <Bot className="h-4.5 w-4.5 text-emerald-700" />
-              <span>Browse 10 AI Agents Catalog</span>
-              <span className="rounded bg-emerald-600 px-2 py-0.5 text-[10px] font-extrabold text-white">
-                CATALOG
+      <div className="relative z-10 mx-auto max-w-7xl rounded-[2rem] border border-white/80 bg-white/50 p-5 shadow-soft backdrop-blur-md sm:p-8 lg:p-10">
+        <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-10">
+          <div className="flex flex-col justify-center lg:col-span-7">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white/90 px-3.5 py-1.5 text-xs font-semibold text-brand-700 shadow-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-500" />
               </span>
-            </a>
+              Next-Gen AI Automation &amp; Multi-SaaS Engineering Studio
+            </div>
+
+            <h1 className="font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem] lg:leading-[1.12]">
+              Let AI do the work.{" "}
+              <span className="headline-glow mt-1 block">
+                Agents that run. Workflows that finish.
+              </span>
+            </h1>
+
+            <p className="mt-5 max-w-2xl text-[15px] leading-7 text-slate-600 sm:text-base">
+              We design, build, and deploy autonomous AI agents, advanced n8n &amp; Make automation pipelines, and specialized AI-driven SaaS solutions. Eliminate manual overhead and scale your business with intelligent autonomous systems.
+            </p>
+
+            <ul className="mt-6 space-y-3 text-sm font-medium text-slate-700">
+              {[
+                "AI Agent & Workflow Engineering",
+                "Enterprise Multi-Tenant SaaS",
+                "Eliminate Repetitive Manual Work",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2.5">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-500 text-white">
+                    <CheckCircle2 className="h-3.5 w-3.5" />
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 grid grid-cols-2 gap-3 text-xs font-semibold sm:grid-cols-2">
+              <div className="flex items-center gap-2 rounded-2xl border border-white bg-white/90 px-3.5 py-3 text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:shadow-card">
+                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                  <Bot className="h-4 w-4" />
+                </span>
+                Autonomous AI Agents
+              </div>
+              <div className="flex items-center gap-2 rounded-2xl border border-white bg-white/90 px-3.5 py-3 text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:shadow-card">
+                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                  <Workflow className="h-4 w-4" />
+                </span>
+                n8n &amp; Make Workflows
+              </div>
+              <div className="flex items-center gap-2 rounded-2xl border border-white bg-white/90 px-3.5 py-3 text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:shadow-card">
+                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
+                  <Boxes className="h-4 w-4" />
+                </span>
+                Custom RAG &amp; LLMs
+              </div>
+              <div className="flex items-center gap-2 rounded-2xl border border-white bg-white/90 px-3.5 py-3 text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:shadow-card">
+                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                  <ShieldCheck className="h-4 w-4" />
+                </span>
+                Voice AI &amp; Telephony
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href="#contact"
+                className="btn-shine inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 via-indigo-500 to-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lift transition hover:brightness-110"
+              >
+                Get Custom AI Solution
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#ai-agents-catalog"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-brand-200 bg-white/90 px-6 py-3.5 text-sm font-semibold text-brand-600 shadow-sm transition hover:border-brand-400 hover:bg-white"
+              >
+                <Bot className="h-4 w-4" />
+                Browse 10 AI Agents Catalog
+              </a>
+            </div>
           </div>
 
-          {/* Highlight Bullets */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-600">
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-              AI Agent &amp; Workflow Engineering
-            </span>
-            <span className="text-slate-300">•</span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-              Enterprise Multi-Tenant SaaS
-            </span>
-            <span className="text-slate-300">•</span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-4 w-4 text-teal-600" />
-              Eliminate Repetitive Manual Work
-            </span>
-          </div>
-
-          {/* High-Impact Proof Counter Bar */}
-          <div className="mt-12 grid grid-cols-2 gap-4 rounded-3xl border border-slate-200/80 bg-white/80 p-5 shadow-sm backdrop-blur-md sm:grid-cols-4 max-w-4xl mx-auto">
-            <div className="text-center border-r border-slate-100 last:border-r-0">
-              <div className="flex items-center justify-center gap-1 text-emerald-700 font-extrabold text-lg sm:text-xl">
-                <Activity className="h-4 w-4 text-emerald-600" />
-                <span>50,000+</span>
-              </div>
-              <p className="text-[11px] font-medium text-slate-500 mt-0.5">Automated Actions</p>
+          <div className="relative lg:col-span-5">
+            <div className="pointer-events-none absolute -inset-3 rounded-[2rem] glow-ring opacity-70 blur-xl" />
+            <div className="animate-float-slow absolute -left-3 top-10 z-20 hidden rounded-2xl border border-white bg-white px-3 py-2 shadow-card sm:block">
+              <p className="text-[10px] font-semibold text-slate-500">Agent runs</p>
+              <p className="font-display text-sm font-bold text-brand-600">13.4k today</p>
             </div>
-
-            <div className="text-center border-r border-slate-100 last:border-r-0">
-              <div className="flex items-center justify-center gap-1 text-emerald-700 font-extrabold text-lg sm:text-xl">
-                <Gauge className="h-4 w-4 text-teal-600" />
-                <span>99.95%</span>
-              </div>
-              <p className="text-[11px] font-medium text-slate-500 mt-0.5">AWS Cloud Uptime</p>
+            <div className="animate-float absolute -right-2 bottom-24 z-20 hidden rounded-2xl border border-white bg-white px-3 py-2 shadow-card sm:block">
+              <p className="text-[10px] font-semibold text-emerald-600">n8n live</p>
+              <p className="font-display text-sm font-bold text-slate-900">98.6% success</p>
             </div>
-
-            <div className="text-center border-r border-slate-100 last:border-r-0">
-              <div className="flex items-center justify-center gap-1 text-emerald-700 font-extrabold text-lg sm:text-xl">
-                <Clock className="h-4 w-4 text-emerald-600" />
-                <span>&lt; 500ms</span>
-              </div>
-              <p className="text-[11px] font-medium text-slate-500 mt-0.5">Webhook Latency</p>
-            </div>
-
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-emerald-700 font-extrabold text-lg sm:text-xl">
-                <Building2 className="h-4 w-4 text-teal-600" />
-                <span>1 Unified</span>
-              </div>
-              <p className="text-[11px] font-medium text-slate-500 mt-0.5">Multi-SaaS Studio</p>
+            <div className="relative origin-center transition-transform duration-500 lg:rotate-[1.75deg] lg:hover:rotate-0">
+              <AgentReportPanel />
             </div>
           </div>
-
         </div>
 
-        {/* Dashboard Preview Section with Header Badge */}
-        <div className="mt-14 relative max-w-6xl mx-auto">
-          
-          <div className="mb-4 flex items-center justify-between px-2">
+        <div className="relative mt-12 rounded-[1.75rem] border border-white/80 bg-white/60 p-4 shadow-sm sm:p-6">
+          <div className="mb-4 flex items-center justify-between px-1">
             <div className="flex items-center gap-2">
-              <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-xs font-extrabold uppercase tracking-wider text-slate-700">
+              <span className="flex h-2.5 w-2.5 rounded-full bg-brand-500 animate-pulse" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-slate-600">
                 Live SaaS Workspace &amp; AI Dashboard Preview
               </span>
             </div>
-            <a 
-              href="https://techschool.thecodebrains.com" 
-              target="_blank" 
+            <a
+              href="https://techschool.thecodebrains.com"
+              target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-1 text-xs font-bold text-emerald-600 hover:text-emerald-700"
+              className="hidden items-center gap-1 text-xs font-semibold text-brand-600 hover:text-brand-700 sm:flex"
             >
-              <span>Explore Live Workspace</span>
+              Explore Live Workspace
               <ChevronRight className="h-3.5 w-3.5" />
             </a>
           </div>
-
-          <div className="relative">
-            <div className="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-emerald-500/25 via-teal-500/25 to-cyan-500/25 blur-xl opacity-70" />
-            <DashboardMockup />
-          </div>
+          <DashboardMockup />
         </div>
-
       </div>
     </section>
   );

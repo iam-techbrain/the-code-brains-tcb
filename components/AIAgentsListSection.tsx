@@ -159,19 +159,19 @@ export default function AIAgentsListSection() {
       {/* Radial Background Accent */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/4 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-emerald-500/5 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-1/4 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-brand-500/5 blur-3xl"
       />
 
       <div className="mx-auto max-w-7xl">
         
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-1.5 text-xs font-bold text-emerald-800 shadow-xs">
-            <Cpu className="h-4 w-4 text-emerald-600 animate-pulse" />
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-brand-50 px-4 py-1.5 text-xs font-bold text-brand-800 shadow-xs">
+            <Cpu className="h-4 w-4 text-brand-500 animate-pulse" />
             TCB Autonomous AI Agent &amp; Workflow Suite
           </div>
           
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             10 Production-Grade <span className="nuvertos-gradient-text">AI Agents &amp; Automation Modules</span>
           </h2>
           
@@ -195,8 +195,8 @@ export default function AIAgentsListSection() {
               onClick={() => setActiveCategory(cat.id)}
               className={`rounded-xl px-4 py-2 text-xs font-bold transition-all ${
                 activeCategory === cat.id
-                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20 scale-105"
-                  : "bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-800"
+                  ? "bg-brand-500 text-white shadow-md shadow-brand-500/20 scale-105"
+                  : "bg-slate-100 text-slate-700 hover:bg-brand-50 hover:text-brand-800"
               }`}
             >
               {cat.label}
@@ -211,18 +211,18 @@ export default function AIAgentsListSection() {
             return (
               <div
                 key={agent.id}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-6 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-emerald-400 hover:shadow-xl"
+                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-6 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-xl"
               >
                 {/* Card Top Accent Line */}
-                <div className="absolute inset-x-0 top-0 h-1 rounded-t-3xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="absolute inset-x-0 top-0 h-1 rounded-t-3xl bg-gradient-to-r from-brand-500 via-brand-500 to-brand-500 opacity-0 transition-opacity group-hover:opacity-100" />
 
                 <div>
                   {/* Header Row: Icon + Status */}
                   <div className="flex items-center justify-between gap-2 mb-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-200/80 transition-transform group-hover:scale-105">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 border border-brand-200/80 transition-transform group-hover:scale-105">
                       <IconComp className="h-6 w-6" />
                     </div>
-                    <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-extrabold text-emerald-800 border border-emerald-200">
+                    <span className="rounded-full bg-brand-50 px-2.5 py-1 text-[10px] font-extrabold text-brand-800 border border-brand-200">
                       {agent.status}
                     </span>
                   </div>
@@ -233,7 +233,7 @@ export default function AIAgentsListSection() {
                   </span>
 
                   {/* Agent Name */}
-                  <h3 className="mt-1 text-lg font-black text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  <h3 className="mt-1 text-lg font-black text-slate-900 group-hover:text-brand-700 transition-colors">
                     {agent.name}
                   </h3>
 
@@ -243,8 +243,8 @@ export default function AIAgentsListSection() {
                   </p>
 
                   {/* Outcome Box */}
-                  <div className="mt-4 rounded-xl border border-emerald-200/60 bg-emerald-50/50 p-3">
-                    <span className="text-[10px] font-extrabold uppercase text-emerald-800 block">
+                  <div className="mt-4 rounded-xl border border-brand-200/60 bg-brand-50/50 p-3">
+                    <span className="text-[10px] font-extrabold uppercase text-brand-800 block">
                       ⚡ Key Outcome:
                     </span>
                     <span className="text-xs font-bold text-slate-800 mt-0.5 block">
@@ -261,7 +261,7 @@ export default function AIAgentsListSection() {
 
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-1 font-extrabold text-emerald-700 hover:text-emerald-800 group/btn"
+                    className="inline-flex items-center gap-1 font-extrabold text-brand-700 hover:text-brand-800 group/btn"
                   >
                     <span>Deploy Agent</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" />

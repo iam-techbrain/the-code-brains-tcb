@@ -86,8 +86,8 @@ export default function CustomCursor() {
           opacity: isVisible ? 1 : 0,
           width: isHovered ? "50px" : "36px",
           height: isHovered ? "50px" : "36px",
-          borderColor: isHovered ? "#059669" : "rgba(5, 150, 105, 0.4)",
-          backgroundColor: isHovered ? "rgba(5, 150, 105, 0.08)" : "transparent",
+          borderColor: isHovered ? "#00A4E4" : "rgba(0, 164, 228, 0.4)",
+          backgroundColor: isHovered ? "rgba(0, 164, 228, 0.08)" : "transparent",
         }}
       />
     </>

@@ -10,6 +10,7 @@ import ComingSoonSection from "@/components/ComingSoonSection";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
+import ContactBand from "@/components/ContactBand";
 import Footer from "@/components/Footer";
 import DemoFloatWidget from "@/components/DemoFloatWidget";
 
@@ -21,7 +22,7 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900 antialiased selection:bg-[#059669] selection:text-white">
+    <main className="min-h-screen bg-[linear-gradient(180deg,#e8f0ff_0%,#f4f7ff_22%,#f8fafc_55%,#ffffff_100%)] text-slate-900 antialiased selection:bg-brand-500 selection:text-white">
       <EcosystemHeader />
       
       {/* 1. Hero: AI Agent & Automation Engine */}
@@ -57,6 +58,7 @@ export default function HomePage() {
       {/* 11. FAQ */}
       <FAQ />
 
+      <ContactBand />
       <Footer />
       <DemoFloatWidget />
     </main>

@@ -163,15 +163,12 @@ export default function EcosystemHeader() {
   };
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full border-b backdrop-blur-xl transition-all duration-300 ${
-        scrolled
-          ? "border-slate-200/90 bg-white/95 shadow-md shadow-slate-900/5"
-          : "border-slate-200/60 bg-white/85"
-      }`}
-    >
-      {/* Sleek Professional White Navbar */}
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 text-slate-900">
+    <header className="sticky top-0 z-50 w-full px-3 pt-3 sm:px-6 lg:px-8">
+      <nav
+        className={`mx-auto flex h-[62px] max-w-7xl items-center justify-between rounded-2xl border border-white/80 bg-white/85 px-4 text-slate-900 shadow-nav backdrop-blur-xl transition-all duration-300 sm:px-5 ${
+          scrolled ? "bg-white/95 shadow-soft" : ""
+        }`}
+      >
 
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
@@ -181,8 +178,8 @@ export default function EcosystemHeader() {
             style={{ height: "32px", width: "auto" }}
             className="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
           />
-          <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-bold text-emerald-800 border border-emerald-200">
-            <Globe className="h-3 w-3 text-emerald-600" /> Multi-SaaS Platform
+          <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-slate-50/80 px-2.5 py-0.5 text-[10px] font-semibold text-slate-600">
+            <Globe className="h-3 w-3 text-brand-500" /> Multi-SaaS Platform
           </span>
         </Link>
 
@@ -194,10 +191,10 @@ export default function EcosystemHeader() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`rounded-xl px-3.5 py-2 text-xs transition-all duration-200 ${
+                className={`rounded-lg px-3 py-2 text-[13px] transition-colors duration-200 ${
                   active
-                    ? "bg-emerald-600 text-white font-black shadow-md shadow-emerald-600/25 scale-105"
-                    : "font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-800"
+                    ? "bg-brand-50 font-semibold text-brand-700"
+                    : "font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                 }`}
               >
                 {link.label}
@@ -215,7 +212,7 @@ export default function EcosystemHeader() {
           <button
             type="button"
             onClick={() => setRightProductsOpen(!rightProductsOpen)}
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2 text-xs font-extrabold text-white shadow-md shadow-emerald-600/20 hover:from-emerald-700 hover:to-teal-700 active:scale-95 transition-all"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-indigo-500 px-4 py-2 text-xs font-semibold text-white shadow-lift hover:brightness-110 active:scale-95 transition-all"
           >
             <Sparkles className="h-4 w-4 text-white" />
             <span>Browse All Apps</span>
@@ -228,12 +225,12 @@ export default function EcosystemHeader() {
 
           {/* SaaS Products Dropdown Hub */}
           {rightProductsOpen && (
-            <div className="absolute right-0 top-full mt-2 w-80 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl backdrop-blur-2xl z-50">
+            <div className="absolute right-0 top-full z-50 mt-3 w-80 rounded-2xl border border-white/80 bg-white/95 p-3 shadow-soft backdrop-blur-2xl">
               <div className="mb-2 border-b border-slate-100 pb-2 px-1 flex items-center justify-between">
                 <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500">
                   TCB SaaS Verticals Hub
                 </span>
-                <span className="text-[10px] font-bold text-emerald-700">6 Products</span>
+                <span className="text-[10px] font-bold text-brand-700">6 Products</span>
               </div>
 
               <div className="flex flex-col gap-1 max-h-[360px] overflow-y-auto pr-1">
@@ -247,19 +244,19 @@ export default function EcosystemHeader() {
                       onClick={() => setRightProductsOpen(false)}
                       className={`group flex items-start gap-3 rounded-xl p-2.5 transition-all ${
                         isAppActive
-                          ? "bg-emerald-50 border border-emerald-200"
+                          ? "bg-brand-50 border border-brand-200"
                           : "hover:bg-slate-50"
                       }`}
                     >
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-800 font-bold transition-transform group-hover:scale-110">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-800 font-bold transition-transform group-hover:scale-110">
                         <IconComp className="h-4.5 w-4.5" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
+                          <span className="text-xs font-bold text-slate-900 group-hover:text-brand-700 truncate">
                             {app.name}
                           </span>
-                          <span className="text-[10px] font-black text-emerald-700 shrink-0">
+                          <span className="text-[10px] font-black text-brand-700 shrink-0">
                             {app.price}
                           </span>
                         </div>
@@ -288,7 +285,7 @@ export default function EcosystemHeader() {
 
       {/* Mobile Navigation Drawer */}
       {isOpen && (
-        <div className="border-t border-slate-200 bg-white px-4 pb-6 pt-4 md:hidden">
+        <div className="mx-auto mt-2 max-w-7xl rounded-2xl border border-white/80 bg-white/95 px-4 pb-6 pt-4 shadow-soft md:hidden">
           <div className="flex flex-col gap-2">
             {navLinks.map((link) => {
               const active = isNavActive(link);
@@ -299,7 +296,7 @@ export default function EcosystemHeader() {
                   onClick={() => setIsOpen(false)}
                   className={`rounded-xl px-4 py-2.5 text-xs font-bold transition-all ${
                     active
-                      ? "bg-emerald-600 text-white"
+                      ? "bg-brand-500 text-white"
                       : "text-slate-700 hover:bg-slate-100"
                   }`}
                 >

@@ -33,10 +33,10 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     category: "Education & Coaching ERP",
     description: "Student rosters, daily attendance, WhatsApp parent alerts & fee ledgers.",
     badge: "Live SaaS",
-    badgeStyle: "bg-emerald-50 text-emerald-800 border-emerald-300",
+    badgeStyle: "bg-brand-50 text-brand-800 border-brand-300",
     href: "/school",
     icon: GraduationCap,
-    iconBg: "bg-emerald-600 text-white",
+    iconBg: "bg-brand-500 text-white",
   },
   {
     id: "store",
@@ -44,10 +44,10 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     category: "Retail Inventory & POS",
     description: "Barcode stock master, GST invoicing, supplier ledgers & credit Udhar Khata.",
     badge: "Beta Workspace",
-    badgeStyle: "bg-teal-50 text-teal-800 border-teal-300",
+    badgeStyle: "bg-brand-50 text-brand-800 border-brand-300",
     href: "/store",
     icon: Boxes,
-    iconBg: "bg-teal-600 text-white",
+    iconBg: "bg-brand-600 text-white",
   },
   {
     id: "health",
@@ -58,7 +58,7 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
     href: "/health",
     icon: Stethoscope,
-    iconBg: "bg-slate-800 text-emerald-400",
+    iconBg: "bg-slate-800 text-brand-400",
   },
   {
     id: "fitness",
@@ -69,7 +69,7 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
     href: "/fitness",
     icon: Dumbbell,
-    iconBg: "bg-slate-800 text-teal-400",
+    iconBg: "bg-slate-800 text-brand-400",
   },
   {
     id: "hotel",
@@ -102,18 +102,18 @@ export default function EcosystemAppsSection() {
       {/* Radial Background Accent */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-12 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-emerald-500/5 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-12 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-brand-500/5 blur-3xl"
       />
 
       <div className="mx-auto max-w-7xl">
         
         {/* Compact Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-1 text-xs font-bold text-emerald-800 shadow-xs">
-            <Layers className="h-3.5 w-3.5 text-emerald-600" />
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-brand-50 px-4 py-1 text-xs font-bold text-brand-800 shadow-xs">
+            <Layers className="h-3.5 w-3.5 text-brand-500" />
             TCB Micro-SaaS Product Portfolio
           </div>
-          <h2 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
             Specialized SaaS Solutions <span className="nuvertos-gradient-text">Engineered by Our Studio</span>
           </h2>
           <p className="mt-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
@@ -129,7 +129,7 @@ export default function EcosystemAppsSection() {
               <Link
                 key={prod.id}
                 href={prod.href}
-                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-emerald-400 hover:shadow-md"
+                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-brand-400 hover:shadow-md"
               >
                 <div>
                   {/* Top Row: Icon + Badge */}
@@ -144,7 +144,7 @@ export default function EcosystemAppsSection() {
                   </div>
 
                   {/* Title & Category */}
-                  <h3 className="mt-3 text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  <h3 className="mt-3 text-base font-bold text-slate-900 group-hover:text-brand-700 transition-colors">
                     {prod.name}
                   </h3>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
@@ -158,7 +158,7 @@ export default function EcosystemAppsSection() {
                 </div>
 
                 {/* Footer Link */}
-                <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 text-xs font-bold text-emerald-700 group-hover:text-emerald-800">
+                <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 text-xs font-bold text-brand-700 group-hover:text-brand-800">
                   <span>View Details</span>
                   <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>

@@ -205,11 +205,11 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
         
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-1.5 text-xs font-bold text-emerald-800 shadow-xs">
-            <Sparkles className="h-4 w-4 text-emerald-600 animate-pulse" />
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-brand-50 px-4 py-1.5 text-xs font-bold text-brand-800 shadow-xs">
+            <Sparkles className="h-4 w-4 text-brand-500 animate-pulse" />
             Transparent Pricing &amp; Custom Project Packages
           </div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             {selectedApp === "agency" ? (
               <span>Transparent Packages for <span className="nuvertos-gradient-text">AI Agents &amp; Automations</span></span>
             ) : selectedApp === "school" ? (
@@ -227,19 +227,19 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
           </p>
 
           {/* Guarantee Pill */}
-          <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/50 px-5 py-2.5 text-xs font-bold text-slate-800 shadow-xs">
-            <span className="flex items-center gap-1.5 text-emerald-800 font-extrabold">
-              <RefreshCw className="h-4 w-4 text-emerald-600" />
+          <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-brand-200 bg-brand-50/50 px-5 py-2.5 text-xs font-bold text-slate-800 shadow-xs">
+            <span className="flex items-center gap-1.5 text-brand-800 font-extrabold">
+              <RefreshCw className="h-4 w-4 text-brand-500" />
               100% Fixed Rates (No Hidden Costs)
             </span>
             <span className="text-zinc-300">|</span>
             <span className="flex items-center gap-1.5 text-zinc-700">
-              <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
+              <ShieldCheck className="h-3.5 w-3.5 text-brand-500" />
               Source Code Ownership
             </span>
             <span className="text-zinc-300">|</span>
             <span className="flex items-center gap-1.5 text-zinc-700">
-              <Lock className="h-3.5 w-3.5 text-emerald-600" />
+              <Lock className="h-3.5 w-3.5 text-brand-500" />
               Safe &amp; Encrypted AI Cloud
             </span>
           </div>
@@ -252,15 +252,15 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
               key={plan.name}
               className={`relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 ${
                 plan.highlighted
-                  ? "border-2 border-emerald-500 bg-emerald-50/30 shadow-xl shadow-emerald-600/10 scale-102"
-                  : "border border-slate-200 bg-white shadow-xs hover:border-emerald-300 hover:shadow-md"
+                  ? "border-2 border-brand-500 bg-brand-50/30 shadow-xl shadow-brand-500/10 scale-102"
+                  : "border border-slate-200 bg-white shadow-xs hover:border-brand-300 hover:shadow-md"
               }`}
             >
               {plan.badge && (
                 <span
                   className={`absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-extrabold shadow-xs ${
                     plan.highlighted
-                      ? "bg-emerald-600 text-white"
+                      ? "bg-brand-500 text-white"
                       : "bg-slate-900 text-white"
                   }`}
                 >
@@ -280,7 +280,7 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
                 <ul className="mt-8 space-y-3">
                   {plan.features.map((feat) => (
                     <li key={feat} className="flex items-center gap-2.5 text-xs text-slate-700">
-                      <Check className="h-4 w-4 shrink-0 text-emerald-600 font-bold" />
+                      <Check className="h-4 w-4 shrink-0 text-brand-500 font-bold" />
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -292,7 +292,7 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
                   href={plan.ctaHref}
                   className={`flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-xs font-extrabold transition-all active:scale-95 ${
                     plan.highlighted
-                      ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-md shadow-emerald-600/20"
+                      ? "bg-brand-500 text-white hover:bg-brand-700 shadow-md shadow-brand-500/20"
                       : "bg-slate-900 text-white hover:bg-slate-800"
                   }`}
                 >

@@ -46,8 +46,8 @@ const TECH_TOOLS: ToolItem[] = [
       "Python PyTorch, LangChain & LlamaIndex integrations",
       "Ultra-fast API execution with FastAPI & Next.js",
     ],
-    gradient: "from-emerald-500/20 via-teal-500/20 to-emerald-600/20",
-    borderColor: "group-hover:border-emerald-400",
+    gradient: "from-brand-400/20 via-brand-500/20 to-brand-700/20",
+    borderColor: "group-hover:border-brand-400",
     shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
     badge: "Core Engine",
     codeSnippet: `// Custom Async AI Tool Execution Engine
@@ -76,8 +76,8 @@ export async function executeAgentTask(prompt: string) {
       "Make.com complex branching & router logic",
       "Automatic error catching & webhook retries",
     ],
-    gradient: "from-emerald-500/20 via-teal-500/20 to-emerald-600/20",
-    borderColor: "group-hover:border-emerald-400",
+    gradient: "from-brand-400/20 via-brand-500/20 to-brand-700/20",
+    borderColor: "group-hover:border-brand-400",
     shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
     badge: "Visual Automation",
     codeSnippet: `// n8n Workflow Webhook Receiver Node
@@ -102,8 +102,8 @@ export async function executeAgentTask(prompt: string) {
       "High-speed semantic vector embeddings (OpenAI text-embedding-3)",
       "Context-aware memory with hybrid vector search",
     ],
-    gradient: "from-emerald-500/20 via-teal-500/20 to-emerald-600/20",
-    borderColor: "group-hover:border-emerald-400",
+    gradient: "from-brand-400/20 via-brand-500/20 to-brand-700/20",
+    borderColor: "group-hover:border-brand-400",
     shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
     badge: "GenAI & Knowledge",
     codeSnippet: `// Vector Search & RAG Context Retrieval
@@ -129,8 +129,8 @@ export async function queryRAGPipeline(userQuery: string) {
       "Event-driven queue processing with Redis & BullMQ",
       "High throughput Node.js microservice architecture",
     ],
-    gradient: "from-emerald-500/20 via-teal-500/20 to-emerald-600/20",
-    borderColor: "group-hover:border-emerald-400",
+    gradient: "from-brand-400/20 via-brand-500/20 to-brand-700/20",
+    borderColor: "group-hover:border-brand-400",
     shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
     badge: "Integration Layer",
     codeSnippet: `// Secure Webhook Listener & Event Producer
@@ -165,20 +165,20 @@ export default function TechStackShowcase() {
       {/* Background Radial Grid */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(#059669_0.6px,transparent_0.6px)] [background-size:32px_32px] opacity-10"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(#00A4E4_0.6px,transparent_0.6px)] [background-size:32px_32px] opacity-10"
       />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Title & Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-1.5 text-xs font-bold text-emerald-800 shadow-xs">
-            <Cpu className="h-4 w-4 animate-spin text-emerald-600" style={{ animationDuration: '8s' }} />
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-brand-50 px-4 py-1.5 text-xs font-bold text-brand-800 shadow-xs">
+            <Cpu className="h-4 w-4 animate-spin text-brand-500" style={{ animationDuration: '8s' }} />
             <span>Tech Stack &amp; Automation Engine</span>
           </div>
 
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-slate-900">
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-slate-900">
             Powering Custom AI Agents &amp;{" "}
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand-500 via-brand-600 to-brand-800 bg-clip-text text-transparent">
               Enterprise Workflows
             </span>
           </h2>
@@ -196,8 +196,8 @@ export default function TechStackShowcase() {
               onClick={() => setActiveCategory(cat)}
               className={`rounded-full px-5 py-2 text-xs font-bold transition-all duration-200 ${
                 activeCategory === cat
-                  ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/20 scale-105"
-                  : "border border-slate-200 bg-slate-50 text-slate-700 hover:border-emerald-300 hover:bg-white"
+                  ? "bg-gradient-to-r from-brand-500 to-brand-700 text-white shadow-md shadow-brand-500/20 scale-105"
+                  : "border border-slate-200 bg-slate-50 text-slate-700 hover:border-brand-300 hover:bg-white"
               }`}
             >
               {cat}
@@ -215,26 +215,26 @@ export default function TechStackShowcase() {
                 onClick={() => setSelectedTool(tool)}
                 className={`group relative cursor-pointer flex flex-col justify-between overflow-hidden rounded-3xl border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 ${
                   isSelected
-                    ? "border-emerald-500 shadow-lg shadow-emerald-600/15 ring-2 ring-emerald-500/20"
-                    : `border-slate-200/90 hover:border-emerald-300 hover:shadow-md`
+                    ? "border-brand-500 shadow-lg shadow-brand-500/15 ring-2 ring-brand-500/20"
+                    : `border-slate-200/90 hover:border-brand-300 hover:shadow-md`
                 }`}
               >
                 <div className="relative z-10">
                   {/* Top Badge & Icon Row */}
                   <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-100 bg-emerald-50 text-emerald-700 shadow-xs group-hover:scale-110 transition-transform">
-                      {tool.iconType === "code" && <Code2 className="h-6 w-6 text-emerald-600" />}
-                      {tool.iconType === "workflow" && <Workflow className="h-6 w-6 text-emerald-600" />}
-                      {tool.iconType === "ai" && <Sparkles className="h-6 w-6 text-emerald-600" />}
-                      {tool.iconType === "api" && <Globe className="h-6 w-6 text-emerald-600" />}
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-brand-100 bg-brand-50 text-brand-700 shadow-xs group-hover:scale-110 transition-transform">
+                      {tool.iconType === "code" && <Code2 className="h-6 w-6 text-brand-500" />}
+                      {tool.iconType === "workflow" && <Workflow className="h-6 w-6 text-brand-500" />}
+                      {tool.iconType === "ai" && <Sparkles className="h-6 w-6 text-brand-500" />}
+                      {tool.iconType === "api" && <Globe className="h-6 w-6 text-brand-500" />}
                     </div>
 
-                    <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-extrabold text-emerald-800">
+                    <span className="rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-[10px] font-extrabold text-brand-800">
                       {tool.badge}
                     </span>
                   </div>
 
-                  <h3 className="mt-5 text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  <h3 className="mt-5 text-lg font-bold text-slate-900 group-hover:text-brand-700 transition-colors">
                     {tool.name}
                   </h3>
 
@@ -245,9 +245,9 @@ export default function TechStackShowcase() {
 
                 {/* Features List Pill */}
                 <div className="relative z-10 mt-6 border-t border-slate-100 pt-4">
-                  <div className="flex items-center justify-between text-xs font-semibold text-emerald-700">
+                  <div className="flex items-center justify-between text-xs font-semibold text-brand-700">
                     <span className="flex items-center gap-1.5">
-                      <Zap className="h-3.5 w-3.5 text-emerald-600" />
+                      <Zap className="h-3.5 w-3.5 text-brand-500" />
                       {tool.features.length} Enterprise Capabilities
                     </span>
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -259,11 +259,11 @@ export default function TechStackShowcase() {
         </div>
 
         {/* Selected Tool Interactive Deep Dive & Code Terminal */}
-        <div className="mt-12 rounded-3xl border border-emerald-200 bg-slate-50/80 p-6 sm:p-8 shadow-xs relative overflow-hidden">
+        <div className="mt-12 rounded-3xl border border-brand-200 bg-slate-50/80 p-6 sm:p-8 shadow-xs relative overflow-hidden">
           <div className="grid gap-8 lg:grid-cols-12 items-center">
             {/* Left Info Column */}
             <div className="lg:col-span-6 space-y-4">
-              <div className="inline-flex items-center gap-2 rounded-lg bg-emerald-100 border border-emerald-200 px-3 py-1 text-xs font-bold text-emerald-800">
+              <div className="inline-flex items-center gap-2 rounded-lg bg-brand-100 border border-brand-200 px-3 py-1 text-xs font-bold text-brand-800">
                 <Layers className="h-3.5 w-3.5" />
                 <span>Selected Architecture Tool</span>
               </div>
@@ -277,12 +277,12 @@ export default function TechStackShowcase() {
               </p>
 
               <div className="space-y-2.5 pt-2">
-                <h4 className="text-xs font-extrabold uppercase tracking-wider text-emerald-800">
+                <h4 className="text-xs font-extrabold uppercase tracking-wider text-brand-800">
                   Key Technical Highlights:
                 </h4>
                 {selectedTool.features.map((feat, idx) => (
                   <div key={idx} className="flex items-start gap-2 text-xs font-medium text-slate-700">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-4 w-4 text-brand-500 shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </div>
                 ))}
@@ -293,7 +293,7 @@ export default function TechStackShowcase() {
                   href="https://techschool.thecodebrains.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-emerald-600/20 transition-all hover:scale-105"
+                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 via-brand-600 to-brand-800 px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-brand-500/20 transition-all hover:scale-105"
                 >
                   <Zap className="h-4 w-4" />
                   <span>Build Custom AI Pipeline</span>
@@ -312,19 +312,19 @@ export default function TechStackShowcase() {
                   <div className="flex items-center gap-2">
                     <span className="h-3 w-3 rounded-full bg-red-500/80" />
                     <span className="h-3 w-3 rounded-full bg-amber-500/80" />
-                    <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
+                    <span className="h-3 w-3 rounded-full bg-brand-500/80" />
                   </div>
                   <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
-                    <Terminal className="h-3.5 w-3.5 text-emerald-400" />
+                    <Terminal className="h-3.5 w-3.5 text-brand-400" />
                     <span>{selectedTool.id}-agent-pipeline.ts</span>
                   </div>
-                  <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-500/30">
+                  <span className="text-[10px] font-bold text-brand-400 bg-brand-950 px-2 py-0.5 rounded border border-brand-500/30">
                     LIVE SPEC
                   </span>
                 </div>
 
                 {/* Terminal Code Block */}
-                <div className="p-4 sm:p-5 overflow-x-auto text-xs font-mono text-emerald-300 leading-relaxed bg-[#020617]">
+                <div className="p-4 sm:p-5 overflow-x-auto text-xs font-mono text-brand-300 leading-relaxed bg-[#020617]">
                   <pre>
                     <code>{selectedTool.codeSnippet}</code>
                   </pre>
