@@ -15,14 +15,14 @@ const INVOICES = [
  */
 export default function DashboardMockup() {
   return (
-    <div className="relative mx-auto w-full max-w-5xl">
+    <div className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-2xl">
       {/* Ambient glow behind the card */}
       <div
         aria-hidden
         className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-tr from-brand-400/30 via-brand-200/15 to-transparent blur-2xl"
       />
 
-      <div className="overflow-hidden rounded-2xl border border-zinc-200/80 bg-white/70 shadow-[0_1px_1px_rgba(0,0,0,0.04),0_20px_60px_-20px_rgba(16,185,129,0.25),0_0_0_1px_rgba(0,0,0,0.02)] backdrop-blur-xl">
+      <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_20px_50px_-20px_rgba(37,99,235,0.12)] backdrop-blur-xl">
         {/* Window chrome */}
         <div className="flex items-center justify-between border-b border-zinc-100 bg-zinc-50/80 px-4 py-3">
           <div className="flex items-center gap-1.5">

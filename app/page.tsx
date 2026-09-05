@@ -15,14 +15,14 @@ import Footer from "@/components/Footer";
 import DemoFloatWidget from "@/components/DemoFloatWidget";
 
 export const metadata = {
-  title: "TCB — Custom AI Agents, Workflow Automation & Multi-SaaS Studio",
+  title: "TCB — Custom AI Agents & Intelligent Workflow Automation Studio",
   description:
-    "We build custom autonomous AI agents, n8n & Make workflow automation pipelines, and specialized cloud SaaS applications. Powered by Python, LangChain, OpenAI, RAG & AWS.",
+    "Your Business. Your Challenges. Our AI Agents. We design and deploy custom autonomous AI agents, voice callers, 24/7 RAG chatbots, and enterprise workflow automations built around how your business actually works.",
 };
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[linear-gradient(180deg,#e8f0ff_0%,#f4f7ff_22%,#f8fafc_55%,#ffffff_100%)] text-slate-900 antialiased selection:bg-brand-500 selection:text-white">
+    <main className="min-h-screen overflow-x-hidden w-full max-w-full bg-[#f8fafc] text-slate-900 antialiased selection:bg-brand-500 selection:text-white">
       <EcosystemHeader />
       
       {/* 1. Hero: AI Agent & Automation Engine */}

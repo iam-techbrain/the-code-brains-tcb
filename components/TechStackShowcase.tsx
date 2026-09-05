@@ -160,7 +160,7 @@ export default function TechStackShowcase() {
   return (
     <section
       id="tech-stack"
-      className="relative overflow-hidden bg-white py-24 text-slate-900 sm:py-32 border-t border-slate-100"
+      className="relative overflow-hidden bg-white py-14 sm:py-24 text-slate-900 border-t border-slate-100 px-4 sm:px-6 lg:px-8"
     >
       {/* Background Radial Grid */}
       <div
@@ -168,33 +168,33 @@ export default function TechStackShowcase() {
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(#00A4E4_0.6px,transparent_0.6px)] [background-size:32px_32px] opacity-10"
       />
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Title & Header */}
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-brand-50 px-4 py-1.5 text-xs font-bold text-brand-800 shadow-xs">
-            <Cpu className="h-4 w-4 animate-spin text-brand-500" style={{ animationDuration: '8s' }} />
-            <span>Tech Stack &amp; Automation Engine</span>
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-xs font-bold text-brand-800 shadow-xs mb-4">
+            <Cpu className="h-4 w-4 text-brand-500" />
+            <span>AI Tech Stack &amp; Developer Tools</span>
           </div>
 
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-slate-900">
+          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
             Powering Custom AI Agents &amp;{" "}
             <span className="bg-gradient-to-r from-brand-500 via-brand-600 to-brand-800 bg-clip-text text-transparent">
               Enterprise Workflows
             </span>
           </h2>
 
-          <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg">
             We combine robust programming languages, visual automation platforms, cutting-edge LLMs, and RAG pipelines to build intelligent business systems.
           </p>
         </div>
 
-        {/* Category Filters */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
+        {/* Category Filters - Horizontal Swipeable on Mobile */}
+        <div className="mt-8 sm:mt-10 flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 pt-1 px-1 sm:justify-center sm:flex-wrap">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`rounded-full px-5 py-2 text-xs font-bold transition-all duration-200 ${
+              className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 sm:px-5 text-xs font-bold transition-all duration-200 ${
                 activeCategory === cat
                   ? "bg-gradient-to-r from-brand-500 to-brand-700 text-white shadow-md shadow-brand-500/20 scale-105"
                   : "border border-slate-200 bg-slate-50 text-slate-700 hover:border-brand-300 hover:bg-white"
@@ -206,14 +206,14 @@ export default function TechStackShowcase() {
         </div>
 
         {/* Tech Stack Grid */}
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 sm:mt-14 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {filteredTools.map((tool) => {
             const isSelected = selectedTool.id === tool.id;
             return (
               <div
                 key={tool.id}
                 onClick={() => setSelectedTool(tool)}
-                className={`group relative cursor-pointer flex flex-col justify-between overflow-hidden rounded-3xl border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 ${
+                className={`group relative cursor-pointer flex flex-col justify-between overflow-hidden rounded-3xl border bg-white p-5 sm:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 ${
                   isSelected
                     ? "border-brand-500 shadow-lg shadow-brand-500/15 ring-2 ring-brand-500/20"
                     : `border-slate-200/90 hover:border-brand-300 hover:shadow-md`
@@ -259,7 +259,7 @@ export default function TechStackShowcase() {
         </div>
 
         {/* Selected Tool Interactive Deep Dive & Code Terminal */}
-        <div className="mt-12 rounded-3xl border border-brand-200 bg-slate-50/80 p-6 sm:p-8 shadow-xs relative overflow-hidden">
+        <div className="mt-8 sm:mt-12 rounded-2xl sm:rounded-3xl border border-brand-200 bg-slate-50/80 p-4 sm:p-8 shadow-xs relative overflow-hidden">
           <div className="grid gap-8 lg:grid-cols-12 items-center">
             {/* Left Info Column */}
             <div className="lg:col-span-6 space-y-4">
@@ -324,8 +324,8 @@ export default function TechStackShowcase() {
                 </div>
 
                 {/* Terminal Code Block */}
-                <div className="p-4 sm:p-5 overflow-x-auto text-xs font-mono text-brand-300 leading-relaxed bg-[#020617]">
-                  <pre>
+                <div className="p-4 sm:p-5 max-w-full overflow-x-auto text-xs font-mono text-brand-300 leading-relaxed bg-[#020617]">
+                  <pre className="max-w-full overflow-x-auto whitespace-pre font-mono text-[11px] sm:text-xs">
                     <code>{selectedTool.codeSnippet}</code>
                   </pre>
                 </div>

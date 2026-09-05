@@ -131,7 +131,7 @@ export default function ComingSoonSection() {
   return (
     <section
       id="coming-soon"
-      className="relative overflow-hidden bg-white py-24 text-slate-900 sm:py-32 border-t border-slate-100"
+      className="relative overflow-hidden bg-white py-14 sm:py-24 text-slate-900 border-t border-slate-100"
     >
       {/* Background Radial Grid */}
       <div
@@ -147,26 +147,26 @@ export default function ComingSoonSection() {
             <span>Next-Gen Automation Roadmap</span>
           </div>
 
-          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Coming Soon:{" "}
             <span className="bg-gradient-to-r from-brand-500 via-brand-600 to-brand-800 bg-clip-text text-transparent">
               Advanced Automation Suite
             </span>
           </h2>
 
-          <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg">
             We are engineering high-impact automation tools and storage modules to accelerate institute growth and streamline business operations.
           </p>
         </div>
 
         {/* Tools Cards Grid */}
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 sm:mt-16 grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
           {UPCOMING_TOOLS.map((tool) => {
             const IconComp = tool.icon;
             return (
               <div
                 key={tool.id}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-brand-400 hover:shadow-md"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 sm:p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-brand-400 hover:shadow-md"
               >
                 {/* Glowing Top Shimmer Line */}
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-500 via-brand-600 to-brand-800" />

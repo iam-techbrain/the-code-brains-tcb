@@ -98,7 +98,7 @@ export default function Features() {
       : AI_CAPABILITIES.filter((c) => c.category.toLowerCase() === activeCategory.toLowerCase());
 
   return (
-    <section id="features" className="relative border-t border-slate-200/60 bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <section id="features" className="relative overflow-hidden border-t border-slate-200/60 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         
         {/* Section Header */}
@@ -107,21 +107,21 @@ export default function Features() {
             <Cpu className="h-4 w-4 text-brand-500 animate-pulse" />
             AI AGENT ENGINEERING &amp; WORKFLOW ENGINE
           </div>
-          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Autonomous AI Capabilities Built for <span className="nuvertos-gradient-text">Modern Business Scale</span>
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg">
             Deploy pre-engineered AI voice caller agents, RAG knowledge bots, n8n workflow triggers, and real-time financial automation pipelines.
           </p>
         </div>
 
-        {/* Category Filters */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
+        {/* Category Filters - Horizontal Swipeable on Mobile */}
+        <div className="mt-8 sm:mt-10 flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 pt-1 px-1 sm:justify-center sm:flex-wrap">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`rounded-xl px-5 py-2 text-xs font-bold transition-all ${
+              className={`shrink-0 whitespace-nowrap rounded-xl px-4 py-2 sm:px-5 text-xs font-bold transition-all ${
                 activeCategory === cat
                   ? "bg-brand-500 text-white shadow-md shadow-brand-500/20 scale-105"
                   : "bg-slate-100 text-slate-700 hover:bg-brand-50 hover:text-brand-800"
@@ -133,13 +133,13 @@ export default function Features() {
         </div>
 
         {/* Capabilities Grid */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 sm:mt-12 grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredCapabilities.map((capability) => {
             const IconComponent = capability.icon;
             return (
               <div
                 key={capability.title}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-xl"
+                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-7 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-xl"
               >
                 <div>
                   <div className="flex items-center justify-between">

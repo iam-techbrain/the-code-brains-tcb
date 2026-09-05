@@ -13,8 +13,8 @@ export default function TrustBadgesTicker() {
     { title: "Automated Daily Backups", desc: "Zero Data Loss Guarantee", icon: Server, color: "text-brand-500" },
   ];
 
-  // Duplicate for seamless infinite loop
-  const displayBadges = [...badges, ...badges];
+  // Duplicate 4x for seamless infinite loop on ultra-wide & zoomed-out screens
+  const displayBadges = [...badges, ...badges, ...badges, ...badges];
 
   return (
     <section className="logo-strip-container">

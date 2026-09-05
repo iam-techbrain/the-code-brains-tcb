@@ -1,7 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Sparkles, ArrowRight, ShieldCheck, Zap, RefreshCw, Lock, Bot, Workflow, Cpu } from "lucide-react";
+import {
+  Check,
+  Sparkles,
+  ArrowRight,
+  ShieldCheck,
+  Zap,
+  RefreshCw,
+  Lock,
+  Bot,
+  Workflow,
+  Cpu,
+  Server,
+  Database,
+  PhoneCall,
+  MessageSquare,
+  Cloud,
+  Code2,
+  ExternalLink,
+  CheckCircle2,
+  DollarSign,
+} from "lucide-react";
 
 type PricingPlan = {
   name: string;
@@ -140,47 +160,114 @@ const AGENCY_PLANS: PricingPlan[] = [
     features: [
       "Up to 3 Multi-Step Automated Workflows",
       "WhatsApp & Email API Triggers",
-      "CRM & Google Sheets Real-Time Sync",
-      "Error Alerts & Logging Pipeline",
+      "CRM & Google Sheets Real-Time 2-Way Sync",
+      "Self-Hosted n8n or Cloud Make Setup",
+      "Error Alerts & Telegram/Slack Logging",
       "14-Day Free Maintenance & Support",
     ],
     ctaText: "Get Workflow Automation",
     ctaHref: "#contact",
   },
   {
-    name: "Autonomous AI Agent",
+    name: "Autonomous RAG & Chat AI Agent",
     badge: "Most Popular",
-    priceText: "₹14,999",
-    priceVal: 14999,
+    priceText: "₹19,999",
+    priceVal: 19999,
     period: "/ project",
-    description: "Custom AI voice caller or RAG chatbot trained on your company data.",
+    description: "Custom AI chatbot trained on your company data with WhatsApp & Web integration.",
     highlighted: true,
     features: [
       "Custom RAG Vector DB (Pinecone / Qdrant)",
-      "24/7 AI Voice Caller or WhatsApp Chatbot",
-      "OpenAI GPT-4o / Claude 3.5 Fine-Tuning",
-      "24/7 Instant Lead Booking & Qualification",
-      "AWS 99.95% Deployment & 30-Day Support",
+      "24/7 WhatsApp AI Bot + Web Chat Widget",
+      "OpenAI GPT-4o / Claude 3.5 Sonnet Integration",
+      "Function Calling (Books Meetings & DB Query)",
+      "AWS EC2 / Docker 24/7 Deployment",
+      "30-Day Post-Launch Maintenance & Monitoring",
     ],
     ctaText: "Deploy AI Agent",
     ctaHref: "#contact",
   },
   {
-    name: "Enterprise Multi-SaaS Cloud",
-    badge: "Full Custom Studio",
-    priceText: "₹59,999",
-    priceVal: 59999,
+    name: "Voice Calling & Enterprise Agent",
+    badge: "Full Power",
+    priceText: "₹39,999",
+    priceVal: 39999,
     period: "/ project",
-    description: "Complete custom micro-SaaS application built from scratch for your industry.",
+    description: "Human-like inbound/outbound AI phone caller with live transfer & CRM sync.",
     features: [
-      "Multi-Tenant SaaS Architecture",
-      "Custom React / Next.js + Tailwind UI",
-      "Supabase / PostgreSQL Database Vault",
-      "Full Source Code & IP Ownership",
-      "Dedicated Lead Engineer & SLA",
+      "Inbound & Outbound AI Calling (Twilio + Vapi)",
+      "Ultra-Realistic Voice (ElevenLabs / Deepgram)",
+      "Live Human Call Transfer & Call Recordings",
+      "Post-Call WhatsApp Summary & CRM Entry",
+      "Full AWS Infrastructure Setup & Source Code",
+      "60-Day SLA & Dedicated Lead Engineer",
     ],
-    ctaText: "Build Custom SaaS",
+    ctaText: "Deploy Voice Agent",
     ctaHref: "#contact",
+  },
+];
+
+// Infrastructure & Technical Requirements Breakdown for AI Agents
+const AGENT_INFRA_REQUIREMENTS = [
+  {
+    icon: Server,
+    title: "AWS Cloud Hosting & Compute",
+    badge: "Runs 24/7",
+    category: "Server Infrastructure",
+    description:
+      "Your agent's backend, FastAPI server, and webhook listeners run 24/7 to answer customer queries instantly with 99.95% uptime.",
+    requiredStack: "AWS EC2 (t4g.small / t3.medium), AWS Lambda, or Docker VPS",
+    estimatedCost: "~$5 - $15 / month (Billed directly by AWS — zero agency markup)",
+  },
+  {
+    icon: Cpu,
+    title: "LLM API Tokens (The AI Brain)",
+    badge: "Intelligence",
+    category: "Language Models",
+    description:
+      "Powers the cognitive intelligence, natural understanding, intent detection, and contextual problem-solving of your agent.",
+    requiredStack: "OpenAI API (GPT-4o, GPT-4o-mini), Anthropic Claude 3.5, or Gemini",
+    estimatedCost: "Pay-as-you-go per token (~₹200 - ₹800/mo for typical business volume)",
+  },
+  {
+    icon: Database,
+    title: "Vector Database & RAG Knowledge",
+    badge: "Memory",
+    category: "Custom Knowledge",
+    description:
+      "Stores your company manuals, product catalogs, PDFs, and FAQs as vector embeddings so the agent never hallucinates facts.",
+    requiredStack: "Pinecone, Qdrant Cloud, or Supabase pgvector",
+    estimatedCost: "Free tier covers up to 100,000 vectors (~₹0 to ₹800/mo at scale)",
+  },
+  {
+    icon: PhoneCall,
+    title: "Voice Telephony & Audio Pipeline",
+    badge: "For Voice Agents",
+    category: "Phone Calling",
+    description:
+      "Enables inbound and outbound phone calls with human-like cadence, interruption handling, and ultra-low 350ms latency.",
+    requiredStack: "Twilio / Plivo number + Deepgram (STT) + ElevenLabs / Vapi (TTS)",
+    estimatedCost: "~$0.05 to $0.09 per minute of calling (pay only for talk time)",
+  },
+  {
+    icon: MessageSquare,
+    title: "Official WhatsApp Cloud API",
+    badge: "Messaging",
+    category: "Meta API",
+    description:
+      "Official Meta-verified WhatsApp Business connection. No unofficial scraping or bots — zero risk of phone number ban.",
+    requiredStack: "Meta for Developers Account & Verified WhatsApp Business Manager",
+    estimatedCost: "First 1,000 service conversations every month are 100% FREE by Meta",
+  },
+  {
+    icon: Code2,
+    title: "Full Source Code & 100% Ownership",
+    badge: "Zero Lock-in",
+    category: "Intellectual Property",
+    description:
+      "Everything is deployed inside your own AWS, GitHub, and Cloud accounts. You own 100% of your code, prompts, and customer data.",
+    requiredStack: "GitHub Repository, Dockerfile & Complete Deployment Docs",
+    estimatedCost: "Included in Studio Project Fee (No recurring license fee)",
   },
 ];
 
@@ -200,7 +287,7 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
       : SCHOOL_PLANS;
 
   return (
-    <section id="pricing" className="relative border-t border-slate-200/60 bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <section id="pricing" className="relative overflow-hidden border-t border-slate-200/60 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         
         {/* Section Header */}
@@ -209,7 +296,7 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
             <Sparkles className="h-4 w-4 text-brand-500 animate-pulse" />
             Transparent Pricing &amp; Custom Project Packages
           </div>
-          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             {selectedApp === "agency" ? (
               <span>Transparent Packages for <span className="nuvertos-gradient-text">AI Agents &amp; Automations</span></span>
             ) : selectedApp === "school" ? (
@@ -218,7 +305,7 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
               <span>Transparent Pricing for <span className="nuvertos-gradient-text">TCB Store &amp; Inventory SaaS</span></span>
             )}
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg">
             {selectedApp === "agency"
               ? "Simple, fixed-rate pricing for custom AI agents, n8n workflow automations, and multi-tenant SaaS development."
               : selectedApp === "school"
@@ -227,10 +314,10 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
           </p>
 
           {/* Guarantee Pill */}
-          <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-brand-200 bg-brand-50/50 px-5 py-2.5 text-xs font-bold text-slate-800 shadow-xs">
+          <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 rounded-2xl border border-brand-200 bg-brand-50/50 px-3.5 py-2 sm:px-5 sm:py-2.5 text-[11px] sm:text-xs font-bold text-slate-800 shadow-xs">
             <span className="flex items-center gap-1.5 text-brand-800 font-extrabold">
-              <RefreshCw className="h-4 w-4 text-brand-500" />
-              100% Fixed Rates (No Hidden Costs)
+              <RefreshCw className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-brand-500" />
+              100% Fixed Rates
             </span>
             <span className="text-zinc-300">|</span>
             <span className="flex items-center gap-1.5 text-zinc-700">
@@ -240,19 +327,19 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
             <span className="text-zinc-300">|</span>
             <span className="flex items-center gap-1.5 text-zinc-700">
               <Lock className="h-3.5 w-3.5 text-brand-500" />
-              Safe &amp; Encrypted AI Cloud
+              Safe &amp; Encrypted
             </span>
           </div>
         </div>
 
         {/* PRICING CARDS GRID */}
-        <div className="mt-12 grid gap-8 lg:grid-cols-3 lg:items-stretch">
+        <div className="mt-10 sm:mt-12 grid gap-6 sm:gap-8 lg:grid-cols-3 lg:items-stretch">
           {activePlans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 ${
+              className={`relative flex flex-col justify-between rounded-3xl p-5 sm:p-8 transition-all duration-300 ${
                 plan.highlighted
-                  ? "border-2 border-brand-500 bg-brand-50/30 shadow-xl shadow-brand-500/10 scale-102"
+                  ? "border-2 border-brand-500 bg-brand-50/30 shadow-xl shadow-brand-500/10"
                   : "border border-slate-200 bg-white shadow-xs hover:border-brand-300 hover:shadow-md"
               }`}
             >
@@ -303,6 +390,99 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
             </div>
           ))}
         </div>
+
+        {/* AI AGENT ARCHITECTURE & INFRASTRUCTURE BREAKDOWN (FOR AGENCY VIEW) */}
+        {selectedApp === "agency" && (
+          <div className="mt-16 sm:mt-20 rounded-3xl border border-slate-200/80 bg-slate-50/70 p-6 sm:p-10 lg:p-12 shadow-xs">
+            {/* Header */}
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-800">
+                <Server className="h-3.5 w-3.5 text-blue-600" />
+                Architecture &amp; Cloud Infrastructure Guide
+              </div>
+              <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                What is required to build &amp; host an AI Agent?
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                Building an autonomous AI agent requires two parts: Our one-time <strong>Studio Engineering &amp; Setup Fee</strong>, and your direct <strong>Cloud Infrastructure &amp; API Accounts</strong>. Here is the 100% transparent breakdown:
+              </p>
+            </div>
+
+            {/* Infrastructure Grid */}
+            <div className="mt-8 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {AGENT_INFRA_REQUIREMENTS.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={item.title}
+                    className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-2xs transition-all hover:border-brand-300 hover:shadow-sm"
+                  >
+                    <div>
+                      {/* Top Header */}
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600 border border-brand-100">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-bold text-slate-700">
+                          {item.badge}
+                        </span>
+                      </div>
+
+                      {/* Title & Description */}
+                      <h4 className="mt-3.5 text-sm font-bold text-slate-900">{item.title}</h4>
+                      <p className="mt-1.5 text-xs leading-relaxed text-slate-600">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {/* Stack & Cost Footer */}
+                    <div className="mt-5 space-y-2 border-t border-slate-100 pt-3.5 text-[11px]">
+                      <div>
+                        <span className="font-bold text-slate-700">Tech Stack: </span>
+                        <span className="text-slate-600">{item.requiredStack}</span>
+                      </div>
+                      <div className="rounded-lg bg-slate-50 p-2 text-brand-900 font-medium">
+                        <span className="font-bold text-brand-700">Est. Cost: </span>
+                        {item.estimatedCost}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Summary Transparency Banner */}
+            <div className="mt-8 grid gap-4 rounded-2xl border border-brand-200/80 bg-white p-5 sm:p-6 sm:grid-cols-2 shadow-2xs">
+              <div className="flex items-start gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                  <DollarSign className="h-5 w-5" />
+                </div>
+                <div>
+                  <h5 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                    1. One-Time Studio Fee (TCB)
+                  </h5>
+                  <p className="mt-1 text-xs text-slate-600 leading-relaxed">
+                    Covers system design, prompt engineering, RAG vector pipeline, tool function calling, AWS cloud deployment, testing, and post-launch maintenance.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 border-t sm:border-t-0 sm:border-l border-slate-100 pt-4 sm:pt-0 sm:pl-6">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <div>
+                  <h5 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                    2. Direct Cloud &amp; API Running Costs
+                  </h5>
+                  <p className="mt-1 text-xs text-slate-600 leading-relaxed">
+                    AWS hosting, OpenAI tokens, and Twilio calls are billed directly to your own card. 100% transparency with zero agency markup and zero lock-in.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </section>

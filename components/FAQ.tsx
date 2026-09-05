@@ -56,7 +56,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative border-t border-zinc-100 bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <section id="faq" className="relative overflow-hidden border-t border-zinc-100 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-4xl">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
@@ -64,10 +64,10 @@ export default function FAQ() {
             <Sparkles className="h-3.5 w-3.5 text-brand-500" />
             Got Questions? We Have Answers
           </div>
-          <h2 className="font-display text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
             Frequently Asked Questions
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-zinc-500 sm:text-lg">
+          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-zinc-500 sm:text-lg">
             Everything you need to know about TCB Store billing, inventory tracking, and payment collection.
           </p>
         </div>

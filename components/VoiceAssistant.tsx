@@ -2,9 +2,19 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { Mic, MicOff, Volume2, Sparkles, X, CheckCircle2, Command, Zap, AlertCircle } from "lucide-react";
+import {
+  Mic,
+  MicOff,
+  Sparkles,
+  X,
+  Bot,
+  Navigation,
+  Loader2,
+  Send,
+  Languages,
+  CheckCircle2,
+} from "lucide-react";
 
-// SpeechRecognition type declarations for TS
 declare global {
   interface Window {
     SpeechRecognition: any;
@@ -15,16 +25,67 @@ declare global {
 export default function VoiceAssistant() {
   const router = useRouter();
   const pathname = usePathname();
-  
+
   const [isListening, setIsListening] = useState(false);
+  const [isThinking, setIsThinking] = useState(false);
+  const [selectedLang, setSelectedLang] = useState<"hi-IN" | "en-IN">("hi-IN");
   const [transcript, setTranscript] = useState("");
+  const [textInput, setTextInput] = useState("");
   const [feedbackMsg, setFeedbackMsg] = useState("");
+  const [lastAction, setLastAction] = useState<string>("");
   const [isSupported, setIsSupported] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
-  const recognitionRef = useRef<any>(null);
 
+  const recognitionRef = useRef<any>(null);
+  const cooldownRef = useRef<boolean>(false);
+  const availableVoicesRef = useRef<SpeechSynthesisVoice[]>([]);
+
+  // Load and cache browser voices
   useEffect(() => {
-    // Check Web Speech API Support
+    const loadVoices = () => {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        availableVoicesRef.current = window.speechSynthesis.getVoices();
+      }
+    };
+
+    loadVoices();
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+  }, []);
+
+  // Pick Indian voice
+  const getIndianVoice = (): SpeechSynthesisVoice | null => {
+    const voices = availableVoicesRef.current.length > 0
+      ? availableVoicesRef.current
+      : typeof window !== "undefined" && "speechSynthesis" in window
+      ? window.speechSynthesis.getVoices()
+      : [];
+
+    if (!voices || voices.length === 0) return null;
+
+    if (selectedLang === "hi-IN") {
+      const hiVoice = voices.find(
+        (v) => v.lang.startsWith("hi") || v.lang === "hi-IN" || v.name.toLowerCase().includes("hindi")
+      );
+      if (hiVoice) return hiVoice;
+    }
+
+    const indianVoice = voices.find(
+      (v) =>
+        v.lang === "en-IN" ||
+        v.name.toLowerCase().includes("india") ||
+        v.name.toLowerCase().includes("heera") ||
+        v.name.toLowerCase().includes("neerja") ||
+        v.name.toLowerCase().includes("ravi") ||
+        v.name.toLowerCase().includes("prabhat")
+    );
+
+    return indianVoice || voices.find((v) => v.default) || voices[0];
+  };
+
+  // Initialize SpeechRecognition with dynamic language
+  useEffect(() => {
     const SpeechRecognitionAPI =
       typeof window !== "undefined" &&
       (window.SpeechRecognition || window.webkitSpeechRecognition);
@@ -35,37 +96,36 @@ export default function VoiceAssistant() {
     }
 
     const recognition = new SpeechRecognitionAPI();
-    recognition.continuous = true;
-    recognition.interimResults = true;
-    recognition.lang = "en-IN"; // English (India) with voice command recognition
+    recognition.continuous = false; // single phrase recognition for high accuracy
+    recognition.interimResults = false;
+    recognition.lang = selectedLang;
 
     recognition.onresult = (event: any) => {
-      let currentTranscript = "";
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        currentTranscript += event.results[i][0].transcript;
+      const resultText = event.results[0]?.[0]?.transcript;
+      if (resultText && resultText.trim().length > 0) {
+        setTranscript(resultText);
+        handleSendQueryToGemini(resultText.trim());
       }
-      setTranscript(currentTranscript);
-      processCommand(currentTranscript.toLowerCase());
+      setIsListening(false);
     };
 
     recognition.onerror = (event: any) => {
-      console.warn("Voice AI Recognition Error:", event.error);
+      console.warn("Speech recognition notice:", event.error);
       setIsListening(false);
     };
 
     recognition.onend = () => {
-      // Auto-restart if user kept mic active
-      if (isListening) {
-        try {
-          recognition.start();
-        } catch (e) {
-          setIsListening(false);
-        }
-      }
+      setIsListening(false);
     };
 
     recognitionRef.current = recognition;
-  }, []);
+
+    return () => {
+      try {
+        recognition.stop();
+      } catch (e) {}
+    };
+  }, [selectedLang]);
 
   // Text-To-Speech Feedback Response
   const speakResponse = (text: string) => {
@@ -73,150 +133,282 @@ export default function VoiceAssistant() {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
+      const voice = getIndianVoice();
+      if (voice) {
+        utterance.voice = voice;
+      }
       utterance.rate = 1.0;
-      utterance.pitch = 1.0;
+      utterance.pitch = 1.02;
       window.speechSynthesis.speak(utterance);
     }
   };
 
-  // Voice Command Intent Router & Executor
-  const processCommand = (cmd: string) => {
-    // Navigation Commands
-    if (cmd.includes("go to store") || cmd.includes("open store") || cmd.includes("store dashboard") || cmd.includes("pos")) {
+  // Smooth Navigation & Highlight Handler
+  const executeAction = (action: string | null, actionLabel: string | null, speechText: string) => {
+    if (actionLabel) setLastAction(actionLabel);
+    speakResponse(speechText);
+
+    if (!action || typeof window === "undefined") return;
+
+    if (action === "store") {
       router.push("/store");
-      speakResponse("Opening TCB Store Workspace");
-      setTranscript("");
-    } else if (cmd.includes("go to school") || cmd.includes("open school") || cmd.includes("school dashboard") || cmd.includes("academy")) {
+      return;
+    }
+
+    if (action === "school") {
       router.push("/school");
-      speakResponse("Opening TCB School Workspace");
-      setTranscript("");
-    } else if (cmd.includes("go home") || cmd.includes("open home") || cmd.includes("main page")) {
-      router.push("/");
-      speakResponse("Navigating to TCB Home Platform");
-      setTranscript("");
-    } else if (cmd.includes("show pricing") || cmd.includes("open pricing") || cmd.includes("subscription plans")) {
-      router.push("/#pricing");
-      speakResponse("Showing Subscription Plans & Pricing");
-      setTranscript("");
-    } else if (cmd.includes("show apps") || cmd.includes("open apps") || cmd.includes("ecosystem")) {
-      router.push("/#ecosystem-apps");
-      speakResponse("Showing TCB Micro-SaaS Applications");
-      setTranscript("");
-    } 
-    // Sales / Attendance Queries
-    else if (cmd.includes("sales today") || cmd.includes("today sales")) {
-      speakResponse("Today's total sales across active POS counter is ₹18,450.");
-      setTranscript("");
-    } else if (cmd.includes("attendance today") || cmd.includes("how many present")) {
-      speakResponse("94% of students are present today across active batches.");
-      setTranscript("");
-    } else if (cmd.includes("pending dues") || cmd.includes("unpaid fees")) {
-      speakResponse("Total uncollected student fee dues amount to ₹13,500.");
-      setTranscript("");
+      return;
+    }
+
+    if (action === "home") {
+      if (pathname === "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        router.push("/");
+      }
+      return;
+    }
+
+    // Scroll to section ID
+    if (pathname === "/") {
+      const element = document.getElementById(action);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        element.classList.add("ring-4", "ring-brand-500/40", "ring-offset-4", "transition-all", "duration-500");
+        setTimeout(() => {
+          element.classList.remove("ring-4", "ring-brand-500/40", "ring-offset-4");
+        }, 2500);
+      } else {
+        window.location.hash = action;
+      }
+    } else {
+      router.push(`/#${action}`);
+    }
+  };
+
+  // Query Google Gemini API directly
+  const handleSendQueryToGemini = async (userPrompt: string) => {
+    if (!userPrompt || !userPrompt.trim()) return;
+    if (cooldownRef.current) return;
+
+    cooldownRef.current = true;
+    setIsThinking(true);
+    setTranscript(userPrompt);
+
+    try {
+      const res = await fetch("/api/voice-ai", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userPrompt }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        executeAction(data.action, data.actionLabel, data.reply);
+      } else {
+        speakResponse("Maaf kijiye, connection me thodi rukawat aayi. Kripya dobara try karein.");
+      }
+    } catch (err) {
+      console.error("Gemini query error:", err);
+      speakResponse("Kripya dobara bolein ya type karein.");
+    } finally {
+      setIsThinking(false);
+      setTimeout(() => {
+        cooldownRef.current = false;
+      }, 1000);
     }
   };
 
   const toggleListening = () => {
     if (!isSupported) {
-      alert("Browser Speech Recognition is not supported on this browser. Please use Chrome or Edge.");
+      alert("Browser Speech Recognition is not supported on this browser. Please use Google Chrome or Microsoft Edge.");
       return;
     }
 
     if (isListening) {
-      recognitionRef.current?.stop();
+      try {
+        recognitionRef.current?.stop();
+      } catch (e) {}
       setIsListening(false);
-      setTranscript("");
     } else {
       try {
         setIsOpen(true);
         recognitionRef.current?.start();
         setIsListening(true);
-        speakResponse("TCB Voice AI Active. How can I help your business today?");
       } catch (err) {
         console.error("Failed to start voice recognition:", err);
+        setIsListening(false);
       }
     }
   };
 
+  const handleManualSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!textInput.trim()) return;
+    const q = textInput.trim();
+    setTextInput("");
+    handleSendQueryToGemini(q);
+  };
+
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-3">
       {/* Voice Assistant Panel Window when open */}
       {isOpen && (
-        <div className="w-80 sm:w-96 overflow-hidden rounded-3xl border border-brand-200 bg-white/95 p-5 shadow-2xl backdrop-blur-xl animate-in slide-in-from-bottom-5 duration-200">
+        <div className="w-[calc(100vw-2rem)] max-w-sm sm:w-[430px] overflow-hidden rounded-3xl border border-brand-200 bg-white/98 p-4 sm:p-5 shadow-2xl backdrop-blur-xl animate-in slide-in-from-bottom-5 duration-200">
+          
+          {/* Header */}
           <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-500 text-white shadow-sm">
-                <Sparkles className="h-4 w-4" />
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-500 text-white shadow-sm">
+                <Bot className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-xs font-extrabold text-zinc-900">TCB Voice AI Command Center</h4>
-                <div className="flex items-center gap-1.5 text-[10px] font-semibold text-brand-500">
+                <h4 className="text-xs font-extrabold text-zinc-900 flex items-center gap-1.5">
+                  TCB Voice AI
+                  <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[9px] font-extrabold text-blue-700">
+                    Gemini Live
+                  </span>
+                </h4>
+                <div className="flex items-center gap-1.5 text-[10px] font-semibold text-brand-600">
                   <span className="h-2 w-2 rounded-full bg-brand-500 animate-ping" />
-                  Real-time Voice Recognition
+                  Hindi &amp; English Voice Engine
                 </div>
               </div>
             </div>
-            
-            <button
-              onClick={() => {
-                if (isListening) toggleListening();
-                setIsOpen(false);
-              }}
-              className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
-            >
-              <X className="h-4 w-4" />
-            </button>
+
+            <div className="flex items-center gap-2">
+              {/* Language Switcher Pill */}
+              <div className="flex items-center rounded-full border border-zinc-200 bg-zinc-100 p-0.5 text-[10px] font-bold">
+                <button
+                  type="button"
+                  onClick={() => setSelectedLang("hi-IN")}
+                  className={`rounded-full px-2 py-0.5 transition-all ${
+                    selectedLang === "hi-IN"
+                      ? "bg-brand-500 text-white shadow-xs"
+                      : "text-zinc-600 hover:text-zinc-900"
+                  }`}
+                >
+                  🇮🇳 हिन्दी
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedLang("en-IN")}
+                  className={`rounded-full px-2 py-0.5 transition-all ${
+                    selectedLang === "en-IN"
+                      ? "bg-brand-500 text-white shadow-xs"
+                      : "text-zinc-600 hover:text-zinc-900"
+                  }`}
+                >
+                  🇬🇧 Eng
+                </button>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => {
+                  if (isListening) toggleListening();
+                  setIsOpen(false);
+                }}
+                className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
           </div>
 
-          {/* Live Waveform Indicator */}
-          <div className="my-4 flex items-center justify-center gap-1.5 rounded-2xl border border-brand-100 bg-brand-50/60 p-4">
-            {isListening ? (
-              <div className="flex items-center gap-1">
-                <span className="h-6 w-1 rounded-full bg-brand-500 animate-pulse" />
-                <span className="h-10 w-1 rounded-full bg-brand-500 animate-bounce" />
-                <span className="h-4 w-1 rounded-full bg-brand-400 animate-pulse" />
-                <span className="h-8 w-1 rounded-full bg-brand-500 animate-bounce" />
-                <span className="h-5 w-1 rounded-full bg-brand-500 animate-pulse" />
+          {/* Action Destination Feedback Banner */}
+          {lastAction && (
+            <div className="mt-3 flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-800">
+              <Navigation className="h-3.5 w-3.5 text-emerald-600 animate-spin" />
+              <span>Routed to: {lastAction}</span>
+            </div>
+          )}
+
+          {/* Mic Waveform & Status */}
+          <div className="my-3 flex items-center justify-between rounded-2xl border border-brand-100 bg-brand-50/60 p-3">
+            <div className="flex items-center gap-2.5">
+              <button
+                type="button"
+                onClick={toggleListening}
+                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-xs transition-all ${
+                  isListening
+                    ? "bg-red-500 text-white animate-pulse"
+                    : "bg-brand-500 text-white hover:bg-brand-600"
+                }`}
+              >
+                {isListening ? <Mic className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
+              </button>
+              <div className="text-xs">
+                <div className="font-bold text-slate-900">
+                  {isListening ? "Listening (बोलिए...)" : "Tap Mic to Speak"}
+                </div>
+                <div className="text-[10px] text-slate-500">
+                  Lang: {selectedLang === "hi-IN" ? "Hindi (हिन्दी / हिंग्लिश)" : "English"}
+                </div>
               </div>
-            ) : (
-              <div className="text-xs font-semibold text-zinc-500 flex items-center gap-1.5">
-                <MicOff className="h-4 w-4 text-zinc-400" />
-                Tap microphone to speak commands
+            </div>
+
+            {isThinking && (
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-brand-700">
+                <Loader2 className="h-3.5 w-3.5 animate-spin text-brand-600" />
+                Ai is thinking...
               </div>
             )}
           </div>
 
-          {/* Speech Transcript Output */}
-          <div className="min-h-[50px] rounded-xl bg-zinc-50 p-3 text-xs">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 block mb-1">
-              {isListening ? "Listening to your voice..." : "Voice Output"}
-            </span>
-            <p className="font-semibold text-zinc-800 italic">
-              {transcript ? `"${transcript}"` : feedbackMsg || 'Try saying: "Go to Store", "Open School", "Sales today", or "Show Pricing"'}
+          {/* Transcript & Spoken Response Window */}
+          <div className="min-h-[54px] rounded-xl bg-zinc-50 p-3 text-xs">
+            {transcript && (
+              <div className="mb-1 text-[11px] font-semibold text-slate-500">
+                You asked: <span className="text-slate-800">&ldquo;{transcript}&rdquo;</span>
+              </div>
+            )}
+            <p className="font-bold text-slate-900 leading-snug">
+              {feedbackMsg ||
+                (selectedLang === "hi-IN"
+                  ? 'Say: "AI Agents", "Is School ready?", or "Pricing"'
+                  : 'Say: "Show AI Agents", "Is School ready?", or "Pricing"')}
             </p>
           </div>
 
+          {/* Type Directly Input Box (Alternative to Voice) */}
+          <form onSubmit={handleManualSubmit} className="mt-3 flex items-center gap-1.5">
+            <input
+              type="text"
+              value={textInput}
+              onChange={(e) => setTextInput(e.target.value)}
+              placeholder={selectedLang === "hi-IN" ? "Ask anything or type here..." : "Ask anything or type here..."}
+              className="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:border-brand-500 focus:outline-hidden"
+            />
+            <button
+              type="submit"
+              disabled={!textInput.trim()}
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-brand-500 text-white disabled:opacity-40 hover:bg-brand-600"
+            >
+              <Send className="h-3.5 w-3.5" />
+            </button>
+          </form>
+
           {/* Preset Voice Command Chips */}
-          <div className="mt-4 border-t border-zinc-100 pt-3">
-            <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider block mb-2">
-              Voice Shortcut Commands:
+          <div className="mt-3 border-t border-zinc-100 pt-2.5">
+            <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider block mb-1.5">
+              Quick Questions (Click to test):
             </span>
             <div className="flex flex-wrap gap-1.5">
               {[
-                '🗣️ "Go to Store"',
-                '🗣️ "Go to School"',
-                '🗣️ "Sales today"',
-                '🗣️ "Show Pricing"',
-              ].map((cmd) => (
+                { label: "🤖 AI Agents", cmd: "ai agent" },
+                { label: "🏫 School Model", cmd: "school model" },
+                { label: "💰 Pricing", cmd: "pricing" },
+                { label: "🛒 Store Model", cmd: "store model" },
+                { label: "📞 Demo", cmd: "demo" },
+              ].map((item) => (
                 <button
-                  key={cmd}
-                  onClick={() => {
-                    const cleanCmd = cmd.replace('🗣️ "', '').replace('"', '').toLowerCase();
-                    processCommand(cleanCmd);
-                  }}
-                  className="rounded-lg border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-700 hover:border-brand-500 hover:text-brand-500 transition-all shadow-2xs"
+                  key={item.cmd}
+                  type="button"
+                  onClick={() => handleSendQueryToGemini(item.cmd)}
+                  className="rounded-lg border border-zinc-200 bg-white px-2 py-1 text-[10px] font-semibold text-zinc-700 hover:border-brand-500 hover:text-brand-600 transition-all shadow-2xs active:scale-95"
                 >
-                  {cmd}
+                  {item.label}
                 </button>
               ))}
             </div>
@@ -229,24 +421,24 @@ export default function VoiceAssistant() {
         type="button"
         onClick={toggleListening}
         aria-label="TCB Voice AI Assistant"
-        className={`group relative flex h-14 w-14 items-center justify-center rounded-full border shadow-xl transition-all duration-300 ${
+        className={`group relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border shadow-xl transition-all duration-300 ${
           isListening
-            ? "border-brand-400 bg-brand-500 text-white shadow-brand-500/40 ring-4 ring-brand-500/20 scale-110"
-            : "border-brand-500 bg-brand-500 text-white hover:bg-brand-500 hover:scale-105"
+            ? "border-red-400 bg-red-500 text-white shadow-red-500/40 ring-4 ring-red-500/20 scale-110 animate-pulse"
+            : "border-brand-500 bg-brand-500 text-white hover:bg-brand-600 hover:scale-105 active:scale-95"
         }`}
       >
         {isListening ? (
           <div className="relative">
-            <Mic className="h-6 w-6 animate-pulse" />
-            <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-brand-300 animate-ping" />
+            <Mic className="h-5 w-5 sm:h-6 sm:w-6" />
+            <span className="absolute -top-1 -right-1 h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-white animate-ping" />
           </div>
         ) : (
-          <Mic className="h-6 w-6" />
+          <Mic className="h-5 w-5 sm:h-6 sm:w-6" />
         )}
 
         {/* Floating Tooltip Pill */}
-        <span className="absolute right-full mr-3 hidden whitespace-nowrap rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs font-bold text-zinc-800 shadow-md group-hover:block">
-          🎙️ Voice AI Command
+        <span className="absolute right-full mr-3 hidden whitespace-nowrap rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs font-bold text-zinc-800 shadow-md sm:group-hover:block">
+          🎙️ Voice AI (Hindi &amp; English)
         </span>
       </button>
     </div>

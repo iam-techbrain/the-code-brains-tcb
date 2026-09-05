@@ -64,7 +64,7 @@ const STEPS: Step[] = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative border-t border-zinc-100 bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <section id="how-it-works" className="relative overflow-hidden border-t border-zinc-100 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Section Title */}
         <div className="mx-auto max-w-3xl text-center">
@@ -72,16 +72,16 @@ export default function HowItWorks() {
             <Sparkles className="h-3.5 w-3.5 text-brand-500" />
             Simple 3-Step Process
           </div>
-          <h2 className="font-display text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
             How TCB Store works in your daily routine
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-zinc-500 sm:text-lg">
+          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-zinc-500 sm:text-lg">
             No complicated technical setup required. Start billing and managing your store inventory in 3 simple steps.
           </p>
         </div>
 
         {/* Steps Cards Container */}
-        <div className="relative mt-16 grid gap-8 lg:grid-cols-3">
+        <div className="relative mt-10 sm:mt-16 grid gap-6 sm:gap-8 lg:grid-cols-3">
           {/* Connector Line (Desktop Only) */}
           <div
             aria-hidden
@@ -93,7 +93,7 @@ export default function HowItWorks() {
             return (
               <div
                 key={step.number}
-                className="group relative flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-900/5"
+                className="group relative flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-5 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-900/5"
               >
                 <div>
                   {/* Top Header: Step Badge + Number */}

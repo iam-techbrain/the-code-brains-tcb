@@ -24,11 +24,11 @@ export default function DemoFloatWidget() {
       <div className="demo-float">
         <button
           onClick={() => setIsOpen(true)}
-          className="animate-pulse-subtle flex items-center gap-2 rounded-full border border-brand-400 bg-brand-500 px-4 py-2.5 text-xs font-extrabold text-white shadow-lg shadow-brand-500/30 backdrop-blur-md transition-all hover:bg-brand-700 hover:scale-105"
+          className="animate-pulse-subtle flex items-center gap-1.5 sm:gap-2 rounded-full border border-brand-400 bg-brand-500 px-3 py-2 sm:px-4 sm:py-2.5 text-[11px] sm:text-xs font-extrabold text-white shadow-lg shadow-brand-500/30 backdrop-blur-md transition-all hover:bg-brand-700 hover:scale-105 active:scale-95"
         >
-          <span className="flex h-2.5 w-2.5 rounded-full bg-brand-200 animate-ping" />
-          <Sparkles className="h-4 w-4 text-white" />
-          <span>Book Instant Demo</span>
+          <span className="flex h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-brand-200 animate-ping" />
+          <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
+          <span>Book Demo</span>
         </button>
       </div>
 

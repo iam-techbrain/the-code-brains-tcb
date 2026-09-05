@@ -47,7 +47,7 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     badgeStyle: "bg-brand-50 text-brand-800 border-brand-300",
     href: "/store",
     icon: Boxes,
-    iconBg: "bg-brand-600 text-white",
+    iconBg: "bg-brand-500 text-white",
   },
   {
     id: "health",
@@ -58,7 +58,7 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
     href: "/health",
     icon: Stethoscope,
-    iconBg: "bg-slate-800 text-brand-400",
+    iconBg: "bg-brand-500 text-white",
   },
   {
     id: "fitness",
@@ -69,7 +69,7 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
     href: "/fitness",
     icon: Dumbbell,
-    iconBg: "bg-slate-800 text-brand-400",
+    iconBg: "bg-brand-500 text-white",
   },
   {
     id: "hotel",
@@ -80,7 +80,7 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
     href: "/hotel",
     icon: Hotel,
-    iconBg: "bg-slate-800 text-amber-400",
+    iconBg: "bg-brand-500 text-white",
   },
   {
     id: "dine",
@@ -91,13 +91,13 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
     href: "/dine",
     icon: Utensils,
-    iconBg: "bg-slate-800 text-indigo-400",
+    iconBg: "bg-brand-500 text-white",
   },
 ];
 
 export default function EcosystemAppsSection() {
   return (
-    <section id="ecosystem-apps" className="relative border-t border-slate-200/60 bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <section id="ecosystem-apps" className="relative overflow-hidden border-t border-slate-200/60 bg-white px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
       
       {/* Radial Background Accent */}
       <div
@@ -122,14 +122,14 @@ export default function EcosystemAppsSection() {
         </div>
 
         {/* Unified Compact Product Cards Grid */}
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 sm:mt-10 grid grid-cols-1 gap-3.5 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SAAS_PRODUCTS.map((prod) => {
             const IconComp = prod.icon;
             return (
               <Link
                 key={prod.id}
                 href={prod.href}
-                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-brand-400 hover:shadow-md"
+                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-brand-400 hover:shadow-md active:scale-[0.99]"
               >
                 <div>
                   {/* Top Row: Icon + Badge */}
