@@ -149,7 +149,7 @@ export default function HowItWorks() {
         <div className="mt-14 text-center">
           <a
             href="#pricing"
-            className="inline-flex items-center gap-2 rounded-2xl bg-brand-500 px-7 py-3.5 text-xs font-bold text-white shadow-md transition-all hover:bg-brand-500 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            className="inline-flex items-center gap-2 rounded-2xl bg-[#305eff] hover:bg-[#1f47e0] px-7 py-3.5 text-xs font-bold text-white shadow-md shadow-[#305eff]/25 transition-all hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#305eff]"
           >
             Get Started Free (No Credit Card)
             <ArrowRight className="h-4 w-4" />

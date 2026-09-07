@@ -1,3 +1,5 @@
+import WorldwideClientsBanner from "@/components/WorldwideClientsBanner";
+import WorldwidePresenceSection from "@/components/WorldwidePresenceSection";
 import EcosystemHeader from "@/components/EcosystemHeader";
 import Hero from "@/components/Hero";
 import TechStackShowcase from "@/components/TechStackShowcase";
@@ -23,18 +25,24 @@ export const metadata = {
 export default function HomePage() {
   return (
     <main className="min-h-screen overflow-x-hidden w-full max-w-full bg-[#f8fafc] text-slate-900 antialiased selection:bg-brand-500 selection:text-white">
+      {/* 0. Top Worldwide Ticker & Government Registration Banner */}
+      <WorldwideClientsBanner />
+
       <EcosystemHeader />
       
       {/* 1. Hero: AI Agent & Automation Engine */}
       <Hero />
+
+      {/* 2. Global Footprint & Serving Worldwide Clients Section */}
+      <WorldwidePresenceSection />
       
-      {/* 2. Tech Stack & AI Engineering Tools */}
+      {/* 3. Tech Stack & AI Engineering Tools */}
       <TechStackShowcase />
 
-      {/* 3. 10 Production-Grade AI Agents & Automation Catalog */}
+      {/* 4. 10 Production-Grade AI Agents & Automation Catalog */}
       <AIAgentsListSection />
 
-      {/* 4. Enterprise Client Trust Badges */}
+      {/* 5. Enterprise Client Trust Badges */}
       <TrustBadgesTicker />
 
       {/* 5. Core AI Automation Capabilities */}

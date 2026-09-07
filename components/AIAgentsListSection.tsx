@@ -195,8 +195,8 @@ export default function AIAgentsListSection() {
               onClick={() => setActiveCategory(cat.id)}
               className={`shrink-0 whitespace-nowrap rounded-xl px-4 py-2 text-xs font-bold transition-all ${
                 activeCategory === cat.id
-                  ? "bg-brand-500 text-white shadow-md shadow-brand-500/20 scale-105"
-                  : "bg-slate-100 text-slate-700 hover:bg-brand-50 hover:text-brand-800"
+                  ? "bg-[#305eff] text-white shadow-md shadow-[#305eff]/25 scale-105"
+                  : "bg-slate-100 text-slate-700 hover:bg-[#eff4ff] hover:text-[#305eff]"
               }`}
             >
               {cat.label}
@@ -211,16 +211,16 @@ export default function AIAgentsListSection() {
             return (
               <div
                 key={agent.id}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-6 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-500 hover:shadow-xl hover:shadow-brand-500/10"
+                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-6 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-[#305eff] hover:shadow-xl hover:shadow-[#305eff]/10"
               >
 
                 <div>
                   {/* Header Row: Icon + Status */}
                   <div className="flex items-center justify-between gap-2 mb-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 border border-brand-200/80 transition-transform group-hover:scale-105">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eff4ff] text-[#305eff] border border-[#d0ddfd] transition-transform group-hover:scale-105">
                       <IconComp className="h-6 w-6" />
                     </div>
-                    <span className="rounded-full bg-brand-50 px-2.5 py-1 text-[10px] font-extrabold text-brand-800 border border-brand-200">
+                    <span className="rounded-full bg-[#eff4ff] px-2.5 py-1 text-[10px] font-extrabold text-[#305eff] border border-[#d0ddfd]">
                       {agent.status}
                     </span>
                   </div>
@@ -231,7 +231,7 @@ export default function AIAgentsListSection() {
                   </span>
 
                   {/* Agent Name */}
-                  <h3 className="mt-1 text-lg font-black text-slate-900 group-hover:text-brand-700 transition-colors">
+                  <h3 className="mt-1 text-lg font-black text-slate-900 group-hover:text-[#305eff] transition-colors">
                     {agent.name}
                   </h3>
 
@@ -241,8 +241,8 @@ export default function AIAgentsListSection() {
                   </p>
 
                   {/* Outcome Box */}
-                  <div className="mt-4 rounded-xl border border-brand-200/60 bg-brand-50/50 p-3">
-                    <span className="text-[10px] font-extrabold uppercase text-brand-800 block">
+                  <div className="mt-4 rounded-xl border border-[#d0ddfd] bg-[#eff4ff]/60 p-3">
+                    <span className="text-[10px] font-extrabold uppercase text-[#305eff] block">
                       ⚡ Key Outcome:
                     </span>
                     <span className="text-xs font-bold text-slate-800 mt-0.5 block">
@@ -259,7 +259,7 @@ export default function AIAgentsListSection() {
 
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-1 font-extrabold text-brand-700 hover:text-brand-800 group/btn"
+                    className="inline-flex items-center gap-1 font-extrabold text-[#305eff] hover:text-[#1f47e0] group/btn"
                   >
                     <span>Deploy Agent</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" />

@@ -40,7 +40,7 @@ export default function Hero() {
             {/* Main Headline */}
             <h1 className="font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem] lg:leading-[1.12]">
               Custom AI Agents Built Your Way.{" "}
-              <span className="mt-1.5 block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
+              <span className="mt-1.5 block bg-gradient-to-r from-[#305eff] via-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 Or Deploy Instantly.
               </span>
             </h1>
@@ -53,12 +53,12 @@ export default function Hero() {
             {/* Dual Offering Comparison Cards */}
             <div className="mt-6 sm:mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
               {/* Card 1: Custom AI Agents */}
-              <div className="group relative rounded-2xl border border-blue-100 bg-gradient-to-b from-blue-50/50 to-white p-4 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md">
+              <div className="group relative rounded-2xl border border-[#d0ddfd] bg-gradient-to-b from-[#eff4ff]/60 to-white p-4 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#305eff] hover:shadow-md">
                 <div className="flex items-center justify-between">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-white shadow-xs">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#305eff] text-white shadow-xs">
                     <Settings2 className="h-4 w-4" />
                   </span>
-                  <span className="rounded-full bg-blue-100/80 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-800">
+                  <span className="rounded-full bg-[#eff4ff] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#305eff] border border-[#d0ddfd]">
                     100% Tailored
                   </span>
                 </div>
@@ -68,7 +68,7 @@ export default function Hero() {
                 <p className="mt-1 text-xs leading-5 text-slate-600">
                   Architected around your exact business logic, custom prompts, internal databases, and favorite CRMs.
                 </p>
-                <div className="mt-2.5 flex items-center gap-1.5 text-[11px] font-semibold text-blue-700">
+                <div className="mt-2.5 flex items-center gap-1.5 text-[11px] font-semibold text-[#305eff]">
                   <CheckCircle2 className="h-3 w-3" />
                   <span>Your Rules &bull; Your Stack &bull; End-to-End</span>
                 </div>
@@ -100,15 +100,15 @@ export default function Hero() {
             {/* Quick Feature Pillars */}
             <div className="mt-5 grid grid-cols-2 gap-2 text-xs font-medium text-slate-700 sm:grid-cols-4 sm:gap-2.5">
               <div className="flex items-center gap-1.5 rounded-lg border border-slate-100 bg-slate-50/80 px-2.5 py-1.5">
-                <Clock className="h-3.5 w-3.5 text-blue-600" />
+                <Clock className="h-3.5 w-3.5 text-[#305eff]" />
                 <span className="text-[11px] font-semibold text-slate-800">Fast Turnaround</span>
               </div>
               <div className="flex items-center gap-1.5 rounded-lg border border-slate-100 bg-slate-50/80 px-2.5 py-1.5">
-                <Cpu className="h-3.5 w-3.5 text-indigo-600" />
+                <Cpu className="h-3.5 w-3.5 text-[#305eff]" />
                 <span className="text-[11px] font-semibold text-slate-800">Advanced LLMs</span>
               </div>
               <div className="flex items-center gap-1.5 rounded-lg border border-slate-100 bg-slate-50/80 px-2.5 py-1.5">
-                <Workflow className="h-3.5 w-3.5 text-blue-600" />
+                <Workflow className="h-3.5 w-3.5 text-[#305eff]" />
                 <span className="text-[11px] font-semibold text-slate-800">n8n &amp; Make Sync</span>
               </div>
               <div className="flex items-center gap-1.5 rounded-lg border border-slate-100 bg-slate-50/80 px-2.5 py-1.5">
@@ -121,7 +121,7 @@ export default function Hero() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href="#contact"
-                className="btn-shine inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-blue-600/25 transition-all duration-200 hover:brightness-110 active:scale-95"
+                className="btn-shine inline-flex items-center justify-center gap-2 rounded-xl bg-[#305eff] hover:bg-[#1f47e0] px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-[#305eff]/30 transition-all duration-200 hover:brightness-110 active:scale-95"
               >
                 <Sparkles className="h-4 w-4" />
                 <span>Build My Custom AI Agent</span>
@@ -129,9 +129,9 @@ export default function Hero() {
               </a>
               <a
                 href="#ai-agents-catalog"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3.5 text-xs sm:text-sm font-semibold text-slate-800 shadow-xs transition-all duration-200 hover:border-slate-400 hover:bg-slate-50 active:scale-95"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3.5 text-xs sm:text-sm font-semibold text-slate-800 shadow-xs transition-all duration-200 hover:border-[#305eff]/60 hover:bg-[#eff4ff]/40 active:scale-95"
               >
-                <Bot className="h-4 w-4 text-indigo-600" />
+                <Bot className="h-4 w-4 text-[#305eff]" />
                 <span>Explore AI Agents</span>
               </a>
             </div>
@@ -144,16 +144,16 @@ export default function Hero() {
 
           {/* Right Column: Live Agent Ops Monitor */}
           <div className="relative flex flex-col justify-center lg:col-span-5">
-            {/* Elegant, clean ambient backlight (soft, not loud/fuzzy) */}
+            {/* Elegant, clean ambient backlight */}
             <div
               aria-hidden
-              className="pointer-events-none absolute -inset-2 rounded-[2rem] bg-gradient-to-tr from-blue-500/10 via-indigo-500/10 to-transparent blur-2xl"
+              className="pointer-events-none absolute -inset-2 rounded-[2rem] bg-gradient-to-tr from-[#305eff]/15 via-blue-500/10 to-transparent blur-2xl"
             />
 
             {/* Floating Metric 1 */}
             <div className="animate-float-slow absolute -left-3 top-8 z-20 hidden rounded-2xl border border-slate-200/80 bg-white/95 px-3.5 py-2 shadow-md backdrop-blur-md sm:block">
               <p className="text-[10px] font-semibold text-slate-500">Fleet Capacity</p>
-              <p className="font-display text-sm font-bold text-blue-600">18 Custom Agents Built</p>
+              <p className="font-display text-sm font-bold text-[#305eff]">18 Custom Agents Built</p>
             </div>
 
             {/* Floating Metric 2 */}
@@ -173,7 +173,7 @@ export default function Hero() {
         <div className="relative mt-12 rounded-[1.75rem] border border-slate-200/80 bg-slate-50/70 p-4 shadow-xs sm:p-6">
           <div className="mb-4 flex items-center justify-between px-1">
             <div className="flex items-center gap-2">
-              <span className="flex h-2.5 w-2.5 rounded-full bg-blue-600 animate-pulse" />
+              <span className="flex h-2.5 w-2.5 rounded-full bg-[#305eff] animate-pulse" />
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-700">
                 Live SaaS Workspace &amp; AI Dashboard Preview
               </span>
@@ -182,7 +182,7 @@ export default function Hero() {
               href="https://techschool.thecodebrains.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 sm:flex"
+              className="hidden items-center gap-1 text-xs font-semibold text-[#305eff] hover:text-[#1f47e0] sm:flex"
             >
               Explore Live Workspace
               <ChevronRight className="h-3.5 w-3.5" />

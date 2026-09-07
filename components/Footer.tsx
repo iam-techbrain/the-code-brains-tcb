@@ -39,7 +39,7 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-slate-900 px-4 pt-14 pb-24 sm:pb-8 text-slate-300 sm:px-6 lg:px-8">
+    <footer className="relative overflow-hidden bg-[#061229] px-4 pt-14 pb-24 sm:pb-8 text-slate-300 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand column */}
@@ -51,7 +51,7 @@ export default function Footer() {
                 style={{ height: "34px", width: "auto" }}
                 className="h-8.5 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
               />
-              <span className="mt-1 text-[11px] font-semibold tracking-wider uppercase text-blue-300">
+              <span className="mt-1 text-[11px] font-semibold tracking-wider uppercase text-[#618dff]">
                 Micro-SaaS Ecosystem
               </span>
             </a>
@@ -62,15 +62,15 @@ export default function Footer() {
             {/* Security Pill Badges */}
             <div className="mt-5 flex flex-wrap gap-2 text-[10px] font-semibold text-slate-200">
               <span className="flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1">
-                <ShieldCheck className="h-3 w-3 text-blue-300" />
+                <ShieldCheck className="h-3 w-3 text-[#618dff]" />
                 ABDM Compliant
               </span>
               <span className="flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1">
-                <Award className="h-3 w-3 text-blue-300" />
+                <Award className="h-3 w-3 text-[#618dff]" />
                 ISO 27001 Certified
               </span>
               <span className="flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1">
-                <Cloud className="h-3 w-3 text-blue-300" />
+                <Cloud className="h-3 w-3 text-[#618dff]" />
                 AWS 99.95% Uptime
               </span>
             </div>
@@ -81,7 +81,7 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-300 transition-all duration-200 hover:border-brand-400 hover:text-white hover:bg-brand-500"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-300 transition-all duration-200 hover:border-[#305eff] hover:text-white hover:bg-[#305eff]"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -109,18 +109,48 @@ export default function Footer() {
           ))}
         </div>
 
+        {/* Global Footprint & Government Registered Bar */}
+        <div className="mb-10 rounded-2xl border border-white/10 bg-white/5 p-4.5 backdrop-blur-md">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs">
+              <span className="font-extrabold uppercase tracking-wider text-[#618dff] shrink-0">
+                Serving Clients Worldwide:
+              </span>
+              <div className="flex flex-wrap items-center gap-1 text-[11px] font-medium text-slate-300">
+                <span className="rounded bg-slate-800/80 px-2 py-0.5 border border-white/10">🇺🇸 USA</span>
+                <span className="rounded bg-slate-800/80 px-2 py-0.5 border border-white/10">🇨🇦 Canada</span>
+                <span className="rounded bg-slate-800/80 px-2 py-0.5 border border-white/10">🇦🇪 Dubai</span>
+                <span className="rounded bg-slate-800/80 px-2 py-0.5 border border-white/10">🇸🇦 Saudi Arabia</span>
+                <span className="rounded bg-slate-800/80 px-2 py-0.5 border border-white/10">🇪🇺 Europe</span>
+                <span className="rounded bg-slate-800/80 px-2 py-0.5 border border-white/10">🇦🇺 Australia</span>
+                <span className="rounded bg-slate-800/80 px-2 py-0.5 border border-white/10">🇿🇦 South Africa</span>
+                <span className="rounded bg-slate-800/80 px-2 py-0.5 border border-white/10">🇮🇳 India</span>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2 text-xs">
+              <span className="rounded-full bg-[#305eff]/20 px-3 py-1 text-[11px] font-semibold text-blue-200 border border-[#305eff]/30">
+                Powered by Advanced Meta, Google, AI-Agents &amp; System Automation
+              </span>
+              <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-[11px] font-bold text-emerald-300 border border-emerald-500/30">
+                Government Registered Entity
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 sm:flex-row">
           <p className="text-xs text-slate-500">
-            © {new Date().getFullYear()} The Code Brains (TCB) Platform. All rights reserved.
+            © {new Date().getFullYear()} The Code Brains (TCB) Platform. All rights reserved. | Government Registered
           </p>
           <div className="flex items-center gap-4 text-xs text-slate-400 font-medium">
             <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-brand-500 animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-[#305eff] animate-pulse" />
               All Systems Operational
             </span>
             <span>•</span>
-            <span>Made in India 🇮🇳</span>
+            <span>Serving Clients Worldwide 🌍</span>
           </div>
         </div>
       </div>

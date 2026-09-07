@@ -123,8 +123,8 @@ export default function Features() {
               onClick={() => setActiveCategory(cat)}
               className={`shrink-0 whitespace-nowrap rounded-xl px-4 py-2 sm:px-5 text-xs font-bold transition-all ${
                 activeCategory === cat
-                  ? "bg-brand-500 text-white shadow-md shadow-brand-500/20 scale-105"
-                  : "bg-slate-100 text-slate-700 hover:bg-brand-50 hover:text-brand-800"
+                  ? "bg-[#305eff] text-white shadow-md shadow-[#305eff]/25 scale-105"
+                  : "bg-slate-100 text-slate-700 hover:bg-[#eff4ff] hover:text-[#305eff]"
               }`}
             >
               {cat}
@@ -139,7 +139,7 @@ export default function Features() {
             return (
               <div
                 key={capability.title}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-7 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-xl"
+                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-7 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-[#305eff] hover:shadow-xl hover:shadow-[#305eff]/10"
               >
                 <div>
                   <div className="flex items-center justify-between">

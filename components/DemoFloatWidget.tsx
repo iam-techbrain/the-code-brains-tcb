@@ -24,9 +24,9 @@ export default function DemoFloatWidget() {
       <div className="demo-float">
         <button
           onClick={() => setIsOpen(true)}
-          className="animate-pulse-subtle flex items-center gap-1.5 sm:gap-2 rounded-full border border-brand-400 bg-brand-500 px-3 py-2 sm:px-4 sm:py-2.5 text-[11px] sm:text-xs font-extrabold text-white shadow-lg shadow-brand-500/30 backdrop-blur-md transition-all hover:bg-brand-700 hover:scale-105 active:scale-95"
+          className="animate-pulse-subtle flex items-center gap-1.5 sm:gap-2 rounded-full border border-[#618dff] bg-[#305eff] px-3 py-2 sm:px-4 sm:py-2.5 text-[11px] sm:text-xs font-extrabold text-white shadow-lg shadow-[#305eff]/35 backdrop-blur-md transition-all hover:bg-[#1f47e0] hover:scale-105 active:scale-95"
         >
-          <span className="flex h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-brand-200 animate-ping" />
+          <span className="flex h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-blue-200 animate-ping" />
           <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
           <span>Book Demo</span>
         </button>
@@ -74,7 +74,7 @@ export default function DemoFloatWidget() {
                       placeholder="e.g. Dr. Rahul Sharma"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-xs focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                      className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-xs focus:border-[#305eff] focus:outline-none focus:ring-2 focus:ring-[#305eff]/20"
                     />
                   </div>
 
@@ -86,7 +86,7 @@ export default function DemoFloatWidget() {
                       placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-xs focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                      className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-xs focus:border-[#305eff] focus:outline-none focus:ring-2 focus:ring-[#305eff]/20"
                     />
                   </div>
 
@@ -95,7 +95,7 @@ export default function DemoFloatWidget() {
                     <select
                       value={formData.businessType}
                       onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
-                      className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-xs focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 bg-white"
+                      className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-xs focus:border-[#305eff] focus:outline-none focus:ring-2 focus:ring-[#305eff]/20 bg-white"
                     >
                       <option value="School">TCB School (Coaching &amp; Fee Tracker - Live)</option>
                       <option value="Inventory">TCB Inventory (Stock POS - Soon)</option>
@@ -105,7 +105,7 @@ export default function DemoFloatWidget() {
 
                   <button
                     type="submit"
-                    className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-brand-500 py-3 text-xs font-bold text-white shadow-md transition-all hover:bg-brand-700 hover:shadow-lg active:scale-95"
+                    className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-[#305eff] hover:bg-[#1f47e0] py-3 text-xs font-bold text-white shadow-md shadow-[#305eff]/25 transition-all hover:shadow-lg active:scale-95"
                   >
                     <span>Schedule Free Walkthrough</span>
                     <ArrowRight className="h-4 w-4" />

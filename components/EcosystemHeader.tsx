@@ -220,7 +220,7 @@ export default function EcosystemHeader() {
             <button
               type="button"
               onClick={() => setRightProductsOpen(!rightProductsOpen)}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-indigo-500 px-4 py-2 text-xs font-semibold text-white shadow-lift hover:brightness-110 active:scale-95 transition-all"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#305eff] hover:bg-[#1f47e0] px-4 py-2 text-xs font-bold text-white shadow-md shadow-[#305eff]/25 active:scale-95 transition-all"
             >
               <Sparkles className="h-4 w-4 text-white" />
               <span>Browse All Apps</span>

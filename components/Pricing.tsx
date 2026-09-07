@@ -379,7 +379,7 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
                   href={plan.ctaHref}
                   className={`flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-xs font-extrabold transition-all active:scale-95 ${
                     plan.highlighted
-                      ? "bg-brand-500 text-white hover:bg-brand-700 shadow-md shadow-brand-500/20"
+                      ? "bg-[#305eff] text-white hover:bg-[#1f47e0] shadow-md shadow-[#305eff]/25"
                       : "bg-slate-900 text-white hover:bg-slate-800"
                   }`}
                 >

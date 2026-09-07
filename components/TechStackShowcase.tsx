@@ -259,12 +259,12 @@ export default function TechStackShowcase() {
         </div>
 
         {/* Selected Tool Interactive Deep Dive & Code Terminal */}
-        <div className="mt-8 sm:mt-12 rounded-2xl sm:rounded-3xl border border-brand-200 bg-slate-50/80 p-4 sm:p-8 shadow-xs relative overflow-hidden">
+        <div className="mt-8 sm:mt-12 rounded-2xl sm:rounded-3xl border border-brand-200 bg-[#f4f7ff] p-4 sm:p-8 shadow-xs relative overflow-hidden">
           <div className="grid gap-8 lg:grid-cols-12 items-center">
             {/* Left Info Column */}
             <div className="lg:col-span-6 space-y-4">
-              <div className="inline-flex items-center gap-2 rounded-lg bg-brand-100 border border-brand-200 px-3 py-1 text-xs font-bold text-brand-800">
-                <Layers className="h-3.5 w-3.5" />
+              <div className="inline-flex items-center gap-2 rounded-lg bg-white border border-[#d0ddfd] px-3 py-1 text-xs font-bold text-[#305eff]">
+                <Layers className="h-3.5 w-3.5 text-[#305eff]" />
                 <span>Selected Architecture Tool</span>
               </div>
 
@@ -277,12 +277,12 @@ export default function TechStackShowcase() {
               </p>
 
               <div className="space-y-2.5 pt-2">
-                <h4 className="text-xs font-extrabold uppercase tracking-wider text-brand-800">
+                <h4 className="text-xs font-extrabold uppercase tracking-wider text-[#305eff]">
                   Key Technical Highlights:
                 </h4>
                 {selectedTool.features.map((feat, idx) => (
                   <div key={idx} className="flex items-start gap-2 text-xs font-medium text-slate-700">
-                    <CheckCircle2 className="h-4 w-4 text-brand-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-4 w-4 text-[#305eff] shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </div>
                 ))}
@@ -293,7 +293,7 @@ export default function TechStackShowcase() {
                   href="https://techschool.thecodebrains.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 via-brand-600 to-brand-800 px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-brand-500/20 transition-all hover:scale-105"
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#305eff] hover:bg-[#1f47e0] px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-[#305eff]/25 transition-all hover:scale-105"
                 >
                   <Zap className="h-4 w-4" />
                   <span>Build Custom AI Pipeline</span>
@@ -304,28 +304,28 @@ export default function TechStackShowcase() {
               </div>
             </div>
 
-            {/* Right Terminal Snippet Column */}
+            {/* Right Terminal Snippet Column - Emulating Razorpay Developer Code Editor */}
             <div className="lg:col-span-6">
-              <div className="overflow-hidden rounded-2xl border border-slate-700 bg-[#020617] shadow-2xl">
+              <div className="overflow-hidden rounded-2xl border border-slate-800 bg-[#061229] shadow-2xl">
                 {/* Terminal Header */}
-                <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/90 px-4 py-3">
+                <div className="flex items-center justify-between border-b border-slate-800/80 bg-[#030a19] px-4 py-3">
                   <div className="flex items-center gap-2">
                     <span className="h-3 w-3 rounded-full bg-red-500/80" />
                     <span className="h-3 w-3 rounded-full bg-amber-500/80" />
-                    <span className="h-3 w-3 rounded-full bg-brand-500/80" />
+                    <span className="h-3 w-3 rounded-full bg-[#305eff]" />
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
-                    <Terminal className="h-3.5 w-3.5 text-brand-400" />
+                  <div className="flex items-center gap-2 text-xs text-slate-300 font-mono">
+                    <Terminal className="h-3.5 w-3.5 text-[#618dff]" />
                     <span>{selectedTool.id}-agent-pipeline.ts</span>
                   </div>
-                  <span className="text-[10px] font-bold text-brand-400 bg-brand-950 px-2 py-0.5 rounded border border-brand-500/30">
+                  <span className="text-[10px] font-bold text-[#618dff] bg-[#305eff]/20 px-2 py-0.5 rounded border border-[#305eff]/40">
                     LIVE SPEC
                   </span>
                 </div>
 
                 {/* Terminal Code Block */}
-                <div className="p-4 sm:p-5 max-w-full overflow-x-auto text-xs font-mono text-brand-300 leading-relaxed bg-[#020617]">
-                  <pre className="max-w-full overflow-x-auto whitespace-pre font-mono text-[11px] sm:text-xs">
+                <div className="p-4 sm:p-5 max-w-full overflow-x-auto text-xs font-mono text-[#96b4ff] leading-relaxed bg-[#061229]">
+                  <pre className="max-w-full overflow-x-auto whitespace-pre font-mono text-[11px] sm:text-xs text-blue-200">
                     <code>{selectedTool.codeSnippet}</code>
                   </pre>
                 </div>

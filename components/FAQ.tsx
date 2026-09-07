@@ -124,7 +124,7 @@ export default function FAQ() {
             href="https://wa.me/919999999999?text=Hi%20TCB%20Store,%20I%20have%20a%20question"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-brand-500 px-4 py-2.5 text-xs font-bold text-white transition-all hover:bg-brand-700 shadow-md active:scale-95"
+            className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#305eff] hover:bg-[#1f47e0] px-4 py-2.5 text-xs font-bold text-white transition-all shadow-md shadow-[#305eff]/25 active:scale-95"
           >
             Chat with Support
           </a>
