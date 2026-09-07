@@ -103,6 +103,7 @@ export const metadata: Metadata = {
 };
 
 import { LeadModalProvider } from "@/components/LeadModalContext";
+import { GlobalCountryProvider } from "@/components/GlobalCountryContext";
 
 export default function RootLayout({
   children,
@@ -112,10 +113,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased overflow-x-hidden w-full max-w-full">
-        <LeadModalProvider>
-          {children}
-          <VoiceAssistant />
-        </LeadModalProvider>
+        <GlobalCountryProvider>
+          <LeadModalProvider>
+            {children}
+            <VoiceAssistant />
+          </LeadModalProvider>
+        </GlobalCountryProvider>
       </body>
     </html>
   );

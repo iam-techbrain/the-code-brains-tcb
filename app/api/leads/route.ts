@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, phone, company, source, plan, message } = body;
+    const { name, email, phone, company, source, plan, priceText, country, message } = body;
 
     const apiKey = process.env.HUBSPOT_ACCESS_KEY;
     if (!apiKey) {
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     const firstname = nameParts[0] || "Website";
     const lastname = nameParts.slice(1).join(" ") || "Lead";
 
-    // Ensure valid email for HubSpot (use fallback if phone given without email)
+    // Clean phone number
     const cleanPhone = (phone || "").replace(/\D/g, "");
     const contactEmail =
       email && email.includes("@")
@@ -29,13 +29,15 @@ export async function POST(req: Request) {
         : `lead_${Date.now()}@thecodebrains.com`;
 
     const noteDetails = [
-      source ? `Source: ${source}` : null,
-      plan ? `Selected Plan: ${plan}` : null,
-      message ? `Message: ${message}` : null,
-      phone ? `Direct Phone: ${phone}` : null,
+      source ? `📍 Lead Location / Source: ${source}` : null,
+      plan ? `📦 Selected Plan: ${plan}` : null,
+      priceText ? `💰 Converted Amount: ${priceText}` : null,
+      country ? `🌍 Country & Dial Code: ${country}` : null,
+      message ? `📝 Requirement: ${message}` : null,
+      phone ? `📞 International Mobile: ${phone}` : null,
     ]
       .filter(Boolean)
-      .join(" | ");
+      .join(" \n");
 
     const payload = {
       properties: {

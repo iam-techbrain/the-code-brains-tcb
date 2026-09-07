@@ -277,9 +277,11 @@ interface PricingProps {
 }
 
 import { useLeadModal } from "@/components/LeadModalContext";
+import { useGlobalCountry } from "@/components/GlobalCountryContext";
 
 export default function Pricing({ defaultApp = "agency", hideToggle = true }: PricingProps) {
   const { openLeadModal } = useLeadModal();
+  const { formatPrice, selectedCountry } = useGlobalCountry();
   const [selectedApp] = useState<"store" | "school" | "agency">(defaultApp);
 
   const activePlans =
@@ -297,7 +299,7 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d0ddfd] bg-[#eff4ff] px-4 py-1.5 text-xs font-bold text-[#305eff] shadow-xs">
             <Sparkles className="h-4 w-4 text-[#305eff] animate-pulse" />
-            Transparent Pricing &amp; Custom Project Packages
+            Transparent Pricing ({selectedCountry.flag} {selectedCountry.currency})
           </div>
           <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             {selectedApp === "agency" ? (
@@ -337,35 +339,37 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
 
         {/* PRICING CARDS GRID */}
         <div className="mt-10 sm:mt-12 grid gap-6 sm:gap-8 lg:grid-cols-3 lg:items-stretch">
-          {activePlans.map((plan) => (
-            <div
-              key={plan.name}
-              className={`relative flex flex-col justify-between rounded-3xl p-5 sm:p-8 transition-all duration-300 ${
-                plan.highlighted
-                  ? "border-2 border-[#305eff] bg-[#eff4ff]/30 shadow-xl shadow-[#305eff]/10"
-                  : "border border-slate-200 bg-white shadow-xs hover:border-[#305eff]/60 hover:shadow-md"
-              }`}
-            >
-              {plan.badge && (
-                <span
-                  className={`absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-extrabold shadow-xs ${
-                    plan.highlighted
-                      ? "bg-[#305eff] text-white"
-                      : "bg-slate-900 text-white"
-                  }`}
-                >
-                  {plan.badge}
-                </span>
-              )}
+          {activePlans.map((plan) => {
+            const displayPrice = plan.priceVal ? formatPrice(plan.priceVal) : plan.priceText;
+            return (
+              <div
+                key={plan.name}
+                className={`relative flex flex-col justify-between rounded-3xl p-5 sm:p-8 transition-all duration-300 ${
+                  plan.highlighted
+                    ? "border-2 border-[#305eff] bg-[#eff4ff]/30 shadow-xl shadow-[#305eff]/10"
+                    : "border border-slate-200 bg-white shadow-xs hover:border-[#305eff]/60 hover:shadow-md"
+                }`}
+              >
+                {plan.badge && (
+                  <span
+                    className={`absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-extrabold shadow-xs ${
+                      plan.highlighted
+                        ? "bg-[#305eff] text-white"
+                        : "bg-slate-900 text-white"
+                    }`}
+                  >
+                    {plan.badge}
+                  </span>
+                )}
 
-              <div>
-                <h3 className="text-xl font-bold text-slate-900">{plan.name}</h3>
-                <p className="mt-2 text-xs text-slate-600 min-h-[36px]">{plan.description}</p>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900">{plan.name}</h3>
+                  <p className="mt-2 text-xs text-slate-600 min-h-[36px]">{plan.description}</p>
 
-                <div className="mt-6 flex items-baseline gap-1">
-                  <span className="text-4xl font-black tracking-tight text-slate-900">{plan.priceText}</span>
-                  <span className="text-xs font-semibold text-slate-500">{plan.period}</span>
-                </div>
+                  <div className="mt-6 flex items-baseline gap-1">
+                    <span className="text-4xl font-black tracking-tight text-slate-900">{displayPrice}</span>
+                    <span className="text-xs font-semibold text-slate-500">{plan.period}</span>
+                  </div>
 
                 <ul className="mt-8 space-y-3">
                   {plan.features.map((feat) => (
@@ -399,7 +403,8 @@ export default function Pricing({ defaultApp = "agency", hideToggle = true }: Pr
                 </button>
               </div>
             </div>
-          ))}
+          );
+        })}
         </div>
 
         {/* AI AGENT ARCHITECTURE & INFRASTRUCTURE BREAKDOWN (FOR AGENCY VIEW) */}

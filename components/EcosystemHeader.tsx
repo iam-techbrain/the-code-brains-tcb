@@ -95,7 +95,10 @@ const ECOSYSTEM_APPS = [
   },
 ];
 
+import { useGlobalCountry, GLOBAL_COUNTRIES } from "@/components/GlobalCountryContext";
+
 export default function EcosystemHeader() {
+  const { selectedCountry, setSelectedCountry } = useGlobalCountry();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [rightProductsOpen, setRightProductsOpen] = useState(false);
@@ -211,12 +214,29 @@ export default function EcosystemHeader() {
             })}
           </div>
 
-          {/* Right Header CTA - All SaaS Projects Hub Switcher */}
+          {/* Right Header CTA - All SaaS Projects Hub Switcher & Universal Country Switcher */}
           <div
-            className="relative hidden items-center gap-3 md:flex"
+            className="relative hidden items-center gap-2.5 md:flex"
             onMouseEnter={handleMouseEnterRightProducts}
             onMouseLeave={handleMouseLeaveRightProducts}
           >
+            {/* Header Country & Currency Selector */}
+            <select
+              value={selectedCountry.code}
+              onChange={(e) => {
+                const found = GLOBAL_COUNTRIES.find((c) => c.code === e.target.value);
+                if (found) setSelectedCountry(found);
+              }}
+              className="rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:border-[#305eff] focus:outline-none cursor-pointer"
+              title="Universal Country & Currency Switcher"
+            >
+              {GLOBAL_COUNTRIES.map((c) => (
+                <option key={c.code} value={c.code}>
+                  {c.flag} {c.code} ({c.currency})
+                </option>
+              ))}
+            </select>
+
             <button
               type="button"
               onClick={() => setRightProductsOpen(!rightProductsOpen)}
