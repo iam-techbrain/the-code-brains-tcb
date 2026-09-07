@@ -145,8 +145,11 @@ const AI_AGENT_MODULES: AIAgentModule[] = [
   },
 ];
 
+import { useLeadModal } from "@/components/LeadModalContext";
+
 export default function AIAgentsListSection() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const { openLeadModal } = useLeadModal();
 
   const filteredAgents =
     activeCategory === "all"
@@ -154,29 +157,20 @@ export default function AIAgentsListSection() {
       : AI_AGENT_MODULES.filter((agent) => agent.category === activeCategory);
 
   return (
-    <section id="ai-agents-catalog" className="relative overflow-hidden border-t border-slate-200/60 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
-      
-      {/* Radial Background Accent */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/4 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-brand-500/5 blur-3xl"
-      />
-
+    <section id="ai-agents-catalog" className="relative border-t border-slate-200/60 bg-slate-50/50 px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         
-        {/* Section Header */}
+        {/* Header Badges & Title */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-brand-50 px-4 py-1.5 text-xs font-bold text-brand-800 shadow-xs">
-            <Cpu className="h-4 w-4 text-brand-500 animate-pulse" />
-            TCB Autonomous AI Agent &amp; Workflow Suite
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d0ddfd] bg-[#eff4ff] px-3.5 py-1 text-xs font-bold text-[#305eff] shadow-xs">
+            <Sparkles className="h-3.5 w-3.5 text-[#305eff]" />
+            18+ Ready-To-Deploy &amp; Bespoke AI Agents
           </div>
-          
           <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            18 Production-Grade <span className="nuvertos-gradient-text">AI Agents &amp; Automation Modules</span>
+            Custom Autonomous AI Agents for <span className="bg-gradient-to-r from-[#305eff] via-[#1f47e0] to-[#305eff] bg-clip-text text-transparent">Every Core Workflow</span>
           </h2>
-          
           <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg">
-            Deploy pre-engineered AI voice caller agents, WhatsApp fee collection bots, 24/7 RAG tutors, and automated financial ledgers designed for modern businesses &amp; institutes.
+            Choose from our production-ready AI agent catalog below or request a 100% custom-built agent tailored to your exact business logic.
           </p>
         </div>
 
@@ -211,59 +205,67 @@ export default function AIAgentsListSection() {
             return (
               <div
                 key={agent.id}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-6 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-[#305eff] hover:shadow-xl hover:shadow-[#305eff]/10"
+                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-5 sm:p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[#305eff] hover:shadow-md"
               >
 
                 <div>
                   {/* Header Row: Icon + Status */}
-                  <div className="flex items-center justify-between gap-2 mb-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eff4ff] text-[#305eff] border border-[#d0ddfd] transition-transform group-hover:scale-105">
-                      <IconComp className="h-6 w-6" />
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-800 border border-slate-200 transition-colors group-hover:bg-[#eff4ff] group-hover:text-[#305eff] group-hover:border-[#d0ddfd]">
+                      <IconComp className="h-5 w-5" />
                     </div>
-                    <span className="rounded-full bg-[#eff4ff] px-2.5 py-1 text-[10px] font-extrabold text-[#305eff] border border-[#d0ddfd]">
+                    <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-bold text-slate-700 border border-slate-200">
                       {agent.status}
                     </span>
                   </div>
 
                   {/* Category Pill */}
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     {agent.categoryLabel}
                   </span>
 
                   {/* Agent Name */}
-                  <h3 className="mt-1 text-lg font-black text-slate-900 group-hover:text-[#305eff] transition-colors">
+                  <h3 className="mt-1 text-base font-bold text-slate-900 group-hover:text-[#305eff] transition-colors">
                     {agent.name}
                   </h3>
 
                   {/* Description */}
-                  <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                  <p className="mt-1.5 text-xs leading-relaxed text-slate-600">
                     {agent.description}
                   </p>
 
                   {/* Outcome Box */}
-                  <div className="mt-4 rounded-xl border border-[#d0ddfd] bg-[#eff4ff]/60 p-3">
-                    <span className="text-[10px] font-extrabold uppercase text-[#305eff] block">
+                  <div className="mt-4 rounded-xl border border-slate-200/80 bg-slate-50/80 p-3">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">
                       ⚡ Key Outcome:
                     </span>
-                    <span className="text-xs font-bold text-slate-800 mt-0.5 block">
+                    <span className="text-xs font-semibold text-slate-900 mt-0.5 block">
                       {agent.outcome}
                     </span>
                   </div>
                 </div>
 
                 {/* Tech Stack & Action Footer */}
-                <div className="mt-6 border-t border-slate-100 pt-4 flex items-center justify-between text-xs">
+                <div className="mt-5 border-t border-slate-100 pt-3.5 flex items-center justify-between text-xs">
                   <span className="text-[10px] font-medium text-slate-400 truncate max-w-[170px]" title={agent.techStack}>
                     {agent.techStack}
                   </span>
 
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-1 font-extrabold text-[#305eff] hover:text-[#1f47e0] group/btn"
+                  <button
+                    type="button"
+                    onClick={() =>
+                      openLeadModal({
+                        title: `Deploy ${agent.name}`,
+                        source: `AI Agents Catalog - ${agent.name}`,
+                        planName: agent.name,
+                        defaultNote: `Interested in deploying ${agent.name} (${agent.outcome}).`,
+                      })
+                    }
+                    className="inline-flex items-center gap-1 font-bold text-[#305eff] hover:text-[#1f47e0] group/btn cursor-pointer"
                   >
                     <span>Deploy Agent</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" />
-                  </a>
+                  </button>
                 </div>
               </div>
             );

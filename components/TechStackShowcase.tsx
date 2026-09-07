@@ -48,7 +48,7 @@ const TECH_TOOLS: ToolItem[] = [
     ],
     gradient: "from-brand-400/20 via-brand-500/20 to-brand-700/20",
     borderColor: "group-hover:border-brand-400",
-    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
+    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(48,94,255,0.35)]",
     badge: "Core Engine",
     codeSnippet: `// Custom Async AI Tool Execution Engine
 import { OpenAI } from "openai";
@@ -78,7 +78,7 @@ export async function executeAgentTask(prompt: string) {
     ],
     gradient: "from-brand-400/20 via-brand-500/20 to-brand-700/20",
     borderColor: "group-hover:border-brand-400",
-    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
+    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(48,94,255,0.35)]",
     badge: "Visual Automation",
     codeSnippet: `// n8n Workflow Webhook Receiver Node
 {
@@ -104,7 +104,7 @@ export async function executeAgentTask(prompt: string) {
     ],
     gradient: "from-brand-400/20 via-brand-500/20 to-brand-700/20",
     borderColor: "group-hover:border-brand-400",
-    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
+    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(48,94,255,0.35)]",
     badge: "GenAI & Knowledge",
     codeSnippet: `// Vector Search & RAG Context Retrieval
 import { VectorStore } from "@/lib/vector";
@@ -131,7 +131,7 @@ export async function queryRAGPipeline(userQuery: string) {
     ],
     gradient: "from-brand-400/20 via-brand-500/20 to-brand-700/20",
     borderColor: "group-hover:border-brand-400",
-    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
+    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(48,94,255,0.35)]",
     badge: "Integration Layer",
     codeSnippet: `// Secure Webhook Listener & Event Producer
 import express from 'express';
@@ -165,7 +165,7 @@ export default function TechStackShowcase() {
       {/* Background Radial Grid */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(#00A4E4_0.6px,transparent_0.6px)] [background-size:32px_32px] opacity-10"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(#305eff_0.6px,transparent_0.6px)] [background-size:32px_32px] opacity-10"
       />
 
       <div className="relative z-10 mx-auto max-w-7xl">
@@ -178,7 +178,7 @@ export default function TechStackShowcase() {
 
           <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
             Powering Custom AI Agents &amp;{" "}
-            <span className="bg-gradient-to-r from-brand-500 via-brand-600 to-brand-800 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#305eff] via-[#1f47e0] to-[#305eff] bg-clip-text text-transparent">
               Enterprise Workflows
             </span>
           </h2>
@@ -194,10 +194,10 @@ export default function TechStackShowcase() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 sm:px-5 text-xs font-bold transition-all duration-200 ${
+              className={`shrink-0 whitespace-nowrap rounded-xl px-4 py-2 sm:px-5 text-xs font-bold transition-all duration-200 ${
                 activeCategory === cat
-                  ? "bg-gradient-to-r from-brand-500 to-brand-700 text-white shadow-md shadow-brand-500/20 scale-105"
-                  : "border border-slate-200 bg-slate-50 text-slate-700 hover:border-brand-300 hover:bg-white"
+                  ? "bg-[#305eff] text-white shadow-md shadow-[#305eff]/25 scale-105"
+                  : "border border-slate-200 bg-slate-50 text-slate-700 hover:border-[#305eff]/50 hover:bg-white"
               }`}
             >
               {cat}

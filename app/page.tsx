@@ -39,25 +39,19 @@ export default function HomePage() {
       {/* 3. Tech Stack & AI Engineering Tools */}
       <TechStackShowcase />
 
-      {/* 4. 10 Production-Grade AI Agents & Automation Catalog */}
+      {/* 4. 10 Production-Grade AI Agents Catalog */}
       <AIAgentsListSection />
 
       {/* 5. Enterprise Client Trust Badges */}
       <TrustBadgesTicker />
 
-      {/* 5. Core AI Automation Capabilities */}
-      <Features />
-
       {/* 6. AI Transformation Process (4 Steps) */}
       <HowItWorks />
 
-      {/* 7. Vertical SaaS Apps Showcase (Links to /school, /store, etc.) */}
+      {/* 7. Vertical SaaS Apps Showcase */}
       <EcosystemAppsSection />
 
-      {/* 8. Upcoming SaaS Modules Roadmap */}
-      <ComingSoonSection />
-
-      {/* 9. Social Proof & Testimonials */}
+      {/* 8. Social Proof & Testimonials */}
       <Testimonials />
 
       {/* 10. AI Studio & Custom Automation Packages */}

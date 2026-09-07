@@ -77,39 +77,39 @@ const REVIEWS: Review[] = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="relative overflow-hidden border-t border-zinc-100 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
+    <section id="testimonials" className="relative overflow-hidden border-t border-slate-200/60 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Header Badges & Title */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50/80 px-3.5 py-1 text-xs font-semibold text-brand-700 shadow-sm">
-            <Sparkles className="h-3.5 w-3.5 text-brand-500" />
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d0ddfd] bg-[#eff4ff] px-3.5 py-1 text-xs font-bold text-[#305eff] shadow-xs">
+            <Sparkles className="h-3.5 w-3.5 text-[#305eff]" />
             Trusted by 1,200+ Businesses &amp; Educational Institutes
           </div>
-          <h2 className="font-display text-2xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Real stories from real founders &amp; academy leaders
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-zinc-500 sm:text-lg">
+          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg">
             See how retail stores, educational academies, and growing businesses automate workflows, streamline billing, and accelerate cash flow with TCB.
           </p>
         </div>
 
         {/* Key Metrics Banner */}
-        <div className="mt-8 sm:mt-12 grid grid-cols-2 gap-3 sm:gap-4 rounded-2xl border border-zinc-200 bg-zinc-50/70 p-4 sm:p-6 sm:grid-cols-4 sm:px-8 sm:py-6">
+        <div className="mt-8 sm:mt-12 grid grid-cols-2 gap-3 sm:gap-4 rounded-2xl border border-[#d0ddfd] bg-[#eff4ff]/60 p-4 sm:p-6 sm:grid-cols-4 sm:px-8 sm:py-6">
           <div className="text-center">
-            <div className="text-xl font-extrabold text-zinc-900 sm:text-3xl">1,200+</div>
-            <div className="mt-1 text-[11px] sm:text-xs font-medium text-zinc-500">Businesses &amp; Institutes</div>
+            <div className="text-xl font-extrabold text-slate-900 sm:text-3xl">1,200+</div>
+            <div className="mt-1 text-[11px] sm:text-xs font-semibold text-slate-600">Active Businesses &amp; Academies</div>
           </div>
           <div className="text-center">
-            <div className="text-xl font-extrabold text-brand-500 sm:text-3xl">4.9 / 5</div>
-            <div className="mt-1 text-[11px] sm:text-xs font-medium text-zinc-500">Client Satisfaction</div>
+            <div className="text-xl font-extrabold text-[#305eff] sm:text-3xl">4.9 / 5</div>
+            <div className="mt-1 text-[11px] sm:text-xs font-semibold text-slate-600">Client Satisfaction Rating</div>
           </div>
           <div className="text-center">
-            <div className="text-xl font-extrabold text-zinc-900 sm:text-3xl">₹25 Cr+</div>
-            <div className="mt-1 text-[11px] sm:text-xs font-medium text-zinc-500">Annual Billing Managed</div>
+            <div className="text-xl font-extrabold text-slate-900 sm:text-3xl">50,000+</div>
+            <div className="mt-1 text-[11px] sm:text-xs font-semibold text-slate-600">Hours Saved for Clients</div>
           </div>
           <div className="text-center">
-            <div className="text-xl font-extrabold text-brand-500 sm:text-3xl">99.4%</div>
-            <div className="mt-1 text-[11px] sm:text-xs font-medium text-zinc-500">On-Time Fee &amp; Payment Rate</div>
+            <div className="text-xl font-extrabold text-[#305eff] sm:text-3xl">99.4%</div>
+            <div className="mt-1 text-[11px] sm:text-xs font-semibold text-slate-600">Automated Resolution Rate</div>
           </div>
         </div>
 
@@ -118,7 +118,7 @@ export default function Testimonials() {
           {REVIEWS.map((review) => (
             <div
               key={review.id}
-              className="group relative flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-5 sm:p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-900/5"
+              className="group relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[#305eff] hover:shadow-xl hover:shadow-[#305eff]/10"
             >
               <div>
                 {/* Rating Stars & Impact Badge */}
@@ -131,8 +131,8 @@ export default function Testimonials() {
                       />
                     ))}
                   </div>
-                  <span className="inline-flex items-center gap-1 rounded-md border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold text-brand-700">
-                    <CheckCircle2 className="h-3 w-3" />
+                  <span className="inline-flex items-center gap-1 rounded-md border border-[#d0ddfd] bg-[#eff4ff] px-2.5 py-0.5 text-[11px] font-bold text-[#1f47e0]">
+                    <CheckCircle2 className="h-3 w-3 text-[#305eff]" />
                     {review.impactMetric}
                   </span>
                 </div>

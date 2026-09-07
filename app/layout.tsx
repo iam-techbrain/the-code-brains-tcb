@@ -102,6 +102,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { LeadModalProvider } from "@/components/LeadModalContext";
+
 export default function RootLayout({
   children,
 }: {
@@ -110,8 +112,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased overflow-x-hidden w-full max-w-full">
-        {children}
-        <VoiceAssistant />
+        <LeadModalProvider>
+          {children}
+          <VoiceAssistant />
+        </LeadModalProvider>
       </body>
     </html>
   );

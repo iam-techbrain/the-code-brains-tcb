@@ -168,14 +168,14 @@ export default function EcosystemHeader() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-white/85 backdrop-blur-md shadow-xs border-b border-slate-200/50"
-          : "bg-gradient-to-b from-white/90 via-white/40 to-transparent"
+          ? "bg-white/90 backdrop-blur-md shadow-xs border-b border-slate-200/80"
+          : "bg-white/80 backdrop-blur-md border-b border-slate-100/60"
       }`}
     >
-      <div className="w-full px-3 py-2.5 sm:px-6 lg:px-8">
+      <div className="w-full px-3 py-2 sm:px-6 lg:px-8">
         <nav
-          className={`mx-auto flex h-[58px] sm:h-[62px] max-w-7xl items-center justify-between rounded-2xl border border-white/80 bg-white/90 px-3.5 text-slate-900 shadow-nav backdrop-blur-xl transition-all duration-300 sm:px-5 ${
-            scrolled ? "bg-white/95 shadow-soft border-slate-200/80" : ""
+          className={`mx-auto flex h-[58px] sm:h-[62px] max-w-7xl items-center justify-between rounded-2xl border border-slate-200/80 bg-white/90 px-3.5 text-slate-900 shadow-nav backdrop-blur-xl transition-all duration-300 sm:px-5 ${
+            scrolled ? "bg-white/95 shadow-soft border-slate-200" : ""
           }`}
         >
           {/* Brand Logo */}
@@ -186,23 +186,23 @@ export default function EcosystemHeader() {
               style={{ height: "30px", width: "auto" }}
               className="h-7 sm:h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
             />
-            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-slate-50/80 px-2.5 py-0.5 text-[10px] font-semibold text-slate-600">
-              <Globe className="h-3 w-3 text-brand-500" /> Multi-SaaS Platform
+            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#d0ddfd] bg-[#eff4ff] px-2.5 py-0.5 text-[10px] font-bold text-[#305eff]">
+              <Globe className="h-3 w-3 text-[#305eff]" /> Multi-SaaS Platform
             </span>
           </Link>
 
           {/* Center Desktop Navigation with Dynamic Active Highlighting */}
-          <div className="hidden items-center gap-1.5 md:flex">
+          <div className="hidden items-center gap-1 sm:gap-1.5 md:flex">
             {navLinks.map((link) => {
               const active = isNavActive(link);
               return (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`rounded-lg px-3 py-2 text-[13px] transition-colors duration-200 ${
+                  className={`rounded-xl px-3.5 py-2 text-[13px] transition-all duration-200 ${
                     active
-                      ? "bg-brand-50 font-semibold text-brand-700"
-                      : "font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                      ? "bg-[#eff4ff] font-bold text-[#1f47e0] border border-[#d0ddfd] shadow-xs"
+                      : "font-semibold text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                   }`}
                 >
                   {link.label}

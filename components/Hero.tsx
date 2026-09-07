@@ -17,7 +17,11 @@ import {
 import DashboardMockup from "@/components/DashboardMockup";
 import AgentReportPanel from "@/components/AgentReportPanel";
 
+import { useLeadModal } from "@/components/LeadModalContext";
+
 export default function Hero() {
+  const { openLeadModal } = useLeadModal();
+
   return (
     <section className="relative overflow-hidden px-4 pb-16 pt-8 text-slate-900 sm:px-6 sm:pb-24 sm:pt-10 lg:px-8">
       {/* Refined subtle ambient background grid & radial light (No harsh watercolor blobs) */}
@@ -40,7 +44,7 @@ export default function Hero() {
             {/* Main Headline */}
             <h1 className="font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem] lg:leading-[1.12]">
               Custom AI Agents Built Your Way.{" "}
-              <span className="mt-1.5 block bg-gradient-to-r from-[#305eff] via-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              <span className="mt-1.5 block bg-gradient-to-r from-[#305eff] via-[#1f47e0] to-[#305eff] bg-clip-text text-transparent">
                 Or Deploy Instantly.
               </span>
             </h1>
@@ -53,12 +57,12 @@ export default function Hero() {
             {/* Dual Offering Comparison Cards */}
             <div className="mt-6 sm:mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
               {/* Card 1: Custom AI Agents */}
-              <div className="group relative rounded-2xl border border-[#d0ddfd] bg-gradient-to-b from-[#eff4ff]/60 to-white p-4 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#305eff] hover:shadow-md">
+              <div className="group relative rounded-2xl border border-[#d0ddfd] bg-gradient-to-b from-[#eff4ff]/80 to-white p-4 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#305eff] hover:shadow-md">
                 <div className="flex items-center justify-between">
                   <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#305eff] text-white shadow-xs">
                     <Settings2 className="h-4 w-4" />
                   </span>
-                  <span className="rounded-full bg-[#eff4ff] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#305eff] border border-[#d0ddfd]">
+                  <span className="rounded-full bg-[#eff4ff] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#305eff] border border-[#d0ddfd]">
                     100% Tailored
                   </span>
                 </div>
@@ -69,18 +73,18 @@ export default function Hero() {
                   Architected around your exact business logic, custom prompts, internal databases, and favorite CRMs.
                 </p>
                 <div className="mt-2.5 flex items-center gap-1.5 text-[11px] font-semibold text-[#305eff]">
-                  <CheckCircle2 className="h-3 w-3" />
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#305eff]" />
                   <span>Your Rules &bull; Your Stack &bull; End-to-End</span>
                 </div>
               </div>
 
               {/* Card 2: Ready-Made Agents */}
-              <div className="group relative rounded-2xl border border-indigo-100 bg-gradient-to-b from-indigo-50/50 to-white p-4 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md">
+              <div className="group relative rounded-2xl border border-[#d0ddfd] bg-gradient-to-b from-[#eff4ff]/50 to-white p-4 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#305eff] hover:shadow-md">
                 <div className="flex items-center justify-between">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-xs">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#1f47e0] text-white shadow-xs">
                     <Zap className="h-4 w-4" />
                   </span>
-                  <span className="rounded-full bg-emerald-100/80 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-800">
+                  <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 border border-emerald-200">
                     Instant Launch
                   </span>
                 </div>
@@ -91,7 +95,7 @@ export default function Hero() {
                   Deploy our proprietary in-house agents today for voice calling, WhatsApp follow-ups, and lead routing.
                 </p>
                 <div className="mt-2.5 flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700">
-                  <CheckCircle2 className="h-3 w-3" />
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
                   <span>Zero Wait &bull; High-Speed &bull; Proven Uptime</span>
                 </div>
               </div>
@@ -119,14 +123,21 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href="#contact"
-                className="btn-shine inline-flex items-center justify-center gap-2 rounded-xl bg-[#305eff] hover:bg-[#1f47e0] px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-[#305eff]/30 transition-all duration-200 hover:brightness-110 active:scale-95"
+              <button
+                type="button"
+                onClick={() =>
+                  openLeadModal({
+                    title: "Build Your Custom AI Agent",
+                    source: "Hero Section CTA",
+                    defaultNote: "Requesting custom AI agent architecture & enterprise workflow design.",
+                  })
+                }
+                className="btn-shine inline-flex items-center justify-center gap-2 rounded-xl bg-[#305eff] hover:bg-[#1f47e0] px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-[#305eff]/30 transition-all duration-200 hover:brightness-110 active:scale-95 cursor-pointer"
               >
                 <Sparkles className="h-4 w-4" />
                 <span>Build My Custom AI Agent</span>
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </button>
               <a
                 href="#ai-agents-catalog"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3.5 text-xs sm:text-sm font-semibold text-slate-800 shadow-xs transition-all duration-200 hover:border-[#305eff]/60 hover:bg-[#eff4ff]/40 active:scale-95"
@@ -189,6 +200,20 @@ export default function Hero() {
             </a>
           </div>
           <DashboardMockup />
+        </div>
+
+        {/* Sleek Sub-Hero Powered & Compliance Strip */}
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#d0ddfd] bg-gradient-to-r from-[#eff4ff] via-white to-[#eff4ff] p-3.5 text-xs text-slate-800 shadow-xs">
+          <div className="flex items-center gap-2 font-semibold">
+            <Sparkles className="h-4 w-4 text-[#305eff]" />
+            <span>Powered by <strong className="text-slate-900 font-extrabold">Advanced Meta, Google AI-Agents &amp; n8n System Automation</strong></span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-bold text-emerald-800">
+              <ShieldCheck className="h-4 w-4 text-emerald-600" />
+              <span>Government Registered Entity</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

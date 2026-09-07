@@ -424,7 +424,7 @@ export default function VoiceAssistant() {
         className={`group relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border shadow-xl transition-all duration-300 ${
           isListening
             ? "border-red-400 bg-red-500 text-white shadow-red-500/40 ring-4 ring-red-500/20 scale-110 animate-pulse"
-            : "border-brand-500 bg-brand-500 text-white hover:bg-brand-600 hover:scale-105 active:scale-95"
+            : "border-[#305eff] bg-[#305eff] text-white hover:bg-[#1f47e0] hover:scale-105 active:scale-95 shadow-lg shadow-[#305eff]/30"
         }`}
       >
         {isListening ? (
@@ -437,7 +437,7 @@ export default function VoiceAssistant() {
         )}
 
         {/* Floating Tooltip Pill */}
-        <span className="absolute right-full mr-3 hidden whitespace-nowrap rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs font-bold text-zinc-800 shadow-md sm:group-hover:block">
+        <span className="absolute right-full mr-3 hidden whitespace-nowrap rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-800 shadow-md sm:group-hover:block">
           🎙️ Voice AI (Hindi &amp; English)
         </span>
       </button>

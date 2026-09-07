@@ -11,40 +11,40 @@ type FAQItem = {
 
 const FAQS: FAQItem[] = [
   {
-    question: "Is TCB Store GST compliant and easy to set up?",
+    question: "How do custom AI agents integrate with my existing CRM and databases?",
     answer:
-      "Yes! TCB Store supports HSN/SAC code mapping, automatic CGST/SGST/IGST splits, customizable GSTIN headers, and 1-click GSTR-1 Excel export for your accountant. You can set it up in under 2 minutes.",
-    category: "GST & Billing",
+      "Our AI agents connect directly via RESTful APIs, Webhooks, n8n, and Make.com pipelines. Whether you use HubSpot, Salesforce, Zoho, Google Sheets, or custom SQL databases, we establish bi-directional sync with zero disruption to your daily operations.",
+    category: "Integrations & APIs",
   },
   {
-    question: "Can I use TCB Store on my mobile phone, tablet, and laptop?",
+    question: "How fast can TCB build and deploy a custom AI agent for my business?",
     answer:
-      "Yes. TCB Store works seamlessly across all devices — Android smartphones, iPhones, iPads, Windows PCs, and MacBooks. Your data syncs in real-time across all your billing counters and mobile devices.",
-    category: "Devices & Compatibility",
+      "Pre-built agents (such as WhatsApp fee collection or lead qualifiers) can be configured and launched in under 48 hours. Custom RAG vector agents and complex voice caller workflows typically ship in 5 to 10 business days.",
+    category: "Deployment & Speed",
   },
   {
-    question: "How do automated WhatsApp payment reminders work?",
+    question: "Are my internal documents and company data secure with RAG AI?",
     answer:
-      "When a customer invoice is due or has unpaid customer credit balance, TCB Store generates a friendly WhatsApp message containing a direct payment link. Your customer opens the link and pays via card, netbanking, or UPI instantly.",
-    category: "WhatsApp & Collections",
+      "100% secure. We deploy dedicated vector databases (Pinecone / Qdrant) with enterprise-grade encryption. Your proprietary PDFs, manuals, and customer records are never used to train public LLM models.",
+    category: "Data Privacy & Security",
   },
   {
-    question: "Can I import my existing product inventory from Excel or Tally?",
+    question: "How do AI Voice Caller agents handle inbound and outbound phone calls?",
     answer:
-      "Absolutely. You can import your entire inventory catalog in 1 click using any standard Excel (.xlsx) or CSV spreadsheet. We also provide pre-loaded catalog templates for Retail, Apparel, and Electronics stores.",
-    category: "Inventory Setup",
+      "Voice agents utilize low-latency speech-to-text (Deepgram/Twilio), high-speed LLM intent reasoning, and natural voice synthesis (ElevenLabs/Vapi) to converse in under 350ms with seamless live human transfer.",
+    category: "Voice Telephony",
   },
   {
-    question: "What receipt printers and barcode scanners are supported?",
+    question: "What are the ongoing running costs for hosting and LLM API tokens?",
     answer:
-      "TCB Store supports all standard USB & Bluetooth barcode scanners as well as your smartphone camera. For printing, it works with 2-inch & 3-inch ESC/POS thermal printers, Bluetooth receipt printers, and standard A4 laser desktop printers.",
-    category: "Hardware",
+      "We believe in 100% transparency. AWS cloud hosting (~$5-$15/mo) and OpenAI API tokens (~₹200-₹800/mo) are billed directly to your own accounts. Zero agency markup, zero hidden fees.",
+    category: "Pricing & Cloud Costs",
   },
   {
-    question: "Is my business data secure and backed up?",
+    question: "Do I get full source code ownership after project completion?",
     answer:
-      "100% secure. Your store records, customer ledgers, and transactions are encrypted with bank-grade security and backed up automatically every day to cloud servers. You never lose your business data even if your phone is lost or damaged.",
-    category: "Security",
+      "Yes. Every custom agent, n8n workflow JSON, and Docker deployment script is handed over to your GitHub repository and cloud accounts. You own 100% of your code and IP with zero vendor lock-in.",
+    category: "Source Code & IP",
   },
 ];
 
@@ -56,19 +56,19 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative overflow-hidden border-t border-zinc-100 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
+    <section id="faq" className="relative overflow-hidden border-t border-slate-200/60 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-4xl">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50/80 px-3.5 py-1 text-xs font-semibold text-brand-700 shadow-sm">
-            <Sparkles className="h-3.5 w-3.5 text-brand-500" />
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d0ddfd] bg-[#eff4ff] px-3.5 py-1 text-xs font-bold text-[#305eff] shadow-xs">
+            <Sparkles className="h-3.5 w-3.5 text-[#305eff]" />
             Got Questions? We Have Answers
           </div>
-          <h2 className="font-display text-2xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Frequently Asked Questions
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-zinc-500 sm:text-lg">
-            Everything you need to know about TCB Store billing, inventory tracking, and payment collection.
+          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg">
+            Everything you need to know about custom AI agents, n8n workflow automations, RAG pipelines, and project delivery.
           </p>
         </div>
 

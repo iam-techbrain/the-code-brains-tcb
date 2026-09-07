@@ -33,10 +33,10 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     category: "Education & Coaching ERP",
     description: "Student rosters, daily attendance, WhatsApp parent alerts & fee ledgers.",
     badge: "Live SaaS",
-    badgeStyle: "bg-brand-50 text-brand-800 border-brand-300",
+    badgeStyle: "bg-[#eff4ff] text-[#305eff] border-[#d0ddfd]",
     href: "/school",
     icon: GraduationCap,
-    iconBg: "bg-brand-500 text-white",
+    iconBg: "bg-[#305eff] text-white",
   },
   {
     id: "store",
@@ -44,10 +44,10 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     category: "Retail Inventory & POS",
     description: "Barcode stock master, GST invoicing, supplier ledgers & credit Udhar Khata.",
     badge: "Beta Workspace",
-    badgeStyle: "bg-brand-50 text-brand-800 border-brand-300",
+    badgeStyle: "bg-[#eff4ff] text-[#305eff] border-[#d0ddfd]",
     href: "/store",
     icon: Boxes,
-    iconBg: "bg-brand-500 text-white",
+    iconBg: "bg-[#305eff] text-white",
   },
   {
     id: "health",
@@ -55,10 +55,10 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     category: "Healthcare & Clinic EHR",
     description: "Doctor OPD scheduler, patient medical records & pharmacy POS.",
     badge: "Coming Soon",
-    badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
+    badgeStyle: "bg-[#eff4ff] text-[#1f47e0] border-[#d0ddfd]",
     href: "/health",
     icon: Stethoscope,
-    iconBg: "bg-brand-500 text-white",
+    iconBg: "bg-[#305eff] text-white",
   },
   {
     id: "fitness",
@@ -66,10 +66,10 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     category: "Gym & Club Platform",
     description: "Biometric access control, trainer scheduling & automated monthly dues.",
     badge: "Coming Soon",
-    badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
+    badgeStyle: "bg-[#eff4ff] text-[#1f47e0] border-[#d0ddfd]",
     href: "/fitness",
     icon: Dumbbell,
-    iconBg: "bg-brand-500 text-white",
+    iconBg: "bg-[#305eff] text-white",
   },
   {
     id: "hotel",
@@ -77,10 +77,10 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     category: "Hospitality & Hotel Desk",
     description: "Room reservation engine, guest check-in/out & housekeeping billing.",
     badge: "Coming Soon",
-    badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
+    badgeStyle: "bg-[#eff4ff] text-[#1f47e0] border-[#d0ddfd]",
     href: "/hotel",
     icon: Hotel,
-    iconBg: "bg-brand-500 text-white",
+    iconBg: "bg-[#305eff] text-white",
   },
   {
     id: "dine",
@@ -88,10 +88,10 @@ const SAAS_PRODUCTS: SaaSProductCard[] = [
     category: "Restaurant & Kitchen KOT",
     description: "Contactless QR table menu ordering & kitchen display sync.",
     badge: "Coming Soon",
-    badgeStyle: "bg-amber-50 text-amber-900 border-amber-300",
+    badgeStyle: "bg-[#eff4ff] text-[#1f47e0] border-[#d0ddfd]",
     href: "/dine",
     icon: Utensils,
-    iconBg: "bg-brand-500 text-white",
+    iconBg: "bg-[#305eff] text-white",
   },
 ];
 
@@ -109,12 +109,12 @@ export default function EcosystemAppsSection() {
         
         {/* Compact Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-brand-50 px-4 py-1 text-xs font-bold text-brand-800 shadow-xs">
-            <Layers className="h-3.5 w-3.5 text-brand-500" />
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#d0ddfd] bg-[#eff4ff] px-4 py-1 text-xs font-bold text-[#305eff] shadow-xs">
+            <Layers className="h-3.5 w-3.5 text-[#305eff]" />
             TCB Micro-SaaS Product Portfolio
           </div>
           <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
-            Specialized SaaS Solutions <span className="nuvertos-gradient-text">Engineered by Our Studio</span>
+            Specialized SaaS Solutions <span className="bg-gradient-to-r from-[#305eff] via-[#1f47e0] to-[#305eff] bg-clip-text text-transparent">Engineered by Our Studio</span>
           </h2>
           <p className="mt-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
             We build custom AI agents &amp; automations tailored to your specific business requirements. Explore pre-engineered vertical frameworks:
