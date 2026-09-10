@@ -1,337 +1,327 @@
 "use client";
 
-import { useState } from "react";
-import {
-  Code2,
-  Cpu,
-  Workflow,
-  Sparkles,
-  Zap,
-  Globe,
-  Database,
-  Terminal,
-  Server,
-  ArrowRight,
-  CheckCircle2,
-  Layers,
-  Bot,
-  Box,
-} from "lucide-react";
+import Image from "next/image";
+import { motion } from "motion/react";
+import { ShieldCheck, ArrowRight, Zap } from "lucide-react";
+import { useLeadModal } from "@/components/LeadModalContext";
 
-type ToolItem = {
-  id: string;
-  name: string;
-  category: "Programming" | "Automation" | "AI & RAG" | "Backend & APIs";
-  description: string;
-  iconType: string;
-  features: string[];
-  gradient: string;
-  borderColor: string;
-  shadowGlow: string;
-  badge: string;
-  codeSnippet?: string;
+// High-fidelity brand SVG icons for tools not provided in PNG
+function BrandLogo({ id, className = "h-5 w-5" }: { id: string; className?: string }) {
+  switch (id) {
+    case "bedrock":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="none">
+          <rect width="24" height="24" rx="5" fill="#00a4a6" />
+          <path
+            d="M7 12h10M12 7v10M8.5 8.5l7 7M15.5 8.5l-7 7"
+            stroke="#ffffff"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+      );
+    case "pytorch":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="#ee4c2c">
+          <path d="M12.8 3.5a7 7 0 0 0-4.6 1.7l1.4 1.4a5 5 0 0 1 3.2-1.1c2.8 0 5 2.2 5 5 0 2.8-2.2 5-5 5a5 5 0 0 1-4.8-3.6H5.9a7 7 0 0 0 6.9 5.6c3.9 0 7-3.1 7-7s-3.1-7-7-7zm2.4 1.8a1 1 0 1 1-1-1 1 1 0 0 1 1 1z" />
+        </svg>
+      );
+    case "django":
+      return (
+        <div className="font-serif font-black text-sm text-[#092e20]">
+          django
+        </div>
+      );
+    case "flask":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="#111827" strokeWidth="2">
+          <path d="M9 3h6M10 3v5l-4 8a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-4-8V3" />
+        </svg>
+      );
+    case "react":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="#00d8ff" strokeWidth="1.75">
+          <ellipse cx="12" cy="12" rx="4" ry="10" />
+          <ellipse cx="12" cy="12" rx="4" ry="10" transform="rotate(60 12 12)" />
+          <ellipse cx="12" cy="12" rx="4" ry="10" transform="rotate(120 12 12)" />
+          <circle cx="12" cy="12" r="1.5" fill="#00d8ff" />
+        </svg>
+      );
+    case "n8n":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="#ea4b71">
+          <circle cx="6" cy="12" r="4" />
+          <circle cx="18" cy="7" r="3" />
+          <circle cx="18" cy="17" r="3" />
+          <path d="M10 12h5M10 12l5-4M10 12l5 4" stroke="#ea4b71" strokeWidth="2" />
+        </svg>
+      );
+    case "make":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="#6d28d9">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M8 8l8 8M16 8l-8 8" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+      );
+    case "twilio":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="#f22f46">
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="9" cy="9" r="2" fill="#fff" />
+          <circle cx="15" cy="9" r="2" fill="#fff" />
+          <circle cx="9" cy="15" r="2" fill="#fff" />
+          <circle cx="15" cy="15" r="2" fill="#fff" />
+        </svg>
+      );
+    case "elevenlabs":
+      return (
+        <div className="flex items-center gap-0.5 bg-black text-white px-1.5 py-0.5 rounded text-[10px] font-mono font-bold">
+          <span>II</span>
+        </div>
+      );
+    case "deepgram":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="#13ef93">
+          <path d="M4 4h8a8 8 0 0 1 8 8 8 8 0 0 1-8 8H4V4zm4 4v8h4a4 4 0 0 0 4-4 4 4 0 0 0-4-4H8z" />
+        </svg>
+      );
+    case "pinecone":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="#000">
+          <path d="M12 2L4 9h16L12 2zm0 6l-6 5h12l-6-5zm0 6l-4 4h8l-4-4z" />
+        </svg>
+      );
+    case "hubspot":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="#ff7a59">
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="12" cy="12" r="4" fill="#fff" />
+          <circle cx="19" cy="8" r="2" fill="#ff7a59" />
+        </svg>
+      );
+    case "salesforce":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="#00a1e0">
+          <path d="M19.3 10.04a4.4 4.4 0 0 0-4.05-2.69 4.3 4.3 0 0 0-3.32 1.54 5.3 5.3 0 0 0-5.11 3.55A3.7 3.7 0 0 0 4 19.5h15a3.5 3.5 0 0 0 .3-7.46z" />
+        </svg>
+      );
+    case "aws":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="#ff9900">
+          <path d="M18.8 14.5c-2.4 1.8-5.9 2.8-8.9 2.8-4.2 0-8-1.5-10.9-4-.2-.2 0-.5.2-.3 3.1 2.2 7 3.5 11.1 3.5 2.7 0 5.8-.8 8.3-2.3.4-.2.6.2.2.3z" />
+          <path d="M19.6 13.5c-.3-.4-1.9-.2-2.7 0-.2 0-.3-.2-.1-.3 1.1-.9 2.9-.6 3.2-.2.3.4-.1 2.2-1.2 3.1-.2.1-.3 0-.3-.1.3-.8 1.4-2.1 1.1-2.5z" />
+        </svg>
+      );
+    default:
+      return <Zap className={className} />;
+  }
+}
+
+type TechItem =
+  | {
+      type: "image";
+      name: string;
+      imageSrc: string;
+      width: number;
+      height: number;
+    }
+  | {
+      type: "vector";
+      name: string;
+      logoId: string;
+      colorClass: string;
+    };
+
+type TechRow = {
+  category: string;
+  items: TechItem[];
 };
 
-const TECH_TOOLS: ToolItem[] = [
+// Directly incorporates the uploaded images & exact layout from the user's reference
+const TECH_STACK_TABLE_ROWS: TechRow[] = [
   {
-    id: "python-ts",
-    name: "Python & JavaScript / TypeScript",
-    category: "Programming",
-    description:
-      "Core foundation languages for building asynchronous AI agent runtimes, custom data parsers, high-concurrency web scrapers, and type-safe frontends.",
-    iconType: "code",
-    features: [
-      "Asynchronous AsyncIO & Node.js execution engines",
-      "Type-safe TypeScript schemas with Zod validation",
-      "Python PyTorch, LangChain & LlamaIndex integrations",
-      "Ultra-fast API execution with FastAPI & Next.js",
+    category: "Integration Provider",
+    items: [
+      { type: "image", name: "Gemini", imageSrc: "/logos/gemini.png", width: 110, height: 32 },
+      { type: "image", name: "Open AI", imageSrc: "/logos/openai.png", width: 115, height: 32 },
+      { type: "image", name: "ChatGPT", imageSrc: "/logos/chatgpt.png", width: 120, height: 32 },
+      { type: "image", name: "Amazon Bedrock", imageSrc: "/logos/bedrock.png", width: 130, height: 32 },
+      { type: "image", name: "Perplexity", imageSrc: "/logos/perplexity.png", width: 125, height: 32 },
     ],
-    gradient: "from-brand-400/20 via-brand-500/20 to-brand-700/20",
-    borderColor: "group-hover:border-brand-400",
-    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(48,94,255,0.35)]",
-    badge: "Core Engine",
-    codeSnippet: `// Custom Async AI Tool Execution Engine
-import { OpenAI } from "openai";
-import { z } from "zod";
-
-export async function executeAgentTask(prompt: string) {
-  const agent = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  const response = await agent.chat.completions.create({
-    model: "gpt-4o",
-    messages: [{ role: "system", content: "You are an autonomous workflow agent." }, { role: "user", content: prompt }]
-  });
-  return response.choices[0].message.content;
-}`,
   },
   {
-    id: "n8n-make",
-    name: "n8n & Make.com Workflow Automation",
-    category: "Automation",
-    description:
-      "Self-hosted & cloud workflow orchestrators that interconnect hundreds of business tools, CRM systems, webhooks, and AI models into zero-latency pipelines.",
-    iconType: "workflow",
-    features: [
-      "Visual low-code workflow pipeline builder",
-      "Self-hosted n8n instance with 100% data privacy",
-      "Make.com complex branching & router logic",
-      "Automatic error catching & webhook retries",
+    category: "Programming Languages & Frameworks",
+    items: [
+      { type: "image", name: "Python", imageSrc: "/logos/python.png", width: 105, height: 32 },
+      { type: "image", name: "Pytorch", imageSrc: "/logos/pytorch.png", width: 105, height: 32 },
+      { type: "image", name: "django", imageSrc: "/logos/django.png", width: 100, height: 32 },
+      {
+        type: "vector",
+        name: "Flask",
+        logoId: "flask",
+        colorClass: "text-slate-900",
+      },
+      { type: "image", name: "React", imageSrc: "/logos/react.png", width: 95, height: 32 },
     ],
-    gradient: "from-brand-400/20 via-brand-500/20 to-brand-700/20",
-    borderColor: "group-hover:border-brand-400",
-    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(48,94,255,0.35)]",
-    badge: "Visual Automation",
-    codeSnippet: `// n8n Workflow Webhook Receiver Node
-{
-  "nodes": [
-    { "name": "Webhook Trigger", "type": "n8n-nodes-base.webhook", "position": [100, 300] },
-    { "name": "AI Agent Routing", "type": "n8n-nodes-base.openAi", "position": [350, 300] },
-    { "name": "WhatsApp Alert", "type": "n8n-nodes-base.httpRequest", "position": [600, 300] }
-  ]
-}`,
   },
   {
-    id: "openai-rag",
-    name: "OpenAI / LLMs & RAG Pipelines",
-    category: "AI & RAG",
-    description:
-      "Cutting-edge Large Language Models (GPT-4o, Claude 3.5, Gemini 1.5) connected with Pinecone & Qdrant vector databases for instant knowledge retrieval.",
-    iconType: "ai",
-    features: [
-      "Retrieval-Augmented Generation (RAG) over company PDFs",
-      "Custom Fine-tuned LLM agents & System Prompts",
-      "High-speed semantic vector embeddings (OpenAI text-embedding-3)",
-      "Context-aware memory with hybrid vector search",
+    category: "AI & RAG Frameworks",
+    items: [
+      { type: "image", name: "Langchain", imageSrc: "/logos/langchain.png", width: 115, height: 32 },
+      { type: "image", name: "LlamaIndex", imageSrc: "/logos/llamaindex.png", width: 120, height: 32 },
+      { type: "image", name: "Haystack", imageSrc: "/logos/haystack.png", width: 115, height: 32 },
+      { type: "image", name: "Embedchain", imageSrc: "/logos/embedchain.png", width: 130, height: 32 },
+      { type: "image", name: "Unstructured", imageSrc: "/logos/unstructured.png", width: 130, height: 32 },
     ],
-    gradient: "from-brand-400/20 via-brand-500/20 to-brand-700/20",
-    borderColor: "group-hover:border-brand-400",
-    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(48,94,255,0.35)]",
-    badge: "GenAI & Knowledge",
-    codeSnippet: `// Vector Search & RAG Context Retrieval
-import { VectorStore } from "@/lib/vector";
-
-export async function queryRAGPipeline(userQuery: string) {
-  const embedding = await generateEmbeddings(userQuery);
-  const contextDocs = await VectorStore.similaritySearch(embedding, { topK: 5 });
-  const answer = await synthesizeAnswer(userQuery, contextDocs);
-  return { answer, sources: contextDocs.map(d => d.metadata.source) };
-}`,
   },
   {
-    id: "apis-webhooks-node",
-    name: "APIs, Webhooks & Node.js Architecture",
-    category: "Backend & APIs",
-    description:
-      "Enterprise RESTful & GraphQL APIs, real-time WebSockets, automated webhook listeners, and event-driven Node.js microservices.",
-    iconType: "api",
-    features: [
-      "Real-time bi-directional WebSockets for live status updates",
-      "Secure OAuth2 & JWT HMAC signature authentication",
-      "Event-driven queue processing with Redis & BullMQ",
-      "High throughput Node.js microservice architecture",
+    category: "Vector Databases & Storage",
+    items: [
+      { type: "image", name: "Pinecone", imageSrc: "/logos/pinecone.png", width: 115, height: 32 },
+      { type: "image", name: "Qdrant", imageSrc: "/logos/qdrant.png", width: 105, height: 32 },
+      { type: "image", name: "Chroma", imageSrc: "/logos/chroma.png", width: 105, height: 32 },
+      { type: "image", name: "Weaviate", imageSrc: "/logos/weaviate.png", width: 115, height: 32 },
+      { type: "image", name: "MongoDB", imageSrc: "/logos/mongodb.png", width: 115, height: 32 },
     ],
-    gradient: "from-brand-400/20 via-brand-500/20 to-brand-700/20",
-    borderColor: "group-hover:border-brand-400",
-    shadowGlow: "group-hover:shadow-[0_0_30px_-5px_rgba(48,94,255,0.35)]",
-    badge: "Integration Layer",
-    codeSnippet: `// Secure Webhook Listener & Event Producer
-import express from 'express';
-import { verifyHmacSignature } from './auth';
-
-const app = express();
-app.post('/api/v1/webhooks/incoming', verifyHmacSignature, async (req, res) => {
-  const event = req.body;
-  await eventQueue.add('process-automation', event);
-  return res.status(200).json({ received: true });
-});`,
+  },
+  {
+    category: "Cloud & DevOps Infrastructure",
+    items: [
+      { type: "image", name: "AWS", imageSrc: "/logos/aws.png", width: 85, height: 32 },
+      { type: "image", name: "Docker", imageSrc: "/logos/docker.png", width: 105, height: 32 },
+      { type: "image", name: "Google Cloud", imageSrc: "/logos/gcp.png", width: 120, height: 32 },
+      { type: "image", name: "Azure", imageSrc: "/logos/azure.png", width: 95, height: 32 },
+      { type: "image", name: "Kubernetes", imageSrc: "/logos/kubernetes.png", width: 125, height: 32 },
+    ],
   },
 ];
 
 export default function TechStackShowcase() {
-  const [selectedTool, setSelectedTool] = useState<ToolItem>(TECH_TOOLS[2]);
-  const [activeCategory, setActiveCategory] = useState<string>("All");
-
-  const categories = ["All", "AI & RAG", "Automation", "Programming", "Backend & APIs"];
-
-  const filteredTools =
-    activeCategory === "All"
-      ? TECH_TOOLS
-      : TECH_TOOLS.filter((t) => t.category === activeCategory);
+  const { openLeadModal } = useLeadModal();
 
   return (
     <section
       id="tech-stack"
-      className="relative overflow-hidden bg-white py-14 sm:py-24 text-slate-900 border-t border-slate-100 px-4 sm:px-6 lg:px-8"
+      className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-t border-slate-200/80"
     >
-      {/* Background Radial Grid */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(#305eff_0.6px,transparent_0.6px)] [background-size:32px_32px] opacity-10"
-      />
+      <div className="mx-auto max-w-7xl">
+        {/* Section Heading & Subheading Matching the Uploaded Screenshot */}
+        <div className="max-w-4xl mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-[2.65rem] font-display"
+          >
+            Tech-Stack Used by Our AI Automation Agency
+          </motion.h2>
 
-      <div className="relative z-10 mx-auto max-w-7xl">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-xs font-bold text-brand-800 shadow-xs mb-4">
-            <Cpu className="h-4 w-4 text-brand-500" />
-            <span>AI Tech Stack &amp; Developer Tools</span>
-          </div>
-
-          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-            Powering Custom AI Agents &amp;{" "}
-            <span className="bg-gradient-to-r from-[#305eff] via-[#1f47e0] to-[#305eff] bg-clip-text text-transparent">
-              Enterprise Workflows
-            </span>
-          </h2>
-
-          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg">
-            We combine robust programming languages, visual automation platforms, cutting-edge LLMs, and RAG pipelines to build intelligent business systems.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-3 text-base sm:text-lg text-slate-600 font-normal leading-relaxed"
+          >
+            We are equipped with a powerful and advanced stack of AI/ML frameworks, tools and technologies, including:
+          </motion.p>
         </div>
 
-        {/* Category Filters - Horizontal Swipeable on Mobile */}
-        <div className="mt-8 sm:mt-10 flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 pt-1 px-1 sm:justify-center sm:flex-wrap">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`shrink-0 whitespace-nowrap rounded-xl px-4 py-2 sm:px-5 text-xs font-bold transition-all duration-200 ${
-                activeCategory === cat
-                  ? "bg-[#305eff] text-white shadow-md shadow-[#305eff]/25 scale-105"
-                  : "border border-slate-200 bg-slate-50 text-slate-700 hover:border-[#305eff]/50 hover:bg-white"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Tech Stack Grid */}
-        <div className="mt-10 sm:mt-14 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {filteredTools.map((tool) => {
-            const isSelected = selectedTool.id === tool.id;
-            return (
+        {/* Tabular Matrix Card Layout Matching Reference Screenshot */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-xl shadow-slate-900/5"
+        >
+          <div className="divide-y divide-slate-100">
+            {TECH_STACK_TABLE_ROWS.map((row, rIdx) => (
               <div
-                key={tool.id}
-                onClick={() => setSelectedTool(tool)}
-                className={`group relative cursor-pointer flex flex-col justify-between overflow-hidden rounded-3xl border bg-white p-5 sm:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 ${
-                  isSelected
-                    ? "border-brand-500 shadow-lg shadow-brand-500/15 ring-2 ring-brand-500/20"
-                    : `border-slate-200/90 hover:border-brand-300 hover:shadow-md`
-                }`}
+                key={rIdx}
+                className="flex flex-col md:flex-row items-stretch transition-colors hover:bg-slate-50/40"
               >
-                <div className="relative z-10">
-                  {/* Top Badge & Icon Row */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-brand-100 bg-brand-50 text-brand-700 shadow-xs group-hover:scale-110 transition-transform">
-                      {tool.iconType === "code" && <Code2 className="h-6 w-6 text-brand-500" />}
-                      {tool.iconType === "workflow" && <Workflow className="h-6 w-6 text-brand-500" />}
-                      {tool.iconType === "ai" && <Sparkles className="h-6 w-6 text-brand-500" />}
-                      {tool.iconType === "api" && <Globe className="h-6 w-6 text-brand-500" />}
-                    </div>
-
-                    <span className="rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-[10px] font-extrabold text-brand-800">
-                      {tool.badge}
-                    </span>
-                  </div>
-
-                  <h3 className="mt-5 text-lg font-bold text-slate-900 group-hover:text-brand-700 transition-colors">
-                    {tool.name}
-                  </h3>
-
-                  <p className="mt-2 text-xs leading-relaxed text-slate-600 line-clamp-3">
-                    {tool.description}
-                  </p>
-                </div>
-
-                {/* Features List Pill */}
-                <div className="relative z-10 mt-6 border-t border-slate-100 pt-4">
-                  <div className="flex items-center justify-between text-xs font-semibold text-brand-700">
-                    <span className="flex items-center gap-1.5">
-                      <Zap className="h-3.5 w-3.5 text-brand-500" />
-                      {tool.features.length} Enterprise Capabilities
-                    </span>
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Selected Tool Interactive Deep Dive & Code Terminal */}
-        <div className="mt-8 sm:mt-12 rounded-2xl sm:rounded-3xl border border-brand-200 bg-[#f4f7ff] p-4 sm:p-8 shadow-xs relative overflow-hidden">
-          <div className="grid gap-8 lg:grid-cols-12 items-center">
-            {/* Left Info Column */}
-            <div className="lg:col-span-6 space-y-4">
-              <div className="inline-flex items-center gap-2 rounded-lg bg-white border border-[#d0ddfd] px-3 py-1 text-xs font-bold text-[#305eff]">
-                <Layers className="h-3.5 w-3.5 text-[#305eff]" />
-                <span>Selected Architecture Tool</span>
-              </div>
-
-              <h3 className="text-2xl font-black text-slate-900 sm:text-3xl">
-                {selectedTool.name}
-              </h3>
-
-              <p className="text-sm text-slate-600 leading-relaxed">
-                {selectedTool.description}
-              </p>
-
-              <div className="space-y-2.5 pt-2">
-                <h4 className="text-xs font-extrabold uppercase tracking-wider text-[#305eff]">
-                  Key Technical Highlights:
-                </h4>
-                {selectedTool.features.map((feat, idx) => (
-                  <div key={idx} className="flex items-start gap-2 text-xs font-medium text-slate-700">
-                    <CheckCircle2 className="h-4 w-4 text-[#305eff] shrink-0 mt-0.5" />
-                    <span>{feat}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-4 flex flex-wrap items-center gap-3">
-                <a
-                  href="https://techschool.thecodebrains.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#305eff] hover:bg-[#1f47e0] px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-[#305eff]/25 transition-all hover:scale-105"
-                >
-                  <Zap className="h-4 w-4" />
-                  <span>Build Custom AI Pipeline</span>
-                </a>
-                <span className="text-xs font-semibold text-slate-500">
-                  ⚡ Fully scalable cloud architecture
-                </span>
-              </div>
-            </div>
-
-            {/* Right Terminal Snippet Column - Emulating Razorpay Developer Code Editor */}
-            <div className="lg:col-span-6">
-              <div className="overflow-hidden rounded-2xl border border-slate-800 bg-[#061229] shadow-2xl">
-                {/* Terminal Header */}
-                <div className="flex items-center justify-between border-b border-slate-800/80 bg-[#030a19] px-4 py-3">
-                  <div className="flex items-center gap-2">
-                    <span className="h-3 w-3 rounded-full bg-red-500/80" />
-                    <span className="h-3 w-3 rounded-full bg-amber-500/80" />
-                    <span className="h-3 w-3 rounded-full bg-[#305eff]" />
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-slate-300 font-mono">
-                    <Terminal className="h-3.5 w-3.5 text-[#618dff]" />
-                    <span>{selectedTool.id}-agent-pipeline.ts</span>
-                  </div>
-                  <span className="text-[10px] font-bold text-[#618dff] bg-[#305eff]/20 px-2 py-0.5 rounded border border-[#305eff]/40">
-                    LIVE SPEC
+                {/* Left Column: Lavender/Light Purple Cell */}
+                <div className="w-full md:w-80 shrink-0 bg-[#f5f3ff] p-5 sm:p-6 flex items-center border-b md:border-b-0 md:border-r border-slate-100">
+                  <span className="font-bold text-slate-900 text-sm sm:text-base leading-snug">
+                    {row.category}
                   </span>
                 </div>
 
-                {/* Terminal Code Block */}
-                <div className="p-4 sm:p-5 max-w-full overflow-x-auto text-xs font-mono text-[#96b4ff] leading-relaxed bg-[#061229]">
-                  <pre className="max-w-full overflow-x-auto whitespace-pre font-mono text-[11px] sm:text-xs text-blue-200">
-                    <code>{selectedTool.codeSnippet}</code>
-                  </pre>
+                {/* Right Column: Horizontal Logo Strip with Direct Uploaded PNGs and Vector Badges */}
+                <div className="flex-1 p-5 sm:p-6 flex flex-wrap items-center gap-6 sm:gap-8 lg:gap-10 bg-white">
+                  {row.items.map((item, tIdx) => {
+                    if (item.type === "image") {
+                      return (
+                        <div
+                          key={tIdx}
+                          className="group flex items-center transition-transform hover:scale-105 cursor-default"
+                          title={item.name}
+                        >
+                          <Image
+                            src={item.imageSrc}
+                            alt={item.name}
+                            width={item.width}
+                            height={item.height}
+                            className="h-7 sm:h-8 w-auto object-contain filter drop-shadow-xs"
+                          />
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div
+                        key={tIdx}
+                        className="group flex items-center gap-2.5 transition-transform hover:scale-105 cursor-default"
+                      >
+                        <div className="flex h-7 w-7 items-center justify-center shrink-0">
+                          <BrandLogo id={item.logoId} className="h-5 w-5 object-contain" />
+                        </div>
+                        <span
+                          className={`text-sm sm:text-base font-bold ${item.colorClass} group-hover:opacity-90`}
+                        >
+                          {item.name}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Architecture Guarantee Strip */}
+        <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50/80 p-6 sm:p-7 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#0066cc] text-white shrink-0">
+              <ShieldCheck className="h-5 w-5" />
+            </div>
+            <div>
+              <h4 className="text-sm sm:text-base font-bold text-slate-900">
+                100% Client-Owned Direct API Accounts &amp; Private Cloud
+              </h4>
+              <p className="text-xs text-slate-500 mt-0.5">
+                We never resell generic wrappers. Your OpenAI, AWS, Twilio, and n8n instances run inside your own corporate cloud.
+              </p>
             </div>
           </div>
+
+          <button
+            type="button"
+            onClick={() =>
+              openLeadModal({
+                title: "Custom Tech Stack Architecture Review",
+                source: "Tech Stack Table Banner",
+                defaultNote: "Inquiring about tech stack integrations with our existing business systems.",
+              })
+            }
+            className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#0066cc] hover:bg-[#0052a3] px-6 py-2.5 text-xs font-bold text-white shadow-sm transition-all active:scale-95 cursor-pointer"
+          >
+            <span>Discuss Architecture</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </button>
         </div>
       </div>
     </section>

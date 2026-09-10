@@ -1,218 +1,290 @@
 "use client";
 
-import {
-  ArrowRight,
-  Bot,
-  CheckCircle2,
-  ChevronRight,
-  Cpu,
-  Layers,
-  Sparkles,
-  Workflow,
-  Zap,
-  ShieldCheck,
-  Clock,
-  Settings2,
-} from "lucide-react";
-import DashboardMockup from "@/components/DashboardMockup";
-import AgentReportPanel from "@/components/AgentReportPanel";
-
+import { useState } from "react";
+import { motion } from "motion/react";
+import { ChevronRight, CheckCircle2, Zap, Shield, Activity, Cpu } from "lucide-react";
 import { useLeadModal } from "@/components/LeadModalContext";
 
 export default function Hero() {
   const { openLeadModal } = useLeadModal();
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setMousePos({ x, y });
+  };
 
   return (
-    <section className="relative overflow-hidden px-4 pb-16 pt-8 text-slate-900 sm:px-6 sm:pb-24 sm:pt-10 lg:px-8">
-      {/* Refined subtle ambient background grid & radial light (No harsh watercolor blobs) */}
+    <section className="relative overflow-hidden bg-white tech-grid-bg px-4 pt-12 pb-16 sm:px-6 sm:pt-16 sm:pb-24 lg:px-8 border-b border-slate-200/80">
+      {/* Subtle futuristic background lighting */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-40"
+        className="pointer-events-none absolute right-0 top-0 -z-10 h-[650px] w-[650px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,192,243,0.15),transparent_70%)] blur-3xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 -z-10 h-[560px] w-full max-w-7xl bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.08),transparent_65%)]"
+        className="pointer-events-none absolute left-0 bottom-0 -z-10 h-[450px] w-[450px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,102,204,0.08),transparent_70%)] blur-2xl"
       />
 
-      {/* Main Hero Container Card */}
-      <div className="relative z-10 mx-auto max-w-7xl rounded-[2rem] border border-slate-200/80 bg-white/95 p-5 sm:p-8 lg:p-10 shadow-xl shadow-slate-200/50 backdrop-blur-xl">
-        <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-10">
-
-          {/* Left Column: Core Value Proposition & Messaging */}
-          <div className="flex flex-col justify-center lg:col-span-7">
-
-            {/* Main Headline */}
-            <h1 className="font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem] lg:leading-[1.12]">
-              Custom AI Agents Built Your Way.{" "}
-              <span className="mt-1.5 block bg-gradient-to-r from-[#305eff] via-[#1f47e0] to-[#305eff] bg-clip-text text-transparent">
-                Or Deploy Instantly.
+      <div className="mx-auto max-w-7xl">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* Left Column: Authoritative Enterprise Copy */}
+          <div className="lg:col-span-6 xl:col-span-7">
+            {/* Category Eyebrow Breadcrumb with Glowing Beacon */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/90 px-3.5 py-1 text-[11px] sm:text-xs font-bold tracking-wider uppercase text-slate-700 shadow-xs backdrop-blur-xs"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00c0f3] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0066cc]"></span>
               </span>
-            </h1>
+              <span className="text-[#0066cc]">Solutions</span>
+              <span className="text-slate-300">/</span>
+              <span>Autonomous AI Orchestration</span>
+            </motion.div>
+
+            {/* Bold Headline with Electric Shimmer */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+              className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-5xl lg:text-[3.35rem] lg:leading-[1.12]"
+            >
+              Deliver services at scale with intent-driven{" "}
+              <span className="electric-gradient-text">AI Orchestration</span>
+            </motion.h1>
 
             {/* Sub-headline */}
-            <p className="mt-4 sm:mt-5 max-w-2xl text-[14px] leading-relaxed text-slate-600 sm:text-base sm:leading-7">
-              We build custom autonomous agents tailored to your exact workflow — or deploy our 18 battle-tested pre-built agents today for immediate results.
-            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg sm:leading-8 font-normal"
+            >
+              Automate, orchestrate, and optimize complex multi-vendor, multi-channel business workflows across your private enterprise cloud. 100% custom-engineered with zero vendor lock-in.
+            </motion.p>
 
-            {/* Dual Offering Comparison Cards */}
-            <div className="mt-6 sm:mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-              {/* Card 1: Custom AI Agents */}
-              <div className="group relative rounded-2xl border border-[#d0ddfd] bg-gradient-to-b from-[#eff4ff]/80 to-white p-4 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#305eff] hover:shadow-md">
-                <div className="flex items-center justify-between">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#305eff] text-white shadow-xs">
-                    <Settings2 className="h-4 w-4" />
-                  </span>
-                  <span className="rounded-full bg-[#eff4ff] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#305eff] border border-[#d0ddfd]">
-                    100% Tailored
-                  </span>
-                </div>
-                <h3 className="mt-3 font-display text-sm font-bold text-slate-900">
-                  Custom-Built To Your Vision
-                </h3>
-                <p className="mt-1 text-xs leading-5 text-slate-600">
-                  Architected around your exact business logic, custom prompts, internal databases, and favorite CRMs.
-                </p>
-                <div className="mt-2.5 flex items-center gap-1.5 text-[11px] font-semibold text-[#305eff]">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#305eff]" />
-                  <span>Your Rules &bull; Your Stack &bull; End-to-End</span>
-                </div>
-              </div>
-
-              {/* Card 2: Ready-Made Agents */}
-              <div className="group relative rounded-2xl border border-[#d0ddfd] bg-gradient-to-b from-[#eff4ff]/50 to-white p-4 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#305eff] hover:shadow-md">
-                <div className="flex items-center justify-between">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#1f47e0] text-white shadow-xs">
-                    <Zap className="h-4 w-4" />
-                  </span>
-                  <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 border border-emerald-200">
-                    Instant Launch
-                  </span>
-                </div>
-                <h3 className="mt-3 font-display text-sm font-bold text-slate-900">
-                  Pre-Built Battle-Tested Agents
-                </h3>
-                <p className="mt-1 text-xs leading-5 text-slate-600">
-                  Deploy our proprietary in-house agents today for voice calling, WhatsApp follow-ups, and lead routing.
-                </p>
-                <div className="mt-2.5 flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
-                  <span>Zero Wait &bull; High-Speed &bull; Proven Uptime</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Feature Pillars */}
-            <div className="mt-5 grid grid-cols-2 gap-2 text-xs font-medium text-slate-700 sm:grid-cols-4 sm:gap-2.5">
-              <div className="flex items-center gap-1.5 rounded-lg border border-slate-100 bg-slate-50/80 px-2.5 py-1.5">
-                <Clock className="h-3.5 w-3.5 text-[#305eff]" />
-                <span className="text-[11px] font-semibold text-slate-800">Fast Turnaround</span>
-              </div>
-              <div className="flex items-center gap-1.5 rounded-lg border border-slate-100 bg-slate-50/80 px-2.5 py-1.5">
-                <Cpu className="h-3.5 w-3.5 text-[#305eff]" />
-                <span className="text-[11px] font-semibold text-slate-800">Advanced LLMs</span>
-              </div>
-              <div className="flex items-center gap-1.5 rounded-lg border border-slate-100 bg-slate-50/80 px-2.5 py-1.5">
-                <Workflow className="h-3.5 w-3.5 text-[#305eff]" />
-                <span className="text-[11px] font-semibold text-slate-800">n8n &amp; Make Sync</span>
-              </div>
-              <div className="flex items-center gap-1.5 rounded-lg border border-slate-100 bg-slate-50/80 px-2.5 py-1.5">
-                <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
-                <span className="text-[11px] font-semibold text-slate-800">Enterprise Grade</span>
-              </div>
-            </div>
-
-            {/* CTAs */}
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <button
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.45, ease: "easeOut" }}
+              className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+            >
+              <motion.button
                 type="button"
+                whileHover={{ scale: 1.03, boxShadow: "0 14px 30px -4px rgba(0, 102, 204, 0.4)" }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.2 }}
                 onClick={() =>
                   openLeadModal({
-                    title: "Build Your Custom AI Agent",
-                    source: "Hero Section CTA",
-                    defaultNote: "Requesting custom AI agent architecture & enterprise workflow design.",
+                    title: "Schedule Enterprise AI Consultation",
+                    source: "Hero Primary Blue Pill CTA",
+                    defaultNote: "Requesting custom autonomous AI orchestration architecture review.",
                   })
                 }
-                className="btn-shine inline-flex items-center justify-center gap-2 rounded-xl bg-[#305eff] hover:bg-[#1f47e0] px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-[#305eff]/30 transition-all duration-200 hover:brightness-110 active:scale-95 cursor-pointer"
+                className="inline-flex items-center justify-center rounded-full bg-[#0066cc] hover:bg-[#0052a3] px-8 py-3.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-[#0066cc]/25 transition-colors cursor-pointer"
               >
-                <Sparkles className="h-4 w-4" />
-                <span>Build My Custom AI Agent</span>
-                <ArrowRight className="h-4 w-4" />
-              </button>
-              <a
-                href="#ai-agents-catalog"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3.5 text-xs sm:text-sm font-semibold text-slate-800 shadow-xs transition-all duration-200 hover:border-[#305eff]/60 hover:bg-[#eff4ff]/40 active:scale-95"
+                <span>Explore Solutions</span>
+              </motion.button>
+
+              <motion.a
+                href="#orchestration-portfolio"
+                whileHover={{ x: 4 }}
+                transition={{ duration: 0.2 }}
+                className="inline-flex items-center justify-center gap-1.5 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#0066cc] py-3 transition-colors"
               >
-                <Bot className="h-4 w-4 text-[#305eff]" />
-                <span>Explore AI Agents</span>
-              </a>
-            </div>
+                <span>View Orchestration Portfolio</span>
+                <ChevronRight className="h-4 w-4 text-[#0066cc]" />
+              </motion.a>
+            </motion.div>
 
-            {/* Micro-Trust Line */}
-            <p className="mt-3 text-[11px] text-slate-500">
-              ⚡ Ultra-fast delivery &bull; 18 Bespoke &amp; pre-built agents &bull; 36 live n8n workflows
-            </p>
-          </div>
-
-          {/* Right Column: Live Agent Ops Monitor */}
-          <div className="relative flex flex-col justify-center lg:col-span-5">
-            {/* Elegant, clean ambient backlight */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -inset-2 rounded-[2rem] bg-gradient-to-tr from-[#305eff]/15 via-blue-500/10 to-transparent blur-2xl"
-            />
-
-            {/* Floating Metric 1 */}
-            <div className="animate-float-slow absolute -left-3 top-8 z-20 hidden rounded-2xl border border-slate-200/80 bg-white/95 px-3.5 py-2 shadow-md backdrop-blur-md sm:block">
-              <p className="text-[10px] font-semibold text-slate-500">Fleet Capacity</p>
-              <p className="font-display text-sm font-bold text-[#305eff]">18 Custom Agents Built</p>
-            </div>
-
-            {/* Floating Metric 2 */}
-            <div className="animate-float absolute -right-2 bottom-20 z-20 hidden rounded-2xl border border-slate-200/80 bg-white/95 px-3.5 py-2 shadow-md backdrop-blur-md sm:block">
-              <p className="text-[10px] font-semibold text-emerald-600">Active Workflows</p>
-              <p className="font-display text-sm font-bold text-slate-900">36 n8n Routes &bull; 13 Bots</p>
-            </div>
-
-            {/* Visual Panel */}
-            <div className="relative origin-center transition-transform duration-500 lg:rotate-[1deg] lg:hover:rotate-0">
-              <AgentReportPanel />
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section: Live SaaS Workspace & AI Dashboard Preview */}
-        <div className="relative mt-12 rounded-[1.75rem] border border-slate-200/80 bg-slate-50/70 p-4 shadow-xs sm:p-6">
-          <div className="mb-4 flex items-center justify-between px-1">
-            <div className="flex items-center gap-2">
-              <span className="flex h-2.5 w-2.5 rounded-full bg-[#305eff] animate-pulse" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-slate-700">
-                Live SaaS Workspace &amp; AI Dashboard Preview
-              </span>
-            </div>
-            <a
-              href="https://techschool.thecodebrains.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden items-center gap-1 text-xs font-semibold text-[#305eff] hover:text-[#1f47e0] sm:flex"
+            {/* Credibility Badges Under CTA */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="mt-10 pt-6 border-t border-slate-200/80 flex flex-wrap items-center gap-6 text-xs text-slate-600 font-medium"
             >
-              Explore Live Workspace
-              <ChevronRight className="h-3.5 w-3.5" />
-            </a>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-4 w-4 text-[#0066cc]" />
+                <span>Zero recurring agency markups</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-4 w-4 text-[#0066cc]" />
+                <span>100% Client Git &amp; Code Ownership</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-4 w-4 text-[#0066cc]" />
+                <span>Direct AWS Cloud Deployment</span>
+              </div>
+            </motion.div>
           </div>
-          <DashboardMockup />
-        </div>
 
-        {/* Sleek Sub-Hero Powered & Compliance Strip */}
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#d0ddfd] bg-gradient-to-r from-[#eff4ff] via-white to-[#eff4ff] p-3.5 text-xs text-slate-800 shadow-xs">
-          <div className="flex items-center gap-2 font-semibold">
-            <Sparkles className="h-4 w-4 text-[#305eff]" />
-            <span>Powered by <strong className="text-slate-900 font-extrabold">Advanced Meta, Google AI-Agents &amp; n8n System Automation</strong></span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-bold text-emerald-800">
-              <ShieldCheck className="h-4 w-4 text-emerald-600" />
-              <span>Government Registered Entity</span>
-            </div>
+          {/* Right Column: World-Class Interactive 3D Parametric Mesh + Live Telemetry HUD */}
+          <div
+            className="relative flex items-center justify-center lg:col-span-6 xl:col-span-5 select-none"
+            onMouseMove={handleMouseMove}
+          >
+            <motion.div
+              animate={{
+                rotateX: mousePos.y * -14,
+                rotateY: mousePos.x * 18,
+                y: [0, -8, 0],
+              }}
+              transition={{
+                rotateX: { type: "spring", stiffness: 120, damping: 20 },
+                rotateY: { type: "spring", stiffness: 120, damping: 20 },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+              }}
+              style={{ perspective: 1000 }}
+              className="relative w-full aspect-[4/3] max-w-[560px] flex items-center justify-center"
+            >
+              {/* SVG 3D Parametric Mesh Wave with Laser Flow Pulses */}
+              <svg
+                viewBox="0 0 600 450"
+                className="w-full h-full object-contain filter drop-shadow-md select-none pointer-events-none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#00c0f3" stopOpacity="0.9" />
+                    <stop offset="50%" stopColor="#0066cc" stopOpacity="0.75" />
+                    <stop offset="100%" stopColor="#2563eb" stopOpacity="0.3" />
+                  </linearGradient>
+                  <linearGradient id="waveGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#0284c7" stopOpacity="0.85" />
+                    <stop offset="60%" stopColor="#38bdf8" stopOpacity="0.5" />
+                    <stop offset="100%" stopColor="#0369a1" stopOpacity="0.15" />
+                  </linearGradient>
+                  <radialGradient id="meshCenterGlow" cx="60%" cy="50%" r="55%">
+                    <stop offset="0%" stopColor="#00c0f3" stopOpacity="0.3" />
+                    <stop offset="60%" stopColor="#0066cc" stopOpacity="0.1" />
+                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+                  </radialGradient>
+                </defs>
+
+                {/* Ambient Center Glow */}
+                <ellipse cx="360" cy="225" rx="190" ry="145" fill="url(#meshCenterGlow)" />
+
+                {/* Primary Parametric Ribbon Layers */}
+                {Array.from({ length: 28 }).map((_, i) => {
+                  const offset = i * 7.5;
+                  const curveY1 = 80 + Math.sin(i * 0.25) * 45 + offset * 0.4;
+                  const curveY2 = 340 - Math.cos(i * 0.25) * 55 - offset * 0.3;
+                  const strokeWidth = i % 4 === 0 ? 1.6 : 0.8;
+                  const strokeOpacity = 0.25 + (i / 28) * 0.65;
+                  const isLaser = i === 6 || i === 14 || i === 22;
+
+                  return (
+                    <path
+                      key={i}
+                      d={`M ${40 + i * 5} ${220 + Math.sin(i * 0.3) * 35} 
+                          C ${160 + offset} ${curveY1}, 
+                            ${380 - offset * 0.5} ${curveY2}, 
+                            ${560 - i * 4} ${180 + Math.cos(i * 0.2) * 50}`}
+                      fill="none"
+                      stroke={i % 2 === 0 ? "url(#waveGrad1)" : "url(#waveGrad2)"}
+                      strokeWidth={isLaser ? 2.2 : strokeWidth}
+                      strokeOpacity={isLaser ? 1 : strokeOpacity}
+                      className={isLaser ? (i === 14 ? "animate-laser-fast" : "animate-laser") : undefined}
+                    />
+                  );
+                })}
+
+                {/* Cross-Hatch Structural Wireframe Lines */}
+                {Array.from({ length: 18 }).map((_, j) => {
+                  const t = j * 30;
+                  return (
+                    <path
+                      key={`cross-${j}`}
+                      d={`M ${60 + t} ${150 + Math.sin(j) * 20} 
+                          Q ${240 + t * 0.6} ${230 + Math.cos(j * 0.5) * 40} 
+                            ${360 + t * 0.5} ${320 - Math.sin(j) * 30}`}
+                      fill="none"
+                      stroke="#0284c7"
+                      strokeWidth="0.75"
+                      strokeOpacity="0.4"
+                      strokeDasharray={j % 3 === 0 ? "4 4" : undefined}
+                    />
+                  );
+                })}
+
+                {/* Animated Pulsing Node Anchors */}
+                <circle cx="210" cy="180" r="4.5" fill="#0066cc" />
+                <circle cx="210" cy="180" r="10" fill="none" stroke="#00c0f3" strokeWidth="1.5" strokeOpacity="0.6" className="animate-ping" style={{ transformOrigin: "210px 180px" }} />
+                
+                <circle cx="380" cy="240" r="4" fill="#0284c7" />
+                <circle cx="440" cy="160" r="4.5" fill="#0066cc" />
+                <circle cx="440" cy="160" r="9" fill="none" stroke="#0066cc" strokeWidth="1.5" strokeOpacity="0.5" />
+                <circle cx="290" cy="290" r="3.5" fill="#38bdf8" />
+              </svg>
+
+              {/* Floating HUD Telemetry Pill 1: Ultra-Low Latency Voice with Equalizer */}
+              <motion.div
+                initial={{ opacity: 0, y: -20, x: 20 }}
+                animate={{ opacity: 1, y: 0, x: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+                className="absolute -top-3 right-4 sm:right-6 rounded-2xl border border-slate-200/90 bg-white/95 backdrop-blur-md p-3 shadow-xl flex items-center gap-3 pointer-events-auto"
+              >
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-[#0066cc]">
+                  <Zap className="h-4 w-4" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-900">
+                    <span>Voice Telephony</span>
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping" />
+                  </div>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <span className="text-[10px] font-bold text-[#0066cc]">284ms Latency</span>
+                    <div className="flex items-end gap-0.5 h-3">
+                      <span className="w-0.5 bg-[#0066cc] rounded-full wave-bar-1" />
+                      <span className="w-0.5 bg-[#00c0f3] rounded-full wave-bar-2" />
+                      <span className="w-0.5 bg-[#0066cc] rounded-full wave-bar-3" />
+                      <span className="w-0.5 bg-[#00c0f3] rounded-full wave-bar-4" />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Floating HUD Telemetry Pill 2: Precision Reasoning Core */}
+              <motion.div
+                initial={{ opacity: 0, y: 20, x: -20 }}
+                animate={{ opacity: 1, y: 0, x: 0 }}
+                transition={{ delay: 0.75, duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+                className="absolute -bottom-4 left-2 sm:left-4 rounded-2xl border border-slate-200/90 bg-white/95 backdrop-blur-md p-3 shadow-xl flex items-center gap-3 pointer-events-auto"
+              >
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                  <Cpu className="h-4 w-4" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-bold text-slate-900 flex items-center gap-1.5">
+                    <span>Intent Precision</span>
+                    <span className="rounded bg-emerald-100 px-1 py-0.2 text-[9px] font-black text-emerald-700">99.8%</span>
+                  </div>
+                  <div className="text-[10px] text-slate-500 font-medium">Deterministic Guardrails</div>
+                </div>
+              </motion.div>
+
+              {/* Floating HUD Telemetry Pill 3: Private Vector Storage */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.9, duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+                className="hidden sm:flex absolute bottom-8 right-2 rounded-2xl border border-slate-200/90 bg-white/95 backdrop-blur-md px-3 py-2 shadow-lg items-center gap-2 pointer-events-auto"
+              >
+                <Shield className="h-3.5 w-3.5 text-[#0066cc]" />
+                <span className="text-[10px] font-bold text-slate-800">Tenant Vector Vault (12ms)</span>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>

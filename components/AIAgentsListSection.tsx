@@ -1,277 +1,248 @@
 "use client";
 
-import { useState } from "react";
+import { motion } from "motion/react";
 import {
+  TrendingUp,
+  FileText,
+  MessageSquare,
+  Repeat,
   PhoneCall,
-  CreditCard,
-  Bot,
-  FileCheck,
-  Bell,
-  TrendingDown,
-  FileScan,
-  Megaphone,
-  Receipt,
-  Users,
   Sparkles,
   ArrowRight,
   CheckCircle2,
-  Zap,
   ShieldCheck,
-  Cpu,
+  Zap,
 } from "lucide-react";
+import { useLeadModal } from "@/components/LeadModalContext";
 
-type AIAgentModule = {
+type AIServiceItem = {
   id: string;
-  name: string;
-  category: "sales" | "education" | "operations" | "finance";
-  categoryLabel: string;
-  description: string;
-  icon: any;
-  outcome: string;
+  number: string;
+  category: string;
+  badge: string;
+  title: string;
+  shortDescription: string;
+  keyBenefits: string[];
   techStack: string;
-  status: "Production Ready" | "Enterprise Deploy";
+  icon: any;
+  featured?: boolean;
 };
 
-const AI_AGENT_MODULES: AIAgentModule[] = [
+const CORE_SERVICES: AIServiceItem[] = [
   {
-    id: "voice-agent",
-    name: "AI Voice Lead Qualification Agent",
-    category: "sales",
-    categoryLabel: "Sales & Leads",
-    description: "Outbound AI voice calls to website enquiries, qualifying leads & 24/7 instant demo booking directly on calendar.",
+    id: "sales-lead-gen",
+    number: "01",
+    category: "Autonomous B2B Growth",
+    badge: "High ROI",
+    title: "AI-Powered Sales & Lead Generation Agents",
+    shortDescription:
+      "Automate your B2B prospecting. Our custom AI agents scrape target leads, analyze their business needs, and send hyper-personalized cold emails or LinkedIn messages to book meetings on autopilot.",
+    keyBenefits: [
+      "24/7 automated lead outreach.",
+      "Higher response rates through personalized AI messaging.",
+      "Saves hundreds of hours of manual prospecting time.",
+    ],
+    techStack: "Apollo API + GPT-4o + Lemlist / Smartlead",
+    icon: TrendingUp,
+  },
+  {
+    id: "document-workflow",
+    number: "02",
+    category: "Operations & Back-Office",
+    badge: "Zero-Touch",
+    title: "AI Document & Workflow Automation",
+    shortDescription:
+      "Eliminate manual data entry. We build smart workflows that automatically extract data from PDFs, invoices, and receipts, syncing them instantly into your CRM (like HubSpot) or spreadsheets.",
+    keyBenefits: [
+      "100% error-free data extraction.",
+      "Instant processing of invoices and reports.",
+      "Seamless integration with tools like HubSpot, Google Sheets, and Slack.",
+    ],
+    techStack: "AWS Textract OCR + n8n Pipelines + HubSpot API",
+    icon: FileText,
+  },
+  {
+    id: "support-chatbots",
+    number: "03",
+    category: "Customer Experience",
+    badge: "24/7/365",
+    title: "24/7 Intelligent Customer Support Bots",
+    shortDescription:
+      "Give your customers instant answers. We integrate custom AI chatbots trained specifically on your company data, website FAQs, and documents to resolve queries instantly.",
+    keyBenefits: [
+      "Available 24/7/365 for global customers.",
+      "Reduces customer support operational costs.",
+      "Quick setup using secure website iframe integrations.",
+    ],
+    techStack: "Pinecone Vector RAG + Claude 3.5 + Secure Iframe",
+    icon: MessageSquare,
+  },
+  {
+    id: "content-pipelines",
+    number: "04",
+    category: "Media & Brand Scaling",
+    badge: "Viral Growth",
+    title: "AI Content Pipelines & Repurposing",
+    shortDescription:
+      "Turn one piece of content into a month’s worth of marketing. Our AI system converts long-form videos or podcasts into viral shorts, blogs, and social media threads automatically.",
+    keyBenefits: [
+      "Maximize social media presence with zero extra effort.",
+      "Automatic scheduling and multi-platform posting.",
+      "Rapid content scaling for brands and creators.",
+    ],
+    techStack: "Whisper AI + FFmpeg + Multi-Platform API",
+    icon: Repeat,
+  },
+  {
+    id: "voice-ai",
+    number: "05",
+    category: "Telephony & Conversational AI",
+    badge: "Sub-350ms Latency",
+    title: "Real-Time Voice AI Agents",
+    shortDescription:
+      "Human-sounding AI voice assistants that handle inbound and outbound phone calls, qualify leads, and schedule appointments seamlessly.",
+    keyBenefits: [
+      "Never miss a customer call again.",
+      "Natural, real-time conversational voice experience.",
+      "Ideal for local businesses, clinics, and service providers.",
+    ],
+    techStack: "Twilio SIP + Deepgram + ElevenLabs Turbo",
     icon: PhoneCall,
-    outcome: "Zero missed enquiries & 4x higher demo booking rate",
-    techStack: "Twilio / Vapi + OpenAI Realtime + Google Calendar",
-    status: "Production Ready",
-  },
-  {
-    id: "fee-reminder-agent",
-    name: "Automated Fee Collection & Payment Reminder Agent",
-    category: "finance",
-    categoryLabel: "Finance & Collections",
-    description: "Automated WhatsApp & SMS scheduled due-date reminders with embedded 1-click UPI payment links.",
-    icon: CreditCard,
-    outcome: "85% reduction in overdue fees & instant payment recovery",
-    techStack: "Meta WhatsApp Cloud API + Razorpay / PhonePe UPI",
-    status: "Production Ready",
-  },
-  {
-    id: "rag-tutor",
-    name: "24/7 RAG-Powered Student AI Tutor",
-    category: "education",
-    categoryLabel: "Education & Learning",
-    description: "Institute-trained custom RAG chatbot providing syllabus-aligned instant homework & doubt resolution 24/7.",
-    icon: Bot,
-    outcome: "24/7 instant doubt resolution with 100% syllabus accuracy",
-    techStack: "Pinecone Vector DB + LangChain + Claude 3.5",
-    status: "Production Ready",
-  },
-  {
-    id: "assignment-grader",
-    name: "Automated Homework & Assignment Grader",
-    category: "education",
-    categoryLabel: "Education & Learning",
-    description: "AI multi-modal vision evaluation of student answer sheets with score breakdown & instant constructive feedback.",
-    icon: FileCheck,
-    outcome: "Saves 15+ hours/week for teachers & instant student feedback",
-    techStack: "GPT-4o Vision + Multi-modal OCR + Custom Rubrics",
-    status: "Production Ready",
-  },
-  {
-    id: "smart-attendance",
-    name: "Smart Attendance & Absentee Alert Automation",
-    category: "operations",
-    categoryLabel: "Operations & Safety",
-    description: "Instant WhatsApp notifications dispatched to parents the second student attendance or absence is logged.",
-    icon: Bell,
-    outcome: "100% parent satisfaction & zero attendance tracking errors",
-    techStack: "Biometric Cloud API + WhatsApp Cloud Triggers + Node.js",
-    status: "Production Ready",
-  },
-  {
-    id: "dropout-analyzer",
-    name: "Predictive Student Dropout & Risk Analyzer",
-    category: "education",
-    categoryLabel: "Education & Intelligence",
-    description: "Early warning predictive AI alerts detecting attendance drops & academic performance decay 30 days early.",
-    icon: TrendingDown,
-    outcome: "Identify at-risk students 30 days early for proactive intervention",
-    techStack: "Python Scikit-Learn + Predictive Analytics Engine",
-    status: "Enterprise Deploy",
-  },
-  {
-    id: "ocr-verification",
-    name: "Automated Document Verification OCR Agent",
-    category: "operations",
-    categoryLabel: "Operations & Onboarding",
-    description: "Instant OCR scanning, data extraction & fraud verification of student admission forms, Aadhar, and certificates.",
-    icon: FileScan,
-    outcome: "90% faster student admissions & paperless onboarding",
-    techStack: "AWS Textract + Tesseract OCR + Fraud Detection AI",
-    status: "Production Ready",
-  },
-  {
-    id: "broadcast-agent",
-    name: "AI Social Media & Notice Broadcast Agent",
-    category: "sales",
-    categoryLabel: "Communication & Marketing",
-    description: "1-click multi-channel announcement generation and circular broadcasting across WhatsApp, Telegram & Email.",
-    icon: Megaphone,
-    outcome: "Broadcast institute circulars to 5,000+ parents in 1 click",
-    techStack: "Multi-Platform API + Generative Copywriting Engine",
-    status: "Production Ready",
-  },
-  {
-    id: "ledger-reconciliation",
-    name: "Automated Invoice & Ledger Reconciliation Bot",
-    category: "finance",
-    categoryLabel: "Finance & Accounting",
-    description: "Seamless financial tracking, bank statement reconciliation, GST ledger balance & automated receipt dispatch.",
-    icon: Receipt,
-    outcome: "Zero accounting discrepancies & 1-click monthly P&L statements",
-    techStack: "n8n / Make Workflow Engine + Tally / Zoho API",
-    status: "Enterprise Deploy",
-  },
-  {
-    id: "hr-payroll",
-    name: "HR & Staff Payroll Synchronization Workflow",
-    category: "operations",
-    categoryLabel: "HR & Staff Management",
-    description: "Automated staff salary calculation, leave tracking, attendance sync, and tax slip generation in 1 click.",
-    icon: Users,
-    outcome: "Automate entire monthly staff payroll in under 2 minutes",
-    techStack: "Node.js Microservices + Biometric Cloud Sync + Tax Engine",
-    status: "Production Ready",
+    featured: true,
   },
 ];
 
-import { useLeadModal } from "@/components/LeadModalContext";
-
 export default function AIAgentsListSection() {
-  const [activeCategory, setActiveCategory] = useState<string>("all");
   const { openLeadModal } = useLeadModal();
 
-  const filteredAgents =
-    activeCategory === "all"
-      ? AI_AGENT_MODULES
-      : AI_AGENT_MODULES.filter((agent) => agent.category === activeCategory);
-
   return (
-    <section id="ai-agents-catalog" className="relative border-t border-slate-200/60 bg-slate-50/50 px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
+    <section
+      id="solutions-catalog"
+      className="relative border-t border-slate-200/80 bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
+    >
+      <div id="ai-agents-catalog" className="absolute -top-24" />
       <div className="mx-auto max-w-7xl">
-        
-        {/* Header Badges & Title */}
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d0ddfd] bg-[#eff4ff] px-3.5 py-1 text-xs font-bold text-[#305eff] shadow-xs">
-            <Sparkles className="h-3.5 w-3.5 text-[#305eff]" />
-            18+ Ready-To-Deploy &amp; Bespoke AI Agents
-          </div>
-          <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Custom Autonomous AI Agents for <span className="bg-gradient-to-r from-[#305eff] via-[#1f47e0] to-[#305eff] bg-clip-text text-transparent">Every Core Workflow</span>
-          </h2>
-          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg">
-            Choose from our production-ready AI agent catalog below or request a 100% custom-built agent tailored to your exact business logic.
-          </p>
+        {/* Section Header */}
+        <div className="max-w-3xl mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#0066cc]"
+          >
+            <Sparkles className="h-3.5 w-3.5 text-[#0066cc]" />
+            Enterprise Services Catalog
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl font-display"
+          >
+            Our Core AI Services &amp; Automation Pipelines
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-4 text-base sm:text-lg leading-relaxed text-slate-600"
+          >
+            We architect and deploy custom-tailored autonomous AI agents and intelligent workflows designed around your exact business model. 100% private cloud deployment with zero vendor lock-in.
+          </motion.p>
         </div>
 
-        {/* Category Filter Tabs - Horizontal Swipeable on Mobile */}
-        <div className="mt-8 sm:mt-10 flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 pt-1 px-1 sm:justify-center sm:flex-wrap">
-          {[
-            { id: "all", label: "All AI Agents" },
-            { id: "sales", label: "Sales & Marketing" },
-            { id: "education", label: "Education & Learning" },
-            { id: "operations", label: "Operations & HR" },
-            { id: "finance", label: "Finance & Collections" },
-          ].map((cat) => (
-            <button
-              key={cat.id}
-              type="button"
-              onClick={() => setActiveCategory(cat.id)}
-              className={`shrink-0 whitespace-nowrap rounded-xl px-4 py-2 text-xs font-bold transition-all ${
-                activeCategory === cat.id
-                  ? "bg-[#305eff] text-white shadow-md shadow-[#305eff]/25 scale-105"
-                  : "bg-slate-100 text-slate-700 hover:bg-[#eff4ff] hover:text-[#305eff]"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
+        {/* 5 Core Services Grid Layout */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {CORE_SERVICES.map((service, idx) => {
+            const Icon = service.icon;
+            const isFeatured = service.featured;
 
-        {/* AI Agents Cards Grid */}
-        <div className="mt-10 sm:mt-12 grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filteredAgents.map((agent) => {
-            const IconComp = agent.icon;
             return (
-              <div
-                key={agent.id}
-                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-5 sm:p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[#305eff] hover:shadow-md"
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
+                whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                className={`group relative flex flex-col justify-between rounded-3xl p-7 shadow-md transition-all ${
+                  isFeatured
+                    ? "border-2 border-[#0066cc] bg-gradient-to-b from-blue-50/50 via-white to-white md:col-span-2 lg:col-span-1 shadow-blue-500/10"
+                    : "border border-slate-200/90 bg-white hover:border-[#0066cc]/40 hover:shadow-xl"
+                }`}
               >
-
                 <div>
-                  {/* Header Row: Icon + Status */}
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-800 border border-slate-200 transition-colors group-hover:bg-[#eff4ff] group-hover:text-[#305eff] group-hover:border-[#d0ddfd]">
-                      <IconComp className="h-5 w-5" />
+                  {/* Top Bar: Service Number + Category + Badge */}
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0066cc] group-hover:bg-[#0066cc] group-hover:text-white transition-colors duration-200">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <span className="text-xs font-mono font-bold text-slate-400">
+                        SERVICE #{service.number}
+                      </span>
                     </div>
-                    <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-bold text-slate-700 border border-slate-200">
-                      {agent.status}
+                    <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-[10px] font-bold text-[#0066cc] border border-blue-200">
+                      {service.badge}
                     </span>
                   </div>
 
-                  {/* Category Pill */}
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                    {agent.categoryLabel}
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#0066cc] block mb-1">
+                    {service.category}
                   </span>
 
-                  {/* Agent Name */}
-                  <h3 className="mt-1 text-base font-bold text-slate-900 group-hover:text-[#305eff] transition-colors">
-                    {agent.name}
+                  {/* Website Heading */}
+                  <h3 className="text-xl font-bold text-slate-900 leading-snug group-hover:text-[#0066cc] transition-colors">
+                    {service.title}
                   </h3>
 
-                  {/* Description */}
-                  <p className="mt-1.5 text-xs leading-relaxed text-slate-600">
-                    {agent.description}
+                  {/* Short Description */}
+                  <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    {service.shortDescription}
                   </p>
 
-                  {/* Outcome Box */}
-                  <div className="mt-4 rounded-xl border border-slate-200/80 bg-slate-50/80 p-3">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">
-                      ⚡ Key Outcome:
+                  {/* Key Benefits List */}
+                  <div className="mt-6 space-y-2.5 rounded-2xl bg-slate-50/80 p-4 border border-slate-100">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
+                      Key Business Benefits:
                     </span>
-                    <span className="text-xs font-semibold text-slate-900 mt-0.5 block">
-                      {agent.outcome}
-                    </span>
+                    {service.keyBenefits.map((benefit, bIdx) => (
+                      <div key={bIdx} className="flex items-start gap-2 text-xs text-slate-700 font-medium">
+                        <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <span>{benefit}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Tech Stack & Action Footer */}
-                <div className="mt-5 border-t border-slate-100 pt-3.5 flex items-center justify-between text-xs">
-                  <span className="text-[10px] font-medium text-slate-400 truncate max-w-[170px]" title={agent.techStack}>
-                    {agent.techStack}
+                {/* Footer: Tech Stack + Direct Consultation CTA */}
+                <div className="mt-7 pt-4 border-t border-slate-100 flex items-center justify-between gap-3 text-xs">
+                  <span className="text-[10px] font-mono text-slate-400 truncate max-w-[170px]" title={service.techStack}>
+                    {service.techStack}
                   </span>
 
                   <button
                     type="button"
                     onClick={() =>
                       openLeadModal({
-                        title: `Deploy ${agent.name}`,
-                        source: `AI Agents Catalog - ${agent.name}`,
-                        planName: agent.name,
-                        defaultNote: `Interested in deploying ${agent.name} (${agent.outcome}).`,
+                        title: `Commission: ${service.title}`,
+                        source: `Services Catalog - ${service.title}`,
+                        planName: service.title,
+                        defaultNote: `Requesting custom architecture review for ${service.title}.`,
                       })
                     }
-                    className="inline-flex items-center gap-1 font-bold text-[#305eff] hover:text-[#1f47e0] group/btn cursor-pointer"
+                    className="inline-flex shrink-0 items-center gap-1.5 font-bold text-[#0066cc] hover:text-[#0052a3] group/btn cursor-pointer py-1"
                   >
-                    <span>Deploy Agent</span>
+                    <span>Get Service</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" />
                   </button>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
-
       </div>
     </section>
   );

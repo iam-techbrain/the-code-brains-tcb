@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, HelpCircle, MessageCircle, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { Plus, Minus, ArrowRight, Sparkles } from "lucide-react";
+import { useLeadModal } from "@/components/LeadModalContext";
 
 type FAQItem = {
   question: string;
@@ -11,44 +13,45 @@ type FAQItem = {
 
 const FAQS: FAQItem[] = [
   {
-    question: "How do custom AI agents integrate with my existing CRM and databases?",
+    question: "How does TCB's AI Orchestration integrate with our legacy enterprise systems?",
     answer:
-      "Our AI agents connect directly via RESTful APIs, Webhooks, n8n, and Make.com pipelines. Whether you use HubSpot, Salesforce, Zoho, Google Sheets, or custom SQL databases, we establish bi-directional sync with zero disruption to your daily operations.",
-    category: "Integrations & APIs",
+      "Our AI orchestration engine connects directly to your existing tech stack via secure enterprise RESTful APIs, bidirectional webhooks, event-driven message brokers (Kafka/RabbitMQ), and n8n pipelines. Whether you rely on Salesforce, SAP, Oracle, custom SQL data warehouses, or bespoke proprietary tools, we integrate with zero downtime and strict adherence to your network boundary policies.",
+    category: "Architecture & Integration",
   },
   {
-    question: "How fast can TCB build and deploy a custom AI agent for my business?",
+    question: "How fast can an enterprise-grade AI agent or workflow be built and deployed?",
     answer:
-      "Pre-built agents (such as WhatsApp fee collection or lead qualifiers) can be configured and launched in under 48 hours. Custom RAG vector agents and complex voice caller workflows typically ship in 5 to 10 business days.",
-    category: "Deployment & Speed",
+      "Standard operational workflows (such as multi-channel lead qualification or automated billing dispute triage) are typically ready for staging within 3 to 5 business days. Complex multi-agent RAG vector architectures, autonomous voice telephony systems, and custom ERP synchronizations typically achieve full production deployment within 2 to 3 weeks.",
+    category: "Deployment Timelines",
   },
   {
-    question: "Are my internal documents and company data secure with RAG AI?",
+    question: "How is our proprietary corporate data protected during LLM reasoning?",
     answer:
-      "100% secure. We deploy dedicated vector databases (Pinecone / Qdrant) with enterprise-grade encryption. Your proprietary PDFs, manuals, and customer records are never used to train public LLM models.",
-    category: "Data Privacy & Security",
+      "Security and compliance are non-negotiable. We deploy isolated, tenant-dedicated vector datastores (Pinecone / Qdrant) with end-to-end AES-256 and TLS 1.3 encryption. We utilize enterprise zero-data-retention agreements with LLM providers—ensuring your customer records, internal code, and business intelligence are never stored or used to train third-party public foundation models.",
+    category: "Data Privacy & Governance",
   },
   {
-    question: "How do AI Voice Caller agents handle inbound and outbound phone calls?",
+    question: "What latency and natural conversational capabilities do AI Voice agents provide?",
     answer:
-      "Voice agents utilize low-latency speech-to-text (Deepgram/Twilio), high-speed LLM intent reasoning, and natural voice synthesis (ElevenLabs/Vapi) to converse in under 350ms with seamless live human transfer.",
-    category: "Voice Telephony",
+      "Our autonomous voice systems achieve ultra-low response latency under 350ms using optimized streaming neural speech-to-text (Deepgram/Twilio), high-throughput LLM reasoning, and natural emotional voice synthesis (ElevenLabs/Vapi). Systems intelligently handle ambient noise, mid-sentence human interruptions, dynamic CRM lookups, and deterministic escalation to human agents.",
+    category: "Voice Telephony & Real-Time AI",
   },
   {
-    question: "What are the ongoing running costs for hosting and LLM API tokens?",
+    question: "What are the recurring cloud hosting and LLM token operational costs?",
     answer:
-      "We believe in 100% transparency. AWS cloud hosting (~$5-$15/mo) and OpenAI API tokens (~₹200-₹800/mo) are billed directly to your own accounts. Zero agency markup, zero hidden fees.",
-    category: "Pricing & Cloud Costs",
+      "We operate on a 100% transparent direct-infrastructure model. AWS/GCP cloud resources and direct LLM API usage tokens are billed directly to your corporate accounts. We never apply agency markups or hidden margin fees on your compute or tokens.",
+    category: "Cost & Infrastructure",
   },
   {
-    question: "Do I get full source code ownership after project completion?",
+    question: "Do we retain full intellectual property and source code ownership?",
     answer:
-      "Yes. Every custom agent, n8n workflow JSON, and Docker deployment script is handed over to your GitHub repository and cloud accounts. You own 100% of your code and IP with zero vendor lock-in.",
-    category: "Source Code & IP",
+      "Yes, completely. Upon final delivery and sign-off, all custom agent source code, workflow definitions, Docker deployment manifests, and vector schema configurations are transferred directly to your organization's internal GitHub repositories. You maintain 100% IP ownership with zero vendor lock-in.",
+    category: "Intellectual Property & Handover",
   },
 ];
 
 export default function FAQ() {
+  const { openLeadModal } = useLeadModal();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleFAQ = (index: number) => {
@@ -56,79 +59,111 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative overflow-hidden border-t border-slate-200/60 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
-      <div className="mx-auto max-w-4xl">
+    <section id="faq" className="relative overflow-hidden bg-white border-t border-slate-200/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <div className="mx-auto max-w-5xl">
         {/* Section Header */}
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d0ddfd] bg-[#eff4ff] px-3.5 py-1 text-xs font-bold text-[#305eff] shadow-xs">
-            <Sparkles className="h-3.5 w-3.5 text-[#305eff]" />
-            Got Questions? We Have Answers
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-14 sm:mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-semibold text-[#0066cc] uppercase tracking-wider mb-4">
+            <Sparkles className="w-3.5 h-3.5" />
+            Enterprise Architecture FAQ
           </div>
-          <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-950 font-display">
             Frequently Asked Questions
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg">
-            Everything you need to know about custom AI agents, n8n workflow automations, RAG pipelines, and project delivery.
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+            Essential operational insights into our custom AI agents, multi-domain workflow orchestration, enterprise data security, and full IP handover.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Accordion Container */}
-        <div className="mt-12 space-y-4">
+        {/* Clean Enterprise Horizontal Border Accordion with Motion.dev */}
+        <div className="divide-y divide-slate-200 border-y border-slate-200">
           {FAQS.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
                 key={faq.question}
-                className="overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-200 hover:border-brand-300"
+                className="transition-colors duration-150 hover:bg-slate-50/60"
               >
                 <button
+                  type="button"
                   onClick={() => toggleFAQ(idx)}
-                  className="flex w-full items-center justify-between p-5 text-left transition-colors sm:p-6"
+                  className="flex w-full items-center justify-between py-6 px-3 sm:px-4 text-left transition-all group cursor-pointer focus:outline-none"
+                  aria-expanded={isOpen}
                 >
-                  <span className="flex items-center gap-3 pr-4 text-base font-semibold text-zinc-900 sm:text-lg">
-                    <HelpCircle className="h-5 w-5 shrink-0 text-brand-500" />
-                    {faq.question}
-                  </span>
-                  <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 transition-transform duration-200 ${isOpen ? "rotate-180 bg-brand-100 text-brand-700" : "text-zinc-500"}`}>
-                    <ChevronDown className="h-4 w-4" />
-                  </span>
+                  <div className="pr-6 flex-1">
+                    <span className="inline-block text-[11px] font-bold uppercase tracking-widest text-[#0066cc] mb-1.5">
+                      {faq.category}
+                    </span>
+                    <h3 className={`text-base sm:text-lg font-semibold transition-colors ${isOpen ? "text-[#0066cc]" : "text-slate-900 group-hover:text-[#0066cc]"}`}>
+                      {faq.question}
+                    </h3>
+                  </div>
+
+                  <div className={`shrink-0 flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-200 ${isOpen ? "bg-[#0066cc] text-white border-[#0066cc]" : "border-slate-300 text-slate-500 group-hover:border-[#0066cc] group-hover:text-[#0066cc]"}`}>
+                    {isOpen ? (
+                      <Minus className="w-4 h-4 transition-transform" />
+                    ) : (
+                      <Plus className="w-4 h-4 transition-transform" />
+                    )}
+                  </div>
                 </button>
 
-                {isOpen && (
-                  <div className="border-t border-zinc-100 bg-zinc-50/50 px-5 py-5 sm:px-6 sm:py-6">
-                    <p className="text-sm leading-relaxed text-zinc-600">
-                      {faq.answer}
-                    </p>
-                    <div className="mt-4 inline-block rounded-md border border-zinc-200 bg-white px-2.5 py-0.5 text-[11px] font-semibold text-zinc-500">
-                      Category: {faq.category}
-                    </div>
-                  </div>
-                )}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="content"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-3 sm:px-4 pb-6 pt-1 text-slate-600 leading-relaxed text-sm sm:text-base border-t border-slate-100 bg-slate-50/40">
+                        <p className="max-w-4xl">{faq.answer}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}
         </div>
 
-        {/* Support Help Banner */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm sm:flex-row sm:px-8">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-700">
-              <MessageCircle className="h-5 w-5" />
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold text-zinc-900">Have a specific question not answered here?</h4>
-              <p className="text-xs text-zinc-500">Our customer support team is available 24/7 on WhatsApp.</p>
-            </div>
+        {/* Executive Inquiries CTA Strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-14 p-6 sm:p-8 rounded-2xl bg-[#071f34] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl shadow-slate-900/10"
+        >
+          <div>
+            <h4 className="text-lg font-bold text-white">Have a proprietary architecture or custom security requirement?</h4>
+            <p className="text-sm text-slate-300 mt-1 max-w-xl">
+              Our enterprise solution architects evaluate your existing infrastructure, data residency constraints, and API topologies under strict NDA.
+            </p>
           </div>
-          <a
-            href="https://wa.me/919999999999?text=Hi%20TCB%20Store,%20I%20have%20a%20question"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#305eff] hover:bg-[#1f47e0] px-4 py-2.5 text-xs font-bold text-white transition-all shadow-md shadow-[#305eff]/25 active:scale-95"
+          <button
+            type="button"
+            onClick={() =>
+              openLeadModal({
+                title: "Schedule Technical Consultation",
+                source: "FAQ Architecture Help Banner",
+                defaultNote: "Inquiring about custom enterprise AI orchestration and compliance requirements.",
+              })
+            }
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0066cc] hover:bg-[#0052a3] text-white text-sm font-semibold transition-all shadow-md shadow-blue-500/20 active:scale-95 cursor-pointer"
           >
-            Chat with Support
-          </a>
-        </div>
+            Consult a Lead Architect
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </motion.div>
       </div>
     </section>
   );

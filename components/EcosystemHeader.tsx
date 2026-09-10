@@ -1,132 +1,57 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Boxes,
-  GraduationCap,
-  ChevronDown,
   Menu,
   X,
   Sparkles,
-  Stethoscope,
-  Dumbbell,
-  Hotel,
-  Utensils,
-  Globe,
   ArrowRight,
-  Bot,
+  ShieldCheck,
+  Globe,
+  ChevronRight,
 } from "lucide-react";
-
-// SCALABLE GLOBAL SAAS PRODUCTS DATA FOR DROPDOWN HUB
-const ECOSYSTEM_APPS = [
-  {
-    id: "school",
-    name: "TCB School (Academy Hub)",
-    category: "Education & Coaching Institute",
-    description: "Student roster, daily attendance & automated tuition alerts.",
-    price: "₹499/mo",
-    href: "/school",
-    icon: GraduationCap,
-    status: "Live",
-    active: true,
-    external: false,
-  },
-  {
-    id: "inventory",
-    name: "TCB Inventory System",
-    category: "Retail & Stock Management",
-    description: "Barcode stock master, automated invoices & credit ledger.",
-    price: "₹299/mo",
-    href: "/store",
-    icon: Boxes,
-    status: "Soon",
-    active: true,
-    external: false,
-  },
-  {
-    id: "health",
-    name: "TCB Health Cloud",
-    category: "Healthcare & EHR Platform",
-    description: "Doctor consultations, patient EHR & pharmacy billing.",
-    price: "₹699/mo",
-    href: "/health",
-    icon: Stethoscope,
-    status: "Soon",
-    active: true,
-    external: false,
-  },
-  {
-    id: "fitness",
-    name: "TCB Fitness Suite",
-    category: "Gym & Club Platform",
-    description: "Biometric access, trainer scheduling & automated dues.",
-    price: "₹399/mo",
-    href: "/fitness",
-    icon: Dumbbell,
-    status: "Soon",
-    active: true,
-    external: false,
-  },
-  {
-    id: "hotel",
-    name: "TCB Stay & Desk",
-    category: "Hospitality & Front Desk",
-    description: "Reservation engine, guest front desk & room service.",
-    price: "₹899/mo",
-    href: "/hotel",
-    icon: Hotel,
-    status: "Soon",
-    active: true,
-    external: false,
-  },
-  {
-    id: "dine",
-    name: "TCB Dine POS",
-    category: "Restaurant & KOT",
-    description: "Table QR ordering, kitchen display sync & delivery POS.",
-    price: "₹499/mo",
-    href: "/dine",
-    icon: Utensils,
-    status: "Soon",
-    active: true,
-    external: false,
-  },
-];
-
-import { useGlobalCountry, GLOBAL_COUNTRIES } from "@/components/GlobalCountryContext";
+import { useLeadModal } from "@/components/LeadModalContext";
 
 export default function EcosystemHeader() {
-  const { selectedCountry, setSelectedCountry } = useGlobalCountry();
   const pathname = usePathname();
+  const { openLeadModal } = useLeadModal();
   const [isOpen, setIsOpen] = useState(false);
-  const [rightProductsOpen, setRightProductsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const rightProductsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const navLinks = [
-    { label: "AI Studio", href: "/", sectionId: "" },
-    { label: "AI Agents", href: "/#ai-agents-catalog", sectionId: "ai-agents-catalog" },
-    { label: "AI Capabilities", href: "/#features", sectionId: "features" },
-    { label: "SaaS Portfolio", href: "/#ecosystem-apps", sectionId: "ecosystem-apps" },
-    { label: "Pricing", href: "/#pricing", sectionId: "pricing" },
+    { label: "Solutions", href: "/#solutions-catalog", sectionId: "solutions-catalog" },
+    { label: "Real Results", href: "/#real-projects", sectionId: "real-projects" },
+    { label: "Orchestration", href: "/#orchestration-portfolio", sectionId: "orchestration-portfolio" },
+    { label: "Tech Stack", href: "/#tech-stack", sectionId: "tech-stack" },
+    { label: "How It Works", href: "/#how-it-works", sectionId: "how-it-works" },
+    { label: "FAQ", href: "/#faq", sectionId: "faq" },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 8);
+      setScrolled(window.scrollY > 15);
 
       if (pathname === "/") {
-        const sections = ["ai-agents-catalog", "features", "ecosystem-apps", "pricing"];
+        const sections = [
+          "solutions-catalog",
+          "real-projects",
+          "orchestration-portfolio",
+          "tech-stack",
+          "features",
+          "proven-impact",
+          "how-it-works",
+          "faq",
+        ];
         let foundSec = "";
 
         for (const secId of sections) {
           const el = document.getElementById(secId);
           if (el) {
             const rect = el.getBoundingClientRect();
-            if (rect.top <= 220 && rect.bottom >= 220) {
+            if (rect.top <= 200 && rect.bottom >= 200) {
               foundSec = secId;
               break;
             }
@@ -135,7 +60,7 @@ export default function EcosystemHeader() {
 
         if (foundSec) {
           setActiveSection(foundSec);
-        } else if (window.scrollY < 300) {
+        } else if (window.scrollY < 200) {
           setActiveSection("");
         }
       }
@@ -146,22 +71,8 @@ export default function EcosystemHeader() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
-  const handleMouseEnterRightProducts = () => {
-    if (rightProductsTimeoutRef.current) clearTimeout(rightProductsTimeoutRef.current);
-    setRightProductsOpen(true);
-  };
-
-  const handleMouseLeaveRightProducts = () => {
-    rightProductsTimeoutRef.current = setTimeout(() => {
-      setRightProductsOpen(false);
-    }, 150);
-  };
-
-  const isNavActive = (link: typeof navLinks[0]) => {
+  const isNavActive = (link: (typeof navLinks)[0]) => {
     if (pathname === "/") {
-      if (link.sectionId === "") {
-        return activeSection === "";
-      }
       return activeSection === link.sectionId;
     }
     return pathname === link.href;
@@ -169,43 +80,134 @@ export default function EcosystemHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-200 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-md shadow-xs border-b border-slate-200/80"
-          : "bg-white/80 backdrop-blur-md border-b border-slate-100/60"
+          ? "bg-white/95 backdrop-blur-md shadow-xs border-b border-slate-200/90"
+          : "bg-white border-b border-slate-100"
       }`}
     >
-      <div className="w-full px-3 py-2 sm:px-6 lg:px-8">
-        <nav
-          className={`mx-auto flex h-[58px] sm:h-[62px] max-w-7xl items-center justify-between rounded-2xl border border-slate-200/80 bg-white/90 px-3.5 text-slate-900 shadow-nav backdrop-blur-xl transition-all duration-300 sm:px-5 ${
-            scrolled ? "bg-white/95 shadow-soft border-slate-200" : ""
-          }`}
-        >
-          {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <img
-              src="/tcb-logo.png"
-              alt="TCB Logo"
-              style={{ height: "30px", width: "auto" }}
-              className="h-7 sm:h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
-            />
-            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#d0ddfd] bg-[#eff4ff] px-2.5 py-0.5 text-[10px] font-bold text-[#305eff]">
-              <Globe className="h-3 w-3 text-[#305eff]" /> Multi-SaaS Platform
+      {/* Top Thin Corporate Utility Bar */}
+      <div className="hidden border-b border-slate-100 bg-slate-50/80 px-4 py-1.5 text-[11px] font-medium text-slate-600 md:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-between">
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1.5 text-slate-700 font-semibold">
+              <ShieldCheck className="h-3.5 w-3.5 text-[#0066cc]" />
+              Enterprise AI Architecture &bull; Direct AWS Deployment &bull; 100% Client Code Ownership
             </span>
-          </Link>
+          </div>
+          <div className="flex items-center gap-4 text-slate-500">
+            <span className="hover:text-[#0066cc] cursor-pointer">Global Deployment</span>
+            <span>&bull;</span>
+            <span className="hover:text-[#0066cc] cursor-pointer">Security Center</span>
+            <span>&bull;</span>
+            <button
+              type="button"
+              onClick={() =>
+                openLeadModal({
+                  title: "Direct Client Support & Audit",
+                  source: "Top Bar Link",
+                })
+              }
+              className="text-[#0066cc] font-semibold hover:underline cursor-pointer"
+            >
+              Contact Solutions Architect
+            </button>
+          </div>
+        </div>
+      </div>
 
-          {/* Center Desktop Navigation with Dynamic Active Highlighting */}
-          <div className="hidden items-center gap-1 sm:gap-1.5 md:flex">
+      {/* Main Navigation Bar */}
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Brand Logo */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <img
+            src="/tcb-logo.png"
+            alt="TCB Logo"
+            style={{ height: "32px", width: "auto" }}
+            className="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+          />
+        </Link>
+
+        {/* Center Desktop Navigation */}
+        <nav className="hidden items-center gap-1 lg:flex">
+          {navLinks.map((link) => {
+            const active = isNavActive(link);
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`relative px-3.5 py-2 text-[13px] font-semibold transition-colors duration-150 ${
+                  active
+                    ? "text-[#0066cc]"
+                    : "text-slate-700 hover:text-[#0066cc]"
+                }`}
+              >
+                {link.label}
+                {active && (
+                  <span className="absolute bottom-0 left-3.5 right-3.5 h-0.5 bg-[#0066cc] rounded-full" />
+                )}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Right CTA Button - Reference Style Solid Blue Pill */}
+        <div className="hidden items-center gap-3 sm:flex">
+          <button
+            type="button"
+            onClick={() =>
+              openLeadModal({
+                title: "Schedule Architecture Consultation",
+                source: "Header Primary Pill CTA",
+                defaultNote: "Requesting custom enterprise AI agent & workflow orchestration consultation.",
+              })
+            }
+            className="rounded-full bg-[#0066cc] hover:bg-[#0052a3] px-5 py-2 text-xs font-bold text-white shadow-sm transition-all hover:shadow-md active:scale-95 cursor-pointer"
+          >
+            Explore Solutions
+          </button>
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <button
+            type="button"
+            onClick={() =>
+              openLeadModal({
+                title: "Schedule Architecture Consultation",
+                source: "Mobile Header Pill",
+              })
+            }
+            className="rounded-full bg-[#0066cc] px-3.5 py-1.5 text-[11px] font-bold text-white shadow-xs"
+          >
+            Consult
+          </button>
+          <button
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100"
+          >
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Navigation Drawer */}
+      {isOpen && (
+        <div className="border-b border-slate-200 bg-white px-4 py-4 shadow-xl lg:hidden">
+          <div className="flex flex-col gap-1 mb-4">
             {navLinks.map((link) => {
               const active = isNavActive(link);
               return (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`rounded-xl px-3.5 py-2 text-[13px] transition-all duration-200 ${
+                  onClick={() => setIsOpen(false)}
+                  className={`rounded-lg px-3 py-2.5 text-xs font-semibold ${
                     active
-                      ? "bg-[#eff4ff] font-bold text-[#1f47e0] border border-[#d0ddfd] shadow-xs"
-                      : "font-semibold text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                      ? "bg-slate-100 text-[#0066cc] font-bold"
+                      : "text-slate-700 hover:bg-slate-50"
                   }`}
                 >
                   {link.label}
@@ -213,210 +215,21 @@ export default function EcosystemHeader() {
               );
             })}
           </div>
-
-          {/* Right Header CTA - All SaaS Projects Hub Switcher & Universal Country Switcher */}
-          <div
-            className="relative hidden items-center gap-2.5 md:flex"
-            onMouseEnter={handleMouseEnterRightProducts}
-            onMouseLeave={handleMouseLeaveRightProducts}
+          <button
+            type="button"
+            onClick={() => {
+              setIsOpen(false);
+              openLeadModal({
+                title: "Schedule Architecture Consultation",
+                source: "Mobile Drawer CTA",
+              });
+            }}
+            className="w-full rounded-full bg-[#0066cc] py-2.5 text-xs font-bold text-white shadow-sm text-center"
           >
-            {/* Header Country & Currency Selector */}
-            <select
-              value={selectedCountry.code}
-              onChange={(e) => {
-                const found = GLOBAL_COUNTRIES.find((c) => c.code === e.target.value);
-                if (found) setSelectedCountry(found);
-              }}
-              className="rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:border-[#305eff] focus:outline-none cursor-pointer"
-              title="Universal Country & Currency Switcher"
-            >
-              {GLOBAL_COUNTRIES.map((c) => (
-                <option key={c.code} value={c.code}>
-                  {c.flag} {c.code} ({c.currency})
-                </option>
-              ))}
-            </select>
-
-            <button
-              type="button"
-              onClick={() => setRightProductsOpen(!rightProductsOpen)}
-              className="inline-flex items-center gap-2 rounded-xl bg-[#305eff] hover:bg-[#1f47e0] px-4 py-2 text-xs font-bold text-white shadow-md shadow-[#305eff]/25 active:scale-95 transition-all"
-            >
-              <Sparkles className="h-4 w-4 text-white" />
-              <span>Browse All Apps</span>
-              <ChevronDown
-                className={`h-3.5 w-3.5 text-white transition-transform duration-200 ${
-                  rightProductsOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-
-            {/* SaaS Products Dropdown Hub */}
-            {rightProductsOpen && (
-              <div className="absolute right-0 top-full z-50 mt-3 w-80 rounded-2xl border border-white/80 bg-white/95 p-3 shadow-soft backdrop-blur-2xl">
-                <div className="mb-2 border-b border-slate-100 pb-2 px-1 flex items-center justify-between">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500">
-                    TCB SaaS Verticals Hub
-                  </span>
-                  <span className="text-[10px] font-bold text-brand-700">6 Products</span>
-                </div>
-
-                <div className="flex flex-col gap-1 max-h-[360px] overflow-y-auto pr-1">
-                  {ECOSYSTEM_APPS.map((app) => {
-                    const IconComp = app.icon;
-                    const isAppActive = pathname === app.href;
-                    return (
-                      <Link
-                        key={app.id}
-                        href={app.href}
-                        onClick={() => setRightProductsOpen(false)}
-                        className={`group flex items-start gap-3 rounded-xl p-2.5 transition-all ${
-                          isAppActive
-                            ? "bg-brand-50 border border-brand-200"
-                            : "hover:bg-slate-50"
-                        }`}
-                      >
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-800 font-bold transition-transform group-hover:scale-110">
-                          <IconComp className="h-4.5 w-4.5" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs font-bold text-slate-900 group-hover:text-brand-700 truncate">
-                              {app.name}
-                            </span>
-                            <span className="text-[10px] font-black text-brand-700 shrink-0">
-                              {app.price}
-                            </span>
-                          </div>
-                          <p className="text-[10px] text-slate-500 truncate mt-0.5">
-                            {app.description}
-                          </p>
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Mobile Action Pill & Menu Toggle */}
-          <div className="flex items-center gap-2 md:hidden">
-            <Link
-              href="/#pricing"
-              className="inline-flex items-center gap-1 rounded-lg bg-brand-50 border border-brand-200 px-2.5 py-1.5 text-[11px] font-bold text-brand-700 active:scale-95 transition-all"
-            >
-              <Bot className="h-3.5 w-3.5 text-brand-600" />
-              <span>Deploy AI</span>
-            </Link>
-            <button
-              type="button"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-              className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white/80 text-slate-700 hover:bg-slate-100 active:scale-95 transition-all"
-            >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
-          </div>
-        </nav>
-
-        {/* Enhanced Mobile Navigation Drawer */}
-        {isOpen && (
-          <div className="mx-auto mt-2 max-w-7xl max-h-[82vh] overflow-y-auto rounded-2xl border border-white/90 bg-white/98 p-4 shadow-xl backdrop-blur-2xl md:hidden animate-in fade-in slide-in-from-top-2 duration-200">
-            {/* Quick Navigation Links */}
-            <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5">
-              Menu Navigation
-            </div>
-            <div className="grid grid-cols-2 gap-1.5 mb-4">
-              {navLinks.map((link) => {
-                const active = isNavActive(link);
-                return (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`rounded-xl px-3 py-2 text-xs font-semibold transition-all text-center ${
-                      active
-                        ? "bg-brand-600 text-white shadow-xs"
-                        : "bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-100"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </div>
-
-            {/* SaaS Verticals Header */}
-            <div className="flex items-center justify-between border-t border-slate-100 pt-3 pb-2 px-1">
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
-                TCB SaaS Verticals (6 Apps)
-              </span>
-              <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[9px] font-bold text-brand-700">
-                Ready to Demo
-              </span>
-            </div>
-
-            {/* SaaS Apps List */}
-            <div className="flex flex-col gap-1.5 mb-4">
-              {ECOSYSTEM_APPS.map((app) => {
-                const IconComp = app.icon;
-                const isAppActive = pathname === app.href;
-                return (
-                  <Link
-                    key={app.id}
-                    href={app.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`flex items-center justify-between gap-2.5 rounded-xl p-2.5 transition-all active:scale-[0.99] ${
-                      isAppActive
-                        ? "bg-brand-50 border border-brand-200"
-                        : "bg-slate-50/70 hover:bg-slate-100/90 border border-slate-100"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-brand-700">
-                        <IconComp className="h-4 w-4" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-xs font-bold text-slate-800 truncate">
-                          {app.name}
-                        </div>
-                        <div className="text-[10px] text-slate-500 truncate">
-                          {app.category}
-                        </div>
-                      </div>
-                    </div>
-                    <span className="rounded-md bg-white px-2 py-0.5 text-[10px] font-extrabold text-brand-700 shadow-xs shrink-0 border border-slate-100">
-                      {app.price}
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
-
-            {/* Mobile Actions CTAs */}
-            <div className="border-t border-slate-100 pt-3 flex flex-col gap-2">
-              <Link
-                href="/#pricing"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 py-2.5 text-xs font-bold text-white shadow-md active:scale-95 transition-all"
-              >
-                <span>Deploy AI Solution</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-              <a
-                href="https://wa.me/919999999999?text=Hi%20TCB%20Team%2C%20I%20want%20to%20explore%20AI%20Agents%20and%20Automation"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-xl border border-emerald-300 bg-emerald-50/80 py-2 text-xs font-bold text-emerald-800 active:scale-95 transition-all"
-              >
-                <span>Instant WhatsApp Consultation</span>
-              </a>
-            </div>
-          </div>
-        )}
-      </div>
+            Schedule Architecture Consultation
+          </button>
+        </div>
+      )}
     </header>
   );
 }

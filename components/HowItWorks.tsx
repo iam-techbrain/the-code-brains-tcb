@@ -1,159 +1,230 @@
-import {
-  QrCode,
-  Receipt,
-  Send,
-  ArrowRight,
-  CheckCircle2,
-  Sparkles,
-} from "lucide-react";
+"use client";
 
-type Step = {
-  number: string;
-  icon: typeof QrCode;
+import { motion } from "motion/react";
+import {
+  Sparkles,
+  Workflow,
+  Cpu,
+  Code2,
+  ShieldCheck,
+  CheckCircle2,
+  ArrowRight,
+  Zap,
+} from "lucide-react";
+import { useLeadModal } from "@/components/LeadModalContext";
+
+type RoadmapStep = {
+  num: string;
+  badge: string;
   title: string;
-  subtitle: string;
+  timeline: string;
   description: string;
-  highlights: string[];
-  badgeText: string;
+  deliverables: string[];
+  icon: any;
+  align: "left" | "right";
 };
 
-const STEPS: Step[] = [
+const ROADMAP_STEPS: RoadmapStep[] = [
   {
-    number: "01",
-    icon: QrCode,
-    title: "Setup Your Shop Catalog",
-    subtitle: "In under 2 minutes",
+    num: "1",
+    badge: "Phase 01: Audit & Strategy",
+    title: "Discovery & Strategic Workflow Audit",
+    timeline: "Days 1–2",
     description:
-      "Upload your existing inventory using Excel/CSV or quickly add items using built-in barcode scanner. Set your sale price & GST rates effortlessly.",
-    highlights: [
-      "Bulk CSV / Excel import support",
-      "Camera & barcode scanner integration",
-      "Pre-loaded Indian Kirana catalog items",
+      "We examine your operational bottlenecks, lead qualification gaps, legacy databases, and manual data entry tasks to engineer a precise architectural blueprint.",
+    deliverables: [
+      "Process discovery with senior AI solutions architect",
+      "API topology & data residency security review",
+      "ROI projection & technical feasibility specification",
     ],
-    badgeText: "Step 1: Onboarding",
+    icon: Workflow,
+    align: "left",
   },
   {
-    number: "02",
-    icon: Receipt,
-    title: "Create Instant Bills & Sales",
-    subtitle: "Lightning-fast billing counter",
+    num: "2",
+    badge: "Phase 02: Architecture & Logic",
+    title: "Custom Agent & Flow Architecture Blueprint",
+    timeline: "Days 3–5",
     description:
-      "Search products by name, barcode, or category. Generate GST invoices or simple cash receipts in 1-click. Print or send via SMS/WhatsApp.",
-    highlights: [
-      "Thermal printer & A4 PDF support",
-      "Customizable shop logo & GSTIN",
-      "Cash, Card, & UPI payment modes",
+      "Our architects design deterministic state machines, vector embedding chunking strategies, and strict constitutional guardrails to eliminate hallucination.",
+    deliverables: [
+      "Multi-agent state machine diagram & LangGraph schemas",
+      "Vector search index schema (Pinecone / Qdrant)",
+      "Zero-data-retention enterprise compliance mapping",
     ],
-    badgeText: "Step 2: Daily Billing",
+    icon: Cpu,
+    align: "right",
   },
   {
-    number: "03",
-    icon: Send,
-    title: "Automate Reminders & Collections",
-    subtitle: "Collect pending payments 3x faster",
+    num: "3",
+    badge: "Phase 03: Pro-Code Engineering",
+    title: "Rapid Pro-Code & Node Development",
+    timeline: "Days 6–10",
     description:
-      "TCB Store automatically tracks customer credit (Udhar). When payment is due, your customer receives a polite WhatsApp message with a direct UPI link.",
-    highlights: [
-      "Auto-generated WhatsApp payment links",
-      "Zero transaction commission on UPI",
-      "Instant settlement into your bank account",
+      "We code high-concurrency Python/FastAPI microservices, n8n orchestration pipelines, and ultra-low-latency voice telephony streaming runtimes.",
+    deliverables: [
+      "Custom voice telephony integration (<350ms Twilio/ElevenLabs)",
+      "Bi-directional CRM & ERP synchronizations (HubSpot, Salesforce)",
+      "Automated PDF invoice & document OCR parsing workers",
     ],
-    badgeText: "Step 3: Collections",
+    icon: Code2,
+    align: "left",
+  },
+  {
+    num: "4",
+    badge: "Phase 04: Validation & Private Cloud",
+    title: "Adversarial Testing & Private Cloud Deployment",
+    timeline: "Days 11–13",
+    description:
+      "We stress-test the agents with adversarial edge-case inputs, verify zero-hallucination accuracy against production data, and deploy to your AWS VPC.",
+    deliverables: [
+      "Automated integration test suites & latency benchmarks",
+      "Direct deployment to your private AWS EC2 / Lambda VPC",
+      "Isolated tenant encryption & OpenTelemetry tracing",
+    ],
+    icon: ShieldCheck,
+    align: "right",
+  },
+  {
+    num: "5",
+    badge: "Phase 05: Ownership & Scale",
+    title: "100% Source Code Handover & Team Onboarding",
+    timeline: "Day 14 & Ongoing",
+    description:
+      "We transfer all Git repositories, Docker manifests, and API keys directly to your organization. Complete IP ownership with zero recurring agency markups.",
+    deliverables: [
+      "Complete Git repository & Docker deployment handover",
+      "Live operational documentation & executive team training",
+      "Dedicated senior architect SLA & performance monitoring",
+    ],
+    icon: Zap,
+    align: "left",
   },
 ];
 
 export default function HowItWorks() {
+  const { openLeadModal } = useLeadModal();
+
   return (
-    <section id="how-it-works" className="relative overflow-hidden border-t border-zinc-100 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
+    <section id="how-it-works" className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-t border-slate-200/80">
       <div className="mx-auto max-w-7xl">
-        {/* Section Title */}
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50/80 px-3.5 py-1 text-xs font-semibold text-brand-700 shadow-sm">
-            <Sparkles className="h-3.5 w-3.5 text-brand-500" />
-            Simple 3-Step Process
-          </div>
-          <h2 className="font-display text-2xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
-            How TCB Store works in your daily routine
-          </h2>
-          <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-zinc-500 sm:text-lg">
-            No complicated technical setup required. Start billing and managing your store inventory in 3 simple steps.
-          </p>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#0066cc]"
+          >
+            <Sparkles className="h-3.5 w-3.5 text-[#0066cc]" />
+            Proven 5-Step Delivery Lifecycle
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl font-display"
+          >
+            Our 5-Step AI Automation Roadmap
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed"
+          >
+            From your initial business operations audit to production launch on your private enterprise cloud in under 14 business days.
+          </motion.p>
         </div>
 
-        {/* Steps Cards Container */}
-        <div className="relative mt-10 sm:mt-16 grid gap-6 sm:gap-8 lg:grid-cols-3">
-          {/* Connector Line (Desktop Only) */}
+        {/* 5-Step Winding Roadmap (Matches Reference Image Layout) */}
+        <div className="relative max-w-4xl mx-auto space-y-12">
+          {/* Central subtle vertical connecting line on mobile/desktop */}
           <div
             aria-hidden
-            className="pointer-events-none absolute left-1/6 right-1/6 top-24 hidden h-0.5 border-t-2 border-dashed border-brand-200 lg:block"
+            className="pointer-events-none absolute left-8 sm:left-1/2 top-10 bottom-10 w-0.5 -translate-x-1/2 border-l-2 border-dashed border-blue-200"
           />
 
-          {STEPS.map((step, idx) => {
+          {ROADMAP_STEPS.map((step, idx) => {
+            const isRight = step.align === "right";
             const Icon = step.icon;
+
             return (
-              <div
-                key={step.number}
-                className="group relative flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-5 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-900/5"
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className={`relative flex flex-col sm:flex-row items-start gap-6 sm:gap-10 ${
+                  isRight ? "sm:flex-row-reverse" : ""
+                }`}
               >
-                <div>
-                  {/* Top Header: Step Badge + Number */}
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1.5 rounded-md border border-brand-200 bg-brand-50/80 px-2.5 py-1 text-xs font-semibold text-brand-700">
-                      {step.badgeText}
-                    </span>
-                    <span className="font-mono text-3xl font-extrabold text-zinc-200 transition-colors group-hover:text-brand-500">
-                      {step.number}
-                    </span>
-                  </div>
-
-                  {/* Icon Circle */}
-                  <div className="mt-6 flex h-14 w-14 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-800 transition-colors duration-200 group-hover:border-brand-300 group-hover:bg-brand-500 group-hover:text-white">
-                    <Icon className="h-7 w-7" />
-                  </div>
-
-                  {/* Step Title & Subtitle */}
-                  <h3 className="mt-6 text-xl font-semibold tracking-tight text-zinc-900">
-                    {step.title}
-                  </h3>
-                  <span className="text-xs font-medium text-brand-500">
-                    {step.subtitle}
-                  </span>
-
-                  {/* Description */}
-                  <p className="mt-3 text-sm leading-relaxed text-zinc-500">
-                    {step.description}
-                  </p>
-
-                  {/* Highlights Bullet List */}
-                  <ul className="mt-6 flex flex-col gap-2.5 border-t border-zinc-100 pt-5">
-                    {step.highlights.map((item) => (
-                      <li key={item} className="flex items-start gap-2.5 text-xs text-zinc-700">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                {/* Big Step Number Badge in Center */}
+                <div className="absolute left-8 sm:left-1/2 -translate-x-1/2 z-10 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0066cc] to-[#004d99] text-white font-display font-black text-2xl sm:text-3xl shadow-lg shadow-[#0066cc]/30 border-2 border-white">
+                  {step.num}
                 </div>
 
-                {/* Card Action Link */}
-                <div className="mt-8 flex items-center gap-1 text-xs font-semibold text-zinc-900 group-hover:text-brand-500">
-                  <span>Learn more about Step {idx + 1}</span>
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                {/* Content Card (Takes half width on desktop) */}
+                <div className="w-full sm:w-[calc(50%-3rem)] pl-16 sm:pl-0">
+                  <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-xs hover:border-[#0066cc]/40 hover:shadow-xl transition-all">
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#0066cc] bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+                        {step.badge}
+                      </span>
+                      <span className="text-xs font-mono font-bold text-slate-500">
+                        {step.timeline}
+                      </span>
+                    </div>
+
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-snug">
+                      {step.title}
+                    </h3>
+
+                    <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      {step.description}
+                    </p>
+
+                    {/* Deliverables Checklist */}
+                    <div className="mt-4 pt-4 border-t border-slate-100 space-y-2">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                        Key Deliverables:
+                      </span>
+                      {step.deliverables.map((item, dIdx) => (
+                        <div key={dIdx} className="flex items-start gap-2 text-xs text-slate-700">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
+
+                {/* Empty spacer for opposite side on desktop */}
+                <div className="hidden sm:block w-[calc(50%-3rem)]" />
+              </motion.div>
             );
           })}
         </div>
 
-        {/* CTA Footer */}
-        <div className="mt-14 text-center">
-          <a
-            href="#pricing"
-            className="inline-flex items-center gap-2 rounded-2xl bg-[#305eff] hover:bg-[#1f47e0] px-7 py-3.5 text-xs font-bold text-white shadow-md shadow-[#305eff]/25 transition-all hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#305eff]"
+        {/* Roadmap Final CTA */}
+        <div className="mt-16 text-center">
+          <button
+            type="button"
+            onClick={() =>
+              openLeadModal({
+                title: "Start Your AI Automation Roadmap",
+                source: "How It Works 5-Step Roadmap CTA",
+                defaultNote: "Ready to begin Phase 1: Strategic Architecture & Discovery Call.",
+              })
+            }
+            className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] hover:bg-[#0052a3] px-8 py-3.5 text-xs sm:text-sm font-bold text-white shadow-md shadow-[#0066cc]/25 transition-all hover:shadow-lg active:scale-95 cursor-pointer"
           >
-            Get Started Free (No Credit Card)
+            <span>Begin Phase 01: Book Discovery Call</span>
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </button>
         </div>
       </div>
     </section>

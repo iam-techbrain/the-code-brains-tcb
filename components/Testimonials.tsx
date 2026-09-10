@@ -21,13 +21,13 @@ const REVIEWS: Review[] = [
     id: "r1",
     name: "Rajesh Sharma",
     role: "Director & Founder",
-    storeName: "Apex Coaching Academy",
+    storeName: "Apex EduVentures",
     location: "Jaipur, Rajasthan",
-    category: "Education & Coaching",
+    category: "Voice AI & Inquiries",
     rating: 5,
     quote:
-      "Earlier our staff spent days manually tracking tuition fees and calling parents. With TCB School's automated WhatsApp fee reminders and attendance alerts, fee collection jumped by 40% and we recovered over ₹8.5 Lakh in overdue dues within the first month alone!",
-    impactMetric: "₹8.5L Overdue Fees Recovered",
+      "TCB engineered a custom voice calling and automated lead outreach agent for our team. It qualifies inbound leads and triggers instant personalized follow-ups within seconds, boosting conversion by 45%!",
+    impactMetric: "45% Higher Inquiries Conversion",
     avatarBg: "bg-blue-100 text-blue-800",
     avatarText: "RS",
   },
@@ -35,13 +35,13 @@ const REVIEWS: Review[] = [
     id: "r2",
     name: "Vikram Patel",
     role: "Managing Partner",
-    storeName: "Patel Supermart & Electronics",
+    storeName: "Patel Logistics & Trade",
     location: "Ahmedabad, Gujarat",
-    category: "Retail POS & Inventory",
+    category: "Workflow Automation",
     rating: 5,
     quote:
-      "The barcode POS is blisteringly fast! Customers check out and receive an itemized GST tax invoice straight on WhatsApp in under 10 seconds. Thermal receipt printing keeps counter lines short, and automated low-stock alerts prevent stock-outs.",
-    impactMetric: "4x Faster Checkout Billing",
+      "TCB designed an automated invoice reconciliation and dispatch pipeline connected to our ERP. It extracts PO numbers with OCR, sends instant customer dispatch confirmations, and completely eliminated manual data entry.",
+    impactMetric: "Zero Manual Data Entry",
     avatarBg: "bg-indigo-100 text-indigo-800",
     avatarText: "VP",
   },
@@ -54,7 +54,7 @@ const REVIEWS: Review[] = [
     category: "AI Workflow Automation",
     rating: 5,
     quote:
-      "TCB built an autonomous AI customer support and lead qualification workflow for us. It seamlessly resolves 75% of customer inquiries 24/7 across WhatsApp and web chat without human intervention, saving our team over 35 hours every single week.",
+      "TCB built an autonomous AI customer support and lead qualification workflow for us. It seamlessly resolves 75% of customer inquiries 24/7 across omnichannel web chat and ticketing without human intervention, saving our team over 35 hours every single week.",
     impactMetric: "35+ Hours Saved / Week",
     avatarBg: "bg-emerald-100 text-emerald-800",
     avatarText: "SK",
@@ -83,21 +83,21 @@ export default function Testimonials() {
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d0ddfd] bg-[#eff4ff] px-3.5 py-1 text-xs font-bold text-[#305eff] shadow-xs">
             <Sparkles className="h-3.5 w-3.5 text-[#305eff]" />
-            Trusted by 1,200+ Businesses &amp; Educational Institutes
+            Trusted by Fast-Growing Businesses &amp; Enterprises
           </div>
           <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Real stories from real founders &amp; academy leaders
+            Real impact from our custom AI agents &amp; workflows
           </h2>
           <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg">
-            See how retail stores, educational academies, and growing businesses automate workflows, streamline billing, and accelerate cash flow with TCB.
+            See how modern enterprises and growing teams automate daily operations, eliminate manual bottlenecks, and accelerate revenue with TCB.
           </p>
         </div>
 
         {/* Key Metrics Banner */}
         <div className="mt-8 sm:mt-12 grid grid-cols-2 gap-3 sm:gap-4 rounded-2xl border border-[#d0ddfd] bg-[#eff4ff]/60 p-4 sm:p-6 sm:grid-cols-4 sm:px-8 sm:py-6">
           <div className="text-center">
-            <div className="text-xl font-extrabold text-slate-900 sm:text-3xl">1,200+</div>
-            <div className="mt-1 text-[11px] sm:text-xs font-semibold text-slate-600">Active Businesses &amp; Academies</div>
+            <div className="text-xl font-extrabold text-slate-900 sm:text-3xl">100+</div>
+            <div className="mt-1 text-[11px] sm:text-xs font-semibold text-slate-600">Active Enterprise Clients</div>
           </div>
           <div className="text-center">
             <div className="text-xl font-extrabold text-[#305eff] sm:text-3xl">4.9 / 5</div>

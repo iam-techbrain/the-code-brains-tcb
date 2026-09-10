@@ -38,10 +38,10 @@ export default function ContactBand() {
               <ArrowRight className="h-4 w-4" />
             </a>
             <a
-              href="#pricing"
+              href="#ai-agents-catalog"
               className="inline-flex items-center justify-center rounded-xl border border-slate-700 bg-slate-900/60 px-5 py-3 text-xs sm:text-sm font-bold text-white hover:bg-slate-800 active:scale-95 transition-all"
             >
-              View packages
+              Explore AI Agents
             </a>
           </div>
         </div>

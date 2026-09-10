@@ -1,82 +1,42 @@
 {
   "company": {
     "name": "The Code Brains (TCB)",
-    "studioType": "AI Agents, Workflow Automation & Multi-SaaS Studio",
-    "mission": "We design, build, and deploy custom autonomous AI agents and workflow automations tailored to your exact business operations. We create wonderful, high-performance AI agents that save time and scale revenue.",
+    "studioType": "Custom AI Agents & Intelligent Workflow Automation Services Studio",
+    "mission": "We design, engineer, and deploy tailor-made autonomous AI agents and enterprise workflow automations tailored to your exact business operations. Pure service agency with 100% source code ownership and zero vendor lock-in.",
     "coreOfferings": [
-      "Custom Autonomous AI Agents (Voice Callers, WhatsApp Bots, RAG Chatbots)",
-      "Automated Workflow Engineering (n8n, Make, Webhooks, API Integrations)",
-      "Specialized Multi-Tenant Cloud SaaS Platforms"
+      "Custom Autonomous AI Agents (Voice Callers, Lead Generation Agents, RAG Chatbots)",
+      "Automated Workflow Engineering (n8n, Make, Webhooks, CRM Integrations)",
+      "Custom AI Engineering & LLM Systems (OpenAI, Claude, LangChain, Pinecone)"
     ]
   },
-  "productsStatus": {
-    "tcbSchoolSaaS": {
-      "status": "LIVE & PRODUCTION READY",
-      "url": "https://techschool.thecodebrains.com",
-      "description": "Complete coaching institute and school management ERP. Includes student rosters, automated WhatsApp fee reminders, attendance tracking, report cards, and digital fee collection ledgers. Fully live and deployed.",
-      "pricing": {
-        "starter": "₹499/month (up to 150 students)",
-        "growth": "₹799/month (up to 500 students)",
-        "enterprise": "₹1,299/month (unlimited students)"
+  "serviceModel": {
+    "philosophy": "100% Custom Engineering Services. No pre-packaged SaaS products.",
+    "offerings": {
+      "aiWorkflowAutomation": {
+        "title": "AI Workflow Automation",
+        "description": "Multi-step n8n and Make workflows connecting CRMs, databases, APIs, and business communication channels."
+      },
+      "ragAndChatAgents": {
+        "title": "Autonomous RAG & Chat AI Agents",
+        "description": "Vector database knowledge vaults (Pinecone/Qdrant) answering user queries 24/7 across website widgets and support channels without hallucination."
+      },
+      "voiceCallingAgents": {
+        "title": "AI Voice Calling & Telephony Agents",
+        "description": "Inbound and outbound low-latency voice calling agents powered by Twilio, Deepgram, and ElevenLabs with seamless human transfer."
       }
-    },
-    "tcbStoreSaaS": {
-      "status": "IN ACTIVE DEVELOPMENT / BETA WORKSPACE",
-      "url": "/store",
-      "description": "Retail stock inventory and POS billing suite. Features barcode checkout, automated GST invoices on WhatsApp, supplier ledgers, and Udhar Khata. Currently in beta workspace.",
-      "pricing": {
-        "starter": "₹299/month",
-        "pro": "₹599/month",
-        "enterprise": "₹999/month"
-      }
-    },
-    "customAIAgents": {
-      "status": "CORE STUDIO SERVICE — AVAILABLE NOW",
-      "description": "We build wonderful, fully customized AI agents according to your exact business workflow. Whether you need an AI voice caller that dials leads, a 24/7 WhatsApp sales bot, an OCR document verification pipeline, or an autonomous customer support agent — we engineer and deploy it on your own AWS cloud.",
-      "packages": [
-        {
-          "name": "AI Workflow Automation",
-          "price": "₹9,999 / project",
-          "features": "Up to 3 multi-step n8n/Make workflows, WhatsApp & Email triggers, 2-way CRM & Google Sheets sync, 14-day free support."
-        },
-        {
-          "name": "Autonomous RAG & Chat AI Agent",
-          "price": "₹19,999 / project",
-          "features": "Custom RAG vector database (Pinecone/Qdrant), 24/7 WhatsApp bot & website widget, OpenAI GPT-4o / Claude 3.5 Sonnet, function calling (calendar booking & DB queries), AWS EC2 deployment, 30-day monitoring."
-        },
-        {
-          "name": "Voice Calling & Enterprise Agent",
-          "price": "₹39,999 / project",
-          "features": "Inbound & outbound phone calling via Twilio + Vapi, ultra-realistic ElevenLabs voice, live call transfer to humans, call recording, post-call WhatsApp summary, full AWS infrastructure, and 60-day SLA."
-        }
-      ]
     }
   },
-  "aiAgentModulesCatalog": [
-    "AI Voice Lead Qualification Agent",
-    "Automated Fee Collection & WhatsApp Reminder Agent",
-    "24/7 RAG-Powered Student AI Tutor",
-    "Smart Attendance & Absentee Alert Automation",
-    "Automated Document Verification OCR Agent",
-    "AI Social Media & Notice Broadcast Agent",
-    "Automated Invoice & Ledger Reconciliation Bot",
-    "HR & Staff Payroll Synchronization Workflow",
-    "Predictive Student Dropout & Risk Analyzer"
-  ],
   "infrastructureRequirements": {
     "awsHosting": "AWS EC2 or Docker VPS (~$5 to $15/month, billed directly to client's AWS with zero markup)",
     "llmTokens": "OpenAI / Claude / Gemini API keys (pay-as-you-go, typically ₹200 to ₹800/month)",
     "vectorDatabase": "Pinecone or Qdrant Cloud (Free tier covers up to 100k vectors)",
     "voiceTelephony": "Twilio phone number + Deepgram + ElevenLabs (~$0.05 to $0.09 per minute of calling)",
-    "whatsappCloudApi": "Official Meta WhatsApp Business API (First 1,000 service conversations/month are 100% FREE)",
+    "cloudApi": "Direct Client API Keys (OpenAI, Gemini, Twilio, HubSpot) running inside client's VPC",
     "ownership": "100% source code, Git repository, and AWS account ownership belongs to the client with zero vendor lock-in."
   },
   "sectionsNavigation": {
     "ai-agents-catalog": "Production AI Agents & Automation Modules Catalog",
-    "pricing": "Transparent Project Packages & AWS Infrastructure Breakdown",
-    "contact": "Talk to Team & Book a 24-Hour Discovery Demo",
-    "school": "TCB School SaaS Workspace",
-    "store": "TCB Store SaaS Workspace",
+    "contact": "Talk to Team & Book Consultation",
     "tech-stack": "AI Tech Stack (Python, LangChain, OpenAI, FastAPI, AWS)",
     "testimonials": "Verified Client Testimonials & Case Studies",
     "faq": "Frequently Asked Questions",

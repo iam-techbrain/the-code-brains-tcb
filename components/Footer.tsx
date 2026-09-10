@@ -19,30 +19,30 @@ import {
 
 const FOOTER_NAV = [
   {
-    heading: "Micro-SaaS Apps",
+    heading: "AI Services & Solutions",
     links: [
-      { name: "TCB School Workspace", href: "https://techschool.thecodebrains.com", badge: "LIVE", badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" },
-      { name: "TCB Inventory & POS System", href: "/store", badge: "SOON", badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30" },
-      { name: "TCB Health Cloud", href: "/#ecosystem-apps", badge: "SOON", badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30" },
-      { name: "WhatsApp Reminders Engine", href: "/#features" },
-      { name: "Multi-Tenant Cloud", href: "/#school-feature" },
+      { name: "AI Sales & Lead Generation", href: "/#solutions-catalog" },
+      { name: "AI Voice Calling Agents", href: "/#solutions-catalog" },
+      { name: "Custom RAG Knowledge Vaults", href: "/#features" },
+      { name: "AI Document & Workflow Automation", href: "/#solutions-catalog" },
+      { name: "n8n & Make Workflow Automations", href: "/#tech-stack" },
     ],
   },
   {
     heading: "AI Agent Studio",
     links: [
-      { name: "WhatsApp AI Billing Agent", href: "/#ai-agents-catalog" },
-      { name: "Voice & Call AI Agent", href: "/#ai-agents-catalog" },
-      { name: "Autonomous Support Bot", href: "/#ai-agents-catalog" },
+      { name: "Autonomous Sales Agents", href: "/#solutions-catalog" },
+      { name: "Voice & Call AI Telephony", href: "/#solutions-catalog" },
+      { name: "24/7 Support Intelligence Bots", href: "/#solutions-catalog" },
       { name: "RAG Knowledge Pipeline", href: "/#features" },
-      { name: "Custom Workflow Automation", href: "/#features" },
+      { name: "Enterprise Workflow Automation", href: "/#tech-stack" },
     ],
   },
   {
     heading: "Company",
     links: [
       { name: "About TCB Ecosystem", href: "/#features" },
-      { name: "Partner Program", href: "/#pricing" },
+      { name: "Partner Program", href: "mailto:hello@thecodebrains.com" },
       { name: "Client Case Studies", href: "/#testimonials" },
       { name: "Careers", href: "#", badge: "HIRING", badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/30" },
       { name: "Contact & Support", href: "#" },
@@ -124,12 +124,10 @@ export default function Footer() {
                 <ArrowRight className="h-4 w-4" />
               </button>
               <a
-                href="https://techschool.thecodebrains.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#ai-agents-catalog"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-xs sm:text-sm font-semibold text-slate-200 backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:border-white/30"
               >
-                Explore Live Demo
+                Explore AI Agents
               </a>
             </div>
           </div>
@@ -152,13 +150,13 @@ export default function Footer() {
                   THE CODE BRAINS
                 </span>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#618dff]">
-                  AI Agents &amp; Micro-SaaS Ecosystem
+                  Custom AI Agents &amp; Automation Studio
                 </span>
               </div>
             </a>
 
             <p className="mt-4 max-w-sm text-xs leading-relaxed text-slate-400">
-              Autonomous AI agent studio &amp; vertical Micro-SaaS ecosystem powering automated billing, RAG pipelines, voice agents, and multi-tenant business software.
+              Autonomous AI agent studio &amp; intelligent workflow automation agency engineering custom voice callers, sales outreach agents, RAG knowledge systems, and business process automations.
             </p>
 
             {/* Compliance & Security Pill Badges */}

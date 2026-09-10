@@ -150,16 +150,6 @@ export default function VoiceAssistant() {
 
     if (!action || typeof window === "undefined") return;
 
-    if (action === "store") {
-      router.push("/store");
-      return;
-    }
-
-    if (action === "school") {
-      router.push("/school");
-      return;
-    }
-
     if (action === "home") {
       if (pathname === "/") {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -366,8 +356,8 @@ export default function VoiceAssistant() {
             <p className="font-bold text-slate-900 leading-snug">
               {feedbackMsg ||
                 (selectedLang === "hi-IN"
-                  ? 'Say: "AI Agents", "Is School ready?", or "Pricing"'
-                  : 'Say: "Show AI Agents", "Is School ready?", or "Pricing"')}
+                  ? 'Say: "AI Agents", "How it works?", or "Book Consultation"'
+                  : 'Say: "Show AI Agents", "How it works?", or "Book Consultation"')}
             </p>
           </div>
 
@@ -397,10 +387,9 @@ export default function VoiceAssistant() {
             <div className="flex flex-wrap gap-1.5">
               {[
                 { label: "🤖 AI Agents", cmd: "ai agent" },
-                { label: "🏫 School Model", cmd: "school model" },
-                { label: "💰 Pricing", cmd: "pricing" },
-                { label: "🛒 Store Model", cmd: "store model" },
-                { label: "📞 Demo", cmd: "demo" },
+                { label: "⚡ Capabilities", cmd: "features" },
+                { label: "🔄 How It Works", cmd: "how it works" },
+                { label: "📞 Book Consultation", cmd: "demo" },
               ].map((item) => (
                 <button
                   key={item.cmd}
