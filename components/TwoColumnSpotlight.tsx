@@ -18,6 +18,10 @@ export default function TwoColumnSpotlight() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="max-w-3xl mb-12"
         >
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#305eff]">
+            <Zap className="h-3.5 w-3.5 text-[#305eff]" />
+            <span>ENTERPRISE ORCHESTRATION</span>
+          </div>
           <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl leading-tight font-display">
             TCB Orchestration portfolio: tailored for complex multi-vendor &amp; enterprise environments
           </h2>
@@ -26,173 +30,167 @@ export default function TwoColumnSpotlight() {
           </p>
         </motion.div>
 
-        {/* Dual Side-by-Side Dark Feature Cards (Matches Reference Image) */}
-        <div className="grid gap-6 lg:grid-cols-2">
-          {/* Dark Card 1: Deep Navy - Multi-Domain Service Orchestration */}
+        {/* Dual Side-by-Side Clean White Feature Cards */}
+        <div className="grid gap-8 lg:grid-cols-2">
+          {/* Card 1: Multi-Domain Service Orchestration */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            whileHover={{ y: -6, transition: { duration: 0.25 } }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-[#071f34] p-8 sm:p-10 text-white shadow-xl hover:shadow-2xl transition-shadow"
+            whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-white p-8 sm:p-10 text-slate-900 border border-slate-200/90 shadow-xs hover:border-[#305eff]/40 hover:shadow-2xl transition-all"
           >
-            {/* Subtle glow ambient */}
-            <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#0066cc]/25 blur-3xl" />
-
             <div>
               <div className="flex items-center justify-between mb-6">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-[#38bdf8] border border-white/10">
-                  <Workflow className="h-5 w-5" />
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-[#305eff] border border-blue-100 group-hover:bg-[#305eff] group-hover:text-white transition-colors duration-200">
+                  <Workflow className="h-6 w-6" />
                 </span>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold tracking-wider uppercase text-[#38bdf8] border border-white/10">
-                  Multi-Domain
+                <span className="relative z-10 inline-flex items-center rounded-full bg-[#eff4ff] px-3.5 py-1 text-[11px] font-extrabold tracking-wider uppercase text-[#305eff] border border-[#305eff]/30 shadow-2xs">
+                  Workflow Automation
                 </span>
               </div>
 
-              <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl font-display">
-                Multi-Domain Service Orchestration (MDSO)
+              <h3 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl font-display group-hover:text-[#305eff] transition-colors">
+                End-to-End Workflow &amp; Multi-App Automation
               </h3>
 
-              <p className="mt-4 text-sm leading-relaxed text-slate-300">
-                End-to-end orchestration that abstracts fragmented underlying APIs, databases, CRM systems, and cloud environments into unified, autonomous workflows.
+              <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                Connect your CRMs, databases, spreadsheets, and cloud software into unified, autonomous workflows that run 24/7 without manual data entry.
               </p>
 
-              {/* High-Tech Animated Node Telemetry Strip */}
-              <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-3.5 text-xs font-mono">
-                <div className="flex items-center justify-between text-[10px] text-slate-400 mb-2">
-                  <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
+              {/* High-Tech Light Node Telemetry Strip */}
+              <div className="mt-6 rounded-2xl border border-slate-200/90 bg-slate-50/80 p-4 text-xs font-mono">
+                <div className="flex items-center justify-between text-[10px] text-slate-500 mb-2.5">
+                  <span className="flex items-center gap-1.5 text-emerald-700 font-bold">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
                     LIVE PIPELINE SYNC
                   </span>
-                  <span>99.98% SLA</span>
+                  <span className="font-semibold text-slate-600">99.98% SLA</span>
                 </div>
-                <div className="flex items-center justify-between text-slate-300 gap-2 overflow-x-auto text-[11px]">
-                  <span className="bg-white/10 px-2 py-0.5 rounded text-white font-bold">HubSpot</span>
-                  <span className="text-[#38bdf8]">⟷</span>
-                  <span className="bg-white/10 px-2 py-0.5 rounded text-[#38bdf8] font-bold">n8n Bus</span>
-                  <span className="text-[#38bdf8]">⟷</span>
-                  <span className="bg-white/10 px-2 py-0.5 rounded text-white font-bold">PostgreSQL</span>
-                  <span className="text-[#38bdf8]">⟷</span>
-                  <span className="bg-white/10 px-2 py-0.5 rounded text-emerald-400 font-bold">AWS Lambda</span>
+                <div className="flex items-center justify-between text-slate-700 gap-2 overflow-x-auto text-[11px] py-1">
+                  <span className="bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-800 font-bold shadow-2xs">HubSpot</span>
+                  <span className="text-[#305eff] font-bold">⟷</span>
+                  <span className="bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-md text-[#305eff] font-bold shadow-2xs">n8n Bus</span>
+                  <span className="text-[#305eff] font-bold">⟷</span>
+                  <span className="bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-800 font-bold shadow-2xs">PostgreSQL</span>
+                  <span className="text-[#305eff] font-bold">⟷</span>
+                  <span className="bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-md text-emerald-700 font-bold shadow-2xs">AWS Lambda</span>
                 </div>
               </div>
 
-              <div className="mt-6 space-y-3 border-t border-white/10 pt-6">
+              <div className="mt-6 space-y-3 border-t border-slate-100 pt-6">
                 {[
-                  "Bi-directional CRM & ERP synchronizations (HubSpot, Salesforce, Zoho)",
-                  "Resilient n8n & Make event-driven pipelines with error auto-healing",
-                  "Automated document processing, invoice OCR & payment verification",
-                  "Direct AWS Cloud VPS deployment with 100% full source code ownership",
+                  "Complex multi-system automations using Zapier & Make (Integromat) to solve deep edge cases",
+                  "Bi-directional platform & Google Sheets synchronization with live sales analytics & alerts",
+                  "Automated WhatsApp Business workflows for instant client engagement and lead routing",
+                  "Direct cloud deployment with 100% full source code and API account ownership",
                 ].map((point, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300 font-medium">
-                    <CheckCircle2 className="h-4 w-4 text-[#38bdf8] shrink-0 mt-0.5" />
+                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-600 font-medium">
+                    <CheckCircle2 className="h-4 w-4 text-[#305eff] shrink-0 mt-0.5" />
                     <span>{point}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="mt-10 pt-6 border-t border-white/10">
+            <div className="mt-10 pt-6 border-t border-slate-100">
               <button
                 type="button"
                 onClick={() =>
                   openLeadModal({
-                    title: "Multi-Domain Service Orchestration",
-                    source: "Dark Card Spotlight - MDSO",
-                    planName: "Multi-Domain Service Orchestration (MDSO)",
-                    defaultNote: "Inquiring about multi-domain workflow orchestration across internal systems.",
+                    title: "Workflow & Multi-App Automation",
+                    source: "Card Spotlight - Workflow Automation",
+                    planName: "End-to-End Workflow & Multi-App Automation",
+                    defaultNote: "Inquiring about automated workflows connecting our CRMs, databases, and apps.",
                   })
                 }
-                className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] hover:bg-[#0052a3] px-6 py-3 text-xs font-bold text-white shadow-md transition-all active:scale-95 cursor-pointer"
+                className="inline-flex items-center gap-2 rounded-full bg-[#305eff] hover:bg-[#1f47e0] px-6 py-3 text-xs font-bold text-white shadow-md shadow-[#305eff]/20 transition-all active:scale-95 cursor-pointer"
               >
-                <span>Explore MDSO Architecture</span>
+                <span>Explore Workflow Automation</span>
                 <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </motion.div>
 
-          {/* Dark Card 2: Charcoal Slate Navy - Autonomous Voice AI Telephony */}
+          {/* Card 2: Autonomous Voice AI Telephony */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-            whileHover={{ y: -6, transition: { duration: 0.25 } }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-[#11263c] p-8 sm:p-10 text-white shadow-xl hover:shadow-2xl transition-shadow"
+            whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-white p-8 sm:p-10 text-slate-900 border border-slate-200/90 shadow-xs hover:border-[#305eff]/40 hover:shadow-2xl transition-all"
           >
-            {/* Subtle glow ambient */}
-            <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-[#38bdf8]/15 blur-3xl" />
-
             <div>
               <div className="flex items-center justify-between mb-6">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-[#38bdf8] border border-white/10">
-                  <PhoneCall className="h-5 w-5" />
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-[#305eff] border border-blue-100 group-hover:bg-[#305eff] group-hover:text-white transition-colors duration-200">
+                  <PhoneCall className="h-6 w-6" />
                 </span>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold tracking-wider uppercase text-[#38bdf8] border border-white/10">
+                <span className="relative z-10 inline-flex items-center rounded-full bg-[#eff4ff] px-3.5 py-1 text-[11px] font-extrabold tracking-wider uppercase text-[#305eff] border border-[#305eff]/30 shadow-2xs">
                   Conversational AI
                 </span>
               </div>
 
-              <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl font-display">
+              <h3 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl font-display group-hover:text-[#305eff] transition-colors">
                 Autonomous Conversational Telephony &amp; Voice AI
               </h3>
 
-              <p className="mt-4 text-sm leading-relaxed text-slate-300">
+              <p className="mt-4 text-sm leading-relaxed text-slate-600">
                 Low-latency voice agents that answer inbound support calls, dial outbound lead lists, converse with human-level natural prosody, and update records in real time.
               </p>
 
-              {/* High-Tech Oscillating Audio Equalizer Visualizer */}
-              <div className="mt-6 rounded-2xl border border-white/10 bg-black/40 p-3.5 flex items-center justify-between">
+              {/* High-Tech Light Oscillating Audio Equalizer Visualizer */}
+              <div className="mt-6 rounded-2xl border border-slate-200/90 bg-slate-50/80 p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="flex items-end gap-1 h-6 px-1">
-                    <span className="w-1 bg-[#38bdf8] rounded-full wave-bar-1" />
-                    <span className="w-1 bg-[#00c0f3] rounded-full wave-bar-2" />
-                    <span className="w-1 bg-white rounded-full wave-bar-3" />
-                    <span className="w-1 bg-[#38bdf8] rounded-full wave-bar-4" />
-                    <span className="w-1 bg-[#00c0f3] rounded-full wave-bar-5" />
-                    <span className="w-1 bg-white rounded-full wave-bar-6" />
+                    <span className="w-1 bg-[#305eff] rounded-full wave-bar-1" />
+                    <span className="w-1 bg-[#305eff] rounded-full wave-bar-2" />
+                    <span className="w-1 bg-[#305eff] rounded-full wave-bar-3" />
+                    <span className="w-1 bg-[#305eff] rounded-full wave-bar-4" />
+                    <span className="w-1 bg-[#305eff] rounded-full wave-bar-5" />
+                    <span className="w-1 bg-[#305eff] rounded-full wave-bar-6" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-mono text-slate-400">STREAMING SYNTHESIS</div>
-                    <div className="text-xs font-bold text-white flex items-center gap-1.5">
+                    <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">STREAMING SYNTHESIS</div>
+                    <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5 mt-0.5">
                       <span>ElevenLabs Turbo + Deepgram</span>
-                      <span className="rounded bg-emerald-500/20 text-emerald-400 text-[9px] px-1.5 font-mono">284ms</span>
+                      <span className="rounded bg-emerald-100 text-emerald-800 text-[9px] px-1.5 py-0.5 font-mono font-bold">284ms</span>
                     </div>
                   </div>
                 </div>
-                <span className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-mono text-[#38bdf8]">
+                <span className="rounded-full bg-white border border-slate-200 px-3 py-1 text-[10px] font-mono font-bold text-[#305eff] shadow-2xs">
                   ● LIVE SIP
                 </span>
               </div>
 
-              <div className="mt-6 space-y-3 border-t border-white/10 pt-6">
+              <div className="mt-6 space-y-3 border-t border-slate-100 pt-6">
                 {[
                   "Ultra-low latency speech pipeline (<350ms response turnaround)",
                   "Custom voice synthesis powered by ElevenLabs, Deepgram & Twilio SIP",
                   "Automated appointment booking, calendar sync & live human warm transfer",
                   "Full post-call transcription, sentiment scoring & CRM record updates",
                 ].map((point, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300 font-medium">
-                    <CheckCircle2 className="h-4 w-4 text-[#38bdf8] shrink-0 mt-0.5" />
+                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-600 font-medium">
+                    <CheckCircle2 className="h-4 w-4 text-[#305eff] shrink-0 mt-0.5" />
                     <span>{point}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="mt-10 pt-6 border-t border-white/10">
+            <div className="mt-10 pt-6 border-t border-slate-100">
               <button
                 type="button"
                 onClick={() =>
                   openLeadModal({
                     title: "Voice Calling Telephony Architecture",
-                    source: "Dark Card Spotlight - Voice Telephony",
+                    source: "Card Spotlight - Voice Telephony",
                     planName: "Autonomous Conversational Telephony",
                     defaultNote: "Inquiring about low-latency voice agent telephony deployment.",
                   })
                 }
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 hover:bg-white/20 px-6 py-3 text-xs font-bold text-white transition-all active:scale-95 cursor-pointer backdrop-blur-md"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-900 hover:border-[#305eff]/40 px-6 py-3 text-xs font-bold shadow-xs transition-all active:scale-95 cursor-pointer"
               >
                 <span>Explore Telephony Architecture</span>
                 <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />

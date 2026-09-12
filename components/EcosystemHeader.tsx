@@ -22,12 +22,15 @@ export default function EcosystemHeader() {
   const [activeSection, setActiveSection] = useState("");
 
   const navLinks = [
-    { label: "Solutions", href: "/#solutions-catalog", sectionId: "solutions-catalog" },
-    { label: "Real Results", href: "/#real-projects", sectionId: "real-projects" },
-    { label: "Orchestration", href: "/#orchestration-portfolio", sectionId: "orchestration-portfolio" },
-    { label: "Tech Stack", href: "/#tech-stack", sectionId: "tech-stack" },
+    { label: "Home", href: "/", sectionId: "home" },
+    { label: "Services", href: "/#solutions-catalog", sectionId: "solutions-catalog" },
+    { label: "Case Studies", href: "/#real-projects", sectionId: "real-projects" },
+    { label: "Automations", href: "/#orchestration-portfolio", sectionId: "orchestration-portfolio" },
+    { label: "Integrations", href: "/#tech-stack", sectionId: "tech-stack" },
     { label: "How It Works", href: "/#how-it-works", sectionId: "how-it-works" },
+    { label: "Blog", href: "/blog", sectionId: "blog" },
     { label: "FAQ", href: "/#faq", sectionId: "faq" },
+    { label: "Contact", href: "/contact", sectionId: "contact" },
   ];
 
   useEffect(() => {
@@ -72,6 +75,15 @@ export default function EcosystemHeader() {
   }, [pathname]);
 
   const isNavActive = (link: (typeof navLinks)[0]) => {
+    if (link.href === "/blog") {
+      return pathname.startsWith("/blog");
+    }
+    if (link.href === "/contact") {
+      return pathname.startsWith("/contact");
+    }
+    if (link.href === "/") {
+      return pathname === "/" && (!activeSection || activeSection === "home");
+    }
     if (pathname === "/") {
       return activeSection === link.sectionId;
     }
@@ -91,14 +103,14 @@ export default function EcosystemHeader() {
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5 text-slate-700 font-semibold">
-              <ShieldCheck className="h-3.5 w-3.5 text-[#0066cc]" />
+              <ShieldCheck className="h-3.5 w-3.5 text-[#305eff]" />
               Enterprise AI Architecture &bull; Direct AWS Deployment &bull; 100% Client Code Ownership
             </span>
           </div>
           <div className="flex items-center gap-4 text-slate-500">
-            <span className="hover:text-[#0066cc] cursor-pointer">Global Deployment</span>
+            <span className="hover:text-[#305eff] cursor-pointer">Global Deployment</span>
             <span>&bull;</span>
-            <span className="hover:text-[#0066cc] cursor-pointer">Security Center</span>
+            <span className="hover:text-[#305eff] cursor-pointer">Security Center</span>
             <span>&bull;</span>
             <button
               type="button"
@@ -108,7 +120,7 @@ export default function EcosystemHeader() {
                   source: "Top Bar Link",
                 })
               }
-              className="text-[#0066cc] font-semibold hover:underline cursor-pointer"
+              className="text-[#305eff] font-semibold hover:underline cursor-pointer"
             >
               Contact Solutions Architect
             </button>
@@ -129,22 +141,22 @@ export default function EcosystemHeader() {
         </Link>
 
         {/* Center Desktop Navigation */}
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-0.5 xl:gap-1 lg:flex">
           {navLinks.map((link) => {
             const active = isNavActive(link);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className={`relative px-3.5 py-2 text-[13px] font-semibold transition-colors duration-150 ${
+                className={`relative px-2 xl:px-3 py-2 text-[12.5px] xl:text-[13px] font-semibold transition-colors duration-150 ${
                   active
-                    ? "text-[#0066cc]"
-                    : "text-slate-700 hover:text-[#0066cc]"
+                    ? "text-[#305eff]"
+                    : "text-slate-700 hover:text-[#305eff]"
                 }`}
               >
                 {link.label}
                 {active && (
-                  <span className="absolute bottom-0 left-3.5 right-3.5 h-0.5 bg-[#0066cc] rounded-full" />
+                  <span className="absolute bottom-0 left-2 right-2 xl:left-3 xl:right-3 h-0.5 bg-[#305eff] rounded-full" />
                 )}
               </Link>
             );
@@ -162,7 +174,7 @@ export default function EcosystemHeader() {
                 defaultNote: "Requesting custom enterprise AI agent & workflow orchestration consultation.",
               })
             }
-            className="rounded-full bg-[#0066cc] hover:bg-[#0052a3] px-5 py-2 text-xs font-bold text-white shadow-sm transition-all hover:shadow-md active:scale-95 cursor-pointer"
+            className="rounded-full bg-[#305eff] hover:bg-[#1f47e0] px-5 py-2 text-xs font-bold text-white shadow-sm transition-all hover:shadow-md active:scale-95 cursor-pointer"
           >
             Explore Solutions
           </button>
@@ -178,7 +190,7 @@ export default function EcosystemHeader() {
                 source: "Mobile Header Pill",
               })
             }
-            className="rounded-full bg-[#0066cc] px-3.5 py-1.5 text-[11px] font-bold text-white shadow-xs"
+            className="rounded-full bg-[#305eff] px-3.5 py-1.5 text-[11px] font-bold text-white shadow-xs"
           >
             Consult
           </button>
@@ -206,7 +218,7 @@ export default function EcosystemHeader() {
                   onClick={() => setIsOpen(false)}
                   className={`rounded-lg px-3 py-2.5 text-xs font-semibold ${
                     active
-                      ? "bg-slate-100 text-[#0066cc] font-bold"
+                      ? "bg-slate-100 text-[#305eff] font-bold"
                       : "text-slate-700 hover:bg-slate-50"
                   }`}
                 >
@@ -224,7 +236,7 @@ export default function EcosystemHeader() {
                 source: "Mobile Drawer CTA",
               });
             }}
-            className="w-full rounded-full bg-[#0066cc] py-2.5 text-xs font-bold text-white shadow-sm text-center"
+            className="w-full rounded-full bg-[#305eff] py-2.5 text-xs font-bold text-white shadow-sm text-center"
           >
             Schedule Architecture Consultation
           </button>

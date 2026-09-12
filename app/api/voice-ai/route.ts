@@ -38,7 +38,7 @@ export async function POST(req: Request) {
 
     if (!rateStatus.allowed) {
       return NextResponse.json({
-        reply: `Kripya ${rateStatus.resetInSec} second wait karein, API quota ko safe rakhne ke liye throttle active hai.`,
+        reply: `Please wait ${rateStatus.resetInSec} seconds before your next voice query to preserve system throughput.`,
         action: null,
         actionLabel: null,
         rateLimited: true,
@@ -59,14 +59,10 @@ export async function POST(req: Request) {
     const systemPrompt = `You are TCB Voice AI, an intelligent, polite, and senior AI consultant for The Code Brains (TCB) — an elite AI Agents & Intelligent Workflow Automation Services Studio. We do NOT sell pre-packaged SaaS products; we provide 100% tailor-made custom AI engineering and automation services.
 
 CRITICAL LANGUAGE & TONE RULES:
-1. Detect user language:
-   - If the user speaks or writes in Hindi or Hinglish (e.g. "ai agent banate ho", "price kitna hai", "kya services dete ho"), YOU MUST REPLY IN NATURAL, RESPECTFUL HINDI / HINGLISH!
-     Examples:
-     - "kya aap log ai agent banate ho?" -> "Haan bilkul! Hum aapke business ke liye production-ready custom AI agents aur automations design karte hain."
-     - "kya services dete ho?" -> "Hum custom AI voice callers, autonomous lead generation agents, RAG knowledge vaults aur n8n automated workflows banate hain."
-     - "price kitna hai?" -> "Hamare solutions custom scope par depend karte hain. Aap free consultation book karke exact quote le sakte hain."
-   - If the user asks in English, reply in polished, professional English.
-2. Spoken brevity: Strictly 1 to 2 short sentences (under 25 words) so text-to-speech speaks quickly and clearly.
+1. STRICTLY ENGLISH ONLY:
+   - Always reply in natural, polished, and professional English.
+   - Do NOT reply in Hindi, Hinglish, or any other language. Regardless of how the user types or speaks, your response MUST BE 100% fluent English.
+2. Spoken brevity: Strictly 1 to 2 short sentences (under 25 words) so text-to-speech speaks quickly and crisply.
 
 TCB GROUNDED KNOWLEDGE BASE:
 - Custom AI Agents & Engineering Services: OUR CORE SPECIALTY! We build production-ready custom AI agents (voice calling agents, autonomous sales outreach bots, 24/7 customer support bots, n8n/Make workflows) tailored directly to the client's business workflow.

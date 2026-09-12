@@ -5,11 +5,10 @@ import { ShieldCheck, Cloud, Award, Lock, CheckCircle2, Zap, Server } from "luci
 export default function TrustBadgesTicker() {
   const badges = [
     { title: "ABDM Compliant", desc: "Ayushman Bharat M1/M2/M3", icon: ShieldCheck, color: "text-brand-500" },
-    { title: "ISO 27001 Certified", desc: "Enterprise Data Security", icon: Award, color: "text-brand-500" },
     { title: "AWS Cloud 99.95%", desc: "High Availability & Uptime", icon: Cloud, color: "text-brand-500" },
     { title: "256-bit Encryption", desc: "HIPAA Grade Compliance", icon: Lock, color: "text-brand-500" },
-    { title: "5.0 ★ Rated Software", desc: "Trusted by 12,000+ Users", icon: CheckCircle2, color: "text-brand-500" },
-    { title: "Real-Time Sync", desc: "Multi-Location POS & EdTech", icon: Zap, color: "text-brand-500" },
+    { title: "41+ Live Deployments", desc: "Verified Production Workflows", icon: CheckCircle2, color: "text-brand-500" },
+    { title: "Real-Time Sync", desc: "Sheets, CRMs & Voice Bots", icon: Zap, color: "text-brand-500" },
     { title: "Automated Daily Backups", desc: "Zero Data Loss Guarantee", icon: Server, color: "text-brand-500" },
   ];
 

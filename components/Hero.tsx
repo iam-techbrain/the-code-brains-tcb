@@ -1,13 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion } from "motion/react";
-import { ChevronRight, CheckCircle2, Zap, Shield, Activity, Cpu } from "lucide-react";
+import {
+  ChevronRight,
+  CheckCircle2,
+  Zap,
+  Shield,
+  Activity,
+  Cpu,
+  Sparkles,
+  ArrowRight,
+  Radio,
+  Layers,
+  PhoneCall,
+  Terminal,
+} from "lucide-react";
 import { useLeadModal } from "@/components/LeadModalContext";
 
 export default function Hero() {
   const { openLeadModal } = useLeadModal();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [latency, setLatency] = useState(284);
+  const [activeQueryCount, setActiveQueryCount] = useState(1420);
+
+  // Live telemetry jitter simulation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLatency(Math.floor(278 + Math.random() * 11)); // 278ms - 289ms
+      setActiveQueryCount((prev) => prev + Math.floor(Math.random() * 5 - 2));
+    }, 1800);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -16,69 +41,73 @@ export default function Hero() {
     setMousePos({ x, y });
   };
 
+  const handleMouseLeave = () => {
+    setMousePos({ x: 0, y: 0 });
+  };
+
   return (
-    <section className="relative overflow-hidden bg-white tech-grid-bg px-4 pt-12 pb-16 sm:px-6 sm:pt-16 sm:pb-24 lg:px-8 border-b border-slate-200/80">
-      {/* Subtle futuristic background lighting */}
+    <section
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative overflow-hidden bg-white px-4 pt-10 pb-16 sm:px-6 sm:pt-14 sm:pb-24 lg:px-8 border-b border-slate-200/80"
+    >
+      {/* Dynamic Cursor Spotlight that tracks mouse smoothly */}
       <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-0 -z-10 h-[650px] w-[650px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,192,243,0.15),transparent_70%)] blur-3xl"
+        className="pointer-events-none absolute -z-10 transition-transform duration-500 ease-out"
+        style={{
+          transform: `translate(${mousePos.x * 120}px, ${mousePos.y * 120}px)`,
+          top: "10%",
+          right: "15%",
+          width: "700px",
+          height: "700px",
+          background: "radial-gradient(circle, rgba(48,94,255,0.09) 0%, rgba(48,94,255,0.04) 45%, transparent 70%)",
+          borderRadius: "9999px",
+          filter: "blur(40px)",
+        }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute left-0 bottom-0 -z-10 h-[450px] w-[450px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,102,204,0.08),transparent_70%)] blur-2xl"
+        className="pointer-events-none absolute left-0 bottom-0 -z-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(48,94,255,0.06),transparent_70%)] blur-3xl"
       />
 
       <div className="mx-auto max-w-7xl">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-          {/* Left Column: Authoritative Enterprise Copy */}
+          {/* Left Column: Authoritative Copy & Dynamic Motion */}
           <div className="lg:col-span-6 xl:col-span-7">
-            {/* Category Eyebrow Breadcrumb with Glowing Beacon */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/90 px-3.5 py-1 text-[11px] sm:text-xs font-bold tracking-wider uppercase text-slate-700 shadow-xs backdrop-blur-xs"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00c0f3] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0066cc]"></span>
-              </span>
-              <span className="text-[#0066cc]">Solutions</span>
-              <span className="text-slate-300">/</span>
-              <span>Autonomous AI Orchestration</span>
-            </motion.div>
-
-            {/* Bold Headline with Electric Shimmer */}
+            {/* Bold Headline with Kinetic Gradient Shimmer */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-              className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-5xl lg:text-[3.35rem] lg:leading-[1.12]"
+              transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
+              className="text-2xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-slate-950 leading-[1.22] lg:leading-[1.24] font-display pb-2"
             >
-              Deliver services at scale with intent-driven{" "}
-              <span className="electric-gradient-text">AI Orchestration</span>
+              Automate your entire business operations with custom{" "}
+              <span className="electric-gradient-text inline-block pb-1 sm:pb-2 -mb-1 sm:-mb-2">
+                AI Agents
+              </span>
             </motion.h1>
 
-            {/* Sub-headline */}
+            {/* Sub-headline with Staggered Entrance */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg sm:leading-8 font-normal"
+              transition={{ duration: 0.6, delay: 0.24, ease: "easeOut" }}
+              className="mt-4 sm:mt-5 max-w-2xl text-sm sm:text-lg leading-relaxed text-slate-600 font-normal"
             >
-              Automate, orchestrate, and optimize complex multi-vendor, multi-channel business workflows across your private enterprise cloud. 100% custom-engineered with zero vendor lock-in.
+              Replace slow manual work with smart AI that answers customer calls, manages sales leads, and connects all your software 24/7. 100% custom-built for your business with full code ownership.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* High-Impact CTA Buttons with Shimmer Beam */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.45, ease: "easeOut" }}
-              className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+              transition={{ duration: 0.5, delay: 0.36, ease: "easeOut" }}
+              className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4"
             >
               <motion.button
                 type="button"
-                whileHover={{ scale: 1.03, boxShadow: "0 14px 30px -4px rgba(0, 102, 204, 0.4)" }}
+                whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.2 }}
                 onClick={() =>
@@ -88,201 +117,248 @@ export default function Hero() {
                     defaultNote: "Requesting custom autonomous AI orchestration architecture review.",
                   })
                 }
-                className="inline-flex items-center justify-center rounded-full bg-[#0066cc] hover:bg-[#0052a3] px-8 py-3.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-[#0066cc]/25 transition-colors cursor-pointer"
+                className="relative overflow-hidden inline-flex items-center justify-center rounded-full bg-[#305eff] hover:bg-[#1f47e0] px-7 py-3.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-[#305eff]/30 transition-all cursor-pointer group"
               >
-                <span>Explore Solutions</span>
+                {/* Traveling light beam sweep */}
+                <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer-sweep bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+                <span className="relative z-10 flex items-center gap-2">
+                  <span>Explore Solutions</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
               </motion.button>
 
               <motion.a
                 href="#orchestration-portfolio"
-                whileHover={{ x: 4 }}
+                whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}
-                className="inline-flex items-center justify-center gap-1.5 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#0066cc] py-3 transition-colors"
+                className="inline-flex items-center justify-center gap-1.5 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#305eff] py-2.5 sm:py-3 transition-colors group cursor-pointer"
               >
                 <span>View Orchestration Portfolio</span>
-                <ChevronRight className="h-4 w-4 text-[#0066cc]" />
+                <ChevronRight className="h-4 w-4 text-[#305eff] transition-transform group-hover:translate-x-1" />
               </motion.a>
             </motion.div>
 
-            {/* Credibility Badges Under CTA */}
+            {/* Credibility Badges Under CTA - Responsive Wrap on Mobile */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-10 pt-6 border-t border-slate-200/80 flex flex-wrap items-center gap-6 text-xs text-slate-600 font-medium"
+              transition={{ duration: 0.6, delay: 0.48 }}
+              className="mt-8 pt-5 border-t border-slate-200/80 flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-2.5 lg:gap-3 py-1"
             >
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-[#0066cc]" />
-                <span>Zero recurring agency markups</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-[#0066cc]" />
-                <span>100% Client Git &amp; Code Ownership</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-[#0066cc]" />
-                <span>Direct AWS Cloud Deployment</span>
-              </div>
+              {[
+                "Zero recurring agency markups",
+                "100% Client Git & Code Ownership",
+                "Direct AWS Cloud Deployment",
+              ].map((badge, bIdx) => (
+                <motion.div
+                  key={bIdx}
+                  whileHover={{ y: -2, scale: 1.02 }}
+                  className="flex items-center gap-1.5 sm:gap-2 bg-slate-50 border border-slate-200/90 px-2.5 sm:px-3 py-1.5 rounded-full shadow-2xs shrink-0 whitespace-nowrap"
+                >
+                  <CheckCircle2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#305eff] shrink-0" />
+                  <span className="font-semibold text-slate-800 text-[11px] sm:text-xs">{badge}</span>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
 
-          {/* Right Column: World-Class Interactive 3D Parametric Mesh + Live Telemetry HUD */}
-          <div
-            className="relative flex items-center justify-center lg:col-span-6 xl:col-span-5 select-none"
-            onMouseMove={handleMouseMove}
-          >
+          {/* Right Column: Interactive 3D Salesforce Integrations Studio + Live Telemetry HUD */}
+          <div className="relative flex items-center justify-center lg:col-span-6 xl:col-span-5 select-none py-6 w-full max-w-full overflow-hidden sm:overflow-visible">
+            {/* Interactive 3D Gyroscopic Container */}
             <motion.div
               animate={{
                 rotateX: mousePos.y * -14,
                 rotateY: mousePos.x * 18,
-                y: [0, -8, 0],
               }}
               transition={{
-                rotateX: { type: "spring", stiffness: 120, damping: 20 },
-                rotateY: { type: "spring", stiffness: 120, damping: 20 },
-                y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                rotateX: { type: "spring", stiffness: 100, damping: 18 },
+                rotateY: { type: "spring", stiffness: 100, damping: 18 },
               }}
-              style={{ perspective: 1000 }}
-              className="relative w-full aspect-[4/3] max-w-[560px] flex items-center justify-center"
+              style={{ perspective: 1200, transformStyle: "preserve-3d" }}
+              className="relative w-full max-w-[340px] sm:max-w-[560px] flex items-center justify-center"
             >
-              {/* SVG 3D Parametric Mesh Wave with Laser Flow Pulses */}
-              <svg
-                viewBox="0 0 600 450"
-                className="w-full h-full object-contain filter drop-shadow-md select-none pointer-events-none"
-                xmlns="http://www.w3.org/2000/svg"
+              {/* Rotating Outer Cyber Radar Rings */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -inset-4 rounded-full border border-dashed border-[#305eff]/20 animate-spin-slow opacity-60"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -inset-8 rounded-full border border-dotted border-cyan-400/20 animate-spin-reverse opacity-50"
+              />
+
+              {/* Centerpiece 3D Card showcasing Salesforce Integrations SVG */}
+              <div
+                className="relative z-10 w-full rounded-3xl border border-slate-200/90 bg-white/95 p-3 sm:p-5 shadow-2xl shadow-blue-500/10 backdrop-blur-md overflow-hidden group hover:border-[#305eff]/40 transition-all duration-300"
               >
-                <defs>
-                  <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#00c0f3" stopOpacity="0.9" />
-                    <stop offset="50%" stopColor="#0066cc" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#2563eb" stopOpacity="0.3" />
-                  </linearGradient>
-                  <linearGradient id="waveGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#0284c7" stopOpacity="0.85" />
-                    <stop offset="60%" stopColor="#38bdf8" stopOpacity="0.5" />
-                    <stop offset="100%" stopColor="#0369a1" stopOpacity="0.15" />
-                  </linearGradient>
-                  <radialGradient id="meshCenterGlow" cx="60%" cy="50%" r="55%">
-                    <stop offset="0%" stopColor="#00c0f3" stopOpacity="0.3" />
-                    <stop offset="60%" stopColor="#0066cc" stopOpacity="0.1" />
-                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-                  </radialGradient>
-                </defs>
+                {/* Card Header with macOS-style indicators & Live Sync status */}
+                <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 sm:pb-3 mb-2.5 sm:mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1 sm:gap-1.5">
+                      <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-rose-400/80" />
+                      <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-amber-400/80" />
+                      <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-emerald-400/80" />
+                    </div>
+                    <span className="h-3.5 w-px bg-slate-200" />
+                    <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 tracking-tight flex items-center gap-1 sm:gap-1.5">
+                      <span className="text-[#305eff] font-mono font-extrabold">Salesforce</span>
+                      <span>Studio</span>
+                    </span>
+                  </div>
 
-                {/* Ambient Center Glow */}
-                <ellipse cx="360" cy="225" rx="190" ry="145" fill="url(#meshCenterGlow)" />
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <span className="inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-emerald-500 shrink-0" />
+                    <span className="text-[9px] sm:text-[10px] font-mono font-bold text-emerald-600 bg-emerald-50 border border-emerald-200/80 px-1.5 sm:px-2 py-0.5 rounded-full">
+                      Live Sync
+                    </span>
+                  </div>
+                </div>
 
-                {/* Primary Parametric Ribbon Layers */}
-                {Array.from({ length: 28 }).map((_, i) => {
-                  const offset = i * 7.5;
-                  const curveY1 = 80 + Math.sin(i * 0.25) * 45 + offset * 0.4;
-                  const curveY2 = 340 - Math.cos(i * 0.25) * 55 - offset * 0.3;
-                  const strokeWidth = i % 4 === 0 ? 1.6 : 0.8;
-                  const strokeOpacity = 0.25 + (i / 28) * 0.65;
-                  const isLaser = i === 6 || i === 14 || i === 22;
+                {/* Vector Illustration Container with scanning laser beam & ambient glow */}
+                <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-b from-slate-50/80 to-blue-50/40 p-2 sm:p-4 flex items-center justify-center border border-slate-100/90">
+                  {/* Ambient radial glow */}
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(48,94,255,0.08),transparent_70%)] pointer-events-none"
+                  />
 
-                  return (
-                    <path
-                      key={i}
-                      d={`M ${40 + i * 5} ${220 + Math.sin(i * 0.3) * 35} 
-                          C ${160 + offset} ${curveY1}, 
-                            ${380 - offset * 0.5} ${curveY2}, 
-                            ${560 - i * 4} ${180 + Math.cos(i * 0.2) * 50}`}
-                      fill="none"
-                      stroke={i % 2 === 0 ? "url(#waveGrad1)" : "url(#waveGrad2)"}
-                      strokeWidth={isLaser ? 2.2 : strokeWidth}
-                      strokeOpacity={isLaser ? 1 : strokeOpacity}
-                      className={isLaser ? (i === 14 ? "animate-laser-fast" : "animate-laser") : undefined}
-                    />
-                  );
-                })}
+                  {/* Light beam sweep on hover */}
+                  <div className="pointer-events-none absolute inset-0 -translate-x-full group-hover:animate-shimmer-sweep bg-gradient-to-r from-transparent via-[#305eff]/10 to-transparent z-10" />
 
-                {/* Cross-Hatch Structural Wireframe Lines */}
-                {Array.from({ length: 18 }).map((_, j) => {
-                  const t = j * 30;
-                  return (
-                    <path
-                      key={`cross-${j}`}
-                      d={`M ${60 + t} ${150 + Math.sin(j) * 20} 
-                          Q ${240 + t * 0.6} ${230 + Math.cos(j * 0.5) * 40} 
-                            ${360 + t * 0.5} ${320 - Math.sin(j) * 30}`}
-                      fill="none"
-                      stroke="#0284c7"
-                      strokeWidth="0.75"
-                      strokeOpacity="0.4"
-                      strokeDasharray={j % 3 === 0 ? "4 4" : undefined}
-                    />
-                  );
-                })}
+                  {/* Salesforce Integrations SVG */}
+                  <Image
+                    src="/Salesforce%20Integrations.svg"
+                    alt="Salesforce Integrations Enterprise Studio"
+                    width={645}
+                    height={420}
+                    priority
+                    unoptimized
+                    className="w-full h-auto max-h-[200px] sm:max-h-[330px] object-contain select-none transition-transform duration-500 ease-out group-hover:scale-[1.02] filter drop-shadow-xs"
+                  />
+                </div>
 
-                {/* Animated Pulsing Node Anchors */}
-                <circle cx="210" cy="180" r="4.5" fill="#0066cc" />
-                <circle cx="210" cy="180" r="10" fill="none" stroke="#00c0f3" strokeWidth="1.5" strokeOpacity="0.6" className="animate-ping" style={{ transformOrigin: "210px 180px" }} />
-                
-                <circle cx="380" cy="240" r="4" fill="#0284c7" />
-                <circle cx="440" cy="160" r="4.5" fill="#0066cc" />
-                <circle cx="440" cy="160" r="9" fill="none" stroke="#0066cc" strokeWidth="1.5" strokeOpacity="0.5" />
-                <circle cx="290" cy="290" r="3.5" fill="#38bdf8" />
-              </svg>
+                {/* Card Footer Live Telemetry Stream */}
+                <div className="mt-2.5 sm:mt-3 flex items-center justify-between text-[9px] sm:text-[10px] text-slate-500 pt-2 border-t border-slate-100">
+                  <div className="flex items-center gap-1 sm:gap-2 font-mono">
+                    <span className="font-semibold text-slate-700">VPC:</span>
+                    <span className="text-[#305eff] font-bold">AWS us-east-1</span>
+                  </div>
+                  <div className="flex items-center gap-1 sm:gap-2 font-mono">
+                    <span className="text-slate-400">Stream:</span>
+                    <span className="text-emerald-600 font-bold">0 Dropped</span>
+                  </div>
+                </div>
+              </div>
 
-              {/* Floating HUD Telemetry Pill 1: Ultra-Low Latency Voice with Equalizer */}
+              {/* Floating HUD Telemetry Pill 1: Low-Latency Voice with Alive Equalizer */}
               <motion.div
-                initial={{ opacity: 0, y: -20, x: 20 }}
-                animate={{ opacity: 1, y: 0, x: 0 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                className="absolute -top-3 right-4 sm:right-6 rounded-2xl border border-slate-200/90 bg-white/95 backdrop-blur-md p-3 shadow-xl flex items-center gap-3 pointer-events-auto"
+                animate={{
+                  y: [0, -10, 0],
+                  x: [0, 4, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={{ scale: 1.08 }}
+                className="absolute -top-3 right-0 sm:-top-5 sm:-right-4 z-30 scale-90 sm:scale-100 origin-top-right rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white/95 backdrop-blur-md p-2.5 sm:p-3.5 shadow-xl flex items-center gap-2.5 sm:gap-3 pointer-events-auto cursor-default hover:border-[#305eff]/50 transition-colors"
               >
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-[#0066cc]">
-                  <Zap className="h-4 w-4" />
+                <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl sm:rounded-2xl bg-blue-50 text-[#305eff] border border-blue-100 shadow-2xs">
+                  <Zap className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
                 </div>
                 <div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-900">
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] font-bold text-slate-900">
                     <span>Voice Telephony</span>
-                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping" />
+                    <span className="inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-emerald-500" />
                   </div>
-                  <div className="flex items-center gap-2 mt-0.5">
-                    <span className="text-[10px] font-bold text-[#0066cc]">284ms Latency</span>
-                    <div className="flex items-end gap-0.5 h-3">
-                      <span className="w-0.5 bg-[#0066cc] rounded-full wave-bar-1" />
-                      <span className="w-0.5 bg-[#00c0f3] rounded-full wave-bar-2" />
-                      <span className="w-0.5 bg-[#0066cc] rounded-full wave-bar-3" />
-                      <span className="w-0.5 bg-[#00c0f3] rounded-full wave-bar-4" />
+                  <div className="flex items-center gap-1.5 sm:gap-2 mt-0.5">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-black text-[#305eff]">{latency}ms Latency</span>
+                    {/* Bouncing Audio Visualizer */}
+                    <div className="flex items-end gap-0.5 sm:gap-1 h-3 sm:h-3.5">
+                      <span className="w-0.5 bg-[#305eff] rounded-full wave-bar-1" />
+                      <span className="w-0.5 bg-[#305eff] rounded-full wave-bar-2" />
+                      <span className="w-0.5 bg-[#305eff] rounded-full wave-bar-3" />
+                      <span className="w-0.5 bg-[#305eff] rounded-full wave-bar-4" />
+                      <span className="w-0.5 bg-[#305eff] rounded-full wave-bar-5" />
+                      <span className="w-0.5 bg-[#305eff] rounded-full wave-bar-6" />
                     </div>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Floating HUD Telemetry Pill 2: Precision Reasoning Core */}
+              {/* Floating HUD Telemetry Pill 2: Intent Precision Core */}
               <motion.div
-                initial={{ opacity: 0, y: 20, x: -20 }}
-                animate={{ opacity: 1, y: 0, x: 0 }}
-                transition={{ delay: 0.75, duration: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                className="absolute -bottom-4 left-2 sm:left-4 rounded-2xl border border-slate-200/90 bg-white/95 backdrop-blur-md p-3 shadow-xl flex items-center gap-3 pointer-events-auto"
+                animate={{
+                  y: [0, 10, 0],
+                  x: [0, -4, 0],
+                }}
+                transition={{
+                  duration: 4.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.4,
+                }}
+                whileHover={{ scale: 1.08 }}
+                className="absolute -bottom-4 left-0 sm:-bottom-6 sm:-left-4 z-30 scale-90 sm:scale-100 origin-bottom-left rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white/95 backdrop-blur-md p-2.5 sm:p-3.5 shadow-xl flex items-center gap-2.5 sm:gap-3 pointer-events-auto cursor-default hover:border-emerald-300 transition-colors"
               >
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
-                  <Cpu className="h-4 w-4" />
+                <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl sm:rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-2xs">
+                  <Cpu className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-bold text-slate-900 flex items-center gap-1.5">
+                  <div className="text-[10px] sm:text-[11px] font-bold text-slate-900 flex items-center gap-1 sm:gap-1.5">
                     <span>Intent Precision</span>
-                    <span className="rounded bg-emerald-100 px-1 py-0.2 text-[9px] font-black text-emerald-700">99.8%</span>
+                    <span className="rounded-full bg-emerald-100 px-1.5 sm:px-2 py-0.2 text-[8px] sm:text-[9px] font-black text-emerald-800 border border-emerald-200">
+                      99.8%
+                    </span>
                   </div>
-                  <div className="text-[10px] text-slate-500 font-medium">Deterministic Guardrails</div>
+                  <div className="text-[9px] sm:text-[10px] text-slate-500 font-semibold mt-0.5 flex items-center gap-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                    <span>Deterministic Guardrails</span>
+                  </div>
                 </div>
               </motion.div>
 
               {/* Floating HUD Telemetry Pill 3: Private Vector Storage */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.9, duration: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                className="hidden sm:flex absolute bottom-8 right-2 rounded-2xl border border-slate-200/90 bg-white/95 backdrop-blur-md px-3 py-2 shadow-lg items-center gap-2 pointer-events-auto"
+                animate={{
+                  y: [0, -8, 0],
+                }}
+                transition={{
+                  duration: 3.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.8,
+                }}
+                whileHover={{ scale: 1.08 }}
+                className="hidden sm:flex absolute -bottom-3 right-3 sm:right-6 z-30 rounded-2xl border border-slate-200/90 bg-white/95 backdrop-blur-md px-3.5 py-2 shadow-lg items-center gap-2.5 pointer-events-auto cursor-default hover:border-[#305eff]/50 transition-colors"
               >
-                <Shield className="h-3.5 w-3.5 text-[#0066cc]" />
-                <span className="text-[10px] font-bold text-slate-800">Tenant Vector Vault (12ms)</span>
+                <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-blue-50 text-[#305eff]">
+                  <Shield className="h-4 w-4" />
+                </div>
+                <div className="text-left">
+                  <div className="text-[10px] font-mono font-extrabold text-slate-800">
+                    Tenant Vault: {activeQueryCount} q/s
+                  </div>
+                  <div className="text-[9px] text-[#305eff] font-bold">12ms Vector Search</div>
+                </div>
+              </motion.div>
+
+              {/* Floating HUD Capsule 4: Active Agent Swarm Status */}
+              <motion.div
+                animate={{
+                  y: [0, 6, 0],
+                }}
+                transition={{
+                  duration: 3.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.2,
+                }}
+                className="absolute top-1/3 -left-5 sm:-left-7 z-30 hidden md:flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/95 backdrop-blur-md px-3 py-1.5 shadow-md text-[10px] font-bold text-slate-700 pointer-events-auto cursor-default"
+              >
+                <span className="flex h-2 w-2 rounded-full bg-[#305eff]" />
+                <span className="font-mono text-[#305eff]">Agent Swarm: Active</span>
               </motion.div>
             </motion.div>
           </div>

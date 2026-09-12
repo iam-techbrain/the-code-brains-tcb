@@ -105,6 +105,28 @@ function BrandLogo({ id, className = "h-5 w-5" }: { id: string; className?: stri
           <path d="M19.3 10.04a4.4 4.4 0 0 0-4.05-2.69 4.3 4.3 0 0 0-3.32 1.54 5.3 5.3 0 0 0-5.11 3.55A3.7 3.7 0 0 0 4 19.5h15a3.5 3.5 0 0 0 .3-7.46z" />
         </svg>
       );
+    case "zapier":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="#ff4f00">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 6v12M6 12h12M7.76 7.76l8.48 8.48M7.76 16.24l8.48-8.48" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+      );
+    case "whatsapp":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="#25d366">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M8 11.5c.5 1.5 2 3 3.5 3.5l1.5-1.5c.3-.3.8-.4 1.2-.2 1.2.5 2.5.5 3.8.3.5-.1 1 .3 1 .8v2.5c0 .6-.5 1-1.1 1-6.5 0-11.8-5.3-11.8-11.8 0-.6.4-1.1 1-1.1h2.5c.5 0 .9.5.8 1-.2 1.3-.2 2.6.3 3.8.2.4.1.9-.2 1.2L8 11.5z" fill="#ffffff" />
+        </svg>
+      );
+    case "sheets":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="#0f9d58">
+          <rect x="4" y="3" width="16" height="18" rx="2" fill="#0f9d58" />
+          <path d="M8 8h8M8 12h8M8 16h8" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+          <path d="M12 8v8" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
     case "aws":
       return (
         <svg viewBox="0 0 24 24" className={className} fill="#ff9900">
@@ -185,6 +207,41 @@ const TECH_STACK_TABLE_ROWS: TechRow[] = [
     ],
   },
   {
+    category: "Workflow Automation & Multi-App Engines",
+    items: [
+      {
+        type: "vector",
+        name: "Make (Integromat)",
+        logoId: "make",
+        colorClass: "text-[#6d28d9]",
+      },
+      {
+        type: "vector",
+        name: "Zapier",
+        logoId: "zapier",
+        colorClass: "text-[#ff4f00]",
+      },
+      {
+        type: "vector",
+        name: "n8n Workflows",
+        logoId: "n8n",
+        colorClass: "text-[#ea4b71]",
+      },
+      {
+        type: "vector",
+        name: "WhatsApp Cloud API",
+        logoId: "whatsapp",
+        colorClass: "text-[#25d366]",
+      },
+      {
+        type: "vector",
+        name: "Google Sheets API",
+        logoId: "sheets",
+        colorClass: "text-[#0f9d58]",
+      },
+    ],
+  },
+  {
     category: "Cloud & DevOps Infrastructure",
     items: [
       { type: "image", name: "AWS", imageSrc: "/logos/aws.png", width: 85, height: 32 },
@@ -242,8 +299,8 @@ export default function TechStackShowcase() {
                 key={rIdx}
                 className="flex flex-col md:flex-row items-stretch transition-colors hover:bg-slate-50/40"
               >
-                {/* Left Column: Lavender/Light Purple Cell */}
-                <div className="w-full md:w-80 shrink-0 bg-[#f5f3ff] p-5 sm:p-6 flex items-center border-b md:border-b-0 md:border-r border-slate-100">
+                {/* Left Column: Subtle Light Cell */}
+                <div className="w-full md:w-80 shrink-0 bg-slate-50/80 p-5 sm:p-6 flex items-center border-b md:border-b-0 md:border-r border-slate-100">
                   <span className="font-bold text-slate-900 text-sm sm:text-base leading-snug">
                     {row.category}
                   </span>
@@ -295,7 +352,7 @@ export default function TechStackShowcase() {
         {/* Architecture Guarantee Strip */}
         <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50/80 p-6 sm:p-7 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#0066cc] text-white shrink-0">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#305eff] text-white shrink-0">
               <ShieldCheck className="h-5 w-5" />
             </div>
             <div>
@@ -317,7 +374,7 @@ export default function TechStackShowcase() {
                 defaultNote: "Inquiring about tech stack integrations with our existing business systems.",
               })
             }
-            className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#0066cc] hover:bg-[#0052a3] px-6 py-2.5 text-xs font-bold text-white shadow-sm transition-all active:scale-95 cursor-pointer"
+            className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#305eff] hover:bg-[#1f47e0] px-6 py-2.5 text-xs font-bold text-white shadow-sm transition-all active:scale-95 cursor-pointer"
           >
             <span>Discuss Architecture</span>
             <ArrowRight className="h-3.5 w-3.5" />

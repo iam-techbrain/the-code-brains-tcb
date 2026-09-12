@@ -29,7 +29,7 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen overflow-x-hidden w-full max-w-full bg-[#f8fafc] text-slate-900 antialiased selection:bg-[#0066cc] selection:text-white">
+    <main className="min-h-screen overflow-x-hidden w-full max-w-full bg-white text-slate-900 antialiased selection:bg-[#305eff] selection:text-white">
       {/* 0. Top Worldwide Ticker & Registration Banner */}
       <WorldwideClientsBanner />
 

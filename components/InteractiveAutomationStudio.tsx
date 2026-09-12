@@ -73,48 +73,48 @@ const SCENARIOS: Scenario[] = [
     id: "workflow",
     title: "Scenario 02: Multi-ERP & Invoice Reconciliation",
     badge: "Zero-Touch Pipeline",
-    triggerName: "Vendor PDF Invoice Attached to Email",
-    triggerType: "AWS S3 Event Stream",
+    triggerName: "New Vendor Invoice Received (PDF Attachment)",
+    triggerType: "Webhook / Gmail API",
     steps: [
-      { name: "Document Parsing", tech: "AWS Textract OCR", latency: "110ms", desc: "Extract line items & tax IDs" },
-      { name: "Validation Engine", tech: "Custom Python Worker", latency: "24ms", desc: "PO 3-way matching rules" },
-      { name: "Discrepancy Audit", tech: "LLM Reasoning Core", latency: "185ms", desc: "Zero-hallucination verification" },
-      { name: "Ledger Update", tech: "SAP / NetSuite API", latency: "88ms", desc: "Authorized payment voucher" },
-      { name: "Audit Trail", tech: "PostgreSQL Ledger", latency: "14ms", desc: "Cryptographic immutable log" },
+      { name: "Doc Ingestion", tech: "FastAPI + AWS S3", latency: "42ms", desc: "Virus scan & secure vault upload" },
+      { name: "Layout OCR", tech: "AWS Textract + Claude 3.5", latency: "210ms", desc: "Line-item & tax validation" },
+      { name: "PO Verification", tech: "PostgreSQL Database", latency: "18ms", desc: "Cross-checks open purchase orders" },
+      { name: "ERP Mutation", tech: "SAP / QuickBooks API", latency: "65ms", desc: "Commits journal ledger entry" },
+      { name: "Slack Alert", tech: "Slack Block Kit Webhook", latency: "14ms", desc: "Notifies finance CFO channel" },
     ],
     logs: [
-      "[00:00.110] S3_EVENT: Received vendor invoice 'INV-90214.pdf' (1.4MB)",
-      "[00:00.134] OCR_WORKER: Extracted 24 line items totaling $48,250.00 USD",
-      "[00:00.319] PO_MATCH: Correlated with Purchase Order #PO-7718 with 100% item matching",
-      "[00:00.407] SAP_REST: Invoice passed auto-approval matrix (< $50k threshold)",
-      "[00:00.421] LEDGER_COMMITTED: NetSuite payment scheduled with zero manual data entry",
+      "[00:00.042] WEBHOOK_EVENT: Received payload from accounts@vendorcorp.com with 3-page PDF",
+      "[00:00.252] OCR_EXTRACT: Extracted PO #PO-99104, Subtotal: $48,250.00, Tax: $4,101.25",
+      "[00:00.270] DB_LOOKUP: Verified purchase authorization signed by VP Finance",
+      "[00:00.335] ERP_SYNC: Generated ledger transaction #TXN-77218 in SAP Business One",
+      "[00:00.349] AUDIT_TRAIL: Cryptographic receipt hash written to compliance archive log",
     ],
     metrics: {
-      speed: "421ms",
-      accuracy: "100.0%",
+      speed: "349ms",
+      accuracy: "100%",
       monthlySavings: "$18,500/mo",
-      eventsPerHour: "14,500 docs",
+      eventsPerHour: "4,500 invoices",
     },
   },
   {
     id: "rag",
-    title: "Scenario 03: Private Vector Knowledge Audit",
-    badge: "100% Deterministic RAG",
-    triggerName: "Executive Query: 'Cross-border IP compliance risks'",
-    triggerType: "Slack / Teams / REST API",
+    title: "Scenario 03: 24/7 Enterprise RAG Knowledge Vault",
+    badge: "Hallucination-Free",
+    triggerName: "Complex Technical Customer Query (Omnichannel)",
+    triggerType: "Zendesk Webhook",
     steps: [
-      { name: "Semantic Embedding", tech: "Text-Embedding-3-Large", latency: "32ms", desc: "Dense 3072-dim vectors" },
-      { name: "Hybrid Search", tech: "Qdrant / Pinecone", latency: "18ms", desc: "BM25 keyword + dense vector" },
-      { name: "Reranker Model", tech: "Cohere Rerank v3", latency: "42ms", desc: "Top-5 definitive citations" },
-      { name: "Constitutional LLM", tech: "Claude 3.5 Sonnet", latency: "195ms", desc: "Strict citation-grounded output" },
-      { name: "Audit Timestamp", tech: "OpenTelemetry Trace", latency: "8ms", desc: "Full provenance record" },
+      { name: "Hybrid Embedding", tech: "Cohere Embed-v3", latency: "22ms", desc: "Dense + sparse semantic vectorization" },
+      { name: "Vector Search", tech: "Pinecone / Qdrant", latency: "34ms", desc: "Top-k nearest neighbor lookup" },
+      { name: "Reranker Stage", tech: "Cohere Rerank v3", latency: "41ms", desc: "Precision relevancy filtration" },
+      { name: "Synthesizer", tech: "GPT-4o Mini + Guardrails", latency: "170ms", desc: "Deterministic answers with citations" },
+      { name: "Omni Dispatch", tech: "Zendesk & Intercom", latency: "28ms", desc: "Sends verified solution to user" },
     ],
     logs: [
-      "[00:00.032] EMBED_STREAM: Vectorized 48 tokens into 3,072 dimensions",
-      "[00:00.050] VECTOR_QUERY: Searched 1.8M enterprise documentation chunks in 18ms",
-      "[00:00.092] RERANK: Isolated Master Services Agreement 2024 Section 14.3 (conf=0.991)",
-      "[00:00.287] CONSTITUTIONAL_AUDIT: Answer synthesized strictly with page & clause citations",
-      "[00:00.295] TRACE_LOGGED: Query response verified zero hallucination risk",
+      "[00:00.022] INGEST_QUERY: 'What is the maximum payload limit for EU-Central cluster Kafka queue?'",
+      "[00:00.056] VECTOR_SEARCH: Retrieved 12 candidate chunks from Tenant #492 Documentation Vault",
+      "[00:00.097] RERANKER: Filtered to top 2 authoritative sections with confidence score = 0.994",
+      "[00:00.267] LLM_REASON: Synthesizing exact response referencing Section 4.2 of Architecture Manual",
+      "[00:00.295] DISPATCH_DONE: Answer delivered via Zendesk ticket #TK-4819 with 2 direct link citations",
     ],
     metrics: {
       speed: "295ms",
@@ -141,11 +141,11 @@ export default function InteractiveAutomationStudio() {
   }, [activeScenarioId]);
 
   return (
-    <section className="relative overflow-hidden bg-[#071726] text-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-y border-white/10 tech-grid-dark">
+    <section className="relative overflow-hidden bg-white text-slate-900 px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-y border-slate-200/80">
       {/* Background ambient lighting */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[600px] w-full max-w-5xl bg-[radial-gradient(ellipse_at_center,rgba(0,192,243,0.18),transparent_70%)] blur-3xl"
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-full max-w-5xl bg-[radial-gradient(ellipse_at_center,rgba(48,94,255,0.06),transparent_70%)]"
       />
 
       <div className="mx-auto max-w-7xl">
@@ -155,12 +155,9 @@ export default function InteractiveAutomationStudio() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-4 py-1.5 text-xs font-bold text-[#38bdf8] uppercase tracking-widest mb-4 shadow-sm"
+            className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-bold text-[#305eff] uppercase tracking-widest mb-4 shadow-2xs"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#38bdf8] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
-            </span>
+            <span className="inline-flex rounded-full h-2 w-2 bg-[#305eff] shrink-0" />
             <span>ENTERPRISE COMMAND CENTER</span>
           </motion.div>
 
@@ -169,7 +166,7 @@ export default function InteractiveAutomationStudio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl font-display"
+            className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl font-display"
           >
             The Autonomous AI Orchestration Matrix
           </motion.h2>
@@ -179,60 +176,62 @@ export default function InteractiveAutomationStudio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto"
+            className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto"
           >
             Witness how our intent-driven multi-agent architecture executes mission-critical business workflows with sub-second latency and zero human error.
           </motion.p>
         </div>
 
         {/* Interactive Scenario Switcher Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 px-1 sm:px-0">
           {SCENARIOS.map((sc) => {
             const isActive = sc.id === activeScenarioId;
             return (
-              <button
+              <motion.button
                 key={sc.id}
                 type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   setActiveScenarioId(sc.id);
                   setActiveStep(0);
                 }}
-                className={`relative px-5 py-3 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2.5 ${
+                className={`relative px-3.5 sm:px-5 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 sm:gap-2.5 ${
                   isActive
-                    ? "bg-[#0066cc] text-white shadow-lg shadow-[#0066cc]/40 border border-sky-400/40 scale-102"
-                    : "bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10"
+                    ? "bg-[#305eff] text-white shadow-md shadow-[#305eff]/25 border border-[#305eff]"
+                    : "bg-slate-100 hover:bg-slate-200/80 text-slate-700 border border-slate-200/80"
                 }`}
               >
                 <span>{sc.title}</span>
                 <span
-                  className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
-                    isActive ? "bg-white/20 text-white" : "bg-white/5 text-slate-400"
+                  className={`text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
+                    isActive ? "bg-white/20 text-white" : "bg-white text-slate-600 border border-slate-200"
                   }`}
                 >
                   {sc.badge}
                 </span>
-              </button>
+              </motion.button>
             );
           })}
         </div>
 
-        {/* Live Visual Pipeline Node Graph */}
-        <div className="rounded-3xl border border-white/15 bg-[#0a1e32]/90 p-6 sm:p-8 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+        {/* Live Visual Pipeline Node Graph Container (Clean White Card with Subtle Secondary Border) */}
+        <div className="rounded-3xl border border-slate-200/90 bg-white p-4 sm:p-8 shadow-xl relative overflow-hidden">
           {/* Top Status Bar */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-white/10 gap-3">
-            <div className="flex items-center gap-3">
-              <div className="flex h-3 w-3 rounded-full bg-emerald-400 animate-ping" />
-              <span className="text-xs font-mono uppercase tracking-widest text-slate-300">
-                TRIGGER: <strong className="text-white">{scenario.triggerName}</strong>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 sm:pb-6 border-b border-slate-100 gap-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 shrink-0" />
+              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-slate-600">
+                TRIGGER: <strong className="text-slate-900">{scenario.triggerName}</strong>
               </span>
-              <span className="rounded bg-sky-500/20 text-[#38bdf8] px-2 py-0.5 text-[10px] font-mono">
+              <span className="rounded bg-blue-50 border border-blue-200 text-[#305eff] px-2 py-0.5 text-[9px] sm:text-[10px] font-mono font-bold">
                 {scenario.triggerType}
               </span>
             </div>
-            <div className="flex items-center gap-4 text-xs font-mono text-slate-400">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-4 text-[10px] sm:text-xs font-mono text-slate-500">
               <span>● PROTOCOL: TLS 1.3</span>
               <span>● ENCRYPTION: AES-256</span>
-              <span className="text-emerald-400 font-bold">● HEALTH: 100% OPERATIONAL</span>
+              <span className="text-emerald-600 font-bold">● HEALTH: 100% OPERATIONAL</span>
             </div>
           </div>
 
@@ -245,47 +244,49 @@ export default function InteractiveAutomationStudio() {
               return (
                 <div key={idx} className="relative flex flex-col items-center">
                   {/* Node Card */}
-                  <div
+                  <motion.div
                     onClick={() => setActiveStep(idx)}
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.2 }}
                     className={`w-full rounded-2xl p-4 sm:p-5 transition-all cursor-pointer border text-left flex flex-col justify-between min-h-[145px] relative ${
                       isCurrent
-                        ? "bg-[#0066cc]/30 border-[#00c0f3] shadow-lg shadow-[#00c0f3]/25 scale-103"
+                        ? "bg-blue-50/80 border-[#305eff] shadow-lg shadow-[#305eff]/15 scale-102"
                         : isPassed
-                        ? "bg-white/5 border-emerald-500/40 text-slate-300"
-                        : "bg-white/[0.02] border-white/10 text-slate-400 opacity-60"
+                        ? "bg-slate-50 border-slate-200 text-slate-800"
+                        : "bg-white border-slate-200/80 text-slate-500"
                     }`}
                   >
                     {isCurrent && (
-                      <span className="absolute -top-2.5 right-3 bg-[#00c0f3] text-slate-950 font-black text-[9px] uppercase px-2 py-0.5 rounded-full shadow-xs">
+                      <span className="absolute -top-2.5 right-3 bg-[#305eff] text-white font-extrabold text-[9px] uppercase px-2.5 py-0.5 rounded-full shadow-2xs">
                         Active Node
                       </span>
                     )}
 
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-[10px] font-mono text-slate-400">
+                        <span className="text-[10px] font-mono text-slate-400 font-bold">
                           NODE 0{idx + 1}
                         </span>
-                        <span className="text-[10px] font-mono text-[#38bdf8] font-bold">
+                        <span className="text-[10px] font-mono text-[#305eff] font-bold">
                           {step.latency}
                         </span>
                       </div>
-                      <h4 className="text-sm font-bold text-white leading-tight">
+                      <h4 className="text-sm font-bold text-slate-900 leading-tight">
                         {step.name}
                       </h4>
-                      <div className="mt-1 text-[11px] font-semibold text-[#38bdf8]">
+                      <div className="mt-1 text-[11px] font-semibold text-[#305eff]">
                         {step.tech}
                       </div>
                     </div>
 
-                    <p className="mt-3 text-[10px] text-slate-300 leading-tight">
+                    <p className="mt-3 text-[10px] text-slate-600 leading-tight">
                       {step.desc}
                     </p>
-                  </div>
+                  </motion.div>
 
-                  {/* Horizontal Connecting Arrow / Laser Indicator for Desktop */}
+                  {/* Horizontal Connecting Arrow / Indicator for Desktop */}
                   {idx < 4 && (
-                    <div className="hidden md:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10 text-sky-400 pointer-events-none">
+                    <div className="hidden md:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10 text-[#305eff] pointer-events-none">
                       <ArrowRight className="h-4 w-4" />
                     </div>
                   )}
@@ -295,23 +296,26 @@ export default function InteractiveAutomationStudio() {
           </div>
 
           {/* Bottom Execution Telemetry: Real-time Terminal Log & Performance Gauges */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-6 border-t border-white/10">
-            {/* Live Terminal Log (Left Col) */}
-            <div className="lg:col-span-8 rounded-2xl bg-black/60 border border-white/10 p-4 font-mono text-xs text-slate-300 shadow-inner">
-              <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-3 text-[11px] text-slate-400">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-6 border-t border-slate-100">
+            {/* Live Developer Terminal Log */}
+            <div className="lg:col-span-8 rounded-2xl bg-slate-950 border border-slate-800 p-4 font-mono text-xs text-slate-300 shadow-inner">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-3 text-[11px] text-slate-400">
                 <div className="flex items-center gap-2">
-                  <Terminal className="h-3.5 w-3.5 text-[#38bdf8]" />
+                  <Terminal className="h-3.5 w-3.5 text-[#305eff]" />
                   <span>LIVE EXECUTION STREAM (JSON-RPC)</span>
                 </div>
-                <span className="text-emerald-400 font-bold">STREAM ACTIVE</span>
+                <span className="text-emerald-400 font-bold flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  STREAM ACTIVE
+                </span>
               </div>
 
-              <div className="space-y-2 overflow-x-auto text-[11px] leading-relaxed">
+              <div className="space-y-2 overflow-x-auto no-scrollbar text-[10px] sm:text-[11px] leading-relaxed font-mono">
                 {scenario.logs.map((log, lIdx) => (
                   <div
                     key={lIdx}
-                    className={`transition-colors ${
-                      lIdx === activeStep ? "text-[#38bdf8] font-bold bg-white/5 px-2 py-0.5 rounded" : "text-slate-400"
+                    className={`p-1 rounded transition-colors whitespace-pre-wrap sm:whitespace-normal break-words ${
+                      lIdx === activeStep ? "text-cyan-300 font-bold bg-white/10 px-2 py-0.5" : "text-slate-400"
                     }`}
                   >
                     {log}
@@ -320,37 +324,39 @@ export default function InteractiveAutomationStudio() {
               </div>
             </div>
 
-            {/* Performance Gauges (Right Col) */}
+            {/* Performance Gauges */}
             <div className="lg:col-span-4 flex flex-col justify-between gap-3">
               <div className="grid grid-cols-2 gap-3 h-full">
-                <div className="rounded-xl border border-white/10 bg-white/5 p-3 flex flex-col justify-between">
-                  <span className="text-[10px] font-mono uppercase text-slate-400">End-to-End Speed</span>
-                  <div className="text-2xl font-black text-white font-mono">{scenario.metrics.speed}</div>
-                  <span className="text-[9px] text-emerald-400">⚡ 94% faster than human</span>
+                <div className="rounded-2xl border border-slate-200/90 bg-slate-50/70 p-3.5 flex flex-col justify-between hover:border-[#305eff]/40 transition-all">
+                  <span className="text-[10px] font-mono uppercase text-slate-500 font-bold">End-to-End Speed</span>
+                  <div className="text-2xl font-black text-slate-900 font-mono">{scenario.metrics.speed}</div>
+                  <span className="text-[9px] text-emerald-600 font-semibold">⚡ 94% faster than human</span>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/5 p-3 flex flex-col justify-between">
-                  <span className="text-[10px] font-mono uppercase text-slate-400">Intent Precision</span>
-                  <div className="text-2xl font-black text-[#38bdf8] font-mono">{scenario.metrics.accuracy}</div>
-                  <span className="text-[9px] text-slate-400">Zero-hallucination</span>
+                <div className="rounded-2xl border border-slate-200/90 bg-slate-50/70 p-3.5 flex flex-col justify-between hover:border-[#305eff]/40 transition-all">
+                  <span className="text-[10px] font-mono uppercase text-slate-500 font-bold">Intent Precision</span>
+                  <div className="text-2xl font-black text-[#305eff] font-mono">{scenario.metrics.accuracy}</div>
+                  <span className="text-[9px] text-slate-500">Zero-hallucination</span>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/5 p-3 flex flex-col justify-between">
-                  <span className="text-[10px] font-mono uppercase text-slate-400">Client Cost Saved</span>
-                  <div className="text-xl sm:text-2xl font-black text-emerald-400 font-mono">{scenario.metrics.monthlySavings}</div>
-                  <span className="text-[9px] text-slate-400">Direct labor offset</span>
+                <div className="rounded-2xl border border-slate-200/90 bg-slate-50/70 p-3.5 flex flex-col justify-between hover:border-[#305eff]/40 transition-all">
+                  <span className="text-[10px] font-mono uppercase text-slate-500 font-bold">Client Cost Saved</span>
+                  <div className="text-xl sm:text-2xl font-black text-emerald-600 font-mono">{scenario.metrics.monthlySavings}</div>
+                  <span className="text-[9px] text-slate-500">Direct labor offset</span>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/5 p-3 flex flex-col justify-between">
-                  <span className="text-[10px] font-mono uppercase text-slate-400">Throughput Scale</span>
-                  <div className="text-xl sm:text-2xl font-black text-white font-mono">{scenario.metrics.eventsPerHour}</div>
-                  <span className="text-[9px] text-sky-300">Auto-scaling VPS</span>
+                <div className="rounded-2xl border border-slate-200/90 bg-slate-50/70 p-3.5 flex flex-col justify-between hover:border-[#305eff]/40 transition-all">
+                  <span className="text-[10px] font-mono uppercase text-slate-500 font-bold">Throughput Scale</span>
+                  <div className="text-xl sm:text-2xl font-black text-slate-900 font-mono">{scenario.metrics.eventsPerHour}</div>
+                  <span className="text-[9px] text-[#305eff] font-medium">Auto-scaling VPS</span>
                 </div>
               </div>
 
               {/* Consultation Trigger Button */}
-              <button
+              <motion.button
                 type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() =>
                   openLeadModal({
                     title: `Deploy: ${scenario.title}`,
@@ -358,11 +364,11 @@ export default function InteractiveAutomationStudio() {
                     defaultNote: `Interested in deploying this architecture pipeline for my business.`,
                   })
                 }
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#0066cc] hover:bg-[#0052a3] py-3 text-xs font-bold text-white shadow-lg shadow-[#0066cc]/30 transition-all cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#305eff] hover:bg-[#1f47e0] py-3 text-xs font-bold text-white shadow-md shadow-[#305eff]/20 transition-all cursor-pointer"
               >
                 <span>Deploy This Architecture on Your Cloud</span>
                 <ArrowRight className="h-3.5 w-3.5" />
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>

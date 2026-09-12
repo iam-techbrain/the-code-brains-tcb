@@ -76,7 +76,7 @@ export default function WorldwidePresenceSection() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#d0ddfd] bg-[#eff4ff] px-4 py-1.5 text-xs font-bold text-[#305eff] shadow-xs">
-            <Globe className="h-4 w-4 text-[#305eff] animate-pulse" />
+            <Globe className="h-4 w-4 text-[#305eff]" />
             <span>GLOBAL FOOTPRINT &amp; ENTERPRISE COMPLIANCE</span>
           </div>
 

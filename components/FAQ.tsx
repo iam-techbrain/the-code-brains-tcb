@@ -69,7 +69,7 @@ export default function FAQ() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-center max-w-3xl mx-auto mb-14 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-semibold text-[#0066cc] uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-semibold text-[#305eff] uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             Enterprise Architecture FAQ
           </div>
@@ -97,15 +97,15 @@ export default function FAQ() {
                   aria-expanded={isOpen}
                 >
                   <div className="pr-6 flex-1">
-                    <span className="inline-block text-[11px] font-bold uppercase tracking-widest text-[#0066cc] mb-1.5">
+                    <span className="inline-block text-[11px] font-bold uppercase tracking-widest text-[#305eff] mb-1.5">
                       {faq.category}
                     </span>
-                    <h3 className={`text-base sm:text-lg font-semibold transition-colors ${isOpen ? "text-[#0066cc]" : "text-slate-900 group-hover:text-[#0066cc]"}`}>
+                    <h3 className={`text-base sm:text-lg font-semibold transition-colors ${isOpen ? "text-[#305eff]" : "text-slate-900 group-hover:text-[#305eff]"}`}>
                       {faq.question}
                     </h3>
                   </div>
 
-                  <div className={`shrink-0 flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-200 ${isOpen ? "bg-[#0066cc] text-white border-[#0066cc]" : "border-slate-300 text-slate-500 group-hover:border-[#0066cc] group-hover:text-[#0066cc]"}`}>
+                  <div className={`shrink-0 flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-200 ${isOpen ? "bg-[#305eff] text-white border-[#305eff]" : "border-slate-300 text-slate-500 group-hover:border-[#305eff] group-hover:text-[#305eff]"}`}>
                     {isOpen ? (
                       <Minus className="w-4 h-4 transition-transform" />
                     ) : (
@@ -141,11 +141,11 @@ export default function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-14 p-6 sm:p-8 rounded-2xl bg-[#071f34] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl shadow-slate-900/10"
+          className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-blue-50/80 via-white to-sky-50/50 border border-slate-200/90 text-slate-900 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md"
         >
           <div>
-            <h4 className="text-lg font-bold text-white">Have a proprietary architecture or custom security requirement?</h4>
-            <p className="text-sm text-slate-300 mt-1 max-w-xl">
+            <h4 className="text-lg font-bold text-slate-900">Have a proprietary architecture or custom security requirement?</h4>
+            <p className="text-sm text-slate-600 mt-1 max-w-xl">
               Our enterprise solution architects evaluate your existing infrastructure, data residency constraints, and API topologies under strict NDA.
             </p>
           </div>
@@ -158,9 +158,9 @@ export default function FAQ() {
                 defaultNote: "Inquiring about custom enterprise AI orchestration and compliance requirements.",
               })
             }
-            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0066cc] hover:bg-[#0052a3] text-white text-sm font-semibold transition-all shadow-md shadow-blue-500/20 active:scale-95 cursor-pointer"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#305eff] hover:bg-[#1f47e0] text-white text-sm font-bold transition-all shadow-md shadow-[#305eff]/20 active:scale-95 cursor-pointer"
           >
-            Consult a Lead Architect
+            <span>Consult a Lead Architect</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </motion.div>

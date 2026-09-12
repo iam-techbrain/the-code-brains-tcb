@@ -28,7 +28,7 @@ export default function VoiceAssistant() {
 
   const [isListening, setIsListening] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
-  const [selectedLang, setSelectedLang] = useState<"hi-IN" | "en-IN">("hi-IN");
+  const [selectedLang] = useState<string>("en-US");
   const [transcript, setTranscript] = useState("");
   const [textInput, setTextInput] = useState("");
   const [feedbackMsg, setFeedbackMsg] = useState("");
@@ -54,8 +54,8 @@ export default function VoiceAssistant() {
     }
   }, []);
 
-  // Pick Indian voice
-  const getIndianVoice = (): SpeechSynthesisVoice | null => {
+  // Pick natural English voice
+  const getEnglishVoice = (): SpeechSynthesisVoice | null => {
     const voices = availableVoicesRef.current.length > 0
       ? availableVoicesRef.current
       : typeof window !== "undefined" && "speechSynthesis" in window
@@ -64,27 +64,20 @@ export default function VoiceAssistant() {
 
     if (!voices || voices.length === 0) return null;
 
-    if (selectedLang === "hi-IN") {
-      const hiVoice = voices.find(
-        (v) => v.lang.startsWith("hi") || v.lang === "hi-IN" || v.name.toLowerCase().includes("hindi")
-      );
-      if (hiVoice) return hiVoice;
-    }
-
-    const indianVoice = voices.find(
+    const englishVoice = voices.find(
       (v) =>
-        v.lang === "en-IN" ||
-        v.name.toLowerCase().includes("india") ||
-        v.name.toLowerCase().includes("heera") ||
-        v.name.toLowerCase().includes("neerja") ||
-        v.name.toLowerCase().includes("ravi") ||
-        v.name.toLowerCase().includes("prabhat")
+        (v.lang === "en-US" || v.lang === "en-GB" || v.lang.startsWith("en")) &&
+        (v.name.toLowerCase().includes("natural") ||
+         v.name.toLowerCase().includes("google") ||
+         v.name.toLowerCase().includes("samantha") ||
+         v.name.toLowerCase().includes("daniel") ||
+         v.name.toLowerCase().includes("karen"))
     );
 
-    return indianVoice || voices.find((v) => v.default) || voices[0];
+    return englishVoice || voices.find((v) => v.lang.startsWith("en")) || voices.find((v) => v.default) || voices[0];
   };
 
-  // Initialize SpeechRecognition with dynamic language
+  // Initialize SpeechRecognition with English language
   useEffect(() => {
     const SpeechRecognitionAPI =
       typeof window !== "undefined" &&
@@ -98,7 +91,7 @@ export default function VoiceAssistant() {
     const recognition = new SpeechRecognitionAPI();
     recognition.continuous = false; // single phrase recognition for high accuracy
     recognition.interimResults = false;
-    recognition.lang = selectedLang;
+    recognition.lang = "en-US";
 
     recognition.onresult = (event: any) => {
       const resultText = event.results[0]?.[0]?.transcript;
@@ -133,7 +126,7 @@ export default function VoiceAssistant() {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
-      const voice = getIndianVoice();
+      const voice = getEnglishVoice();
       if (voice) {
         utterance.voice = voice;
       }
@@ -196,11 +189,11 @@ export default function VoiceAssistant() {
         const data = await res.json();
         executeAction(data.action, data.actionLabel, data.reply);
       } else {
-        speakResponse("Maaf kijiye, connection me thodi rukawat aayi. Kripya dobara try karein.");
+        speakResponse("I apologize, there was a temporary connection issue. Please try speaking again.");
       }
     } catch (err) {
       console.error("Gemini query error:", err);
-      speakResponse("Kripya dobara bolein ya type karein.");
+      speakResponse("Please speak or type your question again in English.");
     } finally {
       setIsThinking(false);
       setTimeout(() => {
@@ -259,38 +252,17 @@ export default function VoiceAssistant() {
                     Gemini Live
                   </span>
                 </h4>
-                <div className="flex items-center gap-1.5 text-[10px] font-semibold text-brand-600">
-                  <span className="h-2 w-2 rounded-full bg-brand-500 animate-ping" />
-                  Hindi &amp; English Voice Engine
+                <div className="flex items-center gap-1.5 text-[10px] font-semibold text-[#305eff]">
+                  <span className="h-2 w-2 rounded-full bg-[#305eff]" />
+                  English Voice Engine
                 </div>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
-              {/* Language Switcher Pill */}
-              <div className="flex items-center rounded-full border border-zinc-200 bg-zinc-100 p-0.5 text-[10px] font-bold">
-                <button
-                  type="button"
-                  onClick={() => setSelectedLang("hi-IN")}
-                  className={`rounded-full px-2 py-0.5 transition-all ${
-                    selectedLang === "hi-IN"
-                      ? "bg-brand-500 text-white shadow-xs"
-                      : "text-zinc-600 hover:text-zinc-900"
-                  }`}
-                >
-                  🇮🇳 हिन्दी
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setSelectedLang("en-IN")}
-                  className={`rounded-full px-2 py-0.5 transition-all ${
-                    selectedLang === "en-IN"
-                      ? "bg-brand-500 text-white shadow-xs"
-                      : "text-zinc-600 hover:text-zinc-900"
-                  }`}
-                >
-                  🇬🇧 Eng
-                </button>
+              {/* Language Pill */}
+              <div className="flex items-center gap-1 rounded-full border border-blue-200 bg-blue-50 px-2.5 py-0.5 text-[10px] font-bold text-[#305eff]">
+                <span>English Only</span>
               </div>
 
               <button
@@ -315,33 +287,33 @@ export default function VoiceAssistant() {
           )}
 
           {/* Mic Waveform & Status */}
-          <div className="my-3 flex items-center justify-between rounded-2xl border border-brand-100 bg-brand-50/60 p-3">
+          <div className="my-3 flex items-center justify-between rounded-2xl border border-blue-100 bg-blue-50/50 p-3">
             <div className="flex items-center gap-2.5">
               <button
                 type="button"
                 onClick={toggleListening}
                 className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-xs transition-all ${
                   isListening
-                    ? "bg-red-500 text-white animate-pulse"
-                    : "bg-brand-500 text-white hover:bg-brand-600"
+                    ? "bg-red-500 text-white"
+                    : "bg-[#305eff] text-white hover:bg-[#1f47e0]"
                 }`}
               >
                 {isListening ? <Mic className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
               </button>
               <div className="text-xs">
                 <div className="font-bold text-slate-900">
-                  {isListening ? "Listening (बोलिए...)" : "Tap Mic to Speak"}
+                  {isListening ? "Listening... (Speak in English)" : "Tap Mic to Speak"}
                 </div>
                 <div className="text-[10px] text-slate-500">
-                  Lang: {selectedLang === "hi-IN" ? "Hindi (हिन्दी / हिंग्लिश)" : "English"}
+                  Language: English
                 </div>
               </div>
             </div>
 
             {isThinking && (
-              <div className="flex items-center gap-1.5 text-[11px] font-bold text-brand-700">
-                <Loader2 className="h-3.5 w-3.5 animate-spin text-brand-600" />
-                Ai is thinking...
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#305eff]">
+                <Loader2 className="h-3.5 w-3.5 animate-spin text-[#305eff]" />
+                AI is thinking...
               </div>
             )}
           </div>
@@ -355,9 +327,7 @@ export default function VoiceAssistant() {
             )}
             <p className="font-bold text-slate-900 leading-snug">
               {feedbackMsg ||
-                (selectedLang === "hi-IN"
-                  ? 'Say: "AI Agents", "How it works?", or "Book Consultation"'
-                  : 'Say: "Show AI Agents", "How it works?", or "Book Consultation"')}
+                'Say: "Show AI Agents", "How it works?", or "Book Consultation"'}
             </p>
           </div>
 
@@ -367,8 +337,8 @@ export default function VoiceAssistant() {
               type="text"
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
-              placeholder={selectedLang === "hi-IN" ? "Ask anything or type here..." : "Ask anything or type here..."}
-              className="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:border-brand-500 focus:outline-hidden"
+              placeholder="Ask anything in English or type here..."
+              className="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:border-[#305eff] focus:outline-hidden"
             />
             <button
               type="submit"
@@ -412,14 +382,14 @@ export default function VoiceAssistant() {
         aria-label="TCB Voice AI Assistant"
         className={`group relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border shadow-xl transition-all duration-300 ${
           isListening
-            ? "border-red-400 bg-red-500 text-white shadow-red-500/40 ring-4 ring-red-500/20 scale-110 animate-pulse"
+            ? "border-red-400 bg-red-500 text-white shadow-red-500/40 ring-4 ring-red-500/20 scale-105"
             : "border-[#305eff] bg-[#305eff] text-white hover:bg-[#1f47e0] hover:scale-105 active:scale-95 shadow-lg shadow-[#305eff]/30"
         }`}
       >
         {isListening ? (
           <div className="relative">
             <Mic className="h-5 w-5 sm:h-6 sm:w-6" />
-            <span className="absolute -top-1 -right-1 h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-white animate-ping" />
+            <span className="absolute -top-1 -right-1 h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-white" />
           </div>
         ) : (
           <Mic className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -427,7 +397,7 @@ export default function VoiceAssistant() {
 
         {/* Floating Tooltip Pill */}
         <span className="absolute right-full mr-3 hidden whitespace-nowrap rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-800 shadow-md sm:group-hover:block">
-          🎙️ Voice AI (Hindi &amp; English)
+          🎙️ Voice AI (English)
         </span>
       </button>
     </div>

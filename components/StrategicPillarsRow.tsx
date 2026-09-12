@@ -44,8 +44,8 @@ export default function StrategicPillarsRow() {
           </p>
         </motion.div>
 
-        {/* 3 Columns Layout with Crisp Blue Icons (Matches Reference Image) */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 3 Columns Layout with Crisp Blue Icons in Subtle Bordered Cards */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {STRATEGIC_PILLARS.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
@@ -55,13 +55,13 @@ export default function StrategicPillarsRow() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: idx * 0.12, ease: "easeOut" }}
-                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="flex flex-col items-start group"
+                whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
+                className="flex flex-col items-start group rounded-3xl border border-slate-200/90 bg-white p-8 shadow-xs hover:border-[#305eff]/40 hover:shadow-xl transition-all"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50/80 text-[#0066cc] mb-5 transition-transform duration-200 group-hover:scale-110 group-hover:bg-[#0066cc] group-hover:text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-[#305eff] mb-6 transition-all duration-200 group-hover:scale-105 group-hover:bg-[#305eff] group-hover:text-white shadow-2xs">
                   <Icon className="h-6 w-6 stroke-[1.75]" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#305eff] transition-colors">
                   {pillar.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">

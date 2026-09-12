@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { Star, Building2, CheckCircle2, Sparkles } from "lucide-react";
 
 type Review = {
@@ -114,11 +115,16 @@ export default function Testimonials() {
         </div>
 
         {/* Reviews Grid */}
-        <div className="mt-8 sm:mt-12 grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-2">
-          {REVIEWS.map((review) => (
-            <div
+        <div className="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+          {REVIEWS.map((review, idx) => (
+            <motion.div
               key={review.id}
-              className="group relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[#305eff] hover:shadow-xl hover:shadow-[#305eff]/10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.45, delay: idx * 0.08, ease: "easeOut" }}
+              whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
+              className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-xs hover:border-[#305eff]/40 hover:shadow-xl transition-all"
             >
               <div>
                 {/* Rating Stars & Impact Badge */}
@@ -131,41 +137,41 @@ export default function Testimonials() {
                       />
                     ))}
                   </div>
-                  <span className="inline-flex items-center gap-1 rounded-md border border-[#d0ddfd] bg-[#eff4ff] px-2.5 py-0.5 text-[11px] font-bold text-[#1f47e0]">
-                    <CheckCircle2 className="h-3 w-3 text-[#305eff]" />
+                  <span className="inline-flex items-center gap-1 rounded-full border border-blue-200 bg-blue-50 px-3 py-0.5 text-[11px] font-bold text-[#305eff]">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-[#305eff]" />
                     {review.impactMetric}
                   </span>
                 </div>
 
                 {/* Quote Text */}
-                <p className="mt-5 text-sm leading-relaxed text-zinc-700 italic">
+                <p className="mt-5 text-sm leading-relaxed text-slate-700 italic font-normal">
                   &ldquo;{review.quote}&rdquo;
                 </p>
               </div>
 
               {/* Author & Store Info Footer */}
-              <div className="mt-8 flex items-center justify-between border-t border-zinc-100 pt-4">
+              <div className="mt-8 flex items-center justify-between border-t border-slate-100 pt-4">
                 <div className="flex items-center gap-3">
                   <div
-                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-bold text-sm ${review.avatarBg}`}
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl font-bold text-sm ${review.avatarBg}`}
                   >
                     {review.avatarText}
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-zinc-900">
+                    <h4 className="text-sm font-bold text-slate-900">
                       {review.name}
                     </h4>
-                    <div className="flex items-center gap-1.5 text-xs text-zinc-500">
-                      <Building2 className="h-3 w-3 text-zinc-400" />
+                    <div className="flex items-center gap-1.5 text-xs text-slate-500">
+                      <Building2 className="h-3.5 w-3.5 text-slate-400" />
                       <span>{review.storeName}</span>
                     </div>
                   </div>
                 </div>
-                <span className="text-[11px] font-medium text-zinc-400">
+                <span className="text-[11px] font-medium text-slate-400">
                   {review.location}
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

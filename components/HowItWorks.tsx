@@ -114,9 +114,9 @@ export default function HowItWorks() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#0066cc]"
+            className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#305eff]"
           >
-            <Sparkles className="h-3.5 w-3.5 text-[#0066cc]" />
+            <Sparkles className="h-3.5 w-3.5 text-[#305eff]" />
             Proven 5-Step Delivery Lifecycle
           </motion.div>
           <motion.h2
@@ -163,15 +163,18 @@ export default function HowItWorks() {
                 }`}
               >
                 {/* Big Step Number Badge in Center */}
-                <div className="absolute left-8 sm:left-1/2 -translate-x-1/2 z-10 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0066cc] to-[#004d99] text-white font-display font-black text-2xl sm:text-3xl shadow-lg shadow-[#0066cc]/30 border-2 border-white">
+                <div className="absolute left-8 sm:left-1/2 -translate-x-1/2 z-10 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#305eff] to-[#1f47e0] text-white font-display font-black text-2xl sm:text-3xl shadow-lg shadow-[#305eff]/30 border-2 border-white">
                   {step.num}
                 </div>
 
                 {/* Content Card (Takes half width on desktop) */}
                 <div className="w-full sm:w-[calc(50%-3rem)] pl-16 sm:pl-0">
-                  <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-xs hover:border-[#0066cc]/40 hover:shadow-xl transition-all">
+                  <motion.div
+                    whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
+                    className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-xs hover:border-[#305eff]/40 hover:shadow-xl transition-all"
+                  >
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#0066cc] bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#305eff] bg-blue-50 px-3 py-0.5 rounded-full border border-blue-200">
                         {step.badge}
                       </span>
                       <span className="text-xs font-mono font-bold text-slate-500">
@@ -193,13 +196,13 @@ export default function HowItWorks() {
                         Key Deliverables:
                       </span>
                       {step.deliverables.map((item, dIdx) => (
-                        <div key={dIdx} className="flex items-start gap-2 text-xs text-slate-700">
+                        <div key={dIdx} className="flex items-start gap-2 text-xs text-slate-700 font-medium">
                           <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </div>
                       ))}
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Empty spacer for opposite side on desktop */}
@@ -211,8 +214,10 @@ export default function HowItWorks() {
 
         {/* Roadmap Final CTA */}
         <div className="mt-16 text-center">
-          <button
+          <motion.button
             type="button"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             onClick={() =>
               openLeadModal({
                 title: "Start Your AI Automation Roadmap",
@@ -220,11 +225,11 @@ export default function HowItWorks() {
                 defaultNote: "Ready to begin Phase 1: Strategic Architecture & Discovery Call.",
               })
             }
-            className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] hover:bg-[#0052a3] px-8 py-3.5 text-xs sm:text-sm font-bold text-white shadow-md shadow-[#0066cc]/25 transition-all hover:shadow-lg active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-full bg-[#305eff] hover:bg-[#1f47e0] px-8 py-3.5 text-xs sm:text-sm font-bold text-white shadow-md shadow-[#305eff]/25 transition-all hover:shadow-lg active:scale-95 cursor-pointer"
           >
             <span>Begin Phase 01: Book Discovery Call</span>
             <ArrowRight className="h-4 w-4" />
-          </button>
+          </motion.button>
         </div>
       </div>
     </section>

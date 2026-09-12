@@ -30,84 +30,102 @@ type AIServiceItem = {
 
 const CORE_SERVICES: AIServiceItem[] = [
   {
-    id: "sales-lead-gen",
+    id: "whatsapp-automation",
     number: "01",
-    category: "Autonomous B2B Growth",
-    badge: "High ROI",
-    title: "AI-Powered Sales & Lead Generation Agents",
+    category: "Customer Communication & CRM",
+    badge: "Enterprise Messaging API",
+    title: "WhatsApp Business Automation & CRM Workflows",
     shortDescription:
-      "Automate your B2B prospecting. Our custom AI agents scrape target leads, analyze their business needs, and send hyper-personalized cold emails or LinkedIn messages to book meetings on autopilot.",
+      "Automate your customer conversations on WhatsApp. Instant automated replies, lead capture, 24/7 client triage, catalog inquiries, and direct CRM sync.",
     keyBenefits: [
-      "24/7 automated lead outreach.",
-      "Higher response rates through personalized AI messaging.",
-      "Saves hundreds of hours of manual prospecting time.",
+      "Instant response time on WhatsApp for zero missed customer inquiries.",
+      "Automated lead qualification and live notification alerts.",
+      "Seamless sync with Google Sheets, CRMs, and payment confirmations.",
     ],
-    techStack: "Apollo API + GPT-4o + Lemlist / Smartlead",
-    icon: TrendingUp,
-  },
-  {
-    id: "document-workflow",
-    number: "02",
-    category: "Operations & Back-Office",
-    badge: "Zero-Touch",
-    title: "AI Document & Workflow Automation",
-    shortDescription:
-      "Eliminate manual data entry. We build smart workflows that automatically extract data from PDFs, invoices, and receipts, syncing them instantly into your CRM (like HubSpot) or spreadsheets.",
-    keyBenefits: [
-      "100% error-free data extraction.",
-      "Instant processing of invoices and reports.",
-      "Seamless integration with tools like HubSpot, Google Sheets, and Slack.",
-    ],
-    techStack: "AWS Textract OCR + n8n Pipelines + HubSpot API",
-    icon: FileText,
-  },
-  {
-    id: "support-chatbots",
-    number: "03",
-    category: "Customer Experience",
-    badge: "24/7/365",
-    title: "24/7 Intelligent Customer Support Bots",
-    shortDescription:
-      "Give your customers instant answers. We integrate custom AI chatbots trained specifically on your company data, website FAQs, and documents to resolve queries instantly.",
-    keyBenefits: [
-      "Available 24/7/365 for global customers.",
-      "Reduces customer support operational costs.",
-      "Quick setup using secure website iframe integrations.",
-    ],
-    techStack: "Pinecone Vector RAG + Claude 3.5 + Secure Iframe",
+    techStack: "WhatsApp Cloud API + Make.com / n8n + Webhooks",
     icon: MessageSquare,
-  },
-  {
-    id: "content-pipelines",
-    number: "04",
-    category: "Media & Brand Scaling",
-    badge: "Viral Growth",
-    title: "AI Content Pipelines & Repurposing",
-    shortDescription:
-      "Turn one piece of content into a month’s worth of marketing. Our AI system converts long-form videos or podcasts into viral shorts, blogs, and social media threads automatically.",
-    keyBenefits: [
-      "Maximize social media presence with zero extra effort.",
-      "Automatic scheduling and multi-platform posting.",
-      "Rapid content scaling for brands and creators.",
-    ],
-    techStack: "Whisper AI + FFmpeg + Multi-Platform API",
-    icon: Repeat,
+    featured: true,
   },
   {
     id: "voice-ai",
-    number: "05",
+    number: "02",
     category: "Telephony & Conversational AI",
-    badge: "Sub-350ms Latency",
-    title: "Real-Time Voice AI Agents",
+    badge: "Sub-350ms Telephony",
+    title: "Real-Time Voice AI Calling & Reception Bots",
     shortDescription:
-      "Human-sounding AI voice assistants that handle inbound and outbound phone calls, qualify leads, and schedule appointments seamlessly.",
+      "Natural-sounding AI voice agents that handle inbound client phone calls, answer customer questions, qualify leads, and book calendar appointments 24/7.",
     keyBenefits: [
-      "Never miss a customer call again.",
-      "Natural, real-time conversational voice experience.",
-      "Ideal for local businesses, clinics, and service providers.",
+      "Answers phone calls instantly without human operators on standby.",
+      "Low-latency natural conversational voice flow on live telephone lines.",
+      "Automatic calendar booking & lead record update after every call.",
     ],
-    techStack: "Twilio SIP + Deepgram + ElevenLabs Turbo",
+    techStack: "Twilio SIP + ElevenLabs Turbo + Deepgram + Python",
     icon: PhoneCall,
+    featured: true,
+  },
+  {
+    id: "custom-ai-agents",
+    number: "03",
+    category: "Autonomous Intelligence",
+    badge: "Autonomous Reasoning",
+    title: "Custom Autonomous AI Agents",
+    shortDescription:
+      "Custom-engineered autonomous agents tailored to your business operations. Solves multi-step research, automated decision logic, scraping, and lead processing.",
+    keyBenefits: [
+      "Tailored 100% to your specific business logic and workflows.",
+      "Autonomous multi-step execution with deterministic verification guardrails.",
+      "Full source code ownership with zero recurring agency markups.",
+    ],
+    techStack: "Python + LangChain / LangGraph + Claude 3.5 + OpenAI",
+    icon: TrendingUp,
+  },
+  {
+    id: "sheets-sales-alerts",
+    number: "04",
+    category: "Data Sync & Business Intelligence",
+    badge: "Live Data Intelligence",
+    title: "Platform & Google Sheets Sync with Sales Analytics & Alerts",
+    shortDescription:
+      "Connect disparate websites and platforms into automated Google Sheets. Live sales tracking, automated daily revenue analysis, and instant Slack/WhatsApp alerts.",
+    keyBenefits: [
+      "Real-time bi-directional sync between your platform and Google Sheets.",
+      "Automated sales trend analysis and threshold-based alert triggers.",
+      "Eliminates hours of manual bookkeeping, data re-entry, and error checking.",
+    ],
+    techStack: "Google Sheets API + Custom Webhooks + Python + Telegram/Slack Alert API",
+    icon: FileText,
+  },
+  {
+    id: "social-media-ads",
+    number: "05",
+    category: "Marketing Automation",
+    badge: "Unified Control Hub",
+    title: "Unified Social Media & Ads Management Automation",
+    shortDescription:
+      "One centralized control center to manage, schedule, and automate posts, creatives, and ad campaigns across multiple channels without logging into separate accounts.",
+    keyBenefits: [
+      "Schedule and broadcast content across multiple social platforms simultaneously.",
+      "Centralized ad monitoring and campaign status triggers from one dashboard.",
+      "Saves dozens of hours weekly on multi-channel content operations.",
+    ],
+    techStack: "Meta Graph API + Multi-Platform REST APIs + Make.com Hub",
+    icon: Repeat,
+  },
+  {
+    id: "zapier-make-complex",
+    number: "06",
+    category: "Enterprise Integration",
+    badge: "Complex Workflow Specialist",
+    title: "Complex Zapier & Make (Integromat) Workflow Orchestration",
+    shortDescription:
+      "Specialized in solving high-complexity automation challenges. When standard native integrations break or fall short, we build robust custom logic pipelines.",
+    keyBenefits: [
+      "Multi-branch conditional routing with automatic error handling and retries.",
+      "Transforms messy payloads and disparate data models cleanly across apps.",
+      "Production-ready pipelines that run seamlessly behind the scenes 24/7.",
+    ],
+    techStack: "Zapier Webhooks + Make.com (Integromat) + Custom API Scripts",
+    icon: Zap,
     featured: true,
   },
 ];
@@ -128,9 +146,9 @@ export default function AIAgentsListSection() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#0066cc]"
+            className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#305eff]"
           >
-            <Sparkles className="h-3.5 w-3.5 text-[#0066cc]" />
+            <Sparkles className="h-3.5 w-3.5 text-[#305eff]" />
             Enterprise Services Catalog
           </motion.div>
           <motion.h2
@@ -167,34 +185,34 @@ export default function AIAgentsListSection() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
                 whileHover={{ y: -6, transition: { duration: 0.25 } }}
-                className={`group relative flex flex-col justify-between rounded-3xl p-7 shadow-md transition-all ${
+                className={`group relative flex flex-col justify-between rounded-3xl p-7 shadow-xs hover:shadow-xl transition-all ${
                   isFeatured
-                    ? "border-2 border-[#0066cc] bg-gradient-to-b from-blue-50/50 via-white to-white md:col-span-2 lg:col-span-1 shadow-blue-500/10"
-                    : "border border-slate-200/90 bg-white hover:border-[#0066cc]/40 hover:shadow-xl"
+                    ? "border border-[#305eff]/50 bg-gradient-to-b from-blue-50/40 via-white to-white md:col-span-2 lg:col-span-1 shadow-blue-500/5 hover:border-[#305eff]"
+                    : "border border-slate-200/90 bg-white hover:border-[#305eff]/40"
                 }`}
               >
                 <div>
                   {/* Top Bar: Service Number + Category + Badge */}
                   <div className="flex items-center justify-between gap-2 mb-4">
                     <div className="flex items-center gap-2">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0066cc] group-hover:bg-[#0066cc] group-hover:text-white transition-colors duration-200">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#305eff] group-hover:bg-[#305eff] group-hover:text-white transition-colors duration-200">
                         <Icon className="h-5 w-5" />
                       </span>
                       <span className="text-xs font-mono font-bold text-slate-400">
                         SERVICE #{service.number}
                       </span>
                     </div>
-                    <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-[10px] font-bold text-[#0066cc] border border-blue-200">
+                    <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-[10px] font-bold text-[#305eff] border border-blue-200">
                       {service.badge}
                     </span>
                   </div>
 
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#0066cc] block mb-1">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#305eff] block mb-1">
                     {service.category}
                   </span>
 
                   {/* Website Heading */}
-                  <h3 className="text-xl font-bold text-slate-900 leading-snug group-hover:text-[#0066cc] transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 leading-snug group-hover:text-[#305eff] transition-colors">
                     {service.title}
                   </h3>
 
@@ -233,7 +251,7 @@ export default function AIAgentsListSection() {
                         defaultNote: `Requesting custom architecture review for ${service.title}.`,
                       })
                     }
-                    className="inline-flex shrink-0 items-center gap-1.5 font-bold text-[#0066cc] hover:text-[#0052a3] group/btn cursor-pointer py-1"
+                    className="inline-flex shrink-0 items-center gap-1.5 font-bold text-[#305eff] hover:text-[#1f47e0] group/btn cursor-pointer py-1"
                   >
                     <span>Get Service</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" />

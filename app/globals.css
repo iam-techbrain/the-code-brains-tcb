@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: rgb(0, 102, 204);
-  --primary-hex: #0066cc;
+  --primary-color: rgb(48, 94, 255);
+  --primary-hex: #305eff;
   --heading-color: #061229;
   --body-color: #475569;
-  --page-bg: #f8fafc;
+  --page-bg: #ffffff;
 }
 
 @layer base {
@@ -16,6 +16,7 @@
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
+    background-color: #ffffff;
   }
 
   body {
@@ -23,7 +24,7 @@
     font-feature-settings: "cv11", "ss01";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #f8fafc;
+    background-color: #ffffff;
     color: #061229;
     overflow-x: hidden;
     width: 100%;
@@ -56,11 +57,11 @@
   background: #f8fafc;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0066cc;
+  background: #305eff;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0052a3;
+  background: #1f47e0;
 }
 
 /* World-Class Laser Stream & Pipeline Animations */
@@ -104,15 +105,15 @@
 @keyframes radar-pulse {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(0, 192, 243, 0.7);
+    box-shadow: 0 0 0 0 rgba(48, 94, 255, 0.7);
   }
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 14px rgba(0, 192, 243, 0);
+    box-shadow: 0 0 0 14px rgba(48, 94, 255, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(0, 192, 243, 0);
+    box-shadow: 0 0 0 0 rgba(48, 94, 255, 0);
   }
 }
 
@@ -134,31 +135,60 @@
 }
 
 .electric-gradient-text {
-  background: linear-gradient(90deg, #0066cc 0%, #00c0f3 35%, #2563eb 70%, #0066cc 100%);
-  background-size: 250% auto;
+  background: linear-gradient(90deg, #305eff 0%, #1f47e0 50%, #305eff 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: electric-shimmer 5s ease infinite;
+  animation: electric-shimmer 4s ease infinite;
+  display: inline-block;
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
+}
+
+/* Traveling Shimmer Sweep */
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-150%);
+  }
+  50%, 100% {
+    transform: translateX(150%);
+  }
+}
+
+.animate-shimmer-sweep {
+  animation: shimmer-sweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Smooth Infinite Spin */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-slow 18s linear infinite reverse;
 }
 
 .electric-glow-box {
-  box-shadow: 0 0 25px -3px rgba(0, 192, 243, 0.35), 0 0 10px -2px rgba(0, 102, 204, 0.2);
+  box-shadow: 0 0 25px -3px rgba(48, 94, 255, 0.35), 0 0 10px -2px rgba(48, 94, 255, 0.2);
 }
 
-/* Tech Grid Canvas */
+/* Tech Grid Canvas (Disabled - Pure Clean Background) */
 .tech-grid-bg {
-  background-image: 
-    linear-gradient(to right, rgba(0, 102, 204, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 102, 204, 0.05) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: none;
 }
 
 .tech-grid-dark {
-  background-image: 
-    linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background-image: none;
 }
 
 .demo-float {
@@ -186,11 +216,11 @@
 @keyframes pulse-subtle {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.35);
+    box-shadow: 0 0 0 0 rgba(48, 94, 255, 0.35);
   }
   50% {
     transform: scale(1.03);
-    box-shadow: 0 0 0 12px rgba(0, 102, 204, 0);
+    box-shadow: 0 0 0 12px rgba(48, 94, 255, 0);
   }
 }
 .animate-pulse-subtle {
@@ -218,3 +248,19 @@
 .logo-strip:hover {
   animation-play-state: paused;
 }
+
+@keyframes marquee-worldwide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-worldwide {
+  display: flex;
+  width: max-content;
+  animation: marquee-worldwide 22s linear infinite;
+}
+
+.animate-marquee-worldwide:hover {
+  animation-play-state: paused;
+}
+

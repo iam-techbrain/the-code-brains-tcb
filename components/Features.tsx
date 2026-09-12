@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "motion/react";
 import {
   Cpu,
   PhoneCall,
@@ -103,12 +104,12 @@ export default function Features() {
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-bold text-[#0066cc] shadow-xs">
-            <Cpu className="h-4 w-4 text-[#0066cc]" />
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-bold text-[#305eff] shadow-xs">
+            <Cpu className="h-4 w-4 text-[#305eff]" />
             ENTERPRISE AI CAPABILITIES
           </div>
           <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Autonomous Automation Built for <span className="text-[#0066cc]">Operational Scale</span>
+            Autonomous Automation Built for <span className="text-[#305eff]">Operational Scale</span>
           </h2>
           <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg">
             Every solution is custom-engineered, tested with production data, and deployed directly to your private infrastructure.
@@ -124,8 +125,8 @@ export default function Features() {
               onClick={() => setActiveCategory(cat)}
               className={`shrink-0 whitespace-nowrap rounded-xl px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
                 activeCategory === cat
-                  ? "bg-[#0066cc] text-white shadow-md shadow-[#0066cc]/25 scale-105"
-                  : "bg-slate-100 text-slate-700 hover:bg-blue-50 hover:text-[#0066cc]"
+                  ? "bg-[#305eff] text-white shadow-md shadow-[#305eff]/25 scale-105"
+                  : "bg-slate-100 text-slate-700 hover:bg-blue-50 hover:text-[#305eff]"
               }`}
             >
               {cat}
@@ -138,35 +139,40 @@ export default function Features() {
           {filteredCapabilities.map((cap, idx) => {
             const Icon = cap.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-6 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#0066cc]/40 hover:shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ duration: 0.45, delay: idx * 0.08, ease: "easeOut" }}
+                whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
+                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 shadow-xs hover:border-[#305eff]/40 hover:shadow-xl transition-all"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-[#0066cc] group-hover:bg-[#0066cc] group-hover:text-white transition-colors">
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50 text-[#305eff] border border-blue-100 group-hover:bg-[#305eff] group-hover:text-white transition-colors duration-200">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-bold text-slate-600">
+                    <span className="rounded-full bg-slate-100 px-3 py-0.5 text-[10px] font-bold text-slate-700 border border-slate-200">
                       {cap.tag}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#0066cc] transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#305eff] transition-colors leading-snug">
                     {cap.title}
                   </h3>
 
-                  <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+                  <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-600">
                     {cap.description}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div className="mt-7 pt-4 border-t border-slate-100 flex items-center justify-between">
                   <div>
-                    <span className="text-xl font-black text-slate-900 font-display block">
+                    <span className="text-2xl font-black text-slate-900 font-display block">
                       {cap.stat}
                     </span>
-                    <span className="text-[10px] text-slate-400 font-medium">
+                    <span className="text-[10px] text-slate-500 font-medium">
                       {cap.statLabel}
                     </span>
                   </div>
@@ -181,12 +187,13 @@ export default function Features() {
                         defaultNote: `Inquiring about ${cap.title} implementation.`,
                       })
                     }
-                    className="text-xs font-bold text-[#0066cc] hover:text-[#0052a3] cursor-pointer"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#305eff] hover:text-[#1f47e0] cursor-pointer"
                   >
-                    Deploy →
+                    <span>Deploy</span>
+                    <span>→</span>
                   </button>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
