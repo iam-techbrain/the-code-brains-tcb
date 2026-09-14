@@ -58,6 +58,8 @@ const FOOTER_NAV = [
       { name: "Terms of Service", href: "#" },
       { name: "Data Security Policy", href: "#" },
       { name: "Trust & Compliance Center", href: "#" },
+      { name: "Visual Sitemap", href: "/sitemap" },
+      { name: "XML Sitemap", href: "/sitemap.xml" },
     ],
   },
 ];
