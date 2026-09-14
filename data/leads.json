@@ -1,5 +1,37 @@
 [
   {
+    "id": "LEAD-MTZJ5PFY",
+    "timestamp": "2026-09-13T08:06:32.974Z",
+    "name": "",
+    "email": "lead_1789286792972@thecodebrains.com",
+    "phone": "",
+    "company": "Direct Lead",
+    "source": "Website Lead Form",
+    "plan": "AI Consultation",
+    "pageUrl": "",
+    "referrer": "Direct Visit",
+    "utmDetails": "",
+    "deviceType": "",
+    "message": "",
+    "hubspotStatus": "pending"
+  },
+  {
+    "id": "LEAD-MTYUFJWL",
+    "timestamp": "2026-09-12T20:34:21.957Z",
+    "name": "Afzal Alam",
+    "email": "afzalalam.afzuu@gmail.com",
+    "phone": "+91 85239944840",
+    "company": "TCB",
+    "source": "Dedicated Contact Page",
+    "plan": "Workflow Automation, AI Voice Calling & Telephony",
+    "pageUrl": "https://thecodebrains.com/contact",
+    "referrer": "Direct Visit / Bookmark",
+    "utmDetails": "",
+    "deviceType": "",
+    "message": "Selected Services: Workflow Automation, AI Voice Calling & Telephony\n\nClient Note: N/A",
+    "hubspotStatus": "pending"
+  },
+  {
     "id": "LEAD-MTYC1MAI",
     "timestamp": "2026-09-12T11:59:38.778Z",
     "name": "Aarav SharmaAarav Sharma",
