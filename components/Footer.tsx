@@ -7,6 +7,8 @@ import {
   Lock,
   Twitter,
   Linkedin,
+  Facebook,
+  Youtube,
   Github,
   Instagram,
   Sparkles,
@@ -46,18 +48,18 @@ const FOOTER_NAV = [
       { name: "Engineering Blog", href: "/blog", badge: "NEW", badgeColor: "bg-blue-50 text-[#305eff] border-blue-200" },
       { name: "Client Case Studies", href: "/#testimonials" },
       { name: "Partner Program", href: "mailto:contact@thecodebrains.com" },
-      { name: "Careers", href: "#", badge: "HIRING", badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200" },
+      { name: "Careers", href: "/contact", badge: "HIRING", badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200" },
       { name: "Contact & Support", href: "/contact" },
     ],
   },
   {
     heading: "Security & Legal",
     links: [
-      { name: "Multi-Tenant Data Privacy", href: "#" },
-      { name: "Privacy Policy", href: "#" },
-      { name: "Terms of Service", href: "#" },
-      { name: "Data Security Policy", href: "#" },
-      { name: "Trust & Compliance Center", href: "#" },
+      { name: "Multi-Tenant Data Privacy", href: "/privacy#data-privacy" },
+      { name: "Privacy Policy", href: "/privacy" },
+      { name: "Terms of Service", href: "/terms" },
+      { name: "Data Security Policy", href: "/privacy#security" },
+      { name: "Trust & Compliance Center", href: "/privacy#compliance" },
       { name: "Visual Sitemap", href: "/sitemap" },
       { name: "XML Sitemap", href: "/sitemap.xml" },
     ],
@@ -65,10 +67,26 @@ const FOOTER_NAV = [
 ];
 
 const SOCIALS = [
-  { icon: Twitter, label: "Twitter", href: "#" },
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
-  { icon: Github, label: "GitHub", href: "#" },
-  { icon: Instagram, label: "Instagram", href: "#" },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/145366833/",
+  },
+  {
+    icon: Facebook,
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61590711261508",
+  },
+  {
+    icon: Youtube,
+    label: "YouTube",
+    href: "https://www.youtube.com/@TheCodeBrainsHub",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    href: "https://github.com/Afzalalam-Afzuu",
+  },
 ];
 
 const GLOBAL_MARKETS = [
@@ -177,6 +195,8 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-600 transition-all duration-200 hover:border-[#305eff] hover:bg-[#305eff] hover:text-white"
                 >
                   <Icon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />

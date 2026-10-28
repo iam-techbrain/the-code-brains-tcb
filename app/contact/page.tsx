@@ -28,12 +28,14 @@ import DemoFloatWidget from "@/components/DemoFloatWidget";
 import { useGlobalCountry, GLOBAL_COUNTRIES, type CountryOption } from "@/components/GlobalCountryContext";
 
 const SERVICES_OPTIONS = [
-  "Workflow Automation",
-  "AI Voice Calling & Telephony",
-  "Custom AI Agents",
+  "WhatsApp Business & CRM Automation",
+  "Real-Time Voice AI Calling & Reception Bots",
+  "Custom Autonomous AI Agents & Lead Gen",
   "Enterprise RAG Knowledge Vaults",
-  "CRM & ERP Sync (HubSpot/Salesforce)",
-  "Direct AWS Cloud Deployment",
+  "Complex Zapier & Make (n8n) Workflows",
+  "Platform & Google Sheets Sync with Alerts",
+  "AI Document & Invoice OCR Extraction",
+  "Direct AWS Cloud Private Deployment",
 ];
 
 export default function ContactPage() {
@@ -48,7 +50,7 @@ export default function ContactPage() {
   });
 
   const [selectedServices, setSelectedServices] = useState<string[]>([
-    "Workflow Automation",
+    "WhatsApp Business & CRM Automation",
   ]);
 
   const [loading, setLoading] = useState(false);

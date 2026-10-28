@@ -1,108 +1,160 @@
-# TCB — Industry-Specific Micro-SaaS Ecosystem
+# The Code Brains (TCB) — Custom AI Agents & Intelligent Workflow Automation Services Studio
 
-The Code Brains (TCB) Micro-SaaS Platform Landing Page is a modern, high-conversion web application showcasing specialized business management solutions tailored for Retail Stores, Personal Finance, and Educational Institutes.
+**The Code Brains (TCB)** is a modern, high-conversion engineering agency web application showcasing specialized autonomous AI agents, voice telephony bots, 24/7 RAG knowledge vaults, and enterprise workflow automations.
 
----
-
-## Overview
-
-TCB Ecosystem powers multi-mode operations for modern businesses and educational institutions with dedicated dashboards and real-time management tools:
-
-- **TCB Store (Retail POS & Expense Management)**: Point of Sale (POS), inventory tracking, expense management, and Party Khata ledgers.
-- **TCB School (Educational & Coaching Management)**: Student management, attendance tracking, automated fee reminders, and performance analytics for coaching centers and schools.
+Built with **Next.js 16 (Turbopack)**, **TypeScript**, **Tailwind CSS**, and **Motion**, engineered for sub-second page performance, high conversion rate optimization (CRO), and enterprise brand credibility.
 
 ---
 
-## Key Features
+## 🚀 Overview & Value Proposition
 
-- **Emerald & Clean Modern UI**: High-contrast, accessibility-first design language built with Tailwind CSS.
-- **Fully Responsive Layout**: Seamless user experience across mobile, tablet, and desktop viewports.
-- **Next.js 14 App Router**: Server-rendered performance and optimized SEO metadata.
-- **Interactive Showcase**: Real-time interactive previews of TCB Store and TCB School dashboards.
-- **Flexible Pricing**: Transparent pricing models for solo business owners, growing teams, and enterprise institutes.
-
----
-
-## Tech Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Icons**: Lucide React
-- **Typography**: Inter / Modern System UI
+TCB operates as a pure **AI Engineering & Custom Workflow Services Studio** with a distinct business model:
+- **100% Client Code Ownership:** Zero recurring SaaS platform markups or vendor lock-in. Full Git repository and architecture handover.
+- **Dedicated Private Cloud Deployment:** Workflows and autonomous agents run directly inside the client's AWS, GCP, or private VPS infrastructure.
+- **Enterprise-Grade Privacy:** Client documents, customer conversations, and internal databases are never used to train external public foundation models.
 
 ---
 
-## Getting Started
+## 🛠️ Core Services & Capabilities
 
-### Prerequisites
-
-Ensure you have **Node.js 18.x** or higher installed on your system.
-
-### Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Afzalalam-Afzuu/tcb-micro-saas-platform-landing-page.git
-   cd tcb-micro-saas-platform-landing-page
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser:**
-   Navigate to [http://localhost:3000](http://localhost:3000) to view the application.
+1. **WhatsApp Business Automation & CRM Workflows**
+   - WhatsApp Cloud API + Make.com / n8n pipelines for instant replies, lead triage, automated appointment scheduling, and two-way CRM sync.
+2. **Real-Time Voice AI Calling & Reception Bots**
+   - Sub-350ms low-latency bidirectional telephony agents powered by Twilio SIP, Deepgram Nova-2 streaming STT, and ElevenLabs neural voices.
+3. **Custom Autonomous AI Agents & Lead Generation**
+   - Self-driving SDR workflows: scraping verified leads via Apollo/LinkedIn, account research via Claude 3.5 / GPT-4o, and personalized outreach sequences.
+4. **Platform & Google Sheets Sync with Sales Alerts**
+   - Real-time data sync from custom platforms, Shopify, or stripe into Google Sheets with automated threshold triggers to Slack, Telegram, or WhatsApp.
+5. **Unified Social Media & Ads Management Automation**
+   - Central control center to schedule, broadcast, and monitor campaigns across multiple social networks simultaneously.
+6. **Complex Zapier & Make (n8n) Workflow Orchestration**
+   - Enterprise multi-branch conditional routing, auto-retries, webhook transformations, and error handling for critical business systems.
+7. **Zero-Hallucination Enterprise RAG Knowledge Vaults**
+   - Hybrid semantic search vaults using Qdrant / Pinecone vector databases with constitutional citation guardrails for 24/7 customer and employee support.
+8. **AI Document & Invoice OCR Extraction Engine**
+   - Automated parsing of multi-page invoices, bills of lading, and contracts via AWS Textract and custom pipelines into QuickBooks / ERP.
 
 ---
 
-## Project Structure
+## 💻 Tech Stack
+
+- **Framework:** Next.js 16 (App Router with Turbopack)
+- **Language:** TypeScript 5
+- **Styling:** Tailwind CSS 3.4
+- **Animation:** Motion (framer-motion v13)
+- **Icons:** Lucide React
+- **CRM Integration:** HubSpot CRM API & Optional Custom Webhooks
+- **Voice Telephony Pipeline:** Twilio SIP, Deepgram Nova-2, ElevenLabs, WebSockets
+- **Agent Orchestration:** LangChain, LangGraph, Python, n8n, Make.com
+
+---
+
+## 📂 Project Structure
 
 ```text
 ├── app/
-│   ├── globals.css         # Global Tailwind styles & emerald theme tokens
-│   ├── layout.tsx          # Root layout & SEO Metadata
-│   ├── page.tsx            # Main TCB Ecosystem landing page
-│   ├── school/page.tsx     # TCB School dedicated view
-│   └── store/page.tsx      # TCB Store dedicated view
+│   ├── api/
+│   │   ├── leads/route.ts      # Multi-channel lead intake (HubSpot CRM + Webhook + JSON backup)
+│   │   └── voice-ai/route.ts   # Interactive voice assistant demo API
+│   ├── blog/                   # Technical architectural deep-dive guides
+│   │   ├── [slug]/page.tsx
+│   │   └── page.tsx
+│   ├── contact/page.tsx        # Enterprise consultation booking page
+│   ├── privacy/page.tsx        # Privacy policy & data security architecture
+│   ├── terms/page.tsx          # Terms of service & IP engagement agreement
+│   ├── sitemap/page.tsx        # Visual sitemap & blueprint browser
+│   ├── sitemap.ts              # Dynamic search engine XML sitemap
+│   ├── robots.ts               # Robots.txt crawler directives
+│   ├── layout.tsx              # Root layout, analytics & global providers
+│   └── page.tsx                # Main TCB landing page
 ├── components/
-│   ├── EcosystemHeader.tsx # Top navigation banner
-│   ├── Hero.tsx            # Main hero section
-│   ├── Features.tsx        # Core features breakdown
-│   ├── InteractiveShowcase.tsx # Live interactive dashboard preview
-│   ├── Pricing.tsx         # Subscription plans
-│   ├── Footer.tsx          # Modern footer with branding
-│   └── school/ & store/    # Specialized dashboard mockups
-├── public/                 # Static assets & logos
+│   ├── AIAgentsListSection.tsx # Production Solutions Catalog
+│   ├── ContactBand.tsx         # Quick consultation call-out band
+│   ├── DemoFloatWidget.tsx     # Floating voice / demo assistant launcher
+│   ├── EcosystemHeader.tsx     # Responsive corporate navigation header
+│   ├── Features.tsx            # Core capabilities & architecture matrix
+│   ├── Footer.tsx              # Corporate footer with socials & legal links
+│   ├── GlobalCountryContext.tsx# Country selector with international dial codes
+│   ├── Hero.tsx                # Hero section with 3D waves & live telemetry
+│   ├── InteractiveAutomationStudio.tsx # Live pipeline orchestration matrix
+│   ├── LeadModalContext.tsx    # Modal lead capture with UTM tracking
+│   ├── RealProjectsRealResults.tsx # Case studies with interactive schematics
+│   ├── TechStackShowcase.tsx   # Enterprise infrastructure showcase
+│   ├── Testimonials.tsx        # Verified client case studies
+│   ├── TwoColumnSpotlight.tsx  # Dual dark cards (MDSO & Voice AI)
+│   ├── VoiceAssistant.tsx      # Real-time voice simulation modal
+│   └── WorldwideClientsBanner.tsx # Top corporate ticker
+├── data/
+│   ├── blogData.ts             # 6 technical architecture articles
+│   ├── leads.json              # Local fallback lead backup
+│   └── tcb-knowledge.json      # Structured agency knowledge base
+├── public/                     # Brand graphics, icons & assets
 ├── package.json
 └── tailwind.config.ts
 ```
 
 ---
 
-## Scripts
+## ⚙️ Environment Variables
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Starts the development server at `localhost:3000` |
-| `npm run build` | Builds the production bundle |
-| `npm run start` | Runs the built production server |
-| `npm run lint` | Runs ESLint checks across the codebase |
+Create a `.env.local` file in the root directory based on `.env.example`:
+
+```env
+# Optional: HubSpot CRM API Key or Access Token for direct lead creation
+HUBSPOT_ACCESS_KEY=your_hubspot_token
+
+# Optional: Webhook URL (Make.com, n8n, Slack, or Google Sheets) for real-time lead dispatch
+LEADS_WEBHOOK_URL=https://hook.make.com/your-endpoint
+
+# Optional: Google Gemini API key for interactive voice assistant simulation
+GEMINI_ACCESS_API_KEY=your_gemini_key
+```
+
+*Note: The website works out of the box even without API keys; leads are safely backed up locally to `data/leads.json`.*
 
 ---
 
-## Contributing
+## 🚀 Getting Started
 
-Contributions, issues, and feature requests are welcome. Feel free to check the issues page.
+### 1. Prerequisites
+Ensure **Node.js 18.x** or higher is installed.
+
+### 2. Installation
+```bash
+git clone https://github.com/Afzalalam-Afzuu/tcb-landing-page.git
+cd tcb-landing-page
+npm install
+```
+
+### 3. Run Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### 4. Build for Production
+```bash
+npm run build
+npm run start
+```
+
+### 5. Check Types & Routes
+```bash
+npm run lint
+```
 
 ---
 
-## License
+## 🌐 Official Channels & Social Links
 
-Designed and developed by **The Code Brains (TCB)**.
+- **Website:** [The Code Brains](https://thecodebrains.com)
+- **LinkedIn:** [The Code Brains on LinkedIn](https://www.linkedin.com/company/145366833/)
+- **Facebook:** [The Code Brains on Facebook](https://www.facebook.com/profile.php?id=61590711261508)
+- **YouTube:** [@TheCodeBrainsHub](https://www.youtube.com/@TheCodeBrainsHub)
+- **Inquiries:** [contact@thecodebrains.com](mailto:contact@thecodebrains.com)
+
+---
+
+## 📄 License & Intellectual Property
+
+Designed and engineered by **The Code Brains (TCB)**. All client deployments receive 100% full source code ownership under bilateral master service agreements.

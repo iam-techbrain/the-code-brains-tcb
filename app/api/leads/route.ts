@@ -113,6 +113,16 @@ export async function POST(req: Request) {
     // Always backup lead locally so no lead is ever lost
     saveLeadBackup(newLeadRecord);
 
+    // Optional Webhook dispatch (e.g., Make.com, n8n, Slack, or custom CRM webhook)
+    const webhookUrl = process.env.LEADS_WEBHOOK_URL;
+    if (webhookUrl) {
+      fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...newLeadRecord, noteDetails }),
+      }).catch((err) => console.error("Error dispatching lead webhook:", err));
+    }
+
     // If HubSpot API key is not configured, still return success to the user
     if (!apiKey) {
       console.warn("⚠️ HUBSPOT_ACCESS_KEY is not set in environment. Lead saved to data/leads.json backup.");

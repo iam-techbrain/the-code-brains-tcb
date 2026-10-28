@@ -1,12 +1,12 @@
 {
-  "name": "tcb-micro-saas-platform-landing-page",
+  "name": "tcb-ai-studio-landing-page",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next typegen"
   },
   "dependencies": {
     "lucide-react": "^0.400.0",
