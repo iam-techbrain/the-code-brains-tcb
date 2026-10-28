@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import VoiceAssistant from "@/components/VoiceAssistant";
@@ -101,6 +102,9 @@ export const metadata: Metadata = {
     shortcut: "/tcb-logo.png",
     apple: "/tcb-logo.png",
   },
+  verification: {
+    google: "google057814141de1481f",
+  },
 };
 
 import { LeadModalProvider } from "@/components/LeadModalContext";
@@ -114,6 +118,61 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased overflow-x-hidden w-full max-w-full">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5H4DMF2K"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
+
+        {/* Google Tag Manager Script */}
+        <Script
+          id="google-tag-manager"
+          strategy="afterInteractive"
+        >
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5H4DMF2K');
+          `}
+        </Script>
+
+        {/* Google Analytics 4 (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-NPN6HTC9J1"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-NPN6HTC9J1');
+          `}
+        </Script>
+
+        {/* Microsoft Clarity */}
+        <Script
+          id="microsoft-clarity"
+          strategy="afterInteractive"
+        >
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "z4qc6i9s5b");
+          `}
+        </Script>
         <GlobalCountryProvider>
           <LeadModalProvider>
             {children}
