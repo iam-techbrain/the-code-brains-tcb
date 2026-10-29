@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2, Mail, Sparkles } from "lucide-react";
 
 export default function ContactBand() {
   return (
-    <section id="contact" className="relative overflow-hidden border-t border-slate-200/80 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
+    <section id="contact" className="relative scroll-mt-24 overflow-hidden border-t border-slate-200/80 bg-white px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -17,10 +17,10 @@ export default function ContactBand() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#305eff] mb-3">
               <Sparkles className="h-3.5 w-3.5 text-[#305eff]" />
-              <span>Talk to TCB Studio</span>
+              <span>Contact & Consult TCB Studio</span>
             </div>
             <h2 className="font-display mt-2 sm:mt-3 text-2xl font-extrabold tracking-tight sm:text-4xl text-slate-900 leading-tight">
-              Ready to ship AI agents that actually run your work?
+              Contact Us: Ready to ship AI agents that run your work?
             </h2>
             <p className="mt-3 sm:mt-4 max-w-lg text-xs sm:text-sm leading-relaxed sm:leading-7 text-slate-600">
               Share your workflow, stack, and outcome. We design custom agents, n8n/Make pipelines, and industry SaaS — then deploy them on a reliable cloud foundation.

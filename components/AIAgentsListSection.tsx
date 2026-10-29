@@ -135,9 +135,10 @@ export default function AIAgentsListSection() {
 
   return (
     <section
-      id="solutions-catalog"
-      className="relative border-t border-slate-200/80 bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
+      id="services"
+      className="relative scroll-mt-24 border-t border-slate-200/80 bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
     >
+      <div id="solutions-catalog" className="absolute -top-24" />
       <div id="ai-agents-catalog" className="absolute -top-24" />
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
@@ -149,7 +150,7 @@ export default function AIAgentsListSection() {
             className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#305eff]"
           >
             <Sparkles className="h-3.5 w-3.5 text-[#305eff]" />
-            Enterprise Services Catalog
+            Enterprise AI Services Catalog
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -158,7 +159,7 @@ export default function AIAgentsListSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl font-display"
           >
-            Our Core AI Services &amp; Automation Pipelines
+            Our Core AI Services &amp; Enterprise Solutions
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

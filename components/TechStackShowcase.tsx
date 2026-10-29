@@ -258,12 +258,17 @@ export default function TechStackShowcase() {
 
   return (
     <section
-      id="tech-stack"
-      className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-t border-slate-200/80"
+      id="integrations"
+      className="relative scroll-mt-24 overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-t border-slate-200/80"
     >
+      <div id="tech-stack" className="absolute -top-24" />
       <div className="mx-auto max-w-7xl">
         {/* Section Heading & Subheading Matching the Uploaded Screenshot */}
         <div className="max-w-4xl mb-12">
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#305eff]">
+            <Zap className="h-3.5 w-3.5 text-[#305eff]" />
+            <span>ENTERPRISE INTEGRATIONS & TECH STACK</span>
+          </div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -271,7 +276,7 @@ export default function TechStackShowcase() {
             transition={{ duration: 0.5 }}
             className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-[2.65rem] font-display"
           >
-            Tech-Stack Used by Our AI Automation Agency
+            Integrations & Tech-Stack Used by Our AI Automation Agency
           </motion.h2>
 
           <motion.p

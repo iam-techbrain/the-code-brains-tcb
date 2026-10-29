@@ -8,7 +8,8 @@ export default function TwoColumnSpotlight() {
   const { openLeadModal } = useLeadModal();
 
   return (
-    <section id="orchestration-portfolio" className="bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-b border-slate-200/80">
+    <section id="automations" className="relative scroll-mt-24 bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-b border-slate-200/80">
+      <div id="orchestration-portfolio" className="absolute -top-24" />
       <div className="mx-auto max-w-7xl">
         {/* Section Headline matching Reference Image */}
         <motion.div
@@ -20,10 +21,10 @@ export default function TwoColumnSpotlight() {
         >
           <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#305eff]">
             <Zap className="h-3.5 w-3.5 text-[#305eff]" />
-            <span>ENTERPRISE ORCHESTRATION</span>
+            <span>ENTERPRISE AUTOMATIONS &amp; ORCHESTRATION</span>
           </div>
           <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl leading-tight font-display">
-            TCB Orchestration portfolio: tailored for complex multi-vendor &amp; enterprise environments
+            Automations &amp; Orchestration Portfolio: Tailored for Complex Enterprise Environments
           </h2>
           <p className="mt-4 text-base text-slate-600 leading-relaxed">
             Eliminate operational silos and vendor lock-in with unified autonomous agents engineered specifically for your infrastructure.

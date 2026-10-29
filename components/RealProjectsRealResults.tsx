@@ -1,3 +1,4 @@
+import Link from "next/link";
 "use client";
 
 import { useState } from "react";
@@ -414,9 +415,10 @@ export default function RealProjectsRealResults() {
 
   return (
     <section
-      id="real-projects"
-      className="relative overflow-hidden bg-white py-20 sm:py-28 text-slate-900 border-t border-slate-200/80"
+      id="case-studies"
+      className="relative scroll-mt-24 overflow-hidden bg-white py-20 sm:py-28 text-slate-900 border-t border-slate-200/80"
     >
+      <div id="real-projects" className="absolute -top-24" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Heading & Subheading */}
         <div className="text-center max-w-3xl mx-auto mb-14">
@@ -427,7 +429,7 @@ export default function RealProjectsRealResults() {
             className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#305eff] mb-4 shadow-2xs"
           >
             <Sparkles className="h-3.5 w-3.5 text-[#305eff]" />
-            <span>PROVEN ENTERPRISE DELIVERABLES</span>
+            <span>ENTERPRISE CASE STUDIES & DELIVERABLES</span>
           </motion.div>
 
           <motion.h2
@@ -437,7 +439,8 @@ export default function RealProjectsRealResults() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl font-display text-slate-900"
           >
-            Real Projects,{" "}
+      <div id="real-projects" className="absolute -top-24" />
+            Case Studies: Real Projects,{" "}
             <span className="text-[#305eff]">
               Real Results
             </span>
@@ -450,6 +453,7 @@ export default function RealProjectsRealResults() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal"
           >
+      <div id="real-projects" className="absolute -top-24" />
             Inspect the live system blueprints, high-concurrency benchmarks, and business outcomes engineered across our custom production client deployments.
           </motion.p>
 
@@ -467,6 +471,7 @@ export default function RealProjectsRealResults() {
                       : "bg-slate-100 text-slate-700 hover:bg-slate-200/80 border border-slate-200"
                   }`}
                 >
+      <div id="real-projects" className="absolute -top-24" />
                   {tab.label}
                 </button>
               );
@@ -488,6 +493,7 @@ export default function RealProjectsRealResults() {
                 whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
                 className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-xs hover:border-[#305eff]/40 hover:shadow-2xl transition-all"
               >
+      <div id="real-projects" className="absolute -top-24" />
                 <div>
                   {/* Top Metadata Strip */}
                   <div className="flex items-center justify-between gap-3 mb-4">
@@ -530,6 +536,7 @@ export default function RealProjectsRealResults() {
                         key={mIdx}
                         className="rounded-xl bg-slate-50/80 p-2.5 border border-slate-200/80"
                       >
+      <div id="real-projects" className="absolute -top-24" />
                         <div className="text-lg sm:text-xl font-extrabold font-mono text-[#305eff] tracking-tight">
                           {metric.value}
                         </div>
@@ -551,6 +558,7 @@ export default function RealProjectsRealResults() {
                           key={tIdx}
                           className="rounded-md bg-slate-100 px-2 py-0.5 text-[10px] font-mono text-slate-700 border border-slate-200"
                         >
+      <div id="real-projects" className="absolute -top-24" />
                           {tech}
                         </span>
                       ))}
@@ -567,6 +575,7 @@ export default function RealProjectsRealResults() {
                       }
                       className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 hover:bg-[#305eff] hover:text-white border border-blue-200 px-3.5 py-1.5 text-xs font-bold text-[#305eff] transition-all hover:scale-105 active:scale-95 cursor-pointer shrink-0"
                     >
+      <div id="real-projects" className="absolute -top-24" />
                       <span>Deploy Similar</span>
                       <ArrowRight className="h-3 w-3" />
                     </button>
@@ -598,20 +607,29 @@ export default function RealProjectsRealResults() {
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={() =>
-              openLeadModal({
-                title: "Custom AI Architecture & Feasibility Audit",
-                source: "Real Projects Bottom Banner",
-                defaultNote: "I want an architectural feasibility assessment for our proprietary internal workflow.",
-              })
-            }
-            className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#305eff] hover:bg-[#1f47e0] px-7 py-3 text-xs sm:text-sm font-bold text-white shadow-md shadow-[#305eff]/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            <span>Request Architecture Audit</span>
-            <ExternalLink className="h-4 w-4" />
-          </button>
+          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white hover:bg-slate-50 px-5 py-3 text-xs sm:text-sm font-bold text-slate-800 shadow-sm transition-all"
+            >
+              <span>Explore All Projects & Web Apps</span>
+              <ArrowRight className="h-3.5 w-3.5 text-[#305eff]" />
+            </Link>
+            <button
+              type="button"
+              onClick={() =>
+                openLeadModal({
+                  title: "Custom AI Architecture & Feasibility Audit",
+                  source: "Real Projects Bottom Banner",
+                  defaultNote: "I want an architectural feasibility assessment for our proprietary internal workflow.",
+                })
+              }
+              className="inline-flex items-center gap-2 rounded-full bg-[#305eff] hover:bg-[#1f47e0] px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-md shadow-[#305eff]/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <span>Request Audit</span>
+              <ExternalLink className="h-4 w-4" />
+            </button>
+          </div>
         </motion.div>
       </div>
     </section>

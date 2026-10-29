@@ -106,7 +106,7 @@ export default function HowItWorks() {
   const { openLeadModal } = useLeadModal();
 
   return (
-    <section id="how-it-works" className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-t border-slate-200/80">
+    <section id="how-it-works" className="relative scroll-mt-24 overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-t border-slate-200/80">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -117,7 +117,7 @@ export default function HowItWorks() {
             className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-[#305eff]"
           >
             <Sparkles className="h-3.5 w-3.5 text-[#305eff]" />
-            Proven 5-Step Delivery Lifecycle
+            HOW IT WORKS • 5-STEP DELIVERY LIFECYCLE
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -126,7 +126,7 @@ export default function HowItWorks() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl font-display"
           >
-            Our 5-Step AI Automation Roadmap
+            How It Works: Our 5-Step AI Automation Roadmap
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

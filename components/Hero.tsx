@@ -47,9 +47,10 @@ export default function Hero() {
 
   return (
     <section
+      id="home"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative overflow-hidden bg-white px-4 pt-10 pb-16 sm:px-6 sm:pt-14 sm:pb-24 lg:px-8 border-b border-slate-200/80"
+      className="relative scroll-mt-24 overflow-hidden bg-white px-4 pt-10 pb-16 sm:px-6 sm:pt-14 sm:pb-24 lg:px-8 border-b border-slate-200/80"
     >
       {/* Dynamic Cursor Spotlight that tracks mouse smoothly */}
       <div
@@ -128,7 +129,7 @@ export default function Hero() {
               </motion.button>
 
               <motion.a
-                href="#orchestration-portfolio"
+                href="#automations"
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}
                 className="inline-flex items-center justify-center gap-1.5 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#305eff] py-2.5 sm:py-3 transition-colors group cursor-pointer"

@@ -43,6 +43,7 @@ const FOOTER_NAV = [
   {
     heading: "Company",
     links: [
+      { name: "Projects & Web Applications", href: "/projects", badge: "PORTFOLIO", badgeColor: "bg-blue-50 text-[#305eff] border-blue-200" },
       { name: "About TCB Ecosystem", href: "/#features" },
       { name: "Engineering Blog", href: "/blog", badge: "NEW", badgeColor: "bg-blue-50 text-[#305eff] border-blue-200" },
       { name: "Client Case Studies", href: "/#testimonials" },

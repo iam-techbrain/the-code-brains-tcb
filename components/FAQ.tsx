@@ -59,7 +59,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-white border-t border-slate-200/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+    <section id="faq" className="relative scroll-mt-24 overflow-hidden bg-white border-t border-slate-200/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-5xl">
         {/* Section Header */}
         <motion.div
@@ -71,10 +71,10 @@ export default function FAQ() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-semibold text-[#305eff] uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
-            Enterprise Architecture FAQ
+            Frequently Asked Questions (FAQ)
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-950 font-display">
-            Frequently Asked Questions
+            Frequently Asked Questions (FAQ)
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
             Essential operational insights into our custom AI agents, multi-domain workflow orchestration, enterprise data security, and full IP handover.

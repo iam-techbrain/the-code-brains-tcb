@@ -23,14 +23,15 @@ export default function EcosystemHeader() {
 
   const navLinks = [
     { label: "Home", href: "/", sectionId: "home" },
-    { label: "Services", href: "/#solutions-catalog", sectionId: "solutions-catalog" },
-    { label: "Case Studies", href: "/#real-projects", sectionId: "real-projects" },
-    { label: "Automations", href: "/#orchestration-portfolio", sectionId: "orchestration-portfolio" },
-    { label: "Integrations", href: "/#tech-stack", sectionId: "tech-stack" },
+    { label: "Projects", href: "/projects", sectionId: "projects" },
+    { label: "Automations", href: "/#automations", sectionId: "automations" },
+    { label: "Services", href: "/#services", sectionId: "services" },
+    { label: "Case Studies", href: "/#case-studies", sectionId: "case-studies" },
+    { label: "Integrations", href: "/#integrations", sectionId: "integrations" },
     { label: "How It Works", href: "/#how-it-works", sectionId: "how-it-works" },
     { label: "Blog", href: "/blog", sectionId: "blog" },
     { label: "FAQ", href: "/#faq", sectionId: "faq" },
-    { label: "Contact", href: "/contact", sectionId: "contact" },
+    { label: "Contact", href: "/#contact", sectionId: "contact" },
   ];
 
   useEffect(() => {
@@ -39,14 +40,13 @@ export default function EcosystemHeader() {
 
       if (pathname === "/") {
         const sections = [
-          "solutions-catalog",
-          "real-projects",
-          "orchestration-portfolio",
-          "tech-stack",
-          "features",
-          "proven-impact",
+          "automations",
+          "services",
+          "case-studies",
+          "integrations",
           "how-it-works",
           "faq",
+          "contact",
         ];
         let foundSec = "";
 
@@ -78,8 +78,13 @@ export default function EcosystemHeader() {
     if (link.href === "/blog") {
       return pathname.startsWith("/blog");
     }
-    if (link.href === "/contact") {
-      return pathname.startsWith("/contact");
+    if (link.href === "/projects") {
+      return pathname.startsWith("/projects");
+    }
+    if (link.sectionId === "contact") {
+      if (pathname.startsWith("/contact")) return true;
+      if (pathname === "/") return activeSection === "contact";
+      return false;
     }
     if (link.href === "/") {
       return pathname === "/" && (!activeSection || activeSection === "home");
