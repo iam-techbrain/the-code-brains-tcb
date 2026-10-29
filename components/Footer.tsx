@@ -9,7 +9,6 @@ import {
   Linkedin,
   Facebook,
   Youtube,
-  Github,
   Instagram,
   Sparkles,
   ArrowRight,
@@ -81,11 +80,6 @@ const SOCIALS = [
     icon: Youtube,
     label: "YouTube",
     href: "https://www.youtube.com/@TheCodeBrainsHub",
-  },
-  {
-    icon: Github,
-    label: "GitHub",
-    href: "https://github.com/Afzalalam-Afzuu",
   },
 ];
 
