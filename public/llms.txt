@@ -1,0 +1,26 @@
+# The Code Brains (TCB) — Custom AI Agents & Intelligent Workflow Automation Studio
+
+> Custom Autonomous AI Agents, Real-Time Voice Telephony, RAG Knowledge Vaults, and Enterprise Workflow Automations engineered for production with 100% IP ownership and zero vendor lock-in.
+
+## Overview
+The Code Brains (TCB) is a specialized AI engineering studio that designs, builds, and deploys tailor-made autonomous AI systems for businesses worldwide. Rather than selling generic, recurring SaaS subscriptions, TCB develops private, production-grade AI infrastructure deployed directly into the client's cloud accounts (AWS/GCP) with complete source code handover.
+
+## Core Capabilities & Services
+- **Autonomous AI Agents & Lead Generation**: 24/7 intelligent agents that qualify inbound prospects, triage complex requests, schedule calendar appointments, and synchronize two-way with CRMs (HubSpot, Salesforce, Zoho).
+- **Sub-350ms Real-Time Voice Telephony Agents**: Low-latency conversational voice agents running on Twilio SIP trunks, Deepgram Nova-2 speech-to-text, and ElevenLabs neural audio synthesis with interruptible dialogue and deterministic human escalation.
+- **Enterprise RAG Knowledge Vaults**: Zero-hallucination vector search systems running on Pinecone and Qdrant, ingesting proprietary documents, policies, and ERP databases with AES-256 encryption.
+- **Multi-Step Workflow Automations**: Production n8n and Make pipelines orchestrating data flows across CRMs, messaging channels (WhatsApp Business API, Slack), and custom database webhooks.
+- **AI Document & Invoice OCR Extraction**: Multimodal vision AI pipelines parsing unstructured PDFs, scanned contracts, and complex invoices into validated JSON.
+
+## Key Differentiators
+- **100% Source Code & IP Ownership**: Code is pushed to your internal GitHub repositories upon delivery.
+- **Direct Cloud & API Billing**: AWS hosting and LLM token costs (OpenAI, Claude, Gemini) are billed directly to your corporate accounts with zero agency markup.
+- **Enterprise Data Security**: Zero-retention agreements; client data is never used to train external public foundation models.
+
+## Key Links & Documentation
+- [Homepage](https://thecodebrains.com): Core studio overview and interactive automation demos.
+- [Projects & Case Studies](https://thecodebrains.com/projects): Production case studies across FinTech, Healthcare, Logistics, and E-commerce.
+- [Engineering Blog](https://thecodebrains.com/blog): In-depth architecture write-ups on latency optimization, vector indexes, and multi-agent coordination.
+- [Contact & Consultation](https://thecodebrains.com/contact): Book a technical architecture review and enterprise AI audit.
+- [Full LLM Knowledge Base](https://thecodebrains.com/llms-full.txt): Comprehensive plain-text documentation for AI models and autonomous agents.
+

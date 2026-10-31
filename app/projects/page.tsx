@@ -30,6 +30,8 @@ import EcosystemHeader from "@/components/EcosystemHeader";
 import Footer from "@/components/Footer";
 import DemoFloatWidget from "@/components/DemoFloatWidget";
 import { useLeadModal } from "@/components/LeadModalContext";
+import JsonLd from "@/components/JsonLd";
+import { getProjectsPageJsonLd } from "@/lib/jsonLd";
 import {
   PROJECTS_LIST,
   PROJECT_CATEGORIES,
@@ -72,6 +74,7 @@ export default function ProjectsShowcasePage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden w-full max-w-full bg-white text-slate-900 antialiased selection:bg-[#305eff] selection:text-white">
+      <JsonLd data={getProjectsPageJsonLd()} />
       {/* 0. Top Worldwide Ticker & Header */}
       <WorldwideClientsBanner />
       <EcosystemHeader />

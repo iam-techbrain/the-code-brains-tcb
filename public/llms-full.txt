@@ -1,0 +1,69 @@
+# The Code Brains (TCB) — Complete System Architecture & Enterprise Knowledge Base
+
+## 1. Company Profile
+- **Company Name**: The Code Brains (TCB)
+- **Studio Model**: Custom AI Engineering & Intelligent Workflow Automation Agency
+- **Headquarters & Reach**: Serving clients worldwide across the United States, United Kingdom, United Arab Emirates, Canada, Australia, Germany, Saudi Arabia, South Africa, and India.
+- **Website**: https://thecodebrains.com
+- **Official Contact**: contact@thecodebrains.com
+- **Delivery Model**: 100% Custom Engineering Services. Zero pre-packaged SaaS lock-in. 100% intellectual property, Docker manifests, and Git repository handover to the client.
+
+---
+
+## 2. Core Service Offerings & Architectures
+
+### 2.1 Custom Autonomous AI Agents & Lead Generation
+- **Functionality**: Multichannel conversational AI operating across websites, WhatsApp Business API, and email. Qualifies leads through dynamic question trees, enriches contact details with external APIs, writes records directly to HubSpot/Salesforce, and schedules meetings via Cal.com or Calendly.
+- **Technical Stack**: LangChain, LangGraph, FastAPI, Python, PostgreSQL, OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet.
+
+### 2.2 Sub-350ms Real-Time Voice Telephony Agents
+- **Functionality**: Inbound receptionist and outbound qualification calling agents that converse naturally in human-like tone, handle ambient noise, respond to speech interruptions mid-sentence, execute real-time CRM lookups during the call, and transfer to human operators when needed.
+- **Technical Stack**: Twilio SIP trunking & WebSocket media streams, Deepgram Nova-2 streaming Speech-to-Text (STT), low-latency LLM orchestration, ElevenLabs Turbo / Cartesia neural voice synthesis, Redis session cache.
+
+### 2.3 Enterprise RAG (Retrieval-Augmented Generation) Knowledge Vaults
+- **Functionality**: High-precision question-answering systems referencing internal company wikis, SOPs, contracts, catalogs, and technical databases without hallucinations.
+- **Technical Stack**: Pinecone Serverless, Qdrant Cloud, LangChain hybrid search (dense semantic vectors + sparse BM25 keyword matching), Cohere Rerank-3, AES-256 and TLS 1.3 encryption.
+
+### 2.4 Multi-Step Workflow Automations
+- **Functionality**: Production workflow pipelines replacing repetitive human data entry across marketing, sales, billing, and customer support.
+- **Technical Stack**: Self-hosted n8n instances on AWS EC2, Make.com, bidirectional Webhooks, Redis queues, Zapier enterprise integrations.
+
+### 2.5 AI Document & Invoice OCR Extraction
+- **Functionality**: Vision and OCR extraction pipelines converting messy invoices, shipping manifests, customs paperwork, and handwritten notes into validated JSON payloads.
+
+---
+
+## 3. Pricing Model & Infrastructure Economics
+- **Transparent Direct-Infrastructure Billing**: Client pays actual cloud and token provider costs directly with zero agency markup:
+  - AWS EC2 / Docker VPS: ~$5 to $15 / month (billed directly to client AWS)
+  - LLM Tokens (OpenAI / Claude / Gemini): Pay-as-you-go, typically $5 to $15 / month for average business usage
+  - Vector Database (Pinecone / Qdrant): Generous free tier up to 100k vectors
+  - Voice Telephony: ~$0.05 to $0.09 per minute of calling (Twilio + Deepgram + ElevenLabs)
+- **One-Time Engineering & Retainer Fees**: Transparent milestone-based engineering contracts with clear deliverables and warranty periods.
+
+---
+
+## 4. Frequently Asked Questions (FAQ)
+
+### Q: How does TCB's AI Orchestration integrate with legacy enterprise systems?
+A: Our AI orchestration engine connects directly to your existing tech stack via secure enterprise RESTful APIs, bidirectional webhooks, event-driven message brokers (Kafka/RabbitMQ), and n8n pipelines. Whether you rely on Salesforce, SAP, Oracle, custom SQL data warehouses, or bespoke proprietary tools, we integrate with zero downtime and strict adherence to network boundary policies.
+
+### Q: How fast can an enterprise-grade AI agent or workflow be built and deployed?
+A: Standard operational workflows (such as multi-channel lead qualification or automated billing dispute triage) are typically ready for staging within 3 to 5 business days. Complex multi-agent RAG vector architectures, autonomous voice telephony systems, and custom ERP synchronizations typically achieve full production deployment within 2 to 3 weeks.
+
+### Q: How is proprietary corporate data protected during LLM reasoning?
+A: Security and compliance are non-negotiable. We deploy isolated, tenant-dedicated vector datastores with end-to-end AES-256 and TLS 1.3 encryption. We utilize enterprise zero-data-retention agreements with LLM providers—ensuring client records, internal code, and business intelligence are never stored or used to train third-party public foundation models.
+
+### Q: What latency and natural conversational capabilities do AI Voice agents provide?
+A: Our autonomous voice systems achieve ultra-low response latency under 350ms using optimized streaming neural speech-to-text (Deepgram/Twilio), high-throughput LLM reasoning, and natural emotional voice synthesis (ElevenLabs/Vapi). Systems intelligently handle ambient noise, mid-sentence human interruptions, dynamic CRM lookups, and deterministic escalation to human agents.
+
+### Q: Do clients retain full intellectual property and source code ownership?
+A: Yes, completely. Upon final delivery and sign-off, all custom agent source code, workflow definitions, Docker deployment manifests, and vector schema configurations are transferred directly to your organization's internal GitHub repositories. You maintain 100% IP ownership with zero vendor lock-in.
+
+---
+
+## 5. Contact & Booking Information
+- **Inquiry & Consultation Form**: https://thecodebrains.com/contact
+- **Primary Support & Partnership Email**: contact@thecodebrains.com
+- **Response Time**: Technical lead responds within 24 hours with architectural scope and estimation.
+

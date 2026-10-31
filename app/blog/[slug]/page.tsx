@@ -28,6 +28,8 @@ import EcosystemHeader from "@/components/EcosystemHeader";
 import Footer from "@/components/Footer";
 import DemoFloatWidget from "@/components/DemoFloatWidget";
 import { useLeadModal } from "@/components/LeadModalContext";
+import JsonLd from "@/components/JsonLd";
+import { getBlogPostJsonLd } from "@/lib/jsonLd";
 import { BLOG_POSTS, type BlogPost } from "@/data/blogData";
 
 interface PageProps {
@@ -98,6 +100,7 @@ export default function BlogPostPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen overflow-x-hidden w-full max-w-full bg-white text-slate-900 antialiased selection:bg-[#305eff] selection:text-white">
+      <JsonLd data={getBlogPostJsonLd(post)} />
       {/* Real-Time Scroll Reading Progress Bar */}
       <div
         className="fixed top-0 left-0 h-1 bg-gradient-to-r from-[#305eff] to-[#1f47e0] z-50 transition-all duration-100 ease-out"

@@ -11,6 +11,19 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/"],
       },
+      {
+        userAgent: [
+          "GPTBot",
+          "ChatGPT-User",
+          "ClaudeBot",
+          "PerplexityBot",
+          "Google-Extended",
+          "Applebot-Extended",
+          "cohere-ai",
+        ],
+        allow: ["/", "/llms.txt", "/llms-full.txt"],
+        disallow: ["/api/"],
+      },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
   };

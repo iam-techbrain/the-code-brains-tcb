@@ -23,6 +23,8 @@ import EcosystemHeader from "@/components/EcosystemHeader";
 import Footer from "@/components/Footer";
 import DemoFloatWidget from "@/components/DemoFloatWidget";
 import { useLeadModal } from "@/components/LeadModalContext";
+import JsonLd from "@/components/JsonLd";
+import { getBlogPageJsonLd } from "@/lib/jsonLd";
 import { BLOG_POSTS, BLOG_CATEGORIES, type BlogPost } from "@/data/blogData";
 
 export default function BlogHubPage() {
@@ -62,6 +64,7 @@ export default function BlogHubPage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden w-full max-w-full bg-white text-slate-900 antialiased selection:bg-[#305eff] selection:text-white">
+      <JsonLd data={getBlogPageJsonLd()} />
       {/* 0. Top Worldwide Ticker & Header */}
       <WorldwideClientsBanner />
       <EcosystemHeader />

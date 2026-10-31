@@ -20,6 +20,8 @@ import MultiToneCardsBand from "@/components/MultiToneCardsBand";
 import ContactBand from "@/components/ContactBand";
 import Footer from "@/components/Footer";
 import DemoFloatWidget from "@/components/DemoFloatWidget";
+import JsonLd from "@/components/JsonLd";
+import { getHomePageJsonLd } from "@/lib/jsonLd";
 
 export const metadata = {
   title: "TCB — Custom AI Agents & Intelligent Workflow Orchestration Studio",
@@ -30,6 +32,9 @@ export const metadata = {
 export default function HomePage() {
   return (
     <main className="min-h-screen overflow-x-hidden w-full max-w-full bg-white text-slate-900 antialiased selection:bg-[#305eff] selection:text-white">
+      {/* Home Page Structured Data (WebPage + FAQPage + Services) */}
+      <JsonLd data={getHomePageJsonLd()} />
+
       {/* 0. Top Worldwide Ticker & Registration Banner */}
       <WorldwideClientsBanner />
 

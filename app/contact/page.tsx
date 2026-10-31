@@ -26,6 +26,8 @@ import EcosystemHeader from "@/components/EcosystemHeader";
 import Footer from "@/components/Footer";
 import DemoFloatWidget from "@/components/DemoFloatWidget";
 import { useGlobalCountry, GLOBAL_COUNTRIES, type CountryOption } from "@/components/GlobalCountryContext";
+import JsonLd from "@/components/JsonLd";
+import { getContactPageJsonLd } from "@/lib/jsonLd";
 
 const SERVICES_OPTIONS = [
   "WhatsApp Business & CRM Automation",
@@ -149,6 +151,7 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden w-full max-w-full bg-white text-slate-900 antialiased selection:bg-[#305eff] selection:text-white">
+      <JsonLd data={getContactPageJsonLd()} />
       {/* 0. Top Worldwide Ticker & Header */}
       <WorldwideClientsBanner />
       <EcosystemHeader />

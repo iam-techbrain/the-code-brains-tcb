@@ -3,6 +3,10 @@ import Script from "next/script";
 import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import VoiceAssistant from "@/components/VoiceAssistant";
+import { LeadModalProvider } from "@/components/LeadModalContext";
+import { GlobalCountryProvider } from "@/components/GlobalCountryContext";
+import JsonLd from "@/components/JsonLd";
+import { getOrganizationJsonLd, getWebSiteJsonLd } from "@/lib/jsonLd";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -107,9 +111,6 @@ export const metadata: Metadata = {
   },
 };
 
-import { LeadModalProvider } from "@/components/LeadModalContext";
-import { GlobalCountryProvider } from "@/components/GlobalCountryContext";
-
 export default function RootLayout({
   children,
 }: {
@@ -118,6 +119,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased overflow-x-hidden w-full max-w-full">
+        {/* Google & AI Agent Global Structured Data (JSON-LD) */}
+        <JsonLd data={getOrganizationJsonLd()} />
+        <JsonLd data={getWebSiteJsonLd()} />
+
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
