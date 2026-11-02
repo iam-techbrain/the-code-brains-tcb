@@ -8,14 +8,8 @@ import {
   CheckCircle2,
   Zap,
   Shield,
-  Activity,
   Cpu,
-  Sparkles,
   ArrowRight,
-  Radio,
-  Layers,
-  PhoneCall,
-  Terminal,
 } from "lucide-react";
 import { useLeadModal } from "@/components/LeadModalContext";
 

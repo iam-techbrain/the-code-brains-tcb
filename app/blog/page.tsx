@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import {
   Search,
   ArrowRight,
@@ -16,7 +16,6 @@ import {
   Send,
   Check,
   Filter,
-  Layers,
 } from "lucide-react";
 import WorldwideClientsBanner from "@/components/WorldwideClientsBanner";
 import EcosystemHeader from "@/components/EcosystemHeader";
@@ -25,7 +24,7 @@ import DemoFloatWidget from "@/components/DemoFloatWidget";
 import { useLeadModal } from "@/components/LeadModalContext";
 import JsonLd from "@/components/JsonLd";
 import { getBlogPageJsonLd } from "@/lib/jsonLd";
-import { BLOG_POSTS, BLOG_CATEGORIES, type BlogPost } from "@/data/blogData";
+import { BLOG_POSTS, BLOG_CATEGORIES } from "@/data/blogData";
 
 export default function BlogHubPage() {
   const { openLeadModal } = useLeadModal();

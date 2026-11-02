@@ -44,14 +44,18 @@ export function GlobalCountryProvider({ children }: { children: React.ReactNode 
         const found = GLOBAL_COUNTRIES.find((c) => c.code === savedCode);
         if (found) setSelectedCountryState(found);
       }
-    } catch (e) {}
+    } catch (_e) {
+      /* ignore storage error */
+    }
   }, []);
 
   const setSelectedCountry = (country: CountryOption) => {
     setSelectedCountryState(country);
     try {
       localStorage.setItem("tcb_country_code", country.code);
-    } catch (e) {}
+    } catch (_e) {
+      /* ignore storage error */
+    }
   };
 
   const formatPrice = (baseInr: number): string => {

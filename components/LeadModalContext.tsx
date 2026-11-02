@@ -86,13 +86,13 @@ export function LeadModalProvider({ children }: { children: React.ReactNode }) {
     let utmDetails = "";
     let deviceType = "Desktop";
 
-    if (typeof window !== "undefined") {
-      pageUrl = window.location.href;
+    if (typeof document !== "undefined") {
+      pageUrl = globalThis.location.href;
       pageTitle = document.title;
       referrer = document.referrer ? document.referrer : "Direct Visit / Bookmark";
 
       // Detect UTM marketing parameters
-      const params = new URLSearchParams(window.location.search);
+      const params = new URLSearchParams(globalThis.location.search);
       const utmSource = params.get("utm_source");
       const utmMedium = params.get("utm_medium");
       const utmCampaign = params.get("utm_campaign");

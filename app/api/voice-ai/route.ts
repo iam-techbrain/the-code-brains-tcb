@@ -1,5 +1,6 @@
+import process from "node:process";
 import { NextResponse } from "next/server";
-import knowledgeBase from "@/data/tcb-knowledge.json";
+
 
 const GEMINI_API_KEY =
   process.env.GEMINI_API_KEY || "AIzaSyB1OYrNUMVq_HdkTb8BPplrvIuOkucCDwI";

@@ -3,7 +3,7 @@
 import { useState, useEffect, use } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { motion } from "motion/react";
+
 import {
   Clock,
   Calendar,
@@ -13,11 +13,9 @@ import {
   Check,
   Copy,
   BookOpen,
-  ArrowLeft,
   Sparkles,
   Zap,
   CheckCircle2,
-  Cpu,
   Layers,
   ShieldCheck,
   Linkedin,
@@ -30,7 +28,7 @@ import DemoFloatWidget from "@/components/DemoFloatWidget";
 import { useLeadModal } from "@/components/LeadModalContext";
 import JsonLd from "@/components/JsonLd";
 import { getBlogPostJsonLd } from "@/lib/jsonLd";
-import { BLOG_POSTS, type BlogPost } from "@/data/blogData";
+import { BLOG_POSTS } from "@/data/blogData";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -56,9 +54,9 @@ export default function BlogPostPage({ params }: PageProps) {
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
+        document.documentElement.scrollHeight - globalThis.innerHeight;
       if (totalHeight > 0) {
-        const progress = (window.scrollY / totalHeight) * 100;
+        const progress = (globalThis.scrollY / totalHeight) * 100;
         setScrollProgress(Math.min(100, Math.max(0, progress)));
       }
 
@@ -75,8 +73,8 @@ export default function BlogPostPage({ params }: PageProps) {
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    globalThis.addEventListener("scroll", handleScroll, { passive: true });
+    return () => globalThis.removeEventListener("scroll", handleScroll);
   }, [post.tableOfContents]);
 
   const copyToClipboard = (text: string, id: string) => {
@@ -86,8 +84,8 @@ export default function BlogPostPage({ params }: PageProps) {
   };
 
   const copyShareLink = () => {
-    if (typeof window !== "undefined") {
-      navigator.clipboard.writeText(window.location.href);
+    if (typeof document !== "undefined") {
+      navigator.clipboard.writeText(globalThis.location.href);
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2500);
     }
@@ -196,11 +194,11 @@ export default function BlogPostPage({ params }: PageProps) {
               <button
                 type="button"
                 onClick={() => {
-                  window.open(
+                  globalThis.open(
                     `https://twitter.com/intent/tweet?text=${encodeURIComponent(
                       post.title
                     )}&url=${encodeURIComponent(
-                      typeof window !== "undefined" ? window.location.href : ""
+                      typeof document !== "undefined" ? globalThis.location.href : ""
                     )}`,
                     "_blank"
                   );
@@ -214,9 +212,9 @@ export default function BlogPostPage({ params }: PageProps) {
               <button
                 type="button"
                 onClick={() => {
-                  window.open(
+                  globalThis.open(
                     `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-                      typeof window !== "undefined" ? window.location.href : ""
+                      typeof document !== "undefined" ? globalThis.location.href : ""
                     )}`,
                     "_blank"
                   );

@@ -1,3 +1,4 @@
+import process from "node:process";
 import type { MetadataRoute } from "next";
 import { BLOG_POSTS } from "@/data/blogData";
 

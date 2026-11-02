@@ -10,16 +10,11 @@ import {
   ChevronRight,
   Search,
   Zap,
-  Globe,
   Server,
-  Layers,
   Code2,
   ShieldCheck,
   Cpu,
-  Database,
-  ExternalLink,
   X,
-  FileCode2,
   Terminal,
   Clock,
   Quote,
@@ -51,8 +46,8 @@ export default function ProjectsShowcasePage() {
         setSelectedProject(null);
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    globalThis.addEventListener("keydown", handleKeyDown);
+    return () => globalThis.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   // Filter projects by category and search term

@@ -6,11 +6,7 @@ import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
-  Sparkles,
-  ArrowRight,
   ShieldCheck,
-  Globe,
-  ChevronRight,
 } from "lucide-react";
 import { useLeadModal } from "@/components/LeadModalContext";
 
@@ -36,7 +32,7 @@ export default function EcosystemHeader() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 15);
+      setScrolled(globalThis.scrollY > 15);
 
       if (pathname === "/") {
         const sections = [
@@ -63,15 +59,15 @@ export default function EcosystemHeader() {
 
         if (foundSec) {
           setActiveSection(foundSec);
-        } else if (window.scrollY < 200) {
+        } else if (globalThis.scrollY < 200) {
           setActiveSection("");
         }
       }
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    globalThis.addEventListener("scroll", handleScroll, { passive: true });
+    return () => globalThis.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
   const isNavActive = (link: (typeof navLinks)[0]) => {

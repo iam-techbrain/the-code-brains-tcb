@@ -4,23 +4,37 @@ import React, { useState, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import {
   Mic,
-  MicOff,
-  Sparkles,
   X,
   Bot,
   Navigation,
   Loader2,
   Send,
-  Languages,
-  CheckCircle2,
 } from "lucide-react";
 
-declare global {
-  interface Window {
-    SpeechRecognition: any;
-    webkitSpeechRecognition: any;
-  }
+interface ISpeechRecognitionEvent {
+  results: {
+    [key: number]: {
+      [key: number]: { transcript: string };
+    };
+  };
 }
+
+interface ISpeechRecognitionError {
+  error: string;
+}
+
+interface ISpeechRecognitionInstance {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  start: () => void;
+  stop: () => void;
+  onresult: ((event: ISpeechRecognitionEvent) => void) | null;
+  onerror: ((event: ISpeechRecognitionError) => void) | null;
+  onend: (() => void) | null;
+}
+
+
 
 export default function VoiceAssistant() {
   const router = useRouter();
@@ -36,21 +50,21 @@ export default function VoiceAssistant() {
   const [isSupported, setIsSupported] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
-  const recognitionRef = useRef<any>(null);
+  const recognitionRef = useRef<ISpeechRecognitionInstance | null>(null);
   const cooldownRef = useRef<boolean>(false);
   const availableVoicesRef = useRef<SpeechSynthesisVoice[]>([]);
 
   // Load and cache browser voices
   useEffect(() => {
     const loadVoices = () => {
-      if (typeof window !== "undefined" && "speechSynthesis" in window) {
-        availableVoicesRef.current = window.speechSynthesis.getVoices();
+      if (typeof document !== "undefined" && "speechSynthesis" in globalThis) {
+        availableVoicesRef.current = globalThis.speechSynthesis.getVoices();
       }
     };
 
     loadVoices();
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.onvoiceschanged = loadVoices;
+    if (typeof document !== "undefined" && "speechSynthesis" in globalThis) {
+      globalThis.speechSynthesis.onvoiceschanged = loadVoices;
     }
   }, []);
 
@@ -58,8 +72,8 @@ export default function VoiceAssistant() {
   const getEnglishVoice = (): SpeechSynthesisVoice | null => {
     const voices = availableVoicesRef.current.length > 0
       ? availableVoicesRef.current
-      : typeof window !== "undefined" && "speechSynthesis" in window
-      ? window.speechSynthesis.getVoices()
+      : typeof document !== "undefined" && "speechSynthesis" in globalThis
+      ? globalThis.speechSynthesis.getVoices()
       : [];
 
     if (!voices || voices.length === 0) return null;
@@ -80,8 +94,8 @@ export default function VoiceAssistant() {
   // Initialize SpeechRecognition with English language
   useEffect(() => {
     const SpeechRecognitionAPI =
-      typeof window !== "undefined" &&
-      (window.SpeechRecognition || window.webkitSpeechRecognition);
+      typeof document !== "undefined" &&
+      ((globalThis as unknown as { SpeechRecognition?: new () => ISpeechRecognitionInstance }).SpeechRecognition || (globalThis as unknown as { webkitSpeechRecognition?: new () => ISpeechRecognitionInstance }).webkitSpeechRecognition);
 
     if (!SpeechRecognitionAPI) {
       setIsSupported(false);
@@ -93,7 +107,7 @@ export default function VoiceAssistant() {
     recognition.interimResults = false;
     recognition.lang = "en-US";
 
-    recognition.onresult = (event: any) => {
+    recognition.onresult = (event: ISpeechRecognitionEvent) => {
       const resultText = event.results[0]?.[0]?.transcript;
       if (resultText && resultText.trim().length > 0) {
         setTranscript(resultText);
@@ -102,7 +116,7 @@ export default function VoiceAssistant() {
       setIsListening(false);
     };
 
-    recognition.onerror = (event: any) => {
+    recognition.onerror = (event: ISpeechRecognitionError) => {
       console.warn("Speech recognition notice:", event.error);
       setIsListening(false);
     };
@@ -116,15 +130,15 @@ export default function VoiceAssistant() {
     return () => {
       try {
         recognition.stop();
-      } catch (e) {}
+      } catch (_e) { /* ignore speech recognition stop error */ }
     };
   }, [selectedLang]);
 
   // Text-To-Speech Feedback Response
   const speakResponse = (text: string) => {
     setFeedbackMsg(text);
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
+    if (typeof document !== "undefined" && "speechSynthesis" in globalThis) {
+      globalThis.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       const voice = getEnglishVoice();
       if (voice) {
@@ -132,7 +146,7 @@ export default function VoiceAssistant() {
       }
       utterance.rate = 1.0;
       utterance.pitch = 1.02;
-      window.speechSynthesis.speak(utterance);
+      globalThis.speechSynthesis.speak(utterance);
     }
   };
 
@@ -141,11 +155,11 @@ export default function VoiceAssistant() {
     if (actionLabel) setLastAction(actionLabel);
     speakResponse(speechText);
 
-    if (!action || typeof window === "undefined") return;
+    if (!action || typeof document === "undefined") return;
 
     if (action === "home") {
       if (pathname === "/") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        globalThis.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         router.push("/");
       }
@@ -162,7 +176,7 @@ export default function VoiceAssistant() {
           element.classList.remove("ring-4", "ring-brand-500/40", "ring-offset-4");
         }, 2500);
       } else {
-        window.location.hash = action;
+        globalThis.location.hash = action;
       }
     } else {
       router.push(`/#${action}`);
@@ -211,7 +225,7 @@ export default function VoiceAssistant() {
     if (isListening) {
       try {
         recognitionRef.current?.stop();
-      } catch (e) {}
+      } catch (_e) { /* ignore speech recognition stop error */ }
       setIsListening(false);
     } else {
       try {

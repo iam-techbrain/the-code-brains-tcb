@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowRight, Workflow, PhoneCall, CheckCircle2, Zap, Server, Shield } from "lucide-react";
+import { ArrowRight, Workflow, PhoneCall, CheckCircle2, Zap } from "lucide-react";
 import { useLeadModal } from "@/components/LeadModalContext";
 
 export default function TwoColumnSpotlight() {

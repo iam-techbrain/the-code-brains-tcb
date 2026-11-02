@@ -10,7 +10,6 @@ import {
   TrendingUp,
   FileText,
   ShieldCheck,
-  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 import { useLeadModal } from "@/components/LeadModalContext";

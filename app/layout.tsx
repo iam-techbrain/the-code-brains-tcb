@@ -1,3 +1,4 @@
+import process from "node:process";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";

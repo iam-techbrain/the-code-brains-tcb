@@ -10,7 +10,7 @@ export default function CustomCursor() {
 
   useEffect(() => {
     // Only enable on desktop pointer devices
-    if (window.matchMedia("(pointer: coarse)").matches) return;
+    if (globalThis.matchMedia("(pointer: coarse)").matches) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -20,12 +20,12 @@ export default function CustomCursor() {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    window.addEventListener("mousemove", handleMouseMove);
+    globalThis.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseleave", handleMouseLeave);
     document.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      globalThis.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
     };
@@ -62,8 +62,8 @@ export default function CustomCursor() {
       }
     };
 
-    window.addEventListener("mouseover", handleElementHover);
-    return () => window.removeEventListener("mouseover", handleElementHover);
+    globalThis.addEventListener("mouseover", handleElementHover);
+    return () => globalThis.removeEventListener("mouseover", handleElementHover);
   }, []);
 
   if (!isVisible) return null;

@@ -10,7 +10,6 @@ import {
   Sparkles,
   ArrowRight,
   CheckCircle2,
-  ShieldCheck,
   Zap,
 } from "lucide-react";
 import { useLeadModal } from "@/components/LeadModalContext";
@@ -24,7 +23,7 @@ type AIServiceItem = {
   shortDescription: string;
   keyBenefits: string[];
   techStack: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   featured?: boolean;
 };
 

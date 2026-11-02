@@ -3,13 +3,10 @@
 import {
   ShieldCheck,
   Cloud,
-  Award,
   Lock,
-  Twitter,
   Linkedin,
   Facebook,
   Youtube,
-  Instagram,
   Sparkles,
   ArrowRight,
   CheckCircle2,

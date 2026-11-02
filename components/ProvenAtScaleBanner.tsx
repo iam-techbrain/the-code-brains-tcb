@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { MessageSquare, PhoneCall, Bot, FileSpreadsheet, Share2, Workflow, CheckCircle2, Zap, Cpu, Sparkles, Layers } from "lucide-react";
+import { MessageSquare, PhoneCall, Bot, FileSpreadsheet, Workflow, CheckCircle2, Zap, Layers } from "lucide-react";
 
 export default function ProvenAtScaleBanner() {
   const highLevelPillars = [

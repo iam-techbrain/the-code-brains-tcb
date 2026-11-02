@@ -1,3 +1,4 @@
+import process from "node:process";
 import { BLOG_POSTS, type BlogPost } from "@/data/blogData";
 import { PROJECTS_LIST } from "@/data/projectsData";
 

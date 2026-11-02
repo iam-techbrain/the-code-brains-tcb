@@ -1,6 +1,6 @@
 "use client";
 
-import { ShieldCheck, Cloud, Award, Lock, CheckCircle2, Zap, Server } from "lucide-react";
+import { ShieldCheck, Cloud, Lock, CheckCircle2, Zap, Server } from "lucide-react";
 
 export default function TrustBadgesTicker() {
   const badges = [

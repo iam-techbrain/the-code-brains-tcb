@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { Globe, ShieldCheck, Cpu, Zap, CheckCircle2, Award, Sparkles, Building2 } from "lucide-react";
+
+import { Globe, ShieldCheck, Zap, CheckCircle2, Award, Sparkles, Building2 } from "lucide-react";
 
 export default function WorldwidePresenceSection() {
   const regions = [

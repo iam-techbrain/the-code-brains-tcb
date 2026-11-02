@@ -1,16 +1,17 @@
+import process from "node:process";
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
 // Helper to save leads locally as guaranteed fallback backup
-function saveLeadBackup(leadData: any) {
+function saveLeadBackup(leadData: Record<string, unknown>) {
   try {
     const dataDir = path.join(process.cwd(), "data");
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir, { recursive: true });
     }
     const filePath = path.join(dataDir, "leads.json");
-    let leads: any[] = [];
+    let leads: Record<string, unknown>[] = [];
     if (fs.existsSync(filePath)) {
       const fileContent = fs.readFileSync(filePath, "utf-8");
       try {
@@ -225,7 +226,7 @@ export async function POST(req: Request) {
         message: "Your inquiry has been received! Our team will contact you shortly.",
       });
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Server error processing lead:", error);
     return NextResponse.json({
       success: true,

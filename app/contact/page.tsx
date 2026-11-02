@@ -2,13 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import {
   Mail,
   Phone,
   Building2,
   User,
-  Sparkles,
   ArrowRight,
   CheckCircle2,
   ShieldCheck,
@@ -18,14 +17,12 @@ import {
   Copy,
   Check,
   ChevronRight,
-  Server,
-  Zap,
 } from "lucide-react";
 import WorldwideClientsBanner from "@/components/WorldwideClientsBanner";
 import EcosystemHeader from "@/components/EcosystemHeader";
 import Footer from "@/components/Footer";
 import DemoFloatWidget from "@/components/DemoFloatWidget";
-import { useGlobalCountry, GLOBAL_COUNTRIES, type CountryOption } from "@/components/GlobalCountryContext";
+import { useGlobalCountry, GLOBAL_COUNTRIES } from "@/components/GlobalCountryContext";
 import JsonLd from "@/components/JsonLd";
 import { getContactPageJsonLd } from "@/lib/jsonLd";
 
@@ -94,11 +91,11 @@ export default function ContactPage() {
     let utmDetails = "";
     let deviceType = "Desktop";
 
-    if (typeof window !== "undefined") {
-      pageUrl = window.location.href;
+    if (typeof document !== "undefined") {
+      pageUrl = globalThis.location.href;
       referrer = document.referrer ? document.referrer : "Direct Visit / Bookmark";
 
-      const params = new URLSearchParams(window.location.search);
+      const params = new URLSearchParams(globalThis.location.search);
       const utmSource = params.get("utm_source");
       const utmMedium = params.get("utm_medium");
       const utmCampaign = params.get("utm_campaign");

@@ -1,21 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import {
-  Zap,
-  PhoneCall,
-  Workflow,
-  Database,
-  CheckCircle2,
   Terminal,
-  Activity,
   ArrowRight,
-  Sparkles,
-  Server,
-  Layers,
-  Clock,
-  ShieldCheck,
 } from "lucide-react";
 import { useLeadModal } from "@/components/LeadModalContext";
 

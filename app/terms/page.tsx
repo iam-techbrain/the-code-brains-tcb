@@ -3,7 +3,7 @@ import WorldwideClientsBanner from "@/components/WorldwideClientsBanner";
 import EcosystemHeader from "@/components/EcosystemHeader";
 import Footer from "@/components/Footer";
 import DemoFloatWidget from "@/components/DemoFloatWidget";
-import { ShieldCheck, FileText, CheckCircle2, ArrowRight, Scale } from "lucide-react";
+import { ShieldCheck, CheckCircle2, ArrowRight, Scale } from "lucide-react";
 
 export const metadata = {
   title: "Terms of Service & Engagement | The Code Brains (TCB)",

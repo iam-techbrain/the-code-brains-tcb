@@ -2,26 +2,16 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
+
 import {
   Search,
   ArrowRight,
   ExternalLink,
   Bot,
-  Cpu,
   Layers,
   FileCode2,
-  PhoneCall,
-  ShieldCheck,
-  FileText,
-  Workflow,
   Sparkles,
-  Zap,
-  Globe2,
   CheckCircle2,
-  Code2,
-  Database,
-  Calculator,
   Compass,
   Copy,
   Check,
@@ -41,7 +31,7 @@ interface SitemapCategory {
   title: string;
   description: string;
   badge: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   items: {
     title: string;
     description: string;
@@ -291,7 +281,7 @@ export default function SitemapPage() {
   }, [categories]);
 
   const handleCopyXml = () => {
-    const fullXmlUrl = `${window.location.origin}/sitemap.xml`;
+    const fullXmlUrl = `${globalThis.location.origin}/sitemap.xml`;
     navigator.clipboard.writeText(fullXmlUrl);
     setCopiedXml(true);
     setTimeout(() => setCopiedXml(false), 3000);

@@ -20,7 +20,7 @@ type RoadmapStep = {
   timeline: string;
   description: string;
   deliverables: string[];
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   align: "left" | "right";
 };
 
@@ -174,7 +174,8 @@ export default function HowItWorks() {
                     className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-xs hover:border-[#305eff]/40 hover:shadow-xl transition-all"
                   >
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#305eff] bg-blue-50 px-3 py-0.5 rounded-full border border-blue-200">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#305eff] bg-blue-50 px-3 py-0.5 rounded-full border border-blue-200 inline-flex items-center gap-1.5">
+                        <Icon className="h-3.5 w-3.5 text-[#305eff]" />
                         {step.badge}
                       </span>
                       <span className="text-xs font-mono font-bold text-slate-500">

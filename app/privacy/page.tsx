@@ -3,7 +3,7 @@ import WorldwideClientsBanner from "@/components/WorldwideClientsBanner";
 import EcosystemHeader from "@/components/EcosystemHeader";
 import Footer from "@/components/Footer";
 import DemoFloatWidget from "@/components/DemoFloatWidget";
-import { ShieldCheck, Lock, Server, FileText, CheckCircle2, ArrowRight } from "lucide-react";
+import { ShieldCheck, Lock, Server, CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata = {
   title: "Privacy Policy & Enterprise Data Security | The Code Brains (TCB)",
