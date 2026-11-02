@@ -161,7 +161,7 @@ Return ONLY pure valid JSON:
         actionLabel: parsed.actionLabel || null,
         remaining: rateStatus.remaining,
       });
-    } catch (parseErr) {
+    } catch (_parseErr) {
       return NextResponse.json({
         reply: rawText,
         action: null,
